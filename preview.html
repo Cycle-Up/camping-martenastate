@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welkom bij Martenastate</title>
+  <meta name="description" content="Jouw gids voor een heerlijk verblijf op Martenastate, Koarnjum.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+/* ==========================================================================
+   Welkom bij Martenastate - Stinzenflora-inspired styling
+   ========================================================================== */
+
+:root {
+  /* Stinzenflora-geïnspireerd kleurenpalet */
+  --color-crocus: #7b5d8c;
+  --color-crocus-light: #a890b8;
+  --color-lavender: #c9b8d4;
+  --color-lavender-soft: #e8dff0;
+  --color-aubergine: #3a2a40;
+  --color-sage: #8ba888;
+  --color-sage-light: #b8ccb5;
+  --color-moss: #5a7055;
+  --color-aconite: #e6c569;
+  --color-aconite-soft: #f4e5b3;
+  --color-cream: #faf7f2;
+  --color-warm-white: #f8f5f0;
+  --color-soft-white: #fdfbf7;
+  --color-stone: #d9d3cc;
+  --color-earth: #6b5d52;
+  --color-text: #3a2a40;
+  --color-text-soft: #5a4d5f;
+  --color-text-muted: #8a7d8f;
+
+  /* Typografie */
+  --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-accent: 'Caveat', 'Dancing Script', cursive;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+
+  /* Borders & Shadows */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --shadow-soft: 0 4px 24px rgba(58, 42, 64, 0.08);
+  --shadow-medium: 0 8px 40px rgba(58, 42, 64, 0.12);
+  --shadow-hover: 0 12px 48px rgba(58, 42, 64, 0.18);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-warm-white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-aubergine);
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 400; }
+h2 { font-size: clamp(2rem, 4vw, 3rem); }
+h3 { font-size: clamp(1.4rem, 2.5vw, 1.9rem); }
+h4 { font-size: clamp(1.15rem, 1.8vw, 1.35rem); }
+
+p { margin-bottom: 1rem; color: var(--color-text-soft); }
+
+a { color: var(--color-crocus); text-decoration: none; transition: color var(--transition-fast); }
+a:hover { color: var(--color-aubergine); }
+
+.accent-text {
+  font-family: var(--font-accent);
+  color: var(--color-crocus);
+  font-size: 1.4em;
+  line-height: 1;
+}
+
+/* Container */
+.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 var(--space-md); }
+.container-narrow { max-width: 800px; margin: 0 auto; padding: 0 var(--space-md); }
+
+/* ===== Navigation ===== */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: var(--space-sm) 0;
+  background: rgba(250, 247, 242, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201, 184, 212, 0.2);
+  transition: all var(--transition-smooth);
+}
+
+.navbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--color-aubergine);
+  font-weight: 500;
+}
+
+.brand svg { width: 32px; height: 32px; color: var(--color-crocus); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--color-text-soft);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.nav-links a:hover { color: var(--color-crocus); background: var(--color-lavender-soft); }
+.nav-links a.active { color: var(--color-crocus); }
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background: var(--color-crocus);
+  border-radius: 2px;
+}
+
+.lang-toggle {
+  display: flex;
+  gap: 0.25rem;
+  background: var(--color-lavender-soft);
+  border-radius: var(--radius-pill);
+  padding: 0.25rem;
+}
+
+.lang-toggle button {
+  border: none;
+  background: transparent;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-soft);
+  cursor: pointer;
+  border-radius: var(--radius-pill);
+  transition: all var(--transition-fast);
+  font-family: inherit;
+}
+
+.lang-toggle button.active { background: var(--color-crocus); color: white; }
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-aubergine);
+  padding: 0.5rem;
+}
+
+/* ===== Hero ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 8rem var(--space-md) 4rem;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at top right, var(--color-lavender-soft) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom left, var(--color-aconite-soft) 0%, transparent 50%),
+    linear-gradient(180deg, var(--color-cream) 0%, var(--color-warm-white) 100%);
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 900px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-accent);
+  font-size: 2rem;
+  color: var(--color-crocus);
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  line-height: 1;
+}
+
+.hero h1 {
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.hero h1 .italic {
+  font-style: italic;
+  color: var(--color-crocus);
+}
+
+.hero-subtitle {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  color: var(--color-text-soft);
+  max-width: 640px;
+  margin: 0 auto var(--space-lg);
+  line-height: 1.7;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.8rem;
+  border-radius: var(--radius-pill);
+  font-weight: 500;
+  font-size: 0.95rem;
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--color-crocus);
+  color: white;
+  box-shadow: var(--shadow-soft);
+}
+.btn-primary:hover {
+  background: var(--color-aubergine);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-crocus);
+  border: 1.5px solid var(--color-crocus);
+}
+.btn-outline:hover {
+  background: var(--color-crocus);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.btn svg { width: 18px; height: 18px; }
+
+/* Floral decoration */
+.floral-decoration {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+.floral-top-left { top: 4%; left: 2%; width: 180px; transform: rotate(-15deg); }
+.floral-bottom-right { bottom: 4%; right: 2%; width: 220px; transform: rotate(20deg); }
+
+@media (max-width: 768px) {
+  .floral-top-left { width: 100px; top: 10%; }
+  .floral-bottom-right { width: 120px; bottom: 8%; }
+}
+
+/* ===== Sections ===== */
+section {
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto var(--space-xl);
+}
+
+.section-eyebrow {
+  font-family: var(--font-accent);
+  color: var(--color-crocus);
+  font-size: 1.6rem;
+  display: inline-block;
+  margin-bottom: 0.25rem;
+  line-height: 1;
+}
+
+.section-header h2 { margin-bottom: 1rem; }
+.section-header p { font-size: 1.1rem; color: var(--color-text-soft); }
+
+/* ===== Cards Grid ===== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-md);
+}
+
+.card-grid.cols-2 { grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); }
+.card-grid.cols-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+
+.nav-card {
+  background: var(--color-soft-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-soft);
+  transition: all var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  border: 1px solid rgba(201, 184, 212, 0.2);
+}
+
+.nav-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-crocus), var(--color-lavender));
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+}
+
+.nav-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+.nav-card:hover::before { opacity: 1; }
+
+.nav-card .icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: var(--color-lavender-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-sm);
+  color: var(--color-crocus);
+  transition: all var(--transition-smooth);
+}
+
+.nav-card:hover .icon-wrap {
+  background: var(--color-crocus);
+  color: white;
+  transform: rotate(-5deg) scale(1.05);
+}
+
+.nav-card .icon-wrap svg { width: 28px; height: 28px; }
+
+.nav-card h3 { margin-bottom: 0.5rem; color: var(--color-aubergine); }
+.nav-card p { margin-bottom: 0.75rem; font-size: 0.95rem; }
+
+.nav-card .card-link {
+  color: var(--color-crocus);
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.nav-card .card-link::after {
+  content: '→';
+  transition: transform var(--transition-fast);
+}
+.nav-card:hover .card-link::after { transform: translateX(4px); }
+
+/* Highlights strip */
+.highlights {
+  background: linear-gradient(135deg, var(--color-lavender-soft) 0%, var(--color-cream) 100%);
+  padding: var(--space-xl) 0;
+  margin: 0;
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-md);
+  text-align: center;
+}
+
+.highlight-item { padding: var(--space-sm); }
+.highlight-item .value {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--color-crocus);
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.highlight-item .label {
+  font-size: 0.9rem;
+  color: var(--color-text-soft);
+  font-weight: 500;
+}
+
+/* Info sections */
+.info-section {
+  background: var(--color-soft-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-md);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(201, 184, 212, 0.15);
+}
+
+.info-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: var(--space-sm);
+}
+
+.info-section .icon-small {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: var(--color-lavender-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-crocus);
+  flex-shrink: 0;
+}
+
+.info-section .icon-small svg { width: 22px; height: 22px; }
+
+.info-list { list-style: none; padding: 0; }
+.info-list li {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--color-stone);
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  color: var(--color-text-soft);
+}
+.info-list li:last-child { border-bottom: none; }
+.info-list li .label { font-weight: 500; color: var(--color-text); }
+.info-list li .value { color: var(--color-text-soft); text-align: right; }
+
+/* Two column layout */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .two-col { grid-template-columns: 1fr; }
+}
+
+/* Tab navigation */
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background: transparent;
+  border: 1.5px solid var(--color-stone);
+  color: var(--color-text-soft);
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.tab-btn:hover { border-color: var(--color-crocus); color: var(--color-crocus); }
+.tab-btn.active { background: var(--color-crocus); border-color: var(--color-crocus); color: white; }
+
+.tab-panel { display: none; animation: fadeIn 0.4s ease; }
+.tab-panel.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Feature rows */
+.feature-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.feature-row:nth-child(even) .feature-image { order: 2; }
+
+@media (max-width: 768px) {
+  .feature-row { grid-template-columns: 1fr; gap: var(--space-md); }
+  .feature-row:nth-child(even) .feature-image { order: 0; }
+}
+
+.feature-image {
+  aspect-ratio: 4/3;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--color-lavender-soft), var(--color-sage-light));
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-medium);
+}
+
+.feature-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.feature-image .placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-crocus);
+  opacity: 0.4;
+}
+
+.feature-image .placeholder svg { width: 80px; height: 80px; }
+
+.feature-content h3 { margin-bottom: var(--space-sm); }
+.feature-content .meta {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-top: var(--space-sm);
+}
+.feature-content .meta-chip {
+  background: var(--color-lavender-soft);
+  color: var(--color-crocus);
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.feature-content .meta-chip svg { width: 14px; height: 14px; }
+
+/* ===== Map ===== */
+.map-container {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+  height: 600px;
+  background: var(--color-lavender-soft);
+}
+
+.map-legend {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: var(--space-md);
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-text-soft);
+}
+
+.legend-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* ===== Tips & Callouts ===== */
+.callout {
+  background: linear-gradient(135deg, var(--color-aconite-soft), var(--color-cream));
+  border-left: 4px solid var(--color-aconite);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  margin: var(--space-md) 0;
+  display: flex;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.callout .icon {
+  flex-shrink: 0;
+  color: var(--color-aconite);
+}
+
+.callout .icon svg { width: 28px; height: 28px; }
+
+.callout h4 { margin-bottom: 0.25rem; color: var(--color-earth); }
+.callout p { margin: 0; font-size: 0.95rem; color: var(--color-text-soft); }
+
+.callout.callout-crocus {
+  background: linear-gradient(135deg, var(--color-lavender-soft), var(--color-cream));
+  border-left-color: var(--color-crocus);
+}
+.callout.callout-crocus .icon { color: var(--color-crocus); }
+
+.callout.callout-sage {
+  background: linear-gradient(135deg, var(--color-sage-light), var(--color-cream));
+  border-left-color: var(--color-moss);
+}
+.callout.callout-sage .icon { color: var(--color-moss); }
+
+/* ===== Footer ===== */
+.footer {
+  background: var(--color-aubergine);
+  color: var(--color-lavender);
+  padding: var(--space-xl) 0 var(--space-md);
+  margin-top: var(--space-2xl);
+}
+
+.footer h4 { color: white; margin-bottom: var(--space-sm); font-size: 1.1rem; }
+.footer a { color: var(--color-lavender); }
+.footer a:hover { color: white; }
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+@media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; } }
+
+.footer-brand { display: flex; align-items: center; gap: 0.75rem; font-family: var(--font-display); font-size: 1.4rem; color: white; margin-bottom: var(--space-sm); }
+.footer-brand svg { width: 32px; height: 32px; }
+
+.footer ul { list-style: none; padding: 0; }
+.footer ul li { margin-bottom: 0.5rem; font-size: 0.95rem; }
+
+.footer-bottom {
+  text-align: center;
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(201, 184, 212, 0.2);
+  font-size: 0.85rem;
+  color: var(--color-lavender);
+  opacity: 0.7;
+}
+
+/* ===== Utilities ===== */
+.text-center { text-align: center; }
+.mt-lg { margin-top: var(--space-lg); }
+.mb-lg { margin-bottom: var(--space-lg); }
+
+.divider {
+  text-align: center;
+  margin: var(--space-lg) 0;
+  color: var(--color-crocus);
+  font-size: 1.5rem;
+  opacity: 0.5;
+}
+
+/* ===== Responsive Nav ===== */
+@media (max-width: 860px) {
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    left: 0; right: 0;
+    background: var(--color-soft-white);
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--space-md);
+    gap: 0.25rem;
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-120%);
+    transition: transform var(--transition-smooth);
+    border-bottom: 1px solid var(--color-stone);
+  }
+  .nav-links.open { transform: translateY(0); }
+  .nav-links a { padding: 0.9rem 1rem; }
+  .menu-toggle { display: flex; }
+  .lang-toggle { margin-top: var(--space-sm); align-self: center; }
+}
+
+/* Floating scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-crocus);
+  opacity: 0.6;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+.scroll-indicator svg { width: 24px; height: 24px; }
+
+/* Subtle animations on scroll */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* Quote / testimonial */
+.quote-block {
+  max-width: 720px;
+  margin: var(--space-xl) auto;
+  text-align: center;
+  padding: var(--space-lg);
+}
+
+.quote-block blockquote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  line-height: 1.5;
+  color: var(--color-aubergine);
+  margin-bottom: var(--space-sm);
+  position: relative;
+}
+
+.quote-block blockquote::before,
+.quote-block blockquote::after {
+  content: '"';
+  color: var(--color-crocus);
+  opacity: 0.4;
+  font-size: 2em;
+  line-height: 0;
+  vertical-align: -0.2em;
+}
+
+.quote-block cite {
+  display: block;
+  font-style: normal;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Map marker popup styling (Leaflet override) */
+.leaflet-popup-content-wrapper {
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-medium) !important;
+}
+.leaflet-popup-content {
+  font-family: var(--font-body) !important;
+  color: var(--color-text) !important;
+  margin: 14px 18px !important;
+}
+.leaflet-popup-content h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+  color: var(--color-aubergine);
+}
+.leaflet-popup-content .popup-category {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: var(--color-crocus);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+</style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" role="navigation">
+    <div class="navbar-inner">
+      <a href="index.html" class="brand" aria-label="Martenastate home">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M16 3 C16 3 8 9 8 17 C8 21.4 11.6 25 16 25 C20.4 25 24 21.4 24 17 C24 9 16 3 16 3Z" fill="currentColor" opacity="0.2"/>
+          <path d="M16 6 C13 10 10 13 10 17 C10 20.3 12.7 23 16 23 C19.3 23 22 20.3 22 17 C22 13 19 10 16 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M16 10 C16 10 12 14 12 17 C12 19.2 13.8 21 16 21" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.6"/>
+          <line x1="16" y1="23" x2="16" y2="29" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="12" y1="27" x2="20" y2="27" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        Martenastate
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="verblijf.html" data-i18n="nav.verblijf">Verblijf</a></li>
+        <li><a href="omgeving.html" data-i18n="nav.omgeving">Omgeving</a></li>
+        <li><a href="kaart.html" data-i18n="nav.kaart">Kaart</a></li>
+        <li>
+          <div class="lang-toggle" role="group" aria-label="Taal kiezen">
+            <button data-lang="nl" class="active">NL</button>
+            <button data-lang="en">EN</button>
+          </div>
+        </li>
+      </ul>
+
+      <button class="menu-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="nav-links">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <!-- Decorative floral SVGs -->
+    <svg class="floral-decoration floral-top-left" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="100" cy="60" r="18" fill="#7b5d8c" opacity="0.3"/>
+      <circle cx="75" cy="90" r="12" fill="#c9b8d4" opacity="0.4"/>
+      <circle cx="125" cy="85" r="14" fill="#7b5d8c" opacity="0.25"/>
+      <circle cx="100" cy="115" r="10" fill="#e6c569" opacity="0.35"/>
+      <ellipse cx="55" cy="70" rx="8" ry="16" fill="#8ba888" opacity="0.3" transform="rotate(-30 55 70)"/>
+      <ellipse cx="145" cy="65" rx="8" ry="18" fill="#8ba888" opacity="0.25" transform="rotate(25 145 65)"/>
+      <line x1="100" y1="78" x2="100" y2="160" stroke="#8ba888" stroke-width="2" opacity="0.4"/>
+      <line x1="82" y1="100" x2="118" y2="130" stroke="#8ba888" stroke-width="1.5" opacity="0.3"/>
+    </svg>
+
+    <svg class="floral-decoration floral-bottom-right" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="120" cy="80" r="22" fill="#7b5d8c" opacity="0.2"/>
+      <circle cx="88" cy="110" r="15" fill="#c9b8d4" opacity="0.35"/>
+      <circle cx="152" cy="105" r="17" fill="#8ba888" opacity="0.25"/>
+      <circle cx="120" cy="140" r="12" fill="#e6c569" opacity="0.3"/>
+      <circle cx="90" cy="155" r="9" fill="#7b5d8c" opacity="0.2"/>
+      <circle cx="150" cy="150" r="11" fill="#c9b8d4" opacity="0.3"/>
+      <ellipse cx="68" cy="88" rx="9" ry="20" fill="#8ba888" opacity="0.25" transform="rotate(-20 68 88)"/>
+      <ellipse cx="172" cy="82" rx="9" ry="22" fill="#8ba888" opacity="0.2" transform="rotate(15 172 82)"/>
+      <line x1="120" y1="102" x2="120" y2="200" stroke="#8ba888" stroke-width="2" opacity="0.35"/>
+    </svg>
+
+    <div class="hero-content">
+      <span class="hero-eyebrow" data-i18n="home.eyebrow">Welkom</span>
+      <h1>
+        Welkom bij<br>
+        <span class="italic" data-i18n="home.title.italic">Martenastate</span>
+      </h1>
+      <p class="hero-subtitle" data-i18n="home.subtitle">
+        Een verborgen parel in het groen van Friesland. Wij hopen dat je een heerlijk verblijf hebt op dit historische landgoed in Koarnjum.
+      </p>
+      <div class="hero-buttons">
+        <a href="verblijf.html" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span data-i18n="home.btn.verblijf">Over je verblijf</span>
+        </a>
+        <a href="omgeving.html" class="btn btn-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <span data-i18n="home.btn.omgeving">Wat te doen</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- Highlights -->
+  <div class="highlights">
+    <div class="container">
+      <div class="highlights-grid">
+        <div class="highlight-item fade-in">
+          <div class="value" data-i18n="highlights.since">Sinds ~1400</div>
+          <div class="label" data-i18n="highlights.since.label">Historisch landgoed</div>
+        </div>
+        <div class="highlight-item fade-in">
+          <div class="value" data-i18n="highlights.ha">21.000 ha</div>
+          <div class="label" data-i18n="highlights.ha.label">Natuur beheerd door It Fryske Gea</div>
+        </div>
+        <div class="highlight-item fade-in">
+          <div class="value" data-i18n="highlights.km">5 min</div>
+          <div class="label" data-i18n="highlights.km.label">Fietsen naar Leeuwarden</div>
+        </div>
+        <div class="highlight-item fade-in">
+          <div class="value" data-i18n="highlights.season">1 apr – 1 okt</div>
+          <div class="label" data-i18n="highlights.season.label">Kampeerseizoen</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation cards -->
+  <section>
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-eyebrow">Jouw gids</span>
+        <h2>Alles voor je verblijf</h2>
+        <p>Hier vind je alles wat je nodig hebt — van informatie over je verblijfplaats tot de mooiste plekken in de omgeving.</p>
+      </div>
+
+      <div class="card-grid cols-3">
+        <a href="verblijf.html" class="nav-card fade-in">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3 data-i18n="card.verblijf.title">Over je verblijf</h3>
+          <p data-i18n="card.verblijf.desc">Alles over de camping en B&amp;B: tarieven, faciliteiten en handige tips.</p>
+          <span class="card-link" data-i18n="card.verblijf.link">Bekijk details</span>
+        </a>
+
+        <a href="omgeving.html" class="nav-card fade-in">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1-2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+          </div>
+          <h3 data-i18n="card.omgeving.title">In de omgeving</h3>
+          <p data-i18n="card.omgeving.desc">Wandelroutes, fietsroutes, restaurants en bezienswaardigheden.</p>
+          <span class="card-link" data-i18n="card.omgeving.link">Ontdek de omgeving</span>
+        </a>
+
+        <a href="kaart.html" class="nav-card fade-in">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+          </div>
+          <h3 data-i18n="card.kaart.title">Interactieve kaart</h3>
+          <p data-i18n="card.kaart.desc">Bekijk alle tips, routes en adressen op de kaart.</p>
+          <span class="card-link" data-i18n="card.kaart.link">Open kaart</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote -->
+  <div class="quote-block fade-in">
+    <blockquote data-i18n="quote.text">In ieder seizoen valt er veel te zien én te beleven op Martenastate</blockquote>
+    <cite data-i18n="quote.cite">Martenastate, Koarnjum</cite>
+  </div>
+
+  <!-- About section -->
+  <section style="background: linear-gradient(180deg, var(--color-warm-white) 0%, var(--color-cream) 100%); padding-top: 0;">
+    <div class="container">
+      <div class="feature-row fade-in">
+        <div class="feature-image">
+          <div class="placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+        </div>
+        <div class="feature-content">
+          <span class="section-eyebrow">Het landgoed</span>
+          <h3>Een plek met eeuwenlange geschiedenis</h3>
+          <p>Martenastate gaat terug tot circa 1400, toen Sytze Martena hier woonde. Het landgoed is vernoemd naar Duco Martena — staatsman, held en geleerde. In 1899 verrees het huidige neo-renaissance kasteel met zijn karakteristieke uienvormige toren.</p>
+          <p>Sinds 2000 beheert <strong>It Fryske Gea</strong> het landgoed ecologisch. Martenastate is erkend als één van de beste stinzenflora-locaties van Nederland en staat op de lijst als nationaal monument.</p>
+          <div class="meta">
+            <span class="meta-chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Vrij toegankelijk
+            </span>
+            <span class="meta-chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Nationaal monument
+            </span>
+            <span class="meta-chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/></svg>
+              Stinzenflora-toplocatie
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-row fade-in">
+        <div class="feature-content">
+          <span class="section-eyebrow">Stinzenflora</span>
+          <h3>De bloemen die alles bijzonder maken</h3>
+          <p>Stinzenplanten zijn verwilderde bolgewassen die al eeuwen rond historische landgoederen groeien. In het voorjaar (februari–april) bloeit Martenastate in prachtige tinten van paars, wit en geel.</p>
+          <p>Sneeuwklokjes, krokussen, wilde hyacinten, winterakoniet en veel meer — elk jaar opnieuw een betoverend schouwspel dat bezoekers van heinde en verre trekt.</p>
+          <div class="meta">
+            <span class="meta-chip">Februari – april</span>
+            <span class="meta-chip">Sneeuwklokjes</span>
+            <span class="meta-chip">Krokussen</span>
+            <span class="meta-chip">Wilde hyacint</span>
+          </div>
+        </div>
+        <div class="feature-image">
+          <div class="placeholder" style="background: linear-gradient(135deg, #c9b8d4, #e8dff0);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16 3 C16 3 8 9 8 17 C8 21.4 11.6 25 16 25 C20.4 25 24 21.4 24 17 C24 9 16 3 16 3Z" fill="currentColor" opacity="0.3"/><path d="M16 6 C13 10 10 13 10 17 C10 20.3 12.7 23 16 23 C19.3 23 22 20.3 22 17 C22 13 19 10 16 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="16" y1="23" x2="16" y2="29" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="27" x2="20" y2="27" stroke="currentColor" stroke-width="1.5"/></svg>
+            Martenastate
+          </div>
+          <p data-i18n="footer.tagline" style="color: var(--color-lavender); opacity:.8;">Een historisch landgoed in het hart van Friesland.</p>
+        </div>
+        <div>
+          <h4 data-i18n="footer.nav">Navigatie</h4>
+          <ul>
+            <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+            <li><a href="verblijf.html" data-i18n="nav.verblijf">Verblijf</a></li>
+            <li><a href="omgeving.html" data-i18n="nav.omgeving">Omgeving</a></li>
+            <li><a href="kaart.html" data-i18n="nav.kaart">Kaart</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="footer.contact">Contact</h4>
+          <ul>
+            <li data-i18n="footer.address">Martenawei 2, 9056 PE Koarnjum</li>
+            <li data-i18n="footer.camping.address">Camping: De Wier 7A</li>
+            <li><a href="tel:+31636606521" data-i18n="footer.phone">+31 6 83 60 65 21</a></li>
+            <li><a href="https://martenastate.nl" target="_blank" rel="noopener">martenastate.nl</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">Welkom bij Martenastate — Koarnjum, Friesland</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+const translations = {
+  nl: {
+    // Nav
+    "nav.home": "Home",
+    "nav.verblijf": "Verblijf",
+    "nav.omgeving": "Omgeving",
+    "nav.kaart": "Kaart",
+
+    // Homepage hero
+    "home.eyebrow": "Welkom",
+    "home.title": "Welkom bij Martenastate",
+    "home.title.italic": "Martenastate",
+    "home.subtitle": "Een verborgen parel in het groen van Friesland. Wij hopen dat je een heerlijk verblijf hebt op dit historische landgoed in Koarnjum.",
+    "home.btn.verblijf": "Over je verblijf",
+    "home.btn.omgeving": "Wat te doen",
+
+    // Highlights
+    "highlights.since": "Sinds ~1400",
+    "highlights.since.label": "Historisch landgoed",
+    "highlights.ha": "21.000 ha",
+    "highlights.ha.label": "Natuur beheerd door It Fryske Gea",
+    "highlights.km": "5 min",
+    "highlights.km.label": "Fietsen naar Leeuwarden",
+    "highlights.season": "1 apr – 1 okt",
+    "highlights.season.label": "Kampeerseizoen",
+
+    // Nav cards
+    "card.verblijf.title": "Over je verblijf",
+    "card.verblijf.desc": "Alles over de camping en B&B: tarieven, faciliteiten en handige tips.",
+    "card.verblijf.link": "Bekijk details",
+    "card.omgeving.title": "In de omgeving",
+    "card.omgeving.desc": "Wandelroutes, fietsroutes, restaurants en bezienswaardigheden.",
+    "card.omgeving.link": "Ontdek de omgeving",
+    "card.kaart.title": "Interactieve kaart",
+    "card.kaart.desc": "Bekijk alle tips, routes en adressen op de kaart.",
+    "card.kaart.link": "Open kaart",
+
+    // Quote
+    "quote.text": "In ieder seizoen valt er veel te zien én te beleven op Martenastate",
+    "quote.cite": "Martenastate, Koarnjum",
+
+    // Verblijf page
+    "verblijf.title": "Over je verblijf",
+    "verblijf.subtitle": "Of je nu op de camping staat of geniet van de B&B — we hopen dat je je helemaal thuis voelt.",
+    "tab.camping": "Natuurkampeerterrein",
+    "tab.bb": "B&B Stinzenflora",
+    "tab.tunman": "Túnmanswente",
+
+    // Camping
+    "camping.title": "Natuurkampeerterrein",
+    "camping.desc": "Rustig kamperen achter een rij eeuwenoude beuken, temidden van de stinzenflora. Geen overbodige luxe, maar volop natuur en rust.",
+    "camping.season.label": "Seizoen",
+    "camping.season.value": "1 april – 1 oktober",
+    "camping.card.label": "Kampeerkaart",
+    "camping.card.value": "Natuurkampeerkaart verplicht (Stichting De Groene Koepel)",
+    "camping.card.price": "Ter plekke te koop: €15,95",
+    "camping.contact.label": "Beheerder",
+    "camping.contact.value": "Robin Alkema — +31 6 83 60 65 21 (noodgevallen)",
+    "camping.noise.label": "Let op",
+    "camping.noise.value": "Incidenteel vliegtuiggeluid van nabijgelegen militaire vliegbasis",
+    "camping.prices": "Tarieven per nacht",
+    "price.adult": "Volwassene",
+    "price.child.5": "Kind (5–12 jaar)",
+    "price.child.0": "Kind (0–4 jaar)",
+    "price.pitch": "Kampeerplaats (tent/caravan/camper)",
+    "price.trekker": "Trekkers tent",
+    "price.electric": "Elektriciteit (per dag)",
+
+    // B&B
+    "bb.title": "B&B Stinzenflora",
+    "bb.desc": "Twee sfeervolle kamers op het historische landgoed Martenastate. Een plek waar je vanzelf tot rust komt, met de natuur van het park op loopafstand.",
+    "bb.rooms": "De kamers",
+    "bb.room1.title": "Kamer Stinzenflora",
+    "bb.room1.desc": "Sfeervol ingericht, maximaal 2 personen, eigen badkamer en buitenzithoek.",
+    "bb.room2.title": "Kamer Martenastate",
+    "bb.room2.desc": "Sfeervol ingericht, maximaal 2 personen, eigen badkamer en buitenzithoek.",
+    "bb.features": "Faciliteiten",
+    "bb.feature.wifi": "WiFi",
+    "bb.feature.bathroom": "Privé badkamer met toilet",
+    "bb.feature.kitchen": "Kleine kitchenette (koffie & thee)",
+    "bb.feature.outside": "Buitenzithoek met uitzicht op het park",
+    "bb.feature.parking": "Gratis parkeren",
+    "bb.checkin.label": "Check-in",
+    "bb.checkin.value": "Vanaf 15:00 (vroeger in overleg)",
+    "bb.checkout.label": "Check-out",
+    "bb.checkout.value": "Vóór 11:00 (later in overleg)",
+    "bb.address.label": "Adres",
+    "bb.address.value": "Martenawei 2, 9056 PE Koarnjum",
+    "bb.phone.label": "Telefoon",
+    "bb.phone.value": "+31 85 080 5048",
+    "bb.book": "Bekijk beschikbaarheid",
+
+    // Túnmanswente
+    "tunman.title": "Túnmanswente",
+    "tunman.desc": "De voormalige tuinmanswoning van Martenastate is nu een sfeervolle theeschenkerij, trouwlocatie en vergaderruimte — én startpunt van het Jabikspaad.",
+    "tunman.hours": "Openingstijden (27 mrt – 25 okt)",
+    "tunman.fri": "Vrijdag",
+    "tunman.fri.hours": "13:00 – 17:00",
+    "tunman.sat": "Zaterdag",
+    "tunman.sat.hours": "11:00 – 17:00",
+    "tunman.sun": "Zondag",
+    "tunman.sun.hours": "11:00 – 17:00",
+    "tunman.address": "Martenawei 2, 9056 PE Koarnjum",
+    "tunman.knooppunt": "Fietsknooppunt 10",
+    "tunman.jabikspaad": "Officieel stempelpunt Jabikspaad",
+    "tunman.trouw": "Officiële trouwlocatie gemeente Leeuwarden",
+
+    // Omgeving page
+    "omgeving.title": "In de omgeving",
+    "omgeving.subtitle": "Koarnjum ligt op fietsafstand van Leeuwarden en midden in een prachtig Fries landschap. Hier zijn onze favoriete tips.",
+    "tab.wandelen": "Wandelen",
+    "tab.fietsen": "Fietsen",
+    "tab.eten": "Eten & drinken",
+    "tab.bezienswaardigheden": "Bezienswaardigheden",
+
+    // Wandelen
+    "wandelen.park.title": "Wandelen in het park",
+    "wandelen.park.desc": "Het landschapspark Martenastate is vrij toegankelijk van zonsopgang tot zonsondergang. Geniet van de stinzenflora, eeuwenoude bomen en historische paden.",
+    "wandelen.park.chip1": "Vrij toegankelijk",
+    "wandelen.park.chip2": "Stinzenflora",
+    "wandelen.park.chip3": "Nationaal monument",
+    "wandelen.jabikspaad.title": "Jabikspaad",
+    "wandelen.jabikspaad.desc": "De pelgrimsroute van Friesland naar Santiago de Compostella passeert Martenastate. Túnmanswente is een officieel stempelpunt.",
+    "wandelen.jabikspaad.chip1": "Pelgrimsroute",
+    "wandelen.jabikspaad.chip2": "Stempel bij Túnmanswente",
+    "wandelen.elfstedenpad.title": "Elfstedenpad",
+    "wandelen.elfstedenpad.desc": "Het 300 km lange wandelpad langs alle 11 Friese steden loopt door het Friese landschap. Etappe Oenkerk – Leeuwarden (15 km) begint vlakbij.",
+    "wandelen.elfstedenpad.chip1": "300 km totaal",
+    "wandelen.elfstedenpad.chip2": "Gemarkeerd geel-rood",
+    "wandelen.itfryskegea.title": "It Fryske Gea excursies",
+    "wandelen.itfryskegea.desc": "Geleide natuur- en fotografie-excursies in en rond Martenastate. Te boeken via het activiteitenprogramma van It Fryske Gea.",
+    "wandelen.itfryskegea.chip1": "Geleide excursies",
+    "wandelen.itfryskegea.chip2": "Via itfryskegea.nl",
+
+    // Fietsen
+    "fietsen.knooppunt.title": "Fietsknooppuntennetwerk",
+    "fietsen.knooppunt.desc": "Martenastate is bereikbaar via fietsknooppunt 10. Stel je eigen route samen via de genummerde knooppunten door het Friese landschap.",
+    "fietsen.knooppunt.chip1": "Knooppunt 10 bij Túnmanswente",
+    "fietsen.knooppunt.chip2": "Zelf samenstellen",
+    "fietsen.elfsteden.title": "Elfsteden Fietsroute",
+    "fietsen.elfsteden.desc": "De 258 km lange route langs alle 11 Friese steden start in Leeuwarden — op slechts 5 km afstand. Ideaal voor meerdaagse fietsers.",
+    "fietsen.elfsteden.chip1": "258 km",
+    "fietsen.elfsteden.chip2": "Start in Leeuwarden",
+    "fietsen.lf.title": "LF Weekendtocht Friese kust",
+    "fietsen.lf.desc": "Een 145 km lange LF-route langs de Friese kust en het voormalige Middelzeelandschap. Vertrekt vanuit Leeuwarden.",
+    "fietsen.lf.chip1": "145 km",
+    "fietsen.lf.chip2": "Kust & Middelzee",
+    "fietsen.water.title": "Waterbeleefroute Fryslân",
+    "fietsen.water.desc": "Een 177 km route langs de waterhotspots van Friesland — meren, kanalen en sluizen. Startpunt Leeuwarden.",
+    "fietsen.water.chip1": "177 km",
+    "fietsen.water.chip2": "Start Leeuwarden",
+
+    // Eten
+    "eten.tunman.title": "Túnmanswente",
+    "eten.tunman.desc": "Direct op het landgoed. Koffie, thee en lunch in een historische omgeving. Zomer-theetuin met uitzicht op het park.",
+    "eten.tunman.chip1": "Op het landgoed",
+    "eten.tunman.chip2": "vr 13-17u, za/zo 11-17u",
+    "eten.leeuwarden.title": "Leeuwarden (5 km)",
+    "eten.leeuwarden.desc": "Op 5 minuten fietsen ligt de historische binnenstad van Leeuwarden met een breed aanbod van restaurants, cafés en markten.",
+    "eten.leeuwarden.chip1": "5 km fietsen",
+    "eten.leeuwarden.chip2": "Diverse keuze",
+
+    // Bezienswaardigheden
+    "bezienswaardigheid.leeuwarden.title": "Leeuwarden",
+    "bezienswaardigheid.leeuwarden.desc": "Hoofdstad van Friesland met het Fries Museum, de Oldehove toren, de Mata Hari tentoonstelling en een levendige binnenstad.",
+    "bezienswaardigheid.leeuwarden.chip1": "5 km",
+    "bezienswaardigheid.leeuwarden.chip2": "Historische binnenstad",
+    "bezienswaardigheid.stinzen.title": "Stinzenflora in de regio",
+    "bezienswaardigheid.stinzen.desc": "Martenastate is erkend als een van de beste stinzenflora-locaties van Nederland. Zie ook Park Jongemastate, Wikelerbosk en Rysterbosk.",
+    "bezienswaardigheid.stinzen.chip1": "Nationaal toplocatie",
+    "bezienswaardigheid.stinzen.chip2": "Voorjaar (feb–april)",
+    "bezienswaardigheid.dokkum.title": "Dokkum",
+    "bezienswaardigheid.dokkum.desc": "Het enige volledig omwalde stadje van Nederland, op 30 km. Pittoresk historisch centrum met vestingwallen.",
+    "bezienswaardigheid.dokkum.chip1": "30 km",
+    "bezienswaardigheid.dokkum.chip2": "Vestingstad",
+    "bezienswaardigheid.waddenzee.title": "UNESCO Waddenzee",
+    "bezienswaardigheid.waddenzee.desc": "Het UNESCO Werelderfgoed Waddenzee is op circa 30 km. Uniek getijdenlandschap met wadlopen, vogels en zeehonden.",
+    "bezienswaardigheid.waddenzee.chip1": "~30 km",
+    "bezienswaardigheid.waddenzee.chip2": "UNESCO Werelderfgoed",
+
+    // Kaart
+    "kaart.title": "Kaart",
+    "kaart.subtitle": "Alle highlights, routes en adressen op één kaart.",
+    "kaart.legend.martenastate": "Martenastate",
+    "kaart.legend.wandelen": "Wandelen",
+    "kaart.legend.fietsen": "Fietsen",
+    "kaart.legend.eten": "Eten & drinken",
+    "kaart.legend.bezienswaardigheid": "Bezienswaardigheden",
+
+    // Footer
+    "footer.tagline": "Een historisch landgoed in het hart van Friesland.",
+    "footer.nav": "Navigatie",
+    "footer.contact": "Contact",
+    "footer.address": "Martenawei 2, 9056 PE Koarnjum",
+    "footer.camping.address": "Camping: De Wier 7A, 9056 PM Koarnjum",
+    "footer.phone": "+31 6 83 60 65 21",
+    "footer.copyright": "Welkom bij Martenastate — Koarnjum, Friesland",
+  },
+
+  en: {
+    // Nav
+    "nav.home": "Home",
+    "nav.verblijf": "Your Stay",
+    "nav.omgeving": "The Area",
+    "nav.kaart": "Map",
+
+    // Homepage hero
+    "home.eyebrow": "Welcome",
+    "home.title": "Welcome to Martenastate",
+    "home.title.italic": "Martenastate",
+    "home.subtitle": "A hidden gem in the green heart of Friesland. We hope you enjoy your stay at this historic estate in Koarnjum.",
+    "home.btn.verblijf": "About your stay",
+    "home.btn.omgeving": "What to do",
+
+    // Highlights
+    "highlights.since": "Since ~1400",
+    "highlights.since.label": "Historic estate",
+    "highlights.ha": "21,000 ha",
+    "highlights.ha.label": "Nature managed by It Fryske Gea",
+    "highlights.km": "5 min",
+    "highlights.km.label": "Cycling to Leeuwarden",
+    "highlights.season": "1 Apr – 1 Oct",
+    "highlights.season.label": "Camping season",
+
+    // Nav cards
+    "card.verblijf.title": "About your stay",
+    "card.verblijf.desc": "Everything about the campsite and B&B: rates, facilities and useful tips.",
+    "card.verblijf.link": "View details",
+    "card.omgeving.title": "The area",
+    "card.omgeving.desc": "Walking routes, cycling routes, restaurants and sights.",
+    "card.omgeving.link": "Explore the area",
+    "card.kaart.title": "Interactive map",
+    "card.kaart.desc": "View all tips, routes and addresses on the map.",
+    "card.kaart.link": "Open map",
+
+    // Quote
+    "quote.text": "Every season there is so much to see and experience at Martenastate",
+    "quote.cite": "Martenastate, Koarnjum",
+
+    // Verblijf page
+    "verblijf.title": "About your stay",
+    "verblijf.subtitle": "Whether you're camping or enjoying the B&B — we hope you feel completely at home.",
+    "tab.camping": "Nature Campsite",
+    "tab.bb": "B&B Stinzenflora",
+    "tab.tunman": "Túnmanswente",
+
+    // Camping
+    "camping.title": "Nature Campsite",
+    "camping.desc": "Peaceful camping behind a row of ancient beech trees, surrounded by stinzenflora. No unnecessary luxury, just nature and tranquility.",
+    "camping.season.label": "Season",
+    "camping.season.value": "1 April – 1 October",
+    "camping.card.label": "Camping card",
+    "camping.card.value": "Nature Campsite Card required (Stichting De Groene Koepel)",
+    "camping.card.price": "Available on site: €15.95",
+    "camping.contact.label": "Manager",
+    "camping.contact.value": "Robin Alkema — +31 6 83 60 65 21 (emergencies)",
+    "camping.noise.label": "Please note",
+    "camping.noise.value": "Occasional aircraft noise from the nearby military airbase",
+    "camping.prices": "Rates per night",
+    "price.adult": "Adult",
+    "price.child.5": "Child (5–12 years)",
+    "price.child.0": "Child (0–4 years)",
+    "price.pitch": "Pitch (tent/caravan/camper)",
+    "price.trekker": "Hiker's tent",
+    "price.electric": "Electricity (per day)",
+
+    // B&B
+    "bb.title": "B&B Stinzenflora",
+    "bb.desc": "Two charming rooms on the historic Martenastate estate. A place where you naturally unwind, with the park just steps away.",
+    "bb.rooms": "The rooms",
+    "bb.room1.title": "Room Stinzenflora",
+    "bb.room1.desc": "Stylishly furnished, up to 2 guests, private bathroom and outdoor seating area.",
+    "bb.room2.title": "Room Martenastate",
+    "bb.room2.desc": "Stylishly furnished, up to 2 guests, private bathroom and outdoor seating area.",
+    "bb.features": "Facilities",
+    "bb.feature.wifi": "WiFi",
+    "bb.feature.bathroom": "Private bathroom with toilet",
+    "bb.feature.kitchen": "Small kitchenette (coffee & tea)",
+    "bb.feature.outside": "Outdoor seating with park views",
+    "bb.feature.parking": "Free parking",
+    "bb.checkin.label": "Check-in",
+    "bb.checkin.value": "From 15:00 (earlier by arrangement)",
+    "bb.checkout.label": "Check-out",
+    "bb.checkout.value": "Before 11:00 (later by arrangement)",
+    "bb.address.label": "Address",
+    "bb.address.value": "Martenawei 2, 9056 PE Koarnjum",
+    "bb.phone.label": "Phone",
+    "bb.phone.value": "+31 85 080 5048",
+    "bb.book": "Check availability",
+
+    // Túnmanswente
+    "tunman.title": "Túnmanswente",
+    "tunman.desc": "The former gardener's cottage of Martenastate is now a charming tea garden, wedding venue and meeting space — and the starting point of the Jabikspaad.",
+    "tunman.hours": "Opening hours (27 Mar – 25 Oct)",
+    "tunman.fri": "Friday",
+    "tunman.fri.hours": "13:00 – 17:00",
+    "tunman.sat": "Saturday",
+    "tunman.sat.hours": "11:00 – 17:00",
+    "tunman.sun": "Sunday",
+    "tunman.sun.hours": "11:00 – 17:00",
+    "tunman.address": "Martenawei 2, 9056 PE Koarnjum",
+    "tunman.knooppunt": "Cycling node 10",
+    "tunman.jabikspaad": "Official Jabikspaad stamp point",
+    "tunman.trouw": "Official wedding venue, municipality of Leeuwarden",
+
+    // Omgeving page
+    "omgeving.title": "The area",
+    "omgeving.subtitle": "Koarnjum is a short cycle from Leeuwarden and set in a beautiful Frisian landscape. Here are our favourite tips.",
+    "tab.wandelen": "Walking",
+    "tab.fietsen": "Cycling",
+    "tab.eten": "Food & drink",
+    "tab.bezienswaardigheden": "Sights",
+
+    // Wandelen
+    "wandelen.park.title": "Walk in the park",
+    "wandelen.park.desc": "The Martenastate landscape park is freely accessible from sunrise to sunset. Enjoy the stinzenflora, ancient trees and historic paths.",
+    "wandelen.park.chip1": "Freely accessible",
+    "wandelen.park.chip2": "Stinzenflora",
+    "wandelen.park.chip3": "National monument",
+    "wandelen.jabikspaad.title": "Jabikspaad",
+    "wandelen.jabikspaad.desc": "The pilgrimage route from Friesland to Santiago de Compostella passes Martenastate. Túnmanswente is an official stamp point.",
+    "wandelen.jabikspaad.chip1": "Pilgrimage route",
+    "wandelen.jabikspaad.chip2": "Stamp at Túnmanswente",
+    "wandelen.elfstedenpad.title": "Elfstedenpad",
+    "wandelen.elfstedenpad.desc": "The 300 km walking trail through all 11 Frisian cities passes nearby. Stage Oenkerk – Leeuwarden (15 km) starts close by.",
+    "wandelen.elfstedenpad.chip1": "300 km total",
+    "wandelen.elfstedenpad.chip2": "Marked yellow-red",
+    "wandelen.itfryskegea.title": "It Fryske Gea excursions",
+    "wandelen.itfryskegea.desc": "Guided nature and photography excursions in and around Martenastate. Book via the It Fryske Gea activity programme.",
+    "wandelen.itfryskegea.chip1": "Guided excursions",
+    "wandelen.itfryskegea.chip2": "Via itfryskegea.nl",
+
+    // Fietsen
+    "fietsen.knooppunt.title": "Cycling node network",
+    "fietsen.knooppunt.desc": "Martenastate is accessible via cycling node 10. Plan your own route using the numbered nodes through the Frisian landscape.",
+    "fietsen.knooppunt.chip1": "Node 10 at Túnmanswente",
+    "fietsen.knooppunt.chip2": "Plan your own route",
+    "fietsen.elfsteden.title": "Eleven Cities Cycling Route",
+    "fietsen.elfsteden.desc": "The 258 km route through all 11 Frisian cities starts in Leeuwarden — just 5 km away. Perfect for multi-day cyclists.",
+    "fietsen.elfsteden.chip1": "258 km",
+    "fietsen.elfsteden.chip2": "Start in Leeuwarden",
+    "fietsen.lf.title": "LF Weekend Tour Frisian Coast",
+    "fietsen.lf.desc": "A 145 km LF route along the Frisian coast and the former Middelzee landscape. Starts in Leeuwarden.",
+    "fietsen.lf.chip1": "145 km",
+    "fietsen.lf.chip2": "Coast & Middelzee",
+    "fietsen.water.title": "Water Experience Route Fryslân",
+    "fietsen.water.desc": "A 177 km route along the water highlights of Friesland — lakes, canals and locks. Starting point Leeuwarden.",
+    "fietsen.water.chip1": "177 km",
+    "fietsen.water.chip2": "Start Leeuwarden",
+
+    // Eten
+    "eten.tunman.title": "Túnmanswente",
+    "eten.tunman.desc": "Right on the estate. Coffee, tea and lunch in a historic setting. Summer tea garden with views over the park.",
+    "eten.tunman.chip1": "On the estate",
+    "eten.tunman.chip2": "Fri 13-17h, Sat/Sun 11-17h",
+    "eten.leeuwarden.title": "Leeuwarden (5 km)",
+    "eten.leeuwarden.desc": "Just 5 minutes by bike, the historic city centre of Leeuwarden offers a wide range of restaurants, cafés and markets.",
+    "eten.leeuwarden.chip1": "5 km by bike",
+    "eten.leeuwarden.chip2": "Wide variety",
+
+    // Bezienswaardigheden
+    "bezienswaardigheid.leeuwarden.title": "Leeuwarden",
+    "bezienswaardigheid.leeuwarden.desc": "Capital of Friesland with the Fries Museum, the Oldehove tower, the Mata Hari exhibition and a vibrant city centre.",
+    "bezienswaardigheid.leeuwarden.chip1": "5 km",
+    "bezienswaardigheid.leeuwarden.chip2": "Historic city centre",
+    "bezienswaardigheid.stinzen.title": "Stinzenflora in the region",
+    "bezienswaardigheid.stinzen.desc": "Martenastate is recognised as one of the best stinzenflora locations in the Netherlands. Also visit Park Jongemastate, Wikelerbosk and Rysterbosk.",
+    "bezienswaardigheid.stinzen.chip1": "National top location",
+    "bezienswaardigheid.stinzen.chip2": "Spring (Feb–April)",
+    "bezienswaardigheid.dokkum.title": "Dokkum",
+    "bezienswaardigheid.dokkum.desc": "The only fully moated town in the Netherlands, 30 km away. Picturesque historic centre with ramparts.",
+    "bezienswaardigheid.dokkum.chip1": "30 km",
+    "bezienswaardigheid.dokkum.chip2": "Fortified town",
+    "bezienswaardigheid.waddenzee.title": "UNESCO Wadden Sea",
+    "bezienswaardigheid.waddenzee.desc": "The UNESCO World Heritage Wadden Sea is approximately 30 km away. Unique tidal landscape with mudflat walking, birds and seals.",
+    "bezienswaardigheid.waddenzee.chip1": "~30 km",
+    "bezienswaardigheid.waddenzee.chip2": "UNESCO World Heritage",
+
+    // Kaart
+    "kaart.title": "Map",
+    "kaart.subtitle": "All highlights, routes and addresses on one map.",
+    "kaart.legend.martenastate": "Martenastate",
+    "kaart.legend.wandelen": "Walking",
+    "kaart.legend.fietsen": "Cycling",
+    "kaart.legend.eten": "Food & drink",
+    "kaart.legend.bezienswaardigheid": "Sights",
+
+    // Footer
+    "footer.tagline": "A historic estate in the heart of Friesland.",
+    "footer.nav": "Navigation",
+    "footer.contact": "Contact",
+    "footer.address": "Martenawei 2, 9056 PE Koarnjum",
+    "footer.camping.address": "Camping: De Wier 7A, 9056 PM Koarnjum",
+    "footer.phone": "+31 6 83 60 65 21",
+    "footer.copyright": "Welcome to Martenastate — Koarnjum, Friesland",
+  }
+};
+
+</script>
+  <script>
+// Language state
+let currentLang = localStorage.getItem('lang') || 'nl';
+
+function t(key) {
+  return (translations[currentLang] && translations[currentLang][key]) || key;
+}
+
+function applyTranslations() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    el.textContent = t(key);
+  });
+  document.querySelectorAll('[data-i18n-href]').forEach(el => {
+    el.href = t(el.getAttribute('data-i18n-href'));
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    el.placeholder = t(el.getAttribute('data-i18n-placeholder'));
+  });
+  document.documentElement.lang = currentLang;
+  document.querySelectorAll('.lang-toggle button').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === currentLang);
+  });
+}
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  applyTranslations();
+}
+
+// Mobile nav toggle
+function initNav() {
+  const toggle = document.querySelector('.menu-toggle');
+  const links = document.querySelector('.nav-links');
+  if (!toggle || !links) return;
+
+  toggle.addEventListener('click', () => {
+    links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', links.classList.contains('open'));
+  });
+
+  // Close on link click
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => links.classList.remove('open'));
+  });
+
+  // Close on outside click
+  document.addEventListener('click', e => {
+    if (!toggle.contains(e.target) && !links.contains(e.target)) {
+      links.classList.remove('open');
+    }
+  });
+
+  // Highlight active nav link
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  links.querySelectorAll('a').forEach(a => {
+    const href = a.getAttribute('href');
+    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+      a.classList.add('active');
+    }
+  });
+}
+
+// Tab switching
+function initTabs() {
+  document.querySelectorAll('.tabs').forEach(tabGroup => {
+    const buttons = tabGroup.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.tab-panel');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-tab');
+
+        buttons.forEach(b => b.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+
+        btn.classList.add('active');
+        const panel = document.getElementById(target);
+        if (panel) panel.classList.add('active');
+      });
+    });
+  });
+}
+
+// Fade-in on scroll
+function initScrollAnimations() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+}
+
+// Navbar scroll shadow
+function initNavbarScroll() {
+  const navbar = document.querySelector('.navbar');
+  if (!navbar) return;
+  window.addEventListener('scroll', () => {
+    navbar.style.boxShadow = window.scrollY > 20
+      ? '0 4px 24px rgba(58,42,64,0.10)'
+      : 'none';
+  }, { passive: true });
+}
+
+// Map initialisation (only on kaart.html)
+function initMap() {
+  const mapEl = document.getElementById('map');
+  if (!mapEl || typeof L === 'undefined') return;
+
+  const map = L.map('map', {
+    center: [53.2010, 5.7760],
+    zoom: 13,
+    zoomControl: true,
+  });
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+    maxZoom: 19,
+  }).addTo(map);
+
+  function makeIcon(color, emoji) {
+    return L.divIcon({
+      html: `<div style="background:${color};width:36px;height:36px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:3px solid white;box-shadow:0 3px 10px rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:center;"><span style="transform:rotate(45deg);font-size:15px;line-height:1;">${emoji}</span></div>`,
+      className: '',
+      iconSize: [36, 36],
+      iconAnchor: [18, 36],
+      popupAnchor: [0, -40],
+    });
+  }
+
+  const icons = {
+    martenastate: makeIcon('#7b5d8c', '🏰'),
+    wandelen:     makeIcon('#8ba888', '🚶'),
+    fietsen:      makeIcon('#5a7055', '🚴'),
+    eten:         makeIcon('#e6c569', '☕'),
+    bezienswaardigheid: makeIcon('#a890b8', '⭐'),
+  };
+
+  const poi = [
+    { lat: 53.2010, lng: 5.7760, type: 'martenastate', nl: 'Martenastate', en: 'Martenastate', desc_nl: 'Historisch landgoed — vrij toegankelijk van zonsopgang tot zonsondergang.', desc_en: 'Historic estate — freely accessible from sunrise to sunset.' },
+    { lat: 53.2002, lng: 5.7748, type: 'martenastate', nl: 'Túnmanswente', en: 'Túnmanswente', desc_nl: 'Theeschenkerij & B&B. Knooppunt 10. Open vr 13-17u, za/zo 11-17u.', desc_en: 'Tea garden & B&B. Node 10. Open Fri 13-17h, Sat/Sun 11-17h.' },
+    { lat: 53.2001, lng: 5.7755, type: 'eten', nl: 'Túnmanswente (koffie & lunch)', en: 'Túnmanswente (coffee & lunch)', desc_nl: 'Koffie, thee en lunch in een historische setting.', desc_en: 'Coffee, tea and lunch in a historic setting.' },
+    { lat: 53.2012, lng: 5.7762, type: 'wandelen', nl: 'Start wandeling park', en: 'Park walk start', desc_nl: 'Toegang tot de wandelpaden van Martenastate.', desc_en: 'Access to the walking paths of Martenastate.' },
+    { lat: 53.2010, lng: 5.7755, type: 'fietsen', nl: 'Fietsknooppunt 10', en: 'Cycling node 10', desc_nl: 'Startpunt voor het fietsknooppuntennetwerk.', desc_en: 'Starting point for the cycling node network.' },
+    { lat: 53.2009, lng: 5.7750, type: 'wandelen', nl: 'Jabikspaad stempelpunt', en: 'Jabikspaad stamp point', desc_nl: 'Pelgrimsroute naar Santiago de Compostella — stempel bij Túnmanswente.', desc_en: 'Pilgrimage route to Santiago de Compostella — stamp at Túnmanswente.' },
+    { lat: 53.2015, lng: 5.7914, type: 'bezienswaardigheid', nl: 'Leeuwarden centrum', en: 'Leeuwarden city centre', desc_nl: 'Hoofdstad van Friesland. Fries Museum, Oldehove, Mata Hari.', desc_en: 'Capital of Friesland. Fries Museum, Oldehove, Mata Hari.' },
+  ];
+
+  poi.forEach(p => {
+    const lang = currentLang;
+    const name = lang === 'en' ? p.en : p.nl;
+    const desc = lang === 'en' ? p.desc_en : p.desc_nl;
+    const catLabel = t(`kaart.legend.${p.type}`);
+
+    L.marker([p.lat, p.lng], { icon: icons[p.type] })
+      .addTo(map)
+      .bindPopup(`<span class="popup-category">${catLabel}</span><h4>${name}</h4><p style="margin:0;font-size:.85rem;color:#5a4d5f;">${desc}</p>`);
+  });
+}
+
+// Init everything
+document.addEventListener('DOMContentLoaded', () => {
+  applyTranslations();
+  initNav();
+  initTabs();
+  initScrollAnimations();
+  initNavbarScroll();
+  initMap();
+
+  // Language buttons
+  document.querySelectorAll('.lang-toggle button').forEach(btn => {
+    btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang')));
+  });
+});
+
+</script>
+</body>
+</html>
