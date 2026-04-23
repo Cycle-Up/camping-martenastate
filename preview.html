@@ -4,7 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welkom bij Martenastate</title>
-  <meta name="description" content="Jouw gids voor een heerlijk verblijf op Martenastate, Koarnjum.">
+  <meta name="description" content="Jouw gids voor een heerlijk verblijf op Martenastate, Koarnjum — historisch landgoed in Friesland.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Welkom bij Martenastate">
+  <meta property="og:description" content="Jouw gids voor een heerlijk verblijf op dit historische landgoed in Koarnjum, Friesland.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="nl_NL">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -828,6 +837,314 @@ section {
   margin-bottom: 4px;
 }
 
+/* ==========================================================================
+   Extended styles — Season, Tips, Practical, Back-to-top, Print
+   ========================================================================== */
+
+/* ===== Seasonal Calendar ===== */
+.season-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.season-card {
+  background: var(--color-soft-white);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  border: 1px solid rgba(201,184,212,0.2);
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition-smooth);
+}
+
+.season-card:hover { transform: translateY(-4px); }
+
+.season-card .season-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.season-card h4 {
+  color: var(--color-crocus);
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.season-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.season-card ul li {
+  font-size: 0.9rem;
+  color: var(--color-text-soft);
+  padding: 0.25rem 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.season-card ul li::before {
+  content: '·';
+  color: var(--color-crocus);
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.current-season {
+  border: 2px solid var(--color-crocus);
+  background: linear-gradient(135deg, var(--color-lavender-soft), var(--color-soft-white));
+}
+
+.current-badge {
+  display: inline-block;
+  background: var(--color-crocus);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 0.5rem;
+}
+
+/* ===== Tips Section ===== */
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-md);
+}
+
+.tip-card {
+  background: var(--color-soft-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md) var(--space-lg);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(201,184,212,0.15);
+  display: flex;
+  gap: var(--space-sm);
+  align-items: flex-start;
+  transition: all var(--transition-smooth);
+}
+
+.tip-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.tip-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 0.1rem;
+}
+
+.tip-card h4 {
+  margin-bottom: 0.25rem;
+  font-size: 1.1rem;
+  color: var(--color-aubergine);
+}
+
+.tip-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text-soft);
+}
+
+.tip-card .tip-meta {
+  font-size: 0.8rem;
+  color: var(--color-crocus);
+  font-weight: 600;
+  margin-top: 0.35rem;
+}
+
+/* ===== Arrival / Practical info ===== */
+.steps-list {
+  list-style: none;
+  padding: 0;
+  counter-reset: steps;
+}
+
+.steps-list li {
+  counter-increment: steps;
+  display: flex;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-stone);
+  align-items: flex-start;
+}
+
+.steps-list li:last-child { border-bottom: none; }
+
+.steps-list li::before {
+  content: counter(steps);
+  background: var(--color-crocus);
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.steps-list li .step-content h4 {
+  margin-bottom: 0.2rem;
+  font-size: 1rem;
+}
+
+.steps-list li .step-content p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text-soft);
+}
+
+/* ===== Back to top ===== */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  background: var(--color-crocus);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: var(--shadow-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: all var(--transition-smooth);
+  z-index: 50;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: var(--color-aubergine);
+  transform: translateY(-2px);
+}
+
+.back-to-top svg { width: 20px; height: 20px; }
+
+/* ===== Flower divider ===== */
+.flower-divider {
+  text-align: center;
+  margin: var(--space-xl) 0;
+  color: var(--color-crocus);
+  opacity: 0.4;
+  font-size: 1.4rem;
+  letter-spacing: 0.8rem;
+  user-select: none;
+}
+
+/* ===== Stats row ===== */
+.stats-row {
+  display: flex;
+  gap: var(--space-lg);
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: var(--space-lg) 0;
+}
+
+.stat-item {
+  text-align: center;
+  min-width: 120px;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  color: var(--color-crocus);
+  line-height: 1;
+  font-weight: 400;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
+}
+
+/* ===== Botanical SVG frame ===== */
+.botanical-frame {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--color-lavender-soft) 0%, var(--color-cream) 60%, var(--color-aconite-soft) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 260px;
+}
+
+.botanical-frame .frame-label {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(58,42,64,0.6);
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+}
+
+/* ===== Section with background ===== */
+.section-tinted {
+  background: linear-gradient(180deg, var(--color-lavender-soft) 0%, var(--color-warm-white) 100%);
+}
+
+.section-sage {
+  background: linear-gradient(180deg, rgba(184,204,181,0.3) 0%, var(--color-warm-white) 100%);
+}
+
+/* ===== Print styles ===== */
+@media print {
+  .navbar, .back-to-top, .scroll-indicator,
+  .hero-buttons, .btn, .lang-toggle, .menu-toggle,
+  .floral-decoration { display: none !important; }
+
+  body { font-size: 12pt; color: black; background: white; }
+  .hero { min-height: auto; padding: 1rem 0 2rem; background: none; }
+  .hero h1 { font-size: 28pt; }
+  .feature-image, .botanical-frame { display: none; }
+  .two-col, .card-grid, .feature-row { display: block; }
+  .nav-card, .info-section { box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+  section { padding: 1.5rem 0; }
+  .footer { background: none; color: black; }
+  .footer h4, .footer a { color: black; }
+  a::after { content: ' (' attr(href) ')'; font-size: 0.8em; color: #666; }
+  a[href^="tel"]::after, a[href^="#"]::after { content: ''; }
+  .tab-panel { display: block !important; margin-bottom: 1.5rem; }
+  .tab-panel::before {
+    content: attr(id);
+    display: block;
+    font-weight: bold;
+    text-transform: capitalize;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.25rem;
+  }
+  .tabs { display: none; }
+}
+
 </style>
 </head>
 <body>
@@ -1042,6 +1359,140 @@ section {
     </div>
   </section>
 
+  <!-- Seizoenskalender -->
+  <section class="section-tinted">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-eyebrow">Het jaar rond</span>
+        <h2>Wat te zien per seizoen</h2>
+        <p>Martenastate is in elk seizoen de moeite waard — van de eerste sneeuwklokjes in februari tot de gouden herfstbladeren in oktober.</p>
+      </div>
+
+      <div class="season-grid">
+        <div class="season-card fade-in">
+          <span class="season-icon">❄️</span>
+          <h4>Winter & vroeg voorjaar</h4>
+          <p style="font-size:.85rem;color:var(--color-text-muted);margin-bottom:.5rem;">Februari – maart</p>
+          <ul>
+            <li>Eerste sneeuwklokjes en winterakoniet</li>
+            <li>Krokussen in paars, wit en geel</li>
+            <li>Stille wandelingen door het park</li>
+            <li>Vogels zoeken voedsel — ideaal voor vogelaars</li>
+          </ul>
+        </div>
+
+        <div class="season-card current-season fade-in">
+          <span class="current-badge">Nu</span>
+          <span class="season-icon">🌸</span>
+          <h4>Voorjaar</h4>
+          <p style="font-size:.85rem;color:var(--color-text-muted);margin-bottom:.5rem;">April – mei</p>
+          <ul>
+            <li>Hoogtepunt stinzenflora — wilde hyacint en narcissen</li>
+            <li>Geleide excursies via It Fryske Gea</li>
+            <li>Fotografie-excursies door het park</li>
+            <li>Camping open vanaf 1 april</li>
+            <li>Túnmanswente open vanaf 27 maart</li>
+          </ul>
+        </div>
+
+        <div class="season-card fade-in">
+          <span class="season-icon">☀️</span>
+          <h4>Zomer</h4>
+          <p style="font-size:.85rem;color:var(--color-text-muted);margin-bottom:.5rem;">Juni – augustus</p>
+          <ul>
+            <li>Volle theetuin bij Túnmanswente</li>
+            <li>Fietsen door het Friese landschap</li>
+            <li>Lange avonden op het kampeerterrein</li>
+            <li>Zwemmen in Friese meren</li>
+            <li>Evenementen in Leeuwarden (5 km)</li>
+          </ul>
+        </div>
+
+        <div class="season-card fade-in">
+          <span class="season-icon">🍂</span>
+          <h4>Herfst</h4>
+          <p style="font-size:.85rem;color:var(--color-text-muted);margin-bottom:.5rem;">September – oktober</p>
+          <ul>
+            <li>Spectaculaire herfstbladeren in het park</li>
+            <li>Paddestoelen langs de wandelpaden</li>
+            <li>Trekvogels boven het Friese land</li>
+            <li>Camping sluit 1 oktober</li>
+            <li>Open Monumentendag (september)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="flower-divider" aria-hidden="true">✿ ✾ ✿</div>
+
+  <!-- Onze tips -->
+  <section>
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-eyebrow">Persoonlijke aanbevelingen</span>
+        <h2>Onze favoriete tips</h2>
+        <p>Wat wij zelf het liefst doen en zien in de omgeving — voor een verblijf dat je niet vergeet.</p>
+      </div>
+
+      <div class="tips-grid">
+        <div class="tip-card fade-in">
+          <span class="tip-icon">🌅</span>
+          <div>
+            <h4>Vroeg opstaan loont</h4>
+            <p>Loop bij zonsopgang door het park. De ochtenddauw op de stinzenflora, het vogelgezang en de mist boven het gras zijn onbeschrijflijk mooi.</p>
+            <p class="tip-meta">Gratis · In het park · Hele seizoen</p>
+          </div>
+        </div>
+
+        <div class="tip-card fade-in">
+          <span class="tip-icon">🚴</span>
+          <div>
+            <h4>Fietsen naar Leeuwarden</h4>
+            <p>Pak de fiets en rijd in 20 minuten naar het centrum van Leeuwarden. Langs de Middelzee, door de polder — een van de mooiste routes die er zijn.</p>
+            <p class="tip-meta">5 km · Fietsknooppunt 10 · Geen druk verkeer</p>
+          </div>
+        </div>
+
+        <div class="tip-card fade-in">
+          <span class="tip-icon">☕</span>
+          <div>
+            <h4>Koffie bij Túnmanswente</h4>
+            <p>Begin je ochtend met koffie in de theetuin van Túnmanswente. Buiten zitten, uitzicht op het park, historische sfeer. Een van de mooiste plekjes van Friesland.</p>
+            <p class="tip-meta">Vr 13-17u · Za/zo 11-17u · Op het landgoed</p>
+          </div>
+        </div>
+
+        <div class="tip-card fade-in">
+          <span class="tip-icon">🏛️</span>
+          <div>
+            <h4>Fries Museum in Leeuwarden</h4>
+            <p>Absoluut een bezoek waard. Het museum vertelt het verhaal van Friesland op een moderne, indrukwekkende manier. De Mata Hari-tentoonstelling is bijzonder.</p>
+            <p class="tip-meta">5 km fietsen · Betaald · Hele jaar open</p>
+          </div>
+        </div>
+
+        <div class="tip-card fade-in">
+          <span class="tip-icon">🌿</span>
+          <div>
+            <h4>Geleide excursie boeken</h4>
+            <p>De geleide wandelingen van It Fryske Gea geven je een heel ander perspectief op het landgoed. De gids weet alles over de planten, de geschiedenis en de dieren.</p>
+            <p class="tip-meta">Via itfryskegea.nl · Voorjaar en zomer</p>
+          </div>
+        </div>
+
+        <div class="tip-card fade-in">
+          <span class="tip-icon">🌊</span>
+          <div>
+            <h4>Dagje Waddenzee</h4>
+            <p>Op 30 minuten rijden ligt de UNESCO Waddenzee. Wadlopen bij laagwater, zeehonden spotten bij Harlingen of gewoon genieten van het immense uitzicht.</p>
+            <p class="tip-meta">~30 km · Harlingen of Pieterburen</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
@@ -1077,6 +1528,11 @@ section {
       </div>
     </div>
   </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" aria-label="Terug naar boven" id="backToTop">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
 
   <script>
 const translations = {
@@ -1698,6 +2154,20 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.lang-toggle button').forEach(btn => {
     btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang')));
   });
+});
+
+// Back to top button
+function initBackToTop() {
+  const btn = document.getElementById('backToTop');
+  if (!btn) return;
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initBackToTop();
 });
 
 </script>

@@ -813,3 +813,311 @@ section {
   letter-spacing: 0.05em;
   margin-bottom: 4px;
 }
+
+/* ==========================================================================
+   Extended styles — Season, Tips, Practical, Back-to-top, Print
+   ========================================================================== */
+
+/* ===== Seasonal Calendar ===== */
+.season-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.season-card {
+  background: var(--color-soft-white);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  border: 1px solid rgba(201,184,212,0.2);
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition-smooth);
+}
+
+.season-card:hover { transform: translateY(-4px); }
+
+.season-card .season-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.season-card h4 {
+  color: var(--color-crocus);
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.season-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.season-card ul li {
+  font-size: 0.9rem;
+  color: var(--color-text-soft);
+  padding: 0.25rem 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.season-card ul li::before {
+  content: '·';
+  color: var(--color-crocus);
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.current-season {
+  border: 2px solid var(--color-crocus);
+  background: linear-gradient(135deg, var(--color-lavender-soft), var(--color-soft-white));
+}
+
+.current-badge {
+  display: inline-block;
+  background: var(--color-crocus);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 0.5rem;
+}
+
+/* ===== Tips Section ===== */
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-md);
+}
+
+.tip-card {
+  background: var(--color-soft-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md) var(--space-lg);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(201,184,212,0.15);
+  display: flex;
+  gap: var(--space-sm);
+  align-items: flex-start;
+  transition: all var(--transition-smooth);
+}
+
+.tip-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.tip-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 0.1rem;
+}
+
+.tip-card h4 {
+  margin-bottom: 0.25rem;
+  font-size: 1.1rem;
+  color: var(--color-aubergine);
+}
+
+.tip-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text-soft);
+}
+
+.tip-card .tip-meta {
+  font-size: 0.8rem;
+  color: var(--color-crocus);
+  font-weight: 600;
+  margin-top: 0.35rem;
+}
+
+/* ===== Arrival / Practical info ===== */
+.steps-list {
+  list-style: none;
+  padding: 0;
+  counter-reset: steps;
+}
+
+.steps-list li {
+  counter-increment: steps;
+  display: flex;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-stone);
+  align-items: flex-start;
+}
+
+.steps-list li:last-child { border-bottom: none; }
+
+.steps-list li::before {
+  content: counter(steps);
+  background: var(--color-crocus);
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.steps-list li .step-content h4 {
+  margin-bottom: 0.2rem;
+  font-size: 1rem;
+}
+
+.steps-list li .step-content p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text-soft);
+}
+
+/* ===== Back to top ===== */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  background: var(--color-crocus);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: var(--shadow-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: all var(--transition-smooth);
+  z-index: 50;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: var(--color-aubergine);
+  transform: translateY(-2px);
+}
+
+.back-to-top svg { width: 20px; height: 20px; }
+
+/* ===== Flower divider ===== */
+.flower-divider {
+  text-align: center;
+  margin: var(--space-xl) 0;
+  color: var(--color-crocus);
+  opacity: 0.4;
+  font-size: 1.4rem;
+  letter-spacing: 0.8rem;
+  user-select: none;
+}
+
+/* ===== Stats row ===== */
+.stats-row {
+  display: flex;
+  gap: var(--space-lg);
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: var(--space-lg) 0;
+}
+
+.stat-item {
+  text-align: center;
+  min-width: 120px;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  color: var(--color-crocus);
+  line-height: 1;
+  font-weight: 400;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
+}
+
+/* ===== Botanical SVG frame ===== */
+.botanical-frame {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--color-lavender-soft) 0%, var(--color-cream) 60%, var(--color-aconite-soft) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 260px;
+}
+
+.botanical-frame .frame-label {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(58,42,64,0.6);
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+}
+
+/* ===== Section with background ===== */
+.section-tinted {
+  background: linear-gradient(180deg, var(--color-lavender-soft) 0%, var(--color-warm-white) 100%);
+}
+
+.section-sage {
+  background: linear-gradient(180deg, rgba(184,204,181,0.3) 0%, var(--color-warm-white) 100%);
+}
+
+/* ===== Print styles ===== */
+@media print {
+  .navbar, .back-to-top, .scroll-indicator,
+  .hero-buttons, .btn, .lang-toggle, .menu-toggle,
+  .floral-decoration { display: none !important; }
+
+  body { font-size: 12pt; color: black; background: white; }
+  .hero { min-height: auto; padding: 1rem 0 2rem; background: none; }
+  .hero h1 { font-size: 28pt; }
+  .feature-image, .botanical-frame { display: none; }
+  .two-col, .card-grid, .feature-row { display: block; }
+  .nav-card, .info-section { box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+  section { padding: 1.5rem 0; }
+  .footer { background: none; color: black; }
+  .footer h4, .footer a { color: black; }
+  a::after { content: ' (' attr(href) ')'; font-size: 0.8em; color: #666; }
+  a[href^="tel"]::after, a[href^="#"]::after { content: ''; }
+  .tab-panel { display: block !important; margin-bottom: 1.5rem; }
+  .tab-panel::before {
+    content: attr(id);
+    display: block;
+    font-weight: bold;
+    text-transform: capitalize;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.25rem;
+  }
+  .tabs { display: none; }
+}
