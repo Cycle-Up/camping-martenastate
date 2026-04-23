@@ -176,31 +176,99 @@ function initMap() {
       nl: 'Oldehove toren', en: 'Oldehove tower',
       desc_nl: 'Scheefste toren van Nederland — schever dan de toren van Pisa.', desc_en: 'The most leaning tower in the Netherlands — more tilted than the Leaning Tower of Pisa.' },
 
-    // Eten & drinken Leeuwarden
+    // Eten & drinken
     { lat: 53.2012, lng: 5.7988, type: 'eten',
-      nl: 'Restaurants Leeuwarden', en: 'Restaurants Leeuwarden',
+      nl: 'Restaurants Leeuwarden centrum', en: 'Restaurants Leeuwarden centre',
       desc_nl: 'Ruim aanbod van restaurants, cafés en eetcafés in de historische binnenstad.', desc_en: 'Wide range of restaurants, cafés and eateries in the historic city centre.' },
+    { lat: 53.2013, lng: 5.7745, type: 'eten',
+      nl: 'Túnmanswente theeschenkerij', en: 'Túnmanswente tea garden',
+      desc_nl: 'Koffie, thee en lunch in historische setting. Open vr 13-17u, za/zo 11-17u.', desc_en: 'Coffee, tea and lunch in historic setting. Open Fri 13-17h, Sat/Sun 11-17h.' },
 
     // Dokkum
     { lat: 53.3248, lng: 6.0015, type: 'bezienswaardigheid',
       nl: 'Dokkum', en: 'Dokkum',
       desc_nl: 'Het enige volledig omwalde stadje van Nederland. Pittoresk centrum op ~30 km.', desc_en: 'The only fully moated town in the Netherlands. Picturesque centre ~30 km away.' },
 
+    // Franeker Planetarium
+    { lat: 53.1867, lng: 5.5436, type: 'bezienswaardigheid',
+      nl: 'Planetarium Franeker', en: 'Planetarium Franeker',
+      desc_nl: 'Het oudste nog werkende planetarium ter wereld (1781). UNESCO Werelderfgoed.', desc_en: 'The world\'s oldest still-operating planetarium (1781). UNESCO World Heritage.' },
+
+    // Harlingen / Waddenzee
+    { lat: 53.1743, lng: 5.4214, type: 'bezienswaardigheid',
+      nl: 'Harlingen & Waddenzee', en: 'Harlingen & Wadden Sea',
+      desc_nl: 'Historische havenstad aan de UNESCO Waddenzee. Vertrek voor wadlopen of boot naar eilanden.', desc_en: 'Historic harbour city on UNESCO Wadden Sea. Start for mudflat walking or ferry to islands.' },
+
+    // Sneek
+    { lat: 53.0325, lng: 5.6583, type: 'bezienswaardigheid',
+      nl: 'Sneek & Friese Meren', en: 'Sneek & Frisian Lakes',
+      desc_nl: 'Waterstad in hart van de Friese Merenstreek. Zeilen, varen en terrassen aan het water.', desc_en: 'Water city at heart of Frisian Lakes region. Sailing, boating and waterside terraces.' },
+
+    // Hindeloopen
+    { lat: 52.9408, lng: 5.4050, type: 'bezienswaardigheid',
+      nl: 'Hindeloopen', en: 'Hindeloopen',
+      desc_nl: 'Elfstedenstadje met houten huisjes, traditionele schilderkunst en klederdracht.', desc_en: 'Elfstedenstadje with wooden houses, traditional painting and traditional costume.' },
+
+    // Alde Feanen
+    { lat: 53.1030, lng: 5.9583, type: 'wandelen',
+      nl: 'Nationaal Park De Alde Feanen', en: 'National Park De Alde Feanen',
+      desc_nl: 'Moerassig natuurgebied vol waterlopen, rietvelden en vogels. Uniek laagveenlandschap.', desc_en: 'Marshy nature reserve with waterways, reed fields and birds. Unique peatland landscape.' },
+
     // Elfstedenpad etappe
     { lat: 53.2100, lng: 5.8050, type: 'wandelen',
       nl: 'Elfstedenpad (etappe Oenkerk–Leeuwarden)', en: 'Elfstedenpad (stage Oenkerk–Leeuwarden)',
       desc_nl: '15 km etappe van het 300 km lange Elfstedenpad langs alle Friese steden.', desc_en: '15 km stage of the 300 km Elfstedenpad through all Frisian cities.' },
+
+    // Elfsteden fietsroute start
+    { lat: 53.2000, lng: 5.7900, type: 'fietsen',
+      nl: 'Elfsteden Fietsroute (start)', en: 'Eleven Cities Cycling Route (start)',
+      desc_nl: '258 km langs alle 11 Friese steden. Start in Leeuwarden centrum.', desc_en: '258 km through all 11 Frisian cities. Starts in Leeuwarden centre.' },
+
+    // Ferry to Ameland
+    { lat: 53.3897, lng: 5.8836, type: 'bezienswaardigheid',
+      nl: 'Veerpont naar Ameland (Holwerd)', en: 'Ferry to Ameland (Holwerd)',
+      desc_nl: 'Veerpont vanuit Holwerd naar het waddeneiland Ameland. ~45 min vaartijd.', desc_en: 'Ferry from Holwerd to the Wadden Island Ameland. ~45 min sailing time.' },
   ];
 
+  // Create markers with tracking for filtering
+  const markers = [];
   poi.forEach(p => {
     const lang = currentLang;
     const name = lang === 'en' ? p.en : p.nl;
     const desc = lang === 'en' ? p.desc_en : p.desc_nl;
     const catLabel = t(`kaart.legend.${p.type}`);
 
-    L.marker([p.lat, p.lng], { icon: icons[p.type] })
+    const marker = L.marker([p.lat, p.lng], { icon: icons[p.type] })
       .addTo(map)
       .bindPopup(`<span class="popup-category">${catLabel}</span><h4>${name}</h4><p style="margin:0;font-size:.85rem;color:#5a4d5f;">${desc}</p>`);
+    markers.push({ marker, type: p.type });
+  });
+
+  // Category filter
+  const activeFilters = new Set(['martenastate', 'wandelen', 'fietsen', 'eten', 'bezienswaardigheid']);
+
+  function applyMapFilter() {
+    markers.forEach(({ marker, type }) => {
+      if (activeFilters.has(type)) {
+        marker.addTo(map);
+      } else {
+        map.removeLayer(marker);
+      }
+    });
+  }
+
+  document.querySelectorAll('.map-filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cat = btn.getAttribute('data-category');
+      if (activeFilters.has(cat)) {
+        activeFilters.delete(cat);
+        btn.classList.remove('active');
+      } else {
+        activeFilters.add(cat);
+        btn.classList.add('active');
+      }
+      applyMapFilter();
+    });
   });
 }
 

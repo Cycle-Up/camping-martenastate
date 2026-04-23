@@ -67,6 +67,30 @@
 
   <section>
     <div class="container">
+      <!-- Filter buttons -->
+      <div class="map-filter" role="group" aria-label="Filter categorieën">
+        <button class="map-filter-btn active" data-category="martenastate">
+          <span class="dot" style="background:#7b5d8c;"></span>
+          <span data-i18n="kaart.legend.martenastate">Martenastate</span>
+        </button>
+        <button class="map-filter-btn active" data-category="wandelen">
+          <span class="dot" style="background:#8ba888;"></span>
+          <span data-i18n="kaart.legend.wandelen">Wandelen</span>
+        </button>
+        <button class="map-filter-btn active" data-category="fietsen">
+          <span class="dot" style="background:#5a7055;"></span>
+          <span data-i18n="kaart.legend.fietsen">Fietsen</span>
+        </button>
+        <button class="map-filter-btn active" data-category="eten">
+          <span class="dot" style="background:#e6c569;"></span>
+          <span data-i18n="kaart.legend.eten">Eten &amp; drinken</span>
+        </button>
+        <button class="map-filter-btn active" data-category="bezienswaardigheid">
+          <span class="dot" style="background:#a890b8;"></span>
+          <span data-i18n="kaart.legend.bezienswaardigheid">Bezienswaardigheden</span>
+        </button>
+      </div>
+
       <!-- Map -->
       <div class="map-container" style="height:auto;">
         <div id="map"></div>
@@ -122,6 +146,28 @@
           <p>Robin Alkema (camping) <br><a href="tel:+31636606521">+31 6 83 60 65 21</a></p>
           <p style="margin:0;"><a href="https://martenastate.nl" target="_blank" rel="noopener">martenastate.nl</a></p>
         </div>
+      </div>
+
+      <!-- Afstandstabel -->
+      <div class="info-section fade-in" style="margin-top: var(--space-xl);">
+        <h3>
+          <div class="icon-small">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 12h18M12 3v18"/></svg>
+          </div>
+          <span>Afstanden vanaf Martenastate</span>
+        </h3>
+        <ul class="info-list">
+          <li><span class="label">Leeuwarden centrum</span><span class="value">5 km · 15 min fietsen · 10 min auto</span></li>
+          <li><span class="label">Fries Museum</span><span class="value">5 km · 15 min fietsen</span></li>
+          <li><span class="label">Oldehove toren</span><span class="value">5 km · 15 min fietsen</span></li>
+          <li><span class="label">Stiens (dorp & supermarkt)</span><span class="value">5 km · 10 min fietsen</span></li>
+          <li><span class="label">Nationaal Park De Alde Feanen</span><span class="value">20 km · 25 min auto</span></li>
+          <li><span class="label">Planetarium Franeker</span><span class="value">25 km · 30 min auto</span></li>
+          <li><span class="label">Dokkum (omwald stadje)</span><span class="value">30 km · 35 min auto</span></li>
+          <li><span class="label">Harlingen & Waddenzee</span><span class="value">35 km · 40 min auto</span></li>
+          <li><span class="label">Sneek & Friese Meren</span><span class="value">35 km · 40 min auto</span></li>
+          <li><span class="label">Veerpont Ameland (Holwerd)</span><span class="value">25 km + 45 min pont</span></li>
+        </ul>
       </div>
     </div>
   </section>

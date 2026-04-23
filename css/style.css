@@ -1121,3 +1121,50 @@ section {
   }
   .tabs { display: none; }
 }
+
+/* ===== Map filter buttons ===== */
+.map-filter {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: var(--space-md);
+}
+
+.map-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--color-soft-white);
+  border: 1.5px solid var(--color-stone);
+  border-radius: var(--radius-pill);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-soft);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.map-filter-btn:hover {
+  border-color: var(--color-crocus);
+  color: var(--color-crocus);
+}
+
+.map-filter-btn .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.map-filter-btn.active {
+  background: var(--color-aubergine);
+  border-color: var(--color-aubergine);
+  color: white;
+}
+
+.map-filter-btn:not(.active) {
+  opacity: 0.55;
+}
