@@ -1546,16 +1546,25 @@ function initNav() {
 function initTabs() {
   document.querySelectorAll('.tabs').forEach(tabGroup => {
     const buttons = tabGroup.querySelectorAll('.tab-btn');
-    const panels = document.querySelectorAll('.tab-panel');
 
     buttons.forEach(btn => {
       btn.addEventListener('click', () => {
         const target = btn.getAttribute('data-tab');
 
-        buttons.forEach(b => b.classList.remove('active'));
-        panels.forEach(p => p.classList.remove('active'));
+        // Deactivate all buttons in this group
+        buttons.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+
+        // Deactivate only panels that belong to this tab group
+        buttons.forEach(b => {
+          const panel = document.getElementById(b.getAttribute('data-tab'));
+          if (panel) panel.classList.remove('active');
+        });
 
         btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
         const panel = document.getElementById(target);
         if (panel) panel.classList.add('active');
       });
@@ -1594,8 +1603,8 @@ function initMap() {
   if (!mapEl || typeof L === 'undefined') return;
 
   const map = L.map('map', {
-    center: [53.2010, 5.7760],
-    zoom: 13,
+    center: [53.2200, 5.8100],
+    zoom: 12,
     zoomControl: true,
   });
 
@@ -1623,13 +1632,45 @@ function initMap() {
   };
 
   const poi = [
-    { lat: 53.2010, lng: 5.7760, type: 'martenastate', nl: 'Martenastate', en: 'Martenastate', desc_nl: 'Historisch landgoed — vrij toegankelijk van zonsopgang tot zonsondergang.', desc_en: 'Historic estate — freely accessible from sunrise to sunset.' },
-    { lat: 53.2002, lng: 5.7748, type: 'martenastate', nl: 'Túnmanswente', en: 'Túnmanswente', desc_nl: 'Theeschenkerij & B&B. Knooppunt 10. Open vr 13-17u, za/zo 11-17u.', desc_en: 'Tea garden & B&B. Node 10. Open Fri 13-17h, Sat/Sun 11-17h.' },
-    { lat: 53.2001, lng: 5.7755, type: 'eten', nl: 'Túnmanswente (koffie & lunch)', en: 'Túnmanswente (coffee & lunch)', desc_nl: 'Koffie, thee en lunch in een historische setting.', desc_en: 'Coffee, tea and lunch in a historic setting.' },
-    { lat: 53.2012, lng: 5.7762, type: 'wandelen', nl: 'Start wandeling park', en: 'Park walk start', desc_nl: 'Toegang tot de wandelpaden van Martenastate.', desc_en: 'Access to the walking paths of Martenastate.' },
-    { lat: 53.2010, lng: 5.7755, type: 'fietsen', nl: 'Fietsknooppunt 10', en: 'Cycling node 10', desc_nl: 'Startpunt voor het fietsknooppuntennetwerk.', desc_en: 'Starting point for the cycling node network.' },
-    { lat: 53.2009, lng: 5.7750, type: 'wandelen', nl: 'Jabikspaad stempelpunt', en: 'Jabikspaad stamp point', desc_nl: 'Pelgrimsroute naar Santiago de Compostella — stempel bij Túnmanswente.', desc_en: 'Pilgrimage route to Santiago de Compostella — stamp at Túnmanswente.' },
-    { lat: 53.2015, lng: 5.7914, type: 'bezienswaardigheid', nl: 'Leeuwarden centrum', en: 'Leeuwarden city centre', desc_nl: 'Hoofdstad van Friesland. Fries Museum, Oldehove, Mata Hari.', desc_en: 'Capital of Friesland. Fries Museum, Oldehove, Mata Hari.' },
+    // Martenastate & direct omgeving
+    { lat: 53.2018, lng: 5.7762, type: 'martenastate',
+      nl: 'Martenastate', en: 'Martenastate',
+      desc_nl: 'Historisch landgoed — vrij toegankelijk van zonsopgang tot zonsondergang. Stinzenflora-toplocatie.', desc_en: 'Historic estate — freely accessible sunrise to sunset. Top stinzenflora location.' },
+    { lat: 53.2013, lng: 5.7745, type: 'martenastate',
+      nl: 'Túnmanswente & B&B Stinzenflora', en: 'Túnmanswente & B&B Stinzenflora',
+      desc_nl: 'Theeschenkerij, B&B, knooppunt 10 & Jabikspaad-stempel. Open vr 13-17u, za/zo 11-17u.', desc_en: 'Tea garden, B&B, node 10 & Jabikspaad stamp. Open Fri 13-17h, Sat/Sun 11-17h.' },
+    { lat: 53.2023, lng: 5.7770, type: 'wandelen',
+      nl: 'Start wandelpaden park', en: 'Park walking paths',
+      desc_nl: 'Ingang wandelpaden Martenastate. Vrij toegankelijk.', desc_en: 'Entrance walking paths Martenastate. Freely accessible.' },
+    { lat: 53.2013, lng: 5.7745, type: 'fietsen',
+      nl: 'Fietsknooppunt 10', en: 'Cycling node 10',
+      desc_nl: 'Startpunt knooppuntennetwerk. Stel zelf je fietsroute samen.', desc_en: 'Start of cycling node network. Plan your own route.' },
+
+    // Leeuwarden
+    { lat: 53.2014, lng: 5.7995, type: 'bezienswaardigheid',
+      nl: 'Leeuwarden centrum', en: 'Leeuwarden city centre',
+      desc_nl: 'Hoofdstad van Friesland, op ~5 km. Oldehove, historische grachten en levendige binnenstad.', desc_en: 'Capital of Friesland, ~5 km away. Oldehove, historic canals and vibrant city centre.' },
+    { lat: 53.2003, lng: 5.7956, type: 'bezienswaardigheid',
+      nl: 'Fries Museum', en: 'Fries Museum',
+      desc_nl: 'Het belangrijkste museum van Friesland — kunst, geschiedenis en Mata Hari.', desc_en: 'Friesland\'s leading museum — art, history and Mata Hari.' },
+    { lat: 53.2030, lng: 5.7870, type: 'bezienswaardigheid',
+      nl: 'Oldehove toren', en: 'Oldehove tower',
+      desc_nl: 'Scheefste toren van Nederland — schever dan de toren van Pisa.', desc_en: 'The most leaning tower in the Netherlands — more tilted than the Leaning Tower of Pisa.' },
+
+    // Eten & drinken Leeuwarden
+    { lat: 53.2012, lng: 5.7988, type: 'eten',
+      nl: 'Restaurants Leeuwarden', en: 'Restaurants Leeuwarden',
+      desc_nl: 'Ruim aanbod van restaurants, cafés en eetcafés in de historische binnenstad.', desc_en: 'Wide range of restaurants, cafés and eateries in the historic city centre.' },
+
+    // Dokkum
+    { lat: 53.3248, lng: 6.0015, type: 'bezienswaardigheid',
+      nl: 'Dokkum', en: 'Dokkum',
+      desc_nl: 'Het enige volledig omwalde stadje van Nederland. Pittoresk centrum op ~30 km.', desc_en: 'The only fully moated town in the Netherlands. Picturesque centre ~30 km away.' },
+
+    // Elfstedenpad etappe
+    { lat: 53.2100, lng: 5.8050, type: 'wandelen',
+      nl: 'Elfstedenpad (etappe Oenkerk–Leeuwarden)', en: 'Elfstedenpad (stage Oenkerk–Leeuwarden)',
+      desc_nl: '15 km etappe van het 300 km lange Elfstedenpad langs alle Friese steden.', desc_en: '15 km stage of the 300 km Elfstedenpad through all Frisian cities.' },
   ];
 
   poi.forEach(p => {

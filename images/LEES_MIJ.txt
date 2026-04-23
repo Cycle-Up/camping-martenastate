@@ -1,0 +1,32 @@
+FOTO'S TOEVOEGEN
+================
+
+Zet hier je eigen foto's neer. De website gebruikt op dit moment gekleurde placeholders.
+
+Vervang de placeholders door echte foto's via de volgende bestandsnamen:
+
+HOMEPAGE (index.html)
+  hero-bg.jpg          — Sfeervolle luchtfoto of parkfoto voor de achtergrond
+  park-lente.jpg       — Stinzenflora in het voorjaar (feature-sectie "Het landgoed")
+  stinzenflora.jpg     — Close-up van stinzenflora bloemen
+
+VERBLIJF (verblijf.html)
+  camping.jpg          — Camping met tenten achter de beuken
+  bb-kamer-1.jpg       — Kamer "Stinzenflora" van de B&B
+  bb-kamer-2.jpg       — Kamer "Martenastate" van de B&B
+  tunmanswente.jpg     — Túnmanswente van buiten of de theetuin
+
+OMGEVING (omgeving.html)
+  wandelen-park.jpg    — Wandelpad door het park
+  jabikspaad.jpg       — Pelgrimsroute / stempelpunt
+  elfstedenpad.jpg     — Landschapsfoto Friese route
+  fietsen.jpg          — Fietser in het Friese landschap
+  tunman-eten.jpg      — Koffie/thee bij Túnmanswente
+  leeuwarden.jpg       — Leeuwarden binnenstad
+
+AANBEVOLEN FORMAAT
+  - Breedte: minimaal 1200px
+  - Formaat: JPG of WebP
+  - Bestandsgrootte: max. 500 KB per foto (gebruik tinypng.com om te comprimeren)
+
+Na het toevoegen van foto's, laat het weten zodat de img-tags in de HTML bijgewerkt kunnen worden.
