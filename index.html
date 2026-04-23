@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welkom bij Martenastate</title>
+  <meta name="description" content="Jouw gids voor een heerlijk verblijf op Martenastate, Koarnjum.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" role="navigation">
+    <div class="navbar-inner">
+      <a href="index.html" class="brand" aria-label="Martenastate home">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M16 3 C16 3 8 9 8 17 C8 21.4 11.6 25 16 25 C20.4 25 24 21.4 24 17 C24 9 16 3 16 3Z" fill="currentColor" opacity="0.2"/>
+          <path d="M16 6 C13 10 10 13 10 17 C10 20.3 12.7 23 16 23 C19.3 23 22 20.3 22 17 C22 13 19 10 16 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M16 10 C16 10 12 14 12 17 C12 19.2 13.8 21 16 21" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.6"/>
+          <line x1="16" y1="23" x2="16" y2="29" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="12" y1="27" x2="20" y2="27" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        Martenastate
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="verblijf.html" data-i18n="nav.verblijf">Verblijf</a></li>
+        <li><a href="omgeving.html" data-i18n="nav.omgeving">Omgeving</a></li>
+        <li><a href="kaart.html" data-i18n="nav.kaart">Kaart</a></li>
+        <li>
+          <div class="lang-toggle" role="group" aria-label="Taal kiezen">
+            <button data-lang="nl" class="active">NL</button>
+            <button data-lang="en">EN</button>
+          </div>
+        </li>
+      </ul>
+
+      <button class="menu-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="nav-links">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <!-- Decorative floral SVGs -->
+    <svg class="floral-decoration floral-top-left" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="100" cy="60" r="18" fill="#7b5d8c" opacity="0.3"/>
+      <circle cx="75" cy="90" r="12" fill="#c9b8d4" opacity="0.4"/>
+      <circle cx="125" cy="85" r="14" fill="#7b5d8c" opacity="0.25"/>
+      <circle cx="100" cy="115" r="10" fill="#e6c569" opacity="0.35"/>
+      <ellipse cx="55" cy="70" rx="8" ry="16" fill="#8ba888" opacity="0.3" transform="rotate(-30 55 70)"/>
+      <ellipse cx="145" cy="65" rx="8" ry="18" fill="#8ba888" opacity="0.25" transform="rotate(25 145 65)"/>
+      <line x1="100" y1="78" x2="100" y2="160" stroke="#8ba888" stroke-width="2" opacity="0.4"/>
+      <line x1="82" y1="100" x2="118" y2="130" stroke="#8ba888" stroke-width="1.5" opacity="0.3"/>
+    </svg>
+
+    <svg class="floral-decoration floral-bottom-right" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="120" cy="80" r="22" fill="#7b5d8c" opacity="0.2"/>
+      <circle cx="88" cy="110" r="15" fill="#c9b8d4" opacity="0.35"/>
+      <circle cx="152" cy="105" r="17" fill="#8ba888" opacity="0.25"/>
+      <circle cx="120" cy="140" r="12" fill="#e6c569" opacity="0.3"/>
+      <circle cx="90" cy="155" r="9" fill="#7b5d8c" opacity="0.2"/>
+      <circle cx="150" cy="150" r="11" fill="#c9b8d4" opacity="0.3"/>
+      <ellipse cx="68" cy="88" rx="9" ry="20" fill="#8ba888" opacity="0.25" transform="rotate(-20 68 88)"/>
+      <ellipse cx="172" cy="82" rx="9" ry="22" fill="#8ba888" opacity="0.2" transform="rotate(15 172 82)"/>
+      <line x1="120" y1="102" x2="120" y2="200" stroke="#8ba888" stroke-width="2" opacity="0.35"/>
+    </svg>
+
+    <div class="hero-content">
+      <span class="hero-eyebrow" data-i18n="home.eyebrow">Welkom</span>
+      <h1>
+        Welkom bij<br>
+        <span class="italic" data-i18n="home.title.italic">Martenastate</span>
+      </h1>
+      <p class="hero-subtitle" data-i18n="home.subtitle">
+        Een verborgen parel in het groen van Friesland. Wij hopen dat je een heerlijk verblijf hebt op dit historische landgoed in Koarnjum.
+      </p>
+      <div class="hero-buttons">
+        <a href="verblijf.html" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span data-i18n="home.btn.verblijf">Over je verblijf</span>
+        </a>
+        <a href="omgeving.html" class="btn btn-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <span data-i18n="home.btn.omgeving">Wat te doen</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- Highlights -->
+  <div class="highlights">
+    <div class="container">
+      <div class="highlights-grid">
+        <div class="highlight-item fade-in">
+          <div class="value" data-i18n="highlights.since">Sinds ~1400</div>
+          <div class="label" data-i18n="highlights.since.label">Historisch landgoed</div>
+        </div>
+        <div class="highlight-item fade-in">
+          <div class="value" data-i18n="highlights.ha">21.000 ha</div>
+          <div class="label" data-i18n="highlights.ha.label">Natuur beheerd door It Fryske Gea</div>
+        </div>
+        <div class="highlight-item fade-in">
+          <div class="value" data-i18n="highlights.km">5 min</div>
+          <div class="label" data-i18n="highlights.km.label">Fietsen naar Leeuwarden</div>
+        </div>
+        <div class="highlight-item fade-in">
+          <div class="value" data-i18n="highlights.season">1 apr – 1 okt</div>
+          <div class="label" data-i18n="highlights.season.label">Kampeerseizoen</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation cards -->
+  <section>
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-eyebrow">Jouw gids</span>
+        <h2>Alles voor je verblijf</h2>
+        <p>Hier vind je alles wat je nodig hebt — van informatie over je verblijfplaats tot de mooiste plekken in de omgeving.</p>
+      </div>
+
+      <div class="card-grid cols-3">
+        <a href="verblijf.html" class="nav-card fade-in">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3 data-i18n="card.verblijf.title">Over je verblijf</h3>
+          <p data-i18n="card.verblijf.desc">Alles over de camping en B&amp;B: tarieven, faciliteiten en handige tips.</p>
+          <span class="card-link" data-i18n="card.verblijf.link">Bekijk details</span>
+        </a>
+
+        <a href="omgeving.html" class="nav-card fade-in">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1-2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+          </div>
+          <h3 data-i18n="card.omgeving.title">In de omgeving</h3>
+          <p data-i18n="card.omgeving.desc">Wandelroutes, fietsroutes, restaurants en bezienswaardigheden.</p>
+          <span class="card-link" data-i18n="card.omgeving.link">Ontdek de omgeving</span>
+        </a>
+
+        <a href="kaart.html" class="nav-card fade-in">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+          </div>
+          <h3 data-i18n="card.kaart.title">Interactieve kaart</h3>
+          <p data-i18n="card.kaart.desc">Bekijk alle tips, routes en adressen op de kaart.</p>
+          <span class="card-link" data-i18n="card.kaart.link">Open kaart</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote -->
+  <div class="quote-block fade-in">
+    <blockquote data-i18n="quote.text">In ieder seizoen valt er veel te zien én te beleven op Martenastate</blockquote>
+    <cite data-i18n="quote.cite">Martenastate, Koarnjum</cite>
+  </div>
+
+  <!-- About section -->
+  <section style="background: linear-gradient(180deg, var(--color-warm-white) 0%, var(--color-cream) 100%); padding-top: 0;">
+    <div class="container">
+      <div class="feature-row fade-in">
+        <div class="feature-image">
+          <div class="placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+        </div>
+        <div class="feature-content">
+          <span class="section-eyebrow">Het landgoed</span>
+          <h3>Een plek met eeuwenlange geschiedenis</h3>
+          <p>Martenastate gaat terug tot circa 1400, toen Sytze Martena hier woonde. Het landgoed is vernoemd naar Duco Martena — staatsman, held en geleerde. In 1899 verrees het huidige neo-renaissance kasteel met zijn karakteristieke uienvormige toren.</p>
+          <p>Sinds 2000 beheert <strong>It Fryske Gea</strong> het landgoed ecologisch. Martenastate is erkend als één van de beste stinzenflora-locaties van Nederland en staat op de lijst als nationaal monument.</p>
+          <div class="meta">
+            <span class="meta-chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Vrij toegankelijk
+            </span>
+            <span class="meta-chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Nationaal monument
+            </span>
+            <span class="meta-chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/></svg>
+              Stinzenflora-toplocatie
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-row fade-in">
+        <div class="feature-content">
+          <span class="section-eyebrow">Stinzenflora</span>
+          <h3>De bloemen die alles bijzonder maken</h3>
+          <p>Stinzenplanten zijn verwilderde bolgewassen die al eeuwen rond historische landgoederen groeien. In het voorjaar (februari–april) bloeit Martenastate in prachtige tinten van paars, wit en geel.</p>
+          <p>Sneeuwklokjes, krokussen, wilde hyacinten, winterakoniet en veel meer — elk jaar opnieuw een betoverend schouwspel dat bezoekers van heinde en verre trekt.</p>
+          <div class="meta">
+            <span class="meta-chip">Februari – april</span>
+            <span class="meta-chip">Sneeuwklokjes</span>
+            <span class="meta-chip">Krokussen</span>
+            <span class="meta-chip">Wilde hyacint</span>
+          </div>
+        </div>
+        <div class="feature-image">
+          <div class="placeholder" style="background: linear-gradient(135deg, #c9b8d4, #e8dff0);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16 3 C16 3 8 9 8 17 C8 21.4 11.6 25 16 25 C20.4 25 24 21.4 24 17 C24 9 16 3 16 3Z" fill="currentColor" opacity="0.3"/><path d="M16 6 C13 10 10 13 10 17 C10 20.3 12.7 23 16 23 C19.3 23 22 20.3 22 17 C22 13 19 10 16 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="16" y1="23" x2="16" y2="29" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="27" x2="20" y2="27" stroke="currentColor" stroke-width="1.5"/></svg>
+            Martenastate
+          </div>
+          <p data-i18n="footer.tagline" style="color: var(--color-lavender); opacity:.8;">Een historisch landgoed in het hart van Friesland.</p>
+        </div>
+        <div>
+          <h4 data-i18n="footer.nav">Navigatie</h4>
+          <ul>
+            <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+            <li><a href="verblijf.html" data-i18n="nav.verblijf">Verblijf</a></li>
+            <li><a href="omgeving.html" data-i18n="nav.omgeving">Omgeving</a></li>
+            <li><a href="kaart.html" data-i18n="nav.kaart">Kaart</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="footer.contact">Contact</h4>
+          <ul>
+            <li data-i18n="footer.address">Martenawei 2, 9056 PE Koarnjum</li>
+            <li data-i18n="footer.camping.address">Camping: De Wier 7A</li>
+            <li><a href="tel:+31636606521" data-i18n="footer.phone">+31 6 83 60 65 21</a></li>
+            <li><a href="https://martenastate.nl" target="_blank" rel="noopener">martenastate.nl</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">Welkom bij Martenastate — Koarnjum, Friesland</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/translations.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

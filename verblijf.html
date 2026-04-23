@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Over je verblijf — Martenastate</title>
+  <meta name="description" content="Informatie over de camping en B&B Stinzenflora op Martenastate.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="navbar" role="navigation">
+    <div class="navbar-inner">
+      <a href="index.html" class="brand" aria-label="Martenastate home">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M16 3 C16 3 8 9 8 17 C8 21.4 11.6 25 16 25 C20.4 25 24 21.4 24 17 C24 9 16 3 16 3Z" fill="currentColor" opacity="0.2"/>
+          <path d="M16 6 C13 10 10 13 10 17 C10 20.3 12.7 23 16 23 C19.3 23 22 20.3 22 17 C22 13 19 10 16 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <line x1="16" y1="23" x2="16" y2="29" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="12" y1="27" x2="20" y2="27" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        Martenastate
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="verblijf.html" data-i18n="nav.verblijf">Verblijf</a></li>
+        <li><a href="omgeving.html" data-i18n="nav.omgeving">Omgeving</a></li>
+        <li><a href="kaart.html" data-i18n="nav.kaart">Kaart</a></li>
+        <li>
+          <div class="lang-toggle" role="group" aria-label="Taal kiezen">
+            <button data-lang="nl" class="active">NL</button>
+            <button data-lang="en">EN</button>
+          </div>
+        </li>
+      </ul>
+      <button class="menu-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="nav-links">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page hero -->
+  <div style="padding: 8rem 0 4rem; text-align: center; background: linear-gradient(180deg, var(--color-lavender-soft) 0%, var(--color-warm-white) 100%);">
+    <div class="container-narrow">
+      <span class="section-eyebrow" style="font-size:2rem;">Jouw thuis</span>
+      <h1 data-i18n="verblijf.title">Over je verblijf</h1>
+      <p style="font-size:1.1rem; max-width:560px; margin: 1rem auto 0;" data-i18n="verblijf.subtitle">Of je nu op de camping staat of geniet van de B&B — we hopen dat je je helemaal thuis voelt.</p>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <section>
+    <div class="container">
+      <div class="tabs" role="tablist">
+        <button class="tab-btn active" data-tab="camping" role="tab" aria-selected="true" aria-controls="camping">
+          <span data-i18n="tab.camping">Natuurkampeerterrein</span>
+        </button>
+        <button class="tab-btn" data-tab="bb" role="tab" aria-selected="false" aria-controls="bb">
+          <span data-i18n="tab.bb">B&amp;B Stinzenflora</span>
+        </button>
+        <button class="tab-btn" data-tab="tunman" role="tab" aria-selected="false" aria-controls="tunman">
+          <span data-i18n="tab.tunman">Túnmanswente</span>
+        </button>
+      </div>
+
+      <!-- Camping -->
+      <div id="camping" class="tab-panel active" role="tabpanel">
+        <div class="two-col">
+          <div>
+            <div class="feature-image" style="aspect-ratio:16/9;">
+              <div class="placeholder" style="background: linear-gradient(135deg, var(--color-sage-light), var(--color-aconite-soft));">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="width:80px;height:80px;" aria-hidden="true"><path d="M3 12 L12 3 L21 12"/><path d="M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 data-i18n="camping.title">Natuurkampeerterrein</h2>
+            <p data-i18n="camping.desc">Rustig kamperen achter een rij eeuwenoude beuken, temidden van de stinzenflora. Geen overbodige luxe, maar volop natuur en rust.</p>
+
+            <div class="callout callout-sage" style="margin-top: 1.5rem;">
+              <div class="icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <div>
+                <h4 data-i18n="camping.season.label">Seizoen</h4>
+                <p data-i18n="camping.season.value">1 april – 1 oktober</p>
+              </div>
+            </div>
+
+            <div class="callout" style="margin-top: 1rem;">
+              <div class="icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </div>
+              <div>
+                <h4 data-i18n="camping.card.label">Kampeerkaart</h4>
+                <p data-i18n="camping.card.value">Natuurkampeerkaart verplicht (Stichting De Groene Koepel)</p>
+                <p style="margin:0; font-size:.85rem;" data-i18n="camping.card.price">Ter plekke te koop: €15,95</p>
+              </div>
+            </div>
+
+            <div class="callout callout-crocus" style="margin-top: 1rem;">
+              <div class="icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78A16 16 0 0 0 16 16.85l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <h4 data-i18n="camping.contact.label">Beheerder</h4>
+                <p><a href="tel:+31636606521" data-i18n="camping.contact.value">Robin Alkema — +31 6 83 60 65 21</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pricing -->
+        <div class="info-section fade-in" style="margin-top: var(--space-lg);">
+          <h3>
+            <div class="icon-small">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <span data-i18n="camping.prices">Tarieven per nacht</span>
+          </h3>
+          <ul class="info-list">
+            <li><span class="label" data-i18n="price.adult">Volwassene</span><span class="value">€ 12,50</span></li>
+            <li><span class="label" data-i18n="price.child.5">Kind (5–12 jaar)</span><span class="value">€ 6,00</span></li>
+            <li><span class="label" data-i18n="price.child.0">Kind (0–4 jaar)</span><span class="value">€ 4,00</span></li>
+            <li><span class="label" data-i18n="price.pitch">Kampeerplaats</span><span class="value">€ 7,00</span></li>
+            <li><span class="label" data-i18n="price.trekker">Trekkers tent</span><span class="value">€ 4,00</span></li>
+            <li><span class="label" data-i18n="price.electric">Elektriciteit</span><span class="value">€ 3,00</span></li>
+          </ul>
+        </div>
+
+        <div class="callout" style="margin-top:1rem;">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div>
+            <h4 data-i18n="camping.noise.label">Let op</h4>
+            <p data-i18n="camping.noise.value">Incidenteel vliegtuiggeluid van nabijgelegen militaire vliegbasis</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- B&B -->
+      <div id="bb" class="tab-panel" role="tabpanel">
+        <div class="two-col">
+          <div>
+            <div class="feature-image" style="aspect-ratio:16/9;">
+              <div class="placeholder" style="background: linear-gradient(135deg, var(--color-lavender-soft), var(--color-aconite-soft));">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="width:80px;height:80px;" aria-hidden="true"><path d="M2 4a2 2 0 012-2h16a2 2 0 012 2v11a2 2 0 01-2 2H4a2 2 0 01-2-2V4z"/><path d="M2 11h20"/></svg>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 data-i18n="bb.title">B&amp;B Stinzenflora</h2>
+            <p data-i18n="bb.desc">Twee sfeervolle kamers op het historische landgoed Martenastate. Een plek waar je vanzelf tot rust komt, met de natuur van het park op loopafstand.</p>
+
+            <div class="info-section" style="margin-top:1.5rem;">
+              <h3>
+                <div class="icon-small">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </div>
+                <span>Check-in / Check-out</span>
+              </h3>
+              <ul class="info-list">
+                <li><span class="label" data-i18n="bb.checkin.label">Check-in</span><span class="value" data-i18n="bb.checkin.value">Vanaf 15:00</span></li>
+                <li><span class="label" data-i18n="bb.checkout.label">Check-out</span><span class="value" data-i18n="bb.checkout.value">Vóór 11:00</span></li>
+                <li><span class="label" data-i18n="bb.address.label">Adres</span><span class="value" data-i18n="bb.address.value">Martenawei 2, Koarnjum</span></li>
+                <li><span class="label" data-i18n="bb.phone.label">Telefoon</span><span class="value"><a href="tel:+31850805048" data-i18n="bb.phone.value">+31 85 080 5048</a></span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rooms -->
+        <div style="margin-top: var(--space-lg);">
+          <h3 class="text-center" style="margin-bottom: var(--space-md);" data-i18n="bb.rooms">De kamers</h3>
+          <div class="card-grid cols-2">
+            <div class="nav-card fade-in">
+              <div class="feature-image" style="aspect-ratio:4/3; margin-bottom: 1.5rem;">
+                <div class="placeholder" style="background: linear-gradient(135deg, #c9b8d4, #e8dff0);">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="width:60px;height:60px;" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+              </div>
+              <h3 data-i18n="bb.room1.title">Kamer Stinzenflora</h3>
+              <p data-i18n="bb.room1.desc">Sfeervol ingericht, maximaal 2 personen, eigen badkamer en buitenzithoek.</p>
+              <div class="meta" style="margin-top:.5rem;">
+                <span class="meta-chip">Max. 2 personen</span>
+                <span class="meta-chip">Eigen badkamer</span>
+              </div>
+            </div>
+            <div class="nav-card fade-in">
+              <div class="feature-image" style="aspect-ratio:4/3; margin-bottom: 1.5rem;">
+                <div class="placeholder" style="background: linear-gradient(135deg, #b8ccb5, #e8dff0);">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="width:60px;height:60px;" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                </div>
+              </div>
+              <h3 data-i18n="bb.room2.title">Kamer Martenastate</h3>
+              <p data-i18n="bb.room2.desc">Sfeervol ingericht, maximaal 2 personen, eigen badkamer en buitenzithoek.</p>
+              <div class="meta" style="margin-top:.5rem;">
+                <span class="meta-chip">Max. 2 personen</span>
+                <span class="meta-chip">Eigen badkamer</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Facilities -->
+        <div class="info-section fade-in" style="margin-top: var(--space-lg);">
+          <h3>
+            <div class="icon-small">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            </div>
+            <span data-i18n="bb.features">Faciliteiten</span>
+          </h3>
+          <ul class="info-list">
+            <li><span class="label" data-i18n="bb.feature.wifi">WiFi</span><span class="value">✓</span></li>
+            <li><span class="label" data-i18n="bb.feature.bathroom">Privé badkamer met toilet</span><span class="value">✓</span></li>
+            <li><span class="label" data-i18n="bb.feature.kitchen">Kleine kitchenette (koffie &amp; thee)</span><span class="value">✓</span></li>
+            <li><span class="label" data-i18n="bb.feature.outside">Buitenzithoek met uitzicht op park</span><span class="value">✓</span></li>
+            <li><span class="label" data-i18n="bb.feature.parking">Gratis parkeren</span><span class="value">✓</span></li>
+          </ul>
+        </div>
+
+        <div class="text-center mt-lg">
+          <a href="https://bedandbreakfaststinzenflora.nl" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="bb.book">Bekijk beschikbaarheid</a>
+        </div>
+      </div>
+
+      <!-- Túnmanswente -->
+      <div id="tunman" class="tab-panel" role="tabpanel">
+        <div class="two-col">
+          <div>
+            <div class="feature-image" style="aspect-ratio:16/9;">
+              <div class="placeholder" style="background: linear-gradient(135deg, var(--color-aconite-soft), var(--color-lavender-soft));">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="width:80px;height:80px;" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 data-i18n="tunman.title">Túnmanswente</h2>
+            <p data-i18n="tunman.desc">De voormalige tuinmanswoning van Martenastate is nu een sfeervolle theeschenkerij, trouwlocatie en vergaderruimte — én startpunt van het Jabikspaad.</p>
+
+            <div class="info-section" style="margin-top:1.5rem;">
+              <h3>
+                <div class="icon-small">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <span data-i18n="tunman.hours">Openingstijden</span>
+              </h3>
+              <ul class="info-list">
+                <li><span class="label" data-i18n="tunman.fri">Vrijdag</span><span class="value" data-i18n="tunman.fri.hours">13:00 – 17:00</span></li>
+                <li><span class="label" data-i18n="tunman.sat">Zaterdag</span><span class="value" data-i18n="tunman.sat.hours">11:00 – 17:00</span></li>
+                <li><span class="label" data-i18n="tunman.sun">Zondag</span><span class="value" data-i18n="tunman.sun.hours">11:00 – 17:00</span></li>
+                <li><span class="label">Adres</span><span class="value" data-i18n="tunman.address">Martenawei 2, Koarnjum</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-grid cols-3" style="margin-top: var(--space-lg);">
+          <div class="nav-card fade-in">
+            <div class="icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <h3 data-i18n="tunman.knooppunt">Fietsknooppunt 10</h3>
+            <p>Vertrekpunt voor fietsroutes door het Friese landschap via het knooppuntennetwerk.</p>
+          </div>
+          <div class="nav-card fade-in">
+            <div class="icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
+            </div>
+            <h3 data-i18n="tunman.jabikspaad">Jabikspaad stempelpunt</h3>
+            <p>Laat je pelgrimspaspoort stempelen op weg naar Santiago de Compostella.</p>
+          </div>
+          <div class="nav-card fade-in">
+            <div class="icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <h3 data-i18n="tunman.trouw">Officiële trouwlocatie</h3>
+            <p>Gemeente Leeuwarden — trouwen op een historische, romantische plek.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16 3 C16 3 8 9 8 17 C8 21.4 11.6 25 16 25 C20.4 25 24 21.4 24 17 C24 9 16 3 16 3Z" fill="currentColor" opacity="0.3"/><path d="M16 6 C13 10 10 13 10 17 C10 20.3 12.7 23 16 23 C19.3 23 22 20.3 22 17 C22 13 19 10 16 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="16" y1="23" x2="16" y2="29" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="27" x2="20" y2="27" stroke="currentColor" stroke-width="1.5"/></svg>
+            Martenastate
+          </div>
+          <p style="color: var(--color-lavender); opacity:.8;" data-i18n="footer.tagline">Een historisch landgoed in het hart van Friesland.</p>
+        </div>
+        <div>
+          <h4 data-i18n="footer.nav">Navigatie</h4>
+          <ul>
+            <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+            <li><a href="verblijf.html" data-i18n="nav.verblijf">Verblijf</a></li>
+            <li><a href="omgeving.html" data-i18n="nav.omgeving">Omgeving</a></li>
+            <li><a href="kaart.html" data-i18n="nav.kaart">Kaart</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="footer.contact">Contact</h4>
+          <ul>
+            <li data-i18n="footer.address">Martenawei 2, 9056 PE Koarnjum</li>
+            <li data-i18n="footer.camping.address">Camping: De Wier 7A</li>
+            <li><a href="tel:+31636606521" data-i18n="footer.phone">+31 6 83 60 65 21</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">Welkom bij Martenastate — Koarnjum, Friesland</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/translations.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
