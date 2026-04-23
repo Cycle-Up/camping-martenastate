@@ -1192,6 +1192,138 @@ section {
   opacity: 0.55;
 }
 
+/* ===== Route list cards ===== */
+.route-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.route-card {
+  background: var(--color-soft-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(201,184,212,0.15);
+  transition: all var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+}
+
+.route-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.route-card-header {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding-left: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.route-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.route-card h4 {
+  margin-bottom: 0.4rem;
+  font-size: 1.15rem;
+  color: var(--color-aubergine);
+}
+
+.route-meta {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.route-desc {
+  margin: 0 0 1rem 0;
+  font-size: 0.9rem;
+  color: var(--color-text-soft);
+  flex-grow: 1;
+}
+
+.route-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.btn-route-focus,
+.btn-route-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-pill);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn-route-focus {
+  background: transparent;
+  border: 1.5px solid var(--color-stone);
+  color: var(--color-text-soft);
+}
+.btn-route-focus:hover {
+  border-color: var(--color-crocus);
+  color: var(--color-crocus);
+}
+
+.btn-route-open {
+  background: var(--color-crocus);
+  border: 1.5px solid var(--color-crocus);
+  color: white;
+}
+.btn-route-open:hover {
+  background: var(--color-aubergine);
+  border-color: var(--color-aubergine);
+  color: white;
+}
+
+/* Route polyline hover */
+.route-line {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+/* Routes section */
+.routes-section {
+  background: linear-gradient(180deg, var(--color-warm-white) 0%, var(--color-cream) 100%);
+  padding: var(--space-xl) 0;
+}
+
+.routes-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: var(--space-sm);
+}
+
+.routes-section-header .route-badge {
+  background: var(--color-lavender-soft);
+  color: var(--color-crocus);
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
 </style>
 </head>
 <body>
@@ -1980,6 +2112,199 @@ const translations = {
   }
 };
 
+// Wandel- en fietsroutes vanaf Martenastate
+// Coordinaten zijn indicatief — externe link opent actuele routebeschrijving
+
+const walkingRoutes = [
+  {
+    id: 'ochtendrondje',
+    name_nl: 'Ochtendrondje door het park',
+    name_en: 'Morning park loop',
+    distance: '2 km',
+    duration_nl: '±30 min',
+    duration_en: '±30 min',
+    difficulty_nl: 'Gemakkelijk',
+    difficulty_en: 'Easy',
+    desc_nl: 'Rustige lus vanaf Túnmanswente via de beukenlaan naar het kasteel en terug langs de stinzenflora-velden. Vlak terrein, geschikt voor iedereen.',
+    desc_en: 'A peaceful loop from Túnmanswente via the beech lane to the castle and back past the stinzenflora fields. Flat terrain, suitable for everyone.',
+    coords: [
+      [53.2013, 5.7745],
+      [53.2023, 5.7770],
+      [53.2030, 5.7765],
+      [53.2035, 5.7755],
+      [53.2032, 5.7738],
+      [53.2020, 5.7725],
+      [53.2013, 5.7735],
+      [53.2013, 5.7745]
+    ],
+    externalUrl: 'https://www.google.com/maps/dir/?api=1&origin=53.2013,5.7745&destination=53.2013,5.7745&waypoints=53.2023,5.7770%7C53.2035,5.7755%7C53.2020,5.7725&travelmode=walking'
+  },
+  {
+    id: 'middagtocht',
+    name_nl: 'Middagtocht via Jelsum',
+    name_en: 'Afternoon walk via Jelsum',
+    distance: '5 km',
+    duration_nl: '±1,5 uur',
+    duration_en: '±1.5 hours',
+    difficulty_nl: 'Gemakkelijk',
+    difficulty_en: 'Easy',
+    desc_nl: 'Combineer het park met de omliggende polder. Via Koarnjum door de weilanden naar buurdorp Jelsum, terug langs het Dokkumer Ee. Weidelandschap met veel weidevogels.',
+    desc_en: 'Combine the park with the surrounding polder. Via Koarnjum through the meadows to the neighbouring village Jelsum, back along the Dokkumer Ee. Meadow landscape with many meadow birds.',
+    coords: [
+      [53.2013, 5.7745],
+      [53.2050, 5.7780],
+      [53.2120, 5.7770],
+      [53.2180, 5.7730],
+      [53.2214, 5.7694],
+      [53.2200, 5.7650],
+      [53.2160, 5.7620],
+      [53.2100, 5.7660],
+      [53.2050, 5.7710],
+      [53.2013, 5.7745]
+    ],
+    externalUrl: 'https://www.google.com/maps/dir/?api=1&origin=53.2013,5.7745&destination=53.2013,5.7745&waypoints=53.2214,5.7694%7C53.2200,5.7650%7C53.2100,5.7660&travelmode=walking'
+  },
+  {
+    id: 'dagtocht-leeuwarden',
+    name_nl: 'Dagtocht naar Leeuwarden (Jabikspaad)',
+    name_en: 'Day walk to Leeuwarden (Jabikspaad)',
+    distance: '12 km',
+    duration_nl: '±4 uur',
+    duration_en: '±4 hours',
+    difficulty_nl: 'Gemiddeld',
+    difficulty_en: 'Moderate',
+    desc_nl: 'Vanaf Martenastate via het Jabikspaad richting Leeuwarden. Pauze in het centrum bij het Fries Museum, dan terug langs dezelfde of andere route. Laat je pelgrimspaspoort stempelen bij Túnmanswente.',
+    desc_en: 'From Martenastate via the Jabikspaad towards Leeuwarden. Break in the centre at the Fries Museum, then back via the same or another route. Get your pilgrim passport stamped at Túnmanswente.',
+    coords: [
+      [53.2013, 5.7745],
+      [53.2015, 5.7810],
+      [53.2025, 5.7870],
+      [53.2030, 5.7920],
+      [53.2014, 5.7995],
+      [53.2003, 5.7956]
+    ],
+    externalUrl: 'https://www.google.com/maps/dir/?api=1&origin=53.2013,5.7745&destination=53.2014,5.7995&travelmode=walking'
+  },
+  {
+    id: 'elfstedenpad',
+    name_nl: 'Elfstedenpad etappe Oenkerk–Leeuwarden',
+    name_en: 'Elfstedenpad stage Oenkerk–Leeuwarden',
+    distance: '15 km',
+    duration_nl: '±4,5 uur',
+    duration_en: '±4.5 hours',
+    difficulty_nl: 'Gemiddeld',
+    difficulty_en: 'Moderate',
+    desc_nl: 'Een etappe van het 300 km lange Elfstedenpad langs alle 11 Friese steden. Gemarkeerd met geel-rode tekens. Van Oenkerk naar Leeuwarden, passeert vlak langs Martenastate.',
+    desc_en: 'A stage of the 300 km Elfstedenpad through all 11 Frisian cities. Marked with yellow-red signs. From Oenkerk to Leeuwarden, passing close to Martenastate.',
+    coords: [
+      [53.2525, 5.8658],
+      [53.2400, 5.8500],
+      [53.2300, 5.8350],
+      [53.2200, 5.8200],
+      [53.2100, 5.8050],
+      [53.2050, 5.8000],
+      [53.2014, 5.7995]
+    ],
+    externalUrl: 'https://www.wandelnet.nl/streekpaden/elfstedenpad'
+  }
+];
+
+const cyclingRoutes = [
+  {
+    id: 'middelzee-route',
+    name_nl: 'Middelzee-route (20 km)',
+    name_en: 'Middelzee route (20 km)',
+    distance: '20 km',
+    duration_nl: '±1,5 uur',
+    duration_en: '±1.5 hours',
+    difficulty_nl: 'Gemakkelijk',
+    difficulty_en: 'Easy',
+    desc_nl: 'Korte, vlakke lus door het oude Middelzee-landschap. Langs pittoreske dorpjes en oude zeedijken. Via knooppunten: 10 → 11 → 13 → 14 → 10.',
+    desc_en: 'Short, flat loop through the old Middelzee landscape. Past picturesque villages and old sea dikes. Via nodes: 10 → 11 → 13 → 14 → 10.',
+    coords: [
+      [53.2013, 5.7745],
+      [53.2200, 5.7600],
+      [53.2350, 5.7500],
+      [53.2450, 5.7650],
+      [53.2500, 5.7850],
+      [53.2400, 5.8000],
+      [53.2250, 5.8050],
+      [53.2100, 5.7900],
+      [53.2013, 5.7745]
+    ],
+    externalUrl: 'https://www.fietsknoop.nl/route/friesland'
+  },
+  {
+    id: 'leeuwarden-fiets',
+    name_nl: 'Leeuwarden heen & terug',
+    name_en: 'Leeuwarden and back',
+    distance: '15 km',
+    duration_nl: '±1 uur',
+    duration_en: '±1 hour',
+    difficulty_nl: 'Gemakkelijk',
+    difficulty_en: 'Easy',
+    desc_nl: 'Fiets naar het centrum van Leeuwarden voor een halve dag. Pauze bij de Oldehove, koffie op een terras, terug via een andere route. Ideale halvedagtocht.',
+    desc_en: 'Cycle to the centre of Leeuwarden for a half day. Break at the Oldehove, coffee on a terrace, back via another route. Ideal half-day trip.',
+    coords: [
+      [53.2013, 5.7745],
+      [53.2050, 5.7850],
+      [53.2020, 5.7950],
+      [53.2014, 5.7995],
+      [53.2030, 5.7870],
+      [53.2080, 5.7780],
+      [53.2013, 5.7745]
+    ],
+    externalUrl: 'https://www.google.com/maps/dir/?api=1&origin=53.2013,5.7745&destination=53.2014,5.7995&travelmode=bicycling'
+  },
+  {
+    id: 'dokkum-fiets',
+    name_nl: 'Dokkum heen & terug',
+    name_en: 'Dokkum and back',
+    distance: '45 km',
+    duration_nl: '±3 uur',
+    duration_en: '±3 hours',
+    difficulty_nl: 'Gemiddeld',
+    difficulty_en: 'Moderate',
+    desc_nl: 'Fietstocht naar het omwalde stadje Dokkum. Door weilanden, via kleine dorpjes — typisch Fries landschap. Neem de tijd voor een pauze in het centrum van Dokkum.',
+    desc_en: 'Cycling trip to the moated town of Dokkum. Through meadows, via small villages — typical Frisian landscape. Take time for a break in the centre of Dokkum.',
+    coords: [
+      [53.2013, 5.7745],
+      [53.2200, 5.7800],
+      [53.2400, 5.7900],
+      [53.2600, 5.8200],
+      [53.2800, 5.8600],
+      [53.3000, 5.9000],
+      [53.3150, 5.9500],
+      [53.3248, 6.0015]
+    ],
+    externalUrl: 'https://www.google.com/maps/dir/?api=1&origin=53.2013,5.7745&destination=53.3248,6.0015&travelmode=bicycling'
+  },
+  {
+    id: 'elfsteden-fiets',
+    name_nl: 'Elfsteden Fietsroute (start)',
+    name_en: 'Eleven Cities Cycling Route (start)',
+    distance: '258 km',
+    duration_nl: '3-5 dagen',
+    duration_en: '3-5 days',
+    difficulty_nl: 'Meerdaags',
+    difficulty_en: 'Multi-day',
+    desc_nl: 'De klassieke route langs alle 11 Friese steden. Start in Leeuwarden (5 km van Martenastate). Ideaal voor meerdaagse fietsers. Volledig gemarkeerd.',
+    desc_en: 'The classic route through all 11 Frisian cities. Starts in Leeuwarden (5 km from Martenastate). Ideal for multi-day cyclists. Fully marked.',
+    coords: [
+      [53.2014, 5.7995],
+      [53.1500, 5.8500],
+      [53.0500, 5.7500],
+      [53.0300, 5.6600],
+      [52.9400, 5.4000],
+      [52.9000, 5.4400],
+      [53.1000, 5.4200],
+      [53.1743, 5.4214],
+      [53.2014, 5.7995]
+    ],
+    externalUrl: 'https://www.friesland.nl/nl/ondernemers/elfstedentocht'
+  }
+];
+
 </script>
   <script>
 // Language state
@@ -2110,6 +2435,7 @@ function initMap() {
     zoom: 12,
     zoomControl: true,
   });
+  window._martenaMap = map;
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
@@ -2214,6 +2540,75 @@ function initMap() {
       desc_nl: 'Veerpont vanuit Holwerd naar het waddeneiland Ameland. ~45 min vaartijd.', desc_en: 'Ferry from Holwerd to the Wadden Island Ameland. ~45 min sailing time.' },
   ];
 
+  // Draw walking + cycling routes as polylines
+  const routeLayers = { walking: [], cycling: [] };
+
+  function buildRoutePopup(route, kind) {
+    const lang = currentLang;
+    const name = lang === 'en' ? route.name_en : route.name_nl;
+    const desc = lang === 'en' ? route.desc_en : route.desc_nl;
+    const dur = lang === 'en' ? route.duration_en : route.duration_nl;
+    const diff = lang === 'en' ? route.difficulty_en : route.difficulty_nl;
+    const linkLabel = lang === 'en' ? 'Open route →' : 'Open route →';
+    const catLabel = kind === 'walking' ? t('kaart.legend.wandelen') : t('kaart.legend.fietsen');
+
+    return `
+      <span class="popup-category">${catLabel}</span>
+      <h4>${name}</h4>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin:.35rem 0;">
+        <span style="background:#e8dff0;color:#7b5d8c;padding:.15rem .5rem;border-radius:999px;font-size:.7rem;font-weight:600;">${route.distance}</span>
+        <span style="background:#e8dff0;color:#7b5d8c;padding:.15rem .5rem;border-radius:999px;font-size:.7rem;font-weight:600;">${dur}</span>
+        <span style="background:#e8dff0;color:#7b5d8c;padding:.15rem .5rem;border-radius:999px;font-size:.7rem;font-weight:600;">${diff}</span>
+      </div>
+      <p style="margin:.35rem 0;font-size:.85rem;color:#5a4d5f;line-height:1.5;">${desc}</p>
+      <a href="${route.externalUrl}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.35rem;margin-top:.4rem;color:#7b5d8c;font-weight:600;font-size:.85rem;text-decoration:none;">${linkLabel}</a>
+    `;
+  }
+
+  function drawRoutes(routes, kind, color) {
+    if (typeof walkingRoutes === 'undefined') return;
+    routes.forEach(route => {
+      const line = L.polyline(route.coords, {
+        color: color,
+        weight: kind === 'walking' ? 5 : 4,
+        opacity: 0.75,
+        dashArray: kind === 'walking' ? '1,8' : null,
+        lineCap: 'round',
+        lineJoin: 'round',
+        className: `route-line route-${kind}`
+      }).addTo(map);
+
+      // Bigger invisible hit area for easier clicking
+      const hitLine = L.polyline(route.coords, {
+        color: '#000',
+        weight: 20,
+        opacity: 0
+      }).addTo(map);
+
+      const popupHtml = buildRoutePopup(route, kind);
+      line.bindPopup(popupHtml, { maxWidth: 300 });
+      hitLine.bindPopup(popupHtml, { maxWidth: 300 });
+
+      // Hover effect
+      hitLine.on('mouseover', () => {
+        line.setStyle({ weight: kind === 'walking' ? 7 : 6, opacity: 1 });
+      });
+      hitLine.on('mouseout', () => {
+        line.setStyle({ weight: kind === 'walking' ? 5 : 4, opacity: 0.75 });
+      });
+
+      routeLayers[kind].push({ line, hitLine, id: route.id });
+    });
+  }
+
+  if (typeof walkingRoutes !== 'undefined') {
+    drawRoutes(walkingRoutes, 'walking', '#8ba888');
+  }
+  if (typeof cyclingRoutes !== 'undefined') {
+    drawRoutes(cyclingRoutes, 'cycling', '#5a7055');
+  }
+  window._martenaRouteLayers = routeLayers;
+
   // Create markers with tracking for filtering
   const markers = [];
   poi.forEach(p => {
@@ -2237,6 +2632,21 @@ function initMap() {
         marker.addTo(map);
       } else {
         map.removeLayer(marker);
+      }
+    });
+    // Also toggle walking/cycling polylines
+    routeLayers.walking.forEach(({ line, hitLine }) => {
+      if (activeFilters.has('wandelen')) {
+        line.addTo(map); hitLine.addTo(map);
+      } else {
+        map.removeLayer(line); map.removeLayer(hitLine);
+      }
+    });
+    routeLayers.cycling.forEach(({ line, hitLine }) => {
+      if (activeFilters.has('fietsen')) {
+        line.addTo(map); hitLine.addTo(map);
+      } else {
+        map.removeLayer(line); map.removeLayer(hitLine);
       }
     });
   }
@@ -2264,12 +2674,92 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initNavbarScroll();
   initMap();
+  renderRouteLists();
+  initBackToTop();
 
   // Language buttons
   document.querySelectorAll('.lang-toggle button').forEach(btn => {
     btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang')));
   });
 });
+
+// Render route lists on the map page
+function renderRouteLists() {
+  const walkContainer = document.getElementById('walking-route-list');
+  const bikeContainer = document.getElementById('cycling-route-list');
+  if (!walkContainer && !bikeContainer) return;
+  if (typeof walkingRoutes === 'undefined') return;
+
+  function routeCard(route, kind) {
+    const lang = currentLang;
+    const name = lang === 'en' ? route.name_en : route.name_nl;
+    const desc = lang === 'en' ? route.desc_en : route.desc_nl;
+    const dur = lang === 'en' ? route.duration_en : route.duration_nl;
+    const diff = lang === 'en' ? route.difficulty_en : route.difficulty_nl;
+    const btnLabel = lang === 'en' ? 'Open route' : 'Open route';
+    const mapLabel = lang === 'en' ? 'Show on map' : 'Toon op kaart';
+    const icon = kind === 'walking' ? '🚶' : '🚴';
+    const color = kind === 'walking' ? '#8ba888' : '#5a7055';
+
+    return `
+      <article class="route-card" data-route-id="${route.id}" data-route-kind="${kind}">
+        <div class="route-card-header" style="border-left: 4px solid ${color};">
+          <span class="route-icon">${icon}</span>
+          <div>
+            <h4>${name}</h4>
+            <div class="route-meta">
+              <span class="meta-chip">${route.distance}</span>
+              <span class="meta-chip">${dur}</span>
+              <span class="meta-chip">${diff}</span>
+            </div>
+          </div>
+        </div>
+        <p class="route-desc">${desc}</p>
+        <div class="route-actions">
+          <button class="btn-route-focus" data-route-id="${route.id}" data-route-kind="${kind}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+            ${mapLabel}
+          </button>
+          <a href="${route.externalUrl}" target="_blank" rel="noopener" class="btn-route-open">
+            ${btnLabel}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </a>
+        </div>
+      </article>
+    `;
+  }
+
+  if (walkContainer) {
+    walkContainer.innerHTML = walkingRoutes.map(r => routeCard(r, 'walking')).join('');
+  }
+  if (bikeContainer) {
+    bikeContainer.innerHTML = cyclingRoutes.map(r => routeCard(r, 'cycling')).join('');
+  }
+
+  // Hook up "show on map" buttons - scroll to map and open popup
+  document.querySelectorAll('.btn-route-focus').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-route-id');
+      const kind = btn.getAttribute('data-route-kind');
+      const map = window._martenaMap;
+      const layers = window._martenaRouteLayers;
+      if (!map || !layers) return;
+      const match = layers[kind].find(l => l.id === id);
+      if (match) {
+        // Scroll map into view
+        document.getElementById('map').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Fit bounds to route
+        const routeData = (kind === 'walking' ? walkingRoutes : cyclingRoutes).find(r => r.id === id);
+        if (routeData) {
+          setTimeout(() => {
+            map.fitBounds(routeData.coords, { padding: [40, 40] });
+            match.line.openPopup();
+          }, 400);
+        }
+      }
+    });
+  });
+}
 
 // Back to top button
 function initBackToTop() {
@@ -2280,10 +2770,6 @@ function initBackToTop() {
   }, { passive: true });
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  initBackToTop();
-});
 
 </script>
 </body>

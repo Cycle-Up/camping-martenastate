@@ -126,6 +126,7 @@ function initMap() {
     zoom: 12,
     zoomControl: true,
   });
+  window._martenaMap = map;
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
@@ -230,6 +231,75 @@ function initMap() {
       desc_nl: 'Veerpont vanuit Holwerd naar het waddeneiland Ameland. ~45 min vaartijd.', desc_en: 'Ferry from Holwerd to the Wadden Island Ameland. ~45 min sailing time.' },
   ];
 
+  // Draw walking + cycling routes as polylines
+  const routeLayers = { walking: [], cycling: [] };
+
+  function buildRoutePopup(route, kind) {
+    const lang = currentLang;
+    const name = lang === 'en' ? route.name_en : route.name_nl;
+    const desc = lang === 'en' ? route.desc_en : route.desc_nl;
+    const dur = lang === 'en' ? route.duration_en : route.duration_nl;
+    const diff = lang === 'en' ? route.difficulty_en : route.difficulty_nl;
+    const linkLabel = lang === 'en' ? 'Open route →' : 'Open route →';
+    const catLabel = kind === 'walking' ? t('kaart.legend.wandelen') : t('kaart.legend.fietsen');
+
+    return `
+      <span class="popup-category">${catLabel}</span>
+      <h4>${name}</h4>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin:.35rem 0;">
+        <span style="background:#e8dff0;color:#7b5d8c;padding:.15rem .5rem;border-radius:999px;font-size:.7rem;font-weight:600;">${route.distance}</span>
+        <span style="background:#e8dff0;color:#7b5d8c;padding:.15rem .5rem;border-radius:999px;font-size:.7rem;font-weight:600;">${dur}</span>
+        <span style="background:#e8dff0;color:#7b5d8c;padding:.15rem .5rem;border-radius:999px;font-size:.7rem;font-weight:600;">${diff}</span>
+      </div>
+      <p style="margin:.35rem 0;font-size:.85rem;color:#5a4d5f;line-height:1.5;">${desc}</p>
+      <a href="${route.externalUrl}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.35rem;margin-top:.4rem;color:#7b5d8c;font-weight:600;font-size:.85rem;text-decoration:none;">${linkLabel}</a>
+    `;
+  }
+
+  function drawRoutes(routes, kind, color) {
+    if (typeof walkingRoutes === 'undefined') return;
+    routes.forEach(route => {
+      const line = L.polyline(route.coords, {
+        color: color,
+        weight: kind === 'walking' ? 5 : 4,
+        opacity: 0.75,
+        dashArray: kind === 'walking' ? '1,8' : null,
+        lineCap: 'round',
+        lineJoin: 'round',
+        className: `route-line route-${kind}`
+      }).addTo(map);
+
+      // Bigger invisible hit area for easier clicking
+      const hitLine = L.polyline(route.coords, {
+        color: '#000',
+        weight: 20,
+        opacity: 0
+      }).addTo(map);
+
+      const popupHtml = buildRoutePopup(route, kind);
+      line.bindPopup(popupHtml, { maxWidth: 300 });
+      hitLine.bindPopup(popupHtml, { maxWidth: 300 });
+
+      // Hover effect
+      hitLine.on('mouseover', () => {
+        line.setStyle({ weight: kind === 'walking' ? 7 : 6, opacity: 1 });
+      });
+      hitLine.on('mouseout', () => {
+        line.setStyle({ weight: kind === 'walking' ? 5 : 4, opacity: 0.75 });
+      });
+
+      routeLayers[kind].push({ line, hitLine, id: route.id });
+    });
+  }
+
+  if (typeof walkingRoutes !== 'undefined') {
+    drawRoutes(walkingRoutes, 'walking', '#8ba888');
+  }
+  if (typeof cyclingRoutes !== 'undefined') {
+    drawRoutes(cyclingRoutes, 'cycling', '#5a7055');
+  }
+  window._martenaRouteLayers = routeLayers;
+
   // Create markers with tracking for filtering
   const markers = [];
   poi.forEach(p => {
@@ -253,6 +323,21 @@ function initMap() {
         marker.addTo(map);
       } else {
         map.removeLayer(marker);
+      }
+    });
+    // Also toggle walking/cycling polylines
+    routeLayers.walking.forEach(({ line, hitLine }) => {
+      if (activeFilters.has('wandelen')) {
+        line.addTo(map); hitLine.addTo(map);
+      } else {
+        map.removeLayer(line); map.removeLayer(hitLine);
+      }
+    });
+    routeLayers.cycling.forEach(({ line, hitLine }) => {
+      if (activeFilters.has('fietsen')) {
+        line.addTo(map); hitLine.addTo(map);
+      } else {
+        map.removeLayer(line); map.removeLayer(hitLine);
       }
     });
   }
@@ -280,12 +365,92 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initNavbarScroll();
   initMap();
+  renderRouteLists();
+  initBackToTop();
 
   // Language buttons
   document.querySelectorAll('.lang-toggle button').forEach(btn => {
     btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang')));
   });
 });
+
+// Render route lists on the map page
+function renderRouteLists() {
+  const walkContainer = document.getElementById('walking-route-list');
+  const bikeContainer = document.getElementById('cycling-route-list');
+  if (!walkContainer && !bikeContainer) return;
+  if (typeof walkingRoutes === 'undefined') return;
+
+  function routeCard(route, kind) {
+    const lang = currentLang;
+    const name = lang === 'en' ? route.name_en : route.name_nl;
+    const desc = lang === 'en' ? route.desc_en : route.desc_nl;
+    const dur = lang === 'en' ? route.duration_en : route.duration_nl;
+    const diff = lang === 'en' ? route.difficulty_en : route.difficulty_nl;
+    const btnLabel = lang === 'en' ? 'Open route' : 'Open route';
+    const mapLabel = lang === 'en' ? 'Show on map' : 'Toon op kaart';
+    const icon = kind === 'walking' ? '🚶' : '🚴';
+    const color = kind === 'walking' ? '#8ba888' : '#5a7055';
+
+    return `
+      <article class="route-card" data-route-id="${route.id}" data-route-kind="${kind}">
+        <div class="route-card-header" style="border-left: 4px solid ${color};">
+          <span class="route-icon">${icon}</span>
+          <div>
+            <h4>${name}</h4>
+            <div class="route-meta">
+              <span class="meta-chip">${route.distance}</span>
+              <span class="meta-chip">${dur}</span>
+              <span class="meta-chip">${diff}</span>
+            </div>
+          </div>
+        </div>
+        <p class="route-desc">${desc}</p>
+        <div class="route-actions">
+          <button class="btn-route-focus" data-route-id="${route.id}" data-route-kind="${kind}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+            ${mapLabel}
+          </button>
+          <a href="${route.externalUrl}" target="_blank" rel="noopener" class="btn-route-open">
+            ${btnLabel}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </a>
+        </div>
+      </article>
+    `;
+  }
+
+  if (walkContainer) {
+    walkContainer.innerHTML = walkingRoutes.map(r => routeCard(r, 'walking')).join('');
+  }
+  if (bikeContainer) {
+    bikeContainer.innerHTML = cyclingRoutes.map(r => routeCard(r, 'cycling')).join('');
+  }
+
+  // Hook up "show on map" buttons - scroll to map and open popup
+  document.querySelectorAll('.btn-route-focus').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-route-id');
+      const kind = btn.getAttribute('data-route-kind');
+      const map = window._martenaMap;
+      const layers = window._martenaRouteLayers;
+      if (!map || !layers) return;
+      const match = layers[kind].find(l => l.id === id);
+      if (match) {
+        // Scroll map into view
+        document.getElementById('map').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Fit bounds to route
+        const routeData = (kind === 'walking' ? walkingRoutes : cyclingRoutes).find(r => r.id === id);
+        if (routeData) {
+          setTimeout(() => {
+            map.fitBounds(routeData.coords, { padding: [40, 40] });
+            match.line.openPopup();
+          }, 400);
+        }
+      }
+    });
+  });
+}
 
 // Back to top button
 function initBackToTop() {
@@ -296,7 +461,3 @@ function initBackToTop() {
   }, { passive: true });
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  initBackToTop();
-});

@@ -148,6 +148,36 @@
         </div>
       </div>
 
+      <!-- Wandelroutes lijst -->
+      <div style="margin-top: var(--space-xl);">
+        <div class="routes-section-header">
+          <div class="route-badge">🚶</div>
+          <div>
+            <span class="section-eyebrow">Klik op een route</span>
+            <h2 style="margin:0;">Wandelroutes</h2>
+          </div>
+        </div>
+        <p style="color: var(--color-text-soft); margin-bottom: var(--space-md); max-width:640px;">Klik op een route op de kaart of in de lijst hieronder om meer te lezen. Met "Open route" ga je direct naar de routebeschrijving in Google Maps of bij de routebeheerder.</p>
+        <div id="walking-route-list" class="route-list">
+          <!-- Routes worden dynamisch ingeladen -->
+        </div>
+      </div>
+
+      <!-- Fietsroutes lijst -->
+      <div style="margin-top: var(--space-xl);">
+        <div class="routes-section-header">
+          <div class="route-badge" style="background: rgba(184,204,181,0.4); color: var(--color-moss);">🚴</div>
+          <div>
+            <span class="section-eyebrow">Fiets in de buurt</span>
+            <h2 style="margin:0;">Fietsroutes</h2>
+          </div>
+        </div>
+        <p style="color: var(--color-text-soft); margin-bottom: var(--space-md); max-width:640px;">Van korte lussen tot meerdaagse tochten. Volg de knooppunten of open de route direct in Google Maps.</p>
+        <div id="cycling-route-list" class="route-list">
+          <!-- Routes worden dynamisch ingeladen -->
+        </div>
+      </div>
+
       <!-- Afstandstabel -->
       <div class="info-section fade-in" style="margin-top: var(--space-xl);">
         <h3>
@@ -206,14 +236,14 @@
     </div>
   </footer>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/mbng=" crossorigin=""></script>
-
   <!-- Back to top -->
   <button class="back-to-top" aria-label="Terug naar boven" id="backToTop">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
   </button>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/mbng=" crossorigin=""></script>
   <script src="js/translations.js"></script>
+  <script src="js/routes.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

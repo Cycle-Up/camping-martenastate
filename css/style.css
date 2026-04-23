@@ -1168,3 +1168,135 @@ section {
 .map-filter-btn:not(.active) {
   opacity: 0.55;
 }
+
+/* ===== Route list cards ===== */
+.route-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.route-card {
+  background: var(--color-soft-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(201,184,212,0.15);
+  transition: all var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+}
+
+.route-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.route-card-header {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding-left: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.route-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.route-card h4 {
+  margin-bottom: 0.4rem;
+  font-size: 1.15rem;
+  color: var(--color-aubergine);
+}
+
+.route-meta {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.route-desc {
+  margin: 0 0 1rem 0;
+  font-size: 0.9rem;
+  color: var(--color-text-soft);
+  flex-grow: 1;
+}
+
+.route-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.btn-route-focus,
+.btn-route-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-pill);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn-route-focus {
+  background: transparent;
+  border: 1.5px solid var(--color-stone);
+  color: var(--color-text-soft);
+}
+.btn-route-focus:hover {
+  border-color: var(--color-crocus);
+  color: var(--color-crocus);
+}
+
+.btn-route-open {
+  background: var(--color-crocus);
+  border: 1.5px solid var(--color-crocus);
+  color: white;
+}
+.btn-route-open:hover {
+  background: var(--color-aubergine);
+  border-color: var(--color-aubergine);
+  color: white;
+}
+
+/* Route polyline hover */
+.route-line {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+/* Routes section */
+.routes-section {
+  background: linear-gradient(180deg, var(--color-warm-white) 0%, var(--color-cream) 100%);
+  padding: var(--space-xl) 0;
+}
+
+.routes-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: var(--space-sm);
+}
+
+.routes-section-header .route-badge {
+  background: var(--color-lavender-soft);
+  color: var(--color-crocus);
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
