@@ -1,5 +1,12 @@
-// Language state
-let currentLang = localStorage.getItem('lang') || 'nl';
+// Language state — guard against localStorage being unavailable (file://, private mode)
+function safeGet(key) {
+  try { return window.localStorage.getItem(key); } catch (e) { return null; }
+}
+function safeSet(key, val) {
+  try { window.localStorage.setItem(key, val); } catch (e) { /* ignore */ }
+}
+
+let currentLang = safeGet('lang') || 'nl';
 
 function t(key) {
   return (translations[currentLang] && translations[currentLang][key]) || key;
@@ -24,11 +31,12 @@ function applyTranslations() {
 
 function setLang(lang) {
   currentLang = lang;
-  localStorage.setItem('lang', lang);
+  safeSet('lang', lang);
   applyTranslations();
   // Refresh dynamic content that depends on language
   if (typeof initTodayWidget === 'function') initTodayWidget();
   if (typeof renderRouteLists === 'function') renderRouteLists();
+  if (typeof window._martenaRefreshMapLang === 'function') window._martenaRefreshMapLang();
 }
 
 // Mobile nav toggle
@@ -96,6 +104,12 @@ function initTabs() {
 
 // Fade-in on scroll
 function initScrollAnimations() {
+  // Fallback for environments without IntersectionObserver (very old browsers
+  // or test environments) — show all elements immediately.
+  if (typeof IntersectionObserver === 'undefined') {
+    document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+    return;
+  }
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -151,9 +165,9 @@ function initMap() {
   const categoryConfig = {
     home:      { color: '#7b5d8c', emoji: '🏕️', pulse: true },
     eat:       { color: '#d4a843', emoji: '🍽️' },
-    shop:      { color: '#a890b8', emoji: '🛒' },
-    sight:     { color: '#7a9e7e', emoji: '⭐' },
-    transport: { color: '#5a7055', emoji: '🅿️' },
+    shop:      { color: '#c9b8d4', emoji: '🛒' },
+    sight:     { color: '#a890b8', emoji: '⭐' },
+    transport: { color: '#8ba888', emoji: '🅿️' },
   };
 
   const iconCache = {};
@@ -165,8 +179,8 @@ function initMap() {
     return iconCache[cat];
   }
 
-  // Route polylines
-  const routeLayers = { walking: [], cycling: [] };
+  // Helpers — popup HTML builders (rebuilt on language change)
+  const chip = (txt) => `<span style="background:#e8dff0;color:#7b5d8c;padding:.15rem .5rem;border-radius:999px;font-size:.7rem;font-weight:600;">${txt}</span>`;
 
   function buildRoutePopup(route, kind) {
     const name = currentLang === 'en' ? route.name_en : route.name_nl;
@@ -174,15 +188,31 @@ function initMap() {
     const dur = currentLang === 'en' ? route.duration_en : route.duration_nl;
     const diff = currentLang === 'en' ? route.difficulty_en : route.difficulty_nl;
     const catLabel = kind === 'walking' ? t('kaart.filter.wandelen') : t('kaart.filter.fietsen');
-    const chip = (txt) => `<span style="background:#e8dff0;color:#7b5d8c;padding:.15rem .5rem;border-radius:999px;font-size:.7rem;font-weight:600;">${txt}</span>`;
+    const linkLabel = currentLang === 'en' ? 'Open route →' : 'Open route →';
     return `
       <span class="popup-category">${catLabel}</span>
       <h4>${name}</h4>
       <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin:.35rem 0;">${chip(route.distance)}${chip(dur)}${chip(diff)}</div>
       <p style="margin:.35rem 0;font-size:.85rem;color:#5a4d5f;line-height:1.5;">${desc}</p>
-      <a href="${route.externalUrl}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.35rem;margin-top:.4rem;color:#7b5d8c;font-weight:600;font-size:.85rem;text-decoration:none;">Open route →</a>
+      <a href="${route.externalUrl}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.35rem;margin-top:.4rem;color:#7b5d8c;font-weight:600;font-size:.85rem;text-decoration:none;">${linkLabel}</a>
     `;
   }
+
+  function buildPlacePopup(place) {
+    const name = currentLang === 'en' ? place.name_en : place.name_nl;
+    const desc = currentLang === 'en' ? place.desc_en : place.desc_nl;
+    const addr = currentLang === 'en' ? (place.addr_en || '') : (place.addr_nl || '');
+    const badge = place.badge_nl ? (currentLang === 'en' ? place.badge_en : place.badge_nl) : '';
+    const badgeHtml = badge ? `<span style="background:#e8dff0;color:#7b5d8c;padding:.15rem .5rem;border-radius:999px;font-size:.7rem;font-weight:600;margin-bottom:.4rem;display:inline-block;">${badge}</span> ` : '';
+    const addrHtml = addr ? `<div style="font-size:.78rem;color:#8a7d8f;margin-top:.3rem;">${addr}</div>` : '';
+    const linkLabel = currentLang === 'en' ? 'Open in Maps →' : 'Open in Maps →';
+    const linkHtml = place.externalUrl ? `<a href="${place.externalUrl}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.35rem;margin-top:.5rem;color:#7b5d8c;font-weight:600;font-size:.8rem;text-decoration:none;">${linkLabel}</a>` : '';
+    const catFilter = t(`kaart.filter.${place.category}`);
+    return `<span class="popup-category">${catFilter}</span><h4>${name}</h4>${badgeHtml}<p style="margin:.3rem 0;font-size:.85rem;color:#5a4d5f;line-height:1.5;">${desc}</p>${addrHtml}${linkHtml}`;
+  }
+
+  // Route polylines
+  const routeLayers = { walking: [], cycling: [] };
 
   function drawRoutes(routes, kind, color) {
     if (typeof routes === 'undefined') return;
@@ -200,7 +230,7 @@ function initMap() {
       hitLine.bindPopup(popup, { maxWidth: 300 });
       hitLine.on('mouseover', () => line.setStyle({ weight: kind === 'walking' ? 7 : 6, opacity: 1 }));
       hitLine.on('mouseout', () => line.setStyle({ weight: kind === 'walking' ? 5 : 4, opacity: 0.75 }));
-      routeLayers[kind].push({ line, hitLine, id: route.id });
+      routeLayers[kind].push({ line, hitLine, route, kind, id: route.id });
     });
   }
 
@@ -212,24 +242,29 @@ function initMap() {
   const placeMarkers = [];
   if (typeof mapPlaces !== 'undefined') {
     mapPlaces.forEach(place => {
-      const name = currentLang === 'en' ? place.name_en : place.name_nl;
-      const desc = currentLang === 'en' ? place.desc_en : place.desc_nl;
-      const addr = currentLang === 'en' ? (place.addr_en || '') : (place.addr_nl || '');
-      const badge = place.badge_nl ? (currentLang === 'en' ? place.badge_en : place.badge_nl) : '';
-
-      const badgeHtml = badge ? `<span style="background:#e8dff0;color:#7b5d8c;padding:.15rem .5rem;border-radius:999px;font-size:.7rem;font-weight:600;margin-bottom:.4rem;display:inline-block;">${badge}</span> ` : '';
-      const addrHtml = addr ? `<div style="font-size:.78rem;color:#8a7d8f;margin-top:.3rem;">${addr}</div>` : '';
-      const linkHtml = place.externalUrl ? `<a href="${place.externalUrl}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.35rem;margin-top:.5rem;color:#7b5d8c;font-weight:600;font-size:.8rem;text-decoration:none;">${currentLang === 'en' ? 'Open in Maps →' : 'Open in Maps →'}</a>` : '';
-
-      const catFilter = currentLang === 'en' ? t(`kaart.filter.${place.category}`) : t(`kaart.filter.${place.category}`);
-      const popupHtml = `<span class="popup-category">${catFilter}</span><h4>${name}</h4>${badgeHtml}<p style="margin:.3rem 0;font-size:.85rem;color:#5a4d5f;line-height:1.5;">${desc}</p>${addrHtml}${linkHtml}`;
-
       const marker = L.marker(place.coord, { icon: getIcon(place.category) })
         .addTo(map)
-        .bindPopup(popupHtml, { maxWidth: 300 });
-      placeMarkers.push({ marker, category: place.category, id: place.id });
+        .bindPopup(buildPlacePopup(place), { maxWidth: 300 });
+      placeMarkers.push({ marker, category: place.category, place, id: place.id });
     });
   }
+
+  // Expose a refresh function so language toggle can update popups
+  window._martenaRefreshMapLang = function () {
+    placeMarkers.forEach(({ marker, place }) => {
+      marker.setPopupContent(buildPlacePopup(place));
+    });
+    routeLayers.walking.forEach(({ line, hitLine, route, kind }) => {
+      const html = buildRoutePopup(route, kind);
+      line.setPopupContent(html);
+      hitLine.setPopupContent(html);
+    });
+    routeLayers.cycling.forEach(({ line, hitLine, route, kind }) => {
+      const html = buildRoutePopup(route, kind);
+      line.setPopupContent(html);
+      hitLine.setPopupContent(html);
+    });
+  };
 
   // Unified filter state — all categories active by default
   const activeFilters = new Set(['home', 'eat', 'shop', 'sight', 'transport', 'wandelen', 'fietsen']);
@@ -285,8 +320,15 @@ function initMap() {
   }
 }
 
+// Expose key functions on window for debugging and testing
+if (typeof window !== 'undefined') {
+  window.setLang = setLang;
+  window.t = t;
+  window.applyTranslations = applyTranslations;
+}
+
 // Init everything
-document.addEventListener('DOMContentLoaded', () => {
+function bootMartenastate() {
   applyTranslations();
   initNav();
   initTabs();
@@ -297,12 +339,21 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackToTop();
   initCopyable();
   initTodayWidget();
+  initShare();
+  initSmoothAnchors();
 
   // Language buttons
   document.querySelectorAll('.lang-toggle button').forEach(btn => {
     btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang')));
   });
-});
+}
+
+// If DOMContentLoaded already fired (script loaded late), boot immediately
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootMartenastate);
+} else {
+  bootMartenastate();
+}
 
 // Render route lists on the map page
 function renderRouteLists() {
@@ -510,4 +561,44 @@ function initTodayWidget() {
     tipEl.setAttribute('data-i18n', tipKey);
     tipEl.textContent = t(tipKey);
   }
+}
+
+// Share button — uses Web Share API on mobile, falls back to clipboard
+function initShare() {
+  const btns = document.querySelectorAll('[data-share]');
+  if (!btns.length) return;
+  btns.forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const url = btn.getAttribute('data-share-url') || window.location.href;
+      const title = btn.getAttribute('data-share-title') || document.title;
+      const text = btn.getAttribute('data-share-text') || '';
+      if (navigator.share) {
+        try { await navigator.share({ title, text, url }); } catch (e) { /* user cancelled */ }
+      } else {
+        try {
+          await navigator.clipboard.writeText(url);
+          showToast(t('toast.copied'));
+        } catch (e) { /* ignore */ }
+      }
+    });
+  });
+}
+
+// Smooth-scroll for in-page anchor links (with header offset)
+function initSmoothAnchors() {
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === '#' || href.length < 2) return;
+    link.addEventListener('click', (e) => {
+      const target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      const navHeight = 80;
+      const top = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+      window.scrollTo({ top, behavior: 'smooth' });
+      // Update URL without scroll
+      history.pushState(null, '', href);
+    });
+  });
 }

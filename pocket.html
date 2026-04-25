@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pocket-guide — Martenastate</title>
+  <meta name="description" content="Pocket-guide ter download. De praktische info uit de welkomstgids — geschikt om af te drukken op A4.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .pocket-page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 6rem var(--space-md) var(--space-xl);
+    }
+    .pocket-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: var(--space-lg);
+      padding-bottom: var(--space-md);
+      border-bottom: 1px dashed rgba(123,93,140,0.2);
+    }
+    .pocket-section {
+      margin-bottom: var(--space-lg);
+      page-break-inside: avoid;
+    }
+    .pocket-section h2 {
+      font-size: 1.5rem;
+      color: var(--color-aubergine);
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid var(--color-lavender-soft);
+    }
+    .pocket-section h3 {
+      font-size: 1.1rem;
+      margin: 1rem 0 0.4rem;
+      color: var(--color-crocus);
+    }
+    .pocket-grid {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 0.5rem 1rem;
+      font-size: 0.95rem;
+    }
+    .pocket-grid dt {
+      font-weight: 600;
+      color: var(--color-text-soft);
+    }
+    .pocket-grid dd {
+      margin: 0;
+      color: var(--color-aubergine);
+    }
+    .pocket-tips ol {
+      padding-left: 1.5rem;
+      font-size: 0.95rem;
+    }
+    .pocket-tips ol li {
+      margin-bottom: 0.4rem;
+      line-height: 1.5;
+    }
+    .pocket-emergency {
+      background: linear-gradient(135deg, rgba(218,114,114,0.1) 0%, rgba(255,255,255,0.5) 100%);
+      border: 1px solid rgba(218,114,114,0.25);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+    @media print {
+      .pocket-actions, nav.navbar, .mobile-action-bar, .back-to-top, footer.footer { display: none !important; }
+      body { background: white; }
+      .pocket-page { padding: 1rem; max-width: 100%; }
+      .pocket-section { page-break-inside: avoid; margin-bottom: 1.5rem; }
+      .pocket-section h2 { font-size: 1.3rem; }
+      a { color: black; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" role="navigation">
+    <div class="navbar-inner">
+      <a href="index.html" class="brand" aria-label="Martenastate home">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M16 3 C16 3 8 9 8 17 C8 21.4 11.6 25 16 25 C20.4 25 24 21.4 24 17 C24 9 16 3 16 3Z" fill="currentColor" opacity="0.2"/>
+          <path d="M16 6 C13 10 10 13 10 17 C10 20.3 12.7 23 16 23 C19.3 23 22 20.3 22 17 C22 13 19 10 16 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <line x1="16" y1="23" x2="16" y2="29" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="12" y1="27" x2="20" y2="27" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        Martenastate
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="verblijf.html" data-i18n="nav.verblijf">Verblijf</a></li>
+        <li><a href="omgeving.html" data-i18n="nav.omgeving">Omgeving</a></li>
+        <li><a href="kaart.html" data-i18n="nav.kaart">Kaart</a></li>
+        <li>
+          <div class="lang-toggle" role="group" aria-label="Taal kiezen">
+            <button data-lang="nl" class="active">NL</button>
+            <button data-lang="en">EN</button>
+          </div>
+        </li>
+      </ul>
+      <button class="menu-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="nav-links">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <main class="pocket-page">
+
+    <header style="margin-bottom: var(--space-lg);">
+      <span class="section-eyebrow" style="font-size:1.5rem;">Pocket-guide</span>
+      <h1 style="margin: .5rem 0 1rem;" data-i18n="pocket.title">Pocket-guide — Welkom bij Martenastate</h1>
+      <p style="color: var(--color-text-soft); max-width: 600px;" data-i18n="pocket.intro">Een eenvoudig overzicht van alle praktische info — geschikt om af te drukken op A4 en mee te nemen.</p>
+    </header>
+
+    <div class="pocket-actions">
+      <button class="btn btn-primary" onclick="window.print()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><polyline points="6 14 6 22 18 22 18 14"/></svg>
+        Print / Opslaan als PDF
+      </button>
+      <button class="btn btn-outline" data-share data-share-title="Welkom bij Martenastate" data-share-text="Onze gids voor je verblijf op Martenastate">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+        Deel de gids
+      </button>
+      <a href="index.html" class="btn btn-outline">← Terug naar de gids</a>
+    </div>
+
+    <section class="pocket-section">
+      <h2>Adres & contact</h2>
+      <dl class="pocket-grid">
+        <dt>Adres</dt><dd>Martenawei 2, 9056 PE Koarnjum</dd>
+        <dt>Camping</dt><dd>De Wier 7A, 9056 PM Koarnjum</dd>
+        <dt>Beheerder</dt><dd>Robin Alkema · +31 6 83 60 65 21 (WhatsApp welkom)</dd>
+        <dt>Website</dt><dd>martenastate.nl</dd>
+        <dt>Noodnummer</dt><dd>112 (algemeen) · 058-257 1969 (huisarts Stiens)</dd>
+      </dl>
+    </section>
+
+    <section class="pocket-section">
+      <h2>Praktisch tijdens je verblijf</h2>
+      <dl class="pocket-grid">
+        <dt>WiFi-netwerk</dt><dd>Martenastate-Gast</dd>
+        <dt>WiFi-wachtwoord</dt><dd>MartenastateGast2024</dd>
+        <dt>Check-in</dt><dd>Vanaf 15:00 (eerder in overleg)</dd>
+        <dt>Check-out</dt><dd>Vóór 11:00</dd>
+        <dt>Parkeren</dt><dd>Bij hoofdingang landgoed (gratis)</dd>
+        <dt>Kraanwater</dt><dd>Drinkbaar — vul gerust je drinkfles</dd>
+        <dt>Open vuur</dt><dd>Niet op de grond. Gas-bbq of vuurschaal op poten mag wel.</dd>
+        <dt>Honden</dt><dd>Welkom op de camping (aangelijnd). B&B in overleg.</dd>
+      </dl>
+    </section>
+
+    <section class="pocket-section">
+      <h2>Túnmanswente — koffie & lunch op het landgoed</h2>
+      <dl class="pocket-grid">
+        <dt>Vrijdag</dt><dd>13:00 – 17:00</dd>
+        <dt>Zaterdag</dt><dd>11:00 – 17:00</dd>
+        <dt>Zondag</dt><dd>11:00 – 17:00</dd>
+        <dt>Seizoen</dt><dd>27 maart – 25 oktober</dd>
+        <dt>Website</dt><dd>tunmanswente.nl</dd>
+      </dl>
+    </section>
+
+    <section class="pocket-section">
+      <h2>Onze topkijken in de buurt</h2>
+      <h3>🚶 Wandelen</h3>
+      <ul style="font-size:.95rem; padding-left:1.2rem;">
+        <li>Ochtendrondje door het park (~1,5 km)</li>
+        <li>Middagwandeling naar Jelsum (~4 km heen & terug)</li>
+        <li>Wandeling naar Leeuwarden via fietspaden (~5,5 km)</li>
+        <li>Jabikspaad — pelgrimsroute, stempel bij Túnmanswente</li>
+      </ul>
+      <h3>🚴 Fietsen</h3>
+      <ul style="font-size:.95rem; padding-left:1.2rem;">
+        <li>Naar Leeuwarden centrum (~10 km h&t)</li>
+        <li>Middelzee-route via knooppunten (~20 km)</li>
+        <li>Naar Stiens voor boodschappen (~8 km h&t)</li>
+        <li>Naar Dokkum (~50 km h&t)</li>
+      </ul>
+      <h3>🍽️ Eten in Leeuwarden (5 km)</h3>
+      <ul style="font-size:.95rem; padding-left:1.2rem;">
+        <li>Wouters — sfeervol, lunch & diner (€€)</li>
+        <li>De Grietenij — eetcafé, Friese keuken (€€)</li>
+        <li>Waag — koffie/lunch met uitzicht op Oldehove (€)</li>
+        <li>Bakkerij Stiens — verse broden, oranjekoek (€)</li>
+      </ul>
+      <h3>🏛️ Bezienswaardigheden</h3>
+      <ul style="font-size:.95rem; padding-left:1.2rem;">
+        <li>Fries Museum (5 km, Wilhelminaplein)</li>
+        <li>Oldehove — scheve toren van Leeuwarden</li>
+        <li>Museum Princessehof — keramiek & Mata Hari</li>
+        <li>Dokkum — omwald stadje (30 km)</li>
+        <li>Harlingen & Waddenzee (UNESCO, 35 km)</li>
+      </ul>
+    </section>
+
+    <section class="pocket-section">
+      <h2>Afstanden vanaf Martenastate</h2>
+      <dl class="pocket-grid">
+        <dt>Leeuwarden centrum</dt><dd>5 km · 15 min fietsen · 10 min auto</dd>
+        <dt>Stiens (supermarkt)</dt><dd>4 km · 10 min fietsen</dd>
+        <dt>Dokkum</dt><dd>30 km · 35 min auto</dd>
+        <dt>Harlingen / Waddenzee</dt><dd>35 km · 40 min auto</dd>
+        <dt>Sneek / Friese Meren</dt><dd>35 km · 40 min auto</dd>
+        <dt>Veerboot Ameland (Holwerd)</dt><dd>25 km + 45 min pont</dd>
+      </dl>
+    </section>
+
+    <div class="pocket-emergency pocket-section">
+      <h2 style="border:none; margin-bottom:.5rem;">Bij nood</h2>
+      <p style="margin:0; font-size:.95rem;"><strong>Algemeen alarmnummer:</strong> 112<br>
+      <strong>Huisartsenpost Stiens:</strong> 058-257 1969<br>
+      <strong>Robin Alkema (beheerder):</strong> +31 6 83 60 65 21<br><br>
+      Bij minder dringende zaken: bel of app Robin (bij voorkeur vóór 22:00).</p>
+    </div>
+
+  </main>
+
+  <!-- Mobile action bar -->
+  <nav class="mobile-action-bar" aria-label="Snelle acties">
+    <a href="tel:+31636606521" aria-label="Bellen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span data-i18n="action.call">Bellen</span>
+    </a>
+    <a href="https://maps.google.com/?q=Martenawei+2,+9056+PE+Koarnjum" target="_blank" rel="noopener" aria-label="Route">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+      <span data-i18n="action.route">Route</span>
+    </a>
+    <a href="kaart.html" aria-label="Kaart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+      <span data-i18n="action.map">Kaart</span>
+    </a>
+    <a href="verblijf.html#faq" aria-label="FAQ">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <span data-i18n="action.faq">Vragen</span>
+    </a>
+  </nav>
+
+  <!-- Toast for share/copy feedback -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/translations.js"></script>
+  <script src="js/main.js"></script>
+  <script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js").catch(()=>{})}</script>
+</body>
+</html>

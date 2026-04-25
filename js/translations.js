@@ -357,6 +357,18 @@ const translations = {
 
     // Eten
     "eten.tunman.full": "Direct op het landgoed, op loopafstand. Verse koffie, zelfgemaakte appeltaart, broodjes en een theetuin met uitzicht op het park.",
+
+    // Share / pocket guide
+    "share.eyebrow": "Voor onderweg",
+    "share.title": "Neem de gids overal mee",
+    "share.text": "Deel de link met je reisgenoten of bewaar 'm op je telefoon. De gids werkt ook offline — handig in het park of bij slecht signaal.",
+    "share.btn.share": "Deel de gids",
+    "share.btn.print": "Pocket-guide afdrukken",
+    "share.tip": "Tip: voeg de gids toe aan je startscherm voor één-tik-toegang (browser-menu › 'Toevoegen aan startscherm').",
+
+    // Pocket guide
+    "pocket.title": "Pocket-guide — Welkom bij Martenastate",
+    "pocket.intro": "Een eenvoudig overzicht van alle praktische info — geschikt om af te drukken op A4 en mee te nemen.",
   },
 
   en: {
@@ -717,5 +729,17 @@ const translations = {
 
     // Eten
     "eten.tunman.full": "Right on the estate, within walking distance. Fresh coffee, home-made apple pie, sandwiches and a tea garden with views over the park.",
+
+    // Share / pocket guide
+    "share.eyebrow": "On the go",
+    "share.title": "Take the guide with you",
+    "share.text": "Share the link with your travel companions or save it on your phone. The guide also works offline — useful in the park or with weak signal.",
+    "share.btn.share": "Share the guide",
+    "share.btn.print": "Print pocket guide",
+    "share.tip": "Tip: add the guide to your home screen for one-tap access (browser menu › 'Add to home screen').",
+
+    // Pocket guide
+    "pocket.title": "Pocket guide — Welcome to Martenastate",
+    "pocket.intro": "A simple overview of all practical info — suitable for printing on A4 and taking with you.",
   }
 };
