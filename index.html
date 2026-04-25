@@ -416,6 +416,78 @@
     </div>
   </section>
 
+  <!-- Dag-inspiratie: "Wat ga je doen vandaag?" -->
+  <section class="section-tinted">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-eyebrow" data-i18n="dayplan.eyebrow">Kies je dag</span>
+        <h2 data-i18n="dayplan.title">Wat ga je vandaag doen?</h2>
+        <p data-i18n="dayplan.subtitle">Van rustige ochtend tot volle dag actie — voor elk humeur een perfecte combinatie.</p>
+      </div>
+
+      <div class="dayplan-grid">
+        <div class="dayplan-card fade-in">
+          <div class="dayplan-badge dayplan-easy">🌿 Rustig</div>
+          <h4 data-i18n="dayplan.slow.title">Langzame dag</h4>
+          <ol class="dayplan-list">
+            <li data-i18n="dayplan.slow.1">Koffie bij Túnmanswente (za/zo 11u, vr 13u)</li>
+            <li data-i18n="dayplan.slow.2">Wandeling door het park (~45 min)</li>
+            <li data-i18n="dayplan.slow.3">Lunch op je eigen stek</li>
+            <li data-i18n="dayplan.slow.4">Middagdutje of boek lezen in het gras</li>
+            <li data-i18n="dayplan.slow.5">Zonsondergang op het terrein</li>
+          </ol>
+          <div class="dayplan-time">⏱ Halve dag of minder</div>
+        </div>
+
+        <div class="dayplan-card fade-in">
+          <div class="dayplan-badge dayplan-active">🚴 Actief</div>
+          <h4 data-i18n="dayplan.active.title">Fietsen naar Leeuwarden</h4>
+          <ol class="dayplan-list">
+            <li data-i18n="dayplan.active.1">Vertrek 9:00 — knooppunt 10 → 11 → 13</li>
+            <li data-i18n="dayplan.active.2">Koffie bij de Waag (bij Oldehove)</li>
+            <li data-i18n="dayplan.active.3">Fries Museum of Oldehove beklimmen</li>
+            <li data-i18n="dayplan.active.4">Lunch op Wilhelminaplein (markt op za)</li>
+            <li data-i18n="dayplan.active.5">Terugfietsen andere route langs kanaal</li>
+          </ol>
+          <div class="dayplan-time">⏱ Hele dag · 20–30 km totaal</div>
+        </div>
+
+        <div class="dayplan-card fade-in">
+          <div class="dayplan-badge dayplan-explore">⚓ Daguitje</div>
+          <h4 data-i18n="dayplan.explore.title">Waddenzee & Harlingen</h4>
+          <ol class="dayplan-list">
+            <li data-i18n="dayplan.explore.1">Auto: 35 km naar Harlingen (~40 min)</li>
+            <li data-i18n="dayplan.explore.2">Haven verkennen, koffie bij de kade</li>
+            <li data-i18n="dayplan.explore.3">Lunch in Harlingen centrum</li>
+            <li data-i18n="dayplan.explore.4">Pieterspad langs de Waddendijk</li>
+            <li data-i18n="dayplan.explore.5">Terug voor zonsondergang op het terrein</li>
+          </ol>
+          <div class="dayplan-time">⏱ Hele dag · auto vereist</div>
+        </div>
+
+        <div class="dayplan-card fade-in">
+          <div class="dayplan-badge dayplan-culture">🏛 Cultuur</div>
+          <h4 data-i18n="dayplan.culture.title">Leeuwarden voor cultuurliefhebbers</h4>
+          <ol class="dayplan-list">
+            <li data-i18n="dayplan.culture.1">Ochtend: Fries Museum (open di–zo 11u)</li>
+            <li data-i18n="dayplan.culture.2">Lunch bij Marktzijde naast het museum</li>
+            <li data-i18n="dayplan.culture.3">Museum Princessehof (keramiek & Mata Hari)</li>
+            <li data-i18n="dayplan.culture.4">Wandeling langs historische grachten</li>
+            <li data-i18n="dayplan.culture.5">Diner in het centrum (reserveer op tijd!)</li>
+          </ol>
+          <div class="dayplan-time">⏱ Hele dag · 5 km fietsen</div>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top: var(--space-lg);">
+        <a href="kaart.html" class="btn btn-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+          <span data-i18n="dayplan.map.link">Bekijk alle routes op de kaart</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <div class="flower-divider" aria-hidden="true">✿ ✾ ✿</div>
 
   <!-- Onze tips -->
@@ -551,5 +623,6 @@
 
   <script src="js/translations.js"></script>
   <script src="js/main.js"></script>
+  <script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js").catch(()=>{})}</script>
 </body>
 </html>

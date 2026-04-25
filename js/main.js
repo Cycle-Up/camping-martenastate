@@ -136,228 +136,153 @@ function initMap() {
     maxZoom: 19,
   }).addTo(map);
 
-  function makeIcon(color, emoji) {
+  // Icon factory — drop-pin style with emoji centre
+  function makeIcon(color, emoji, pulse) {
+    const ring = pulse ? `box-shadow:0 0 0 6px ${color}30,0 3px 10px rgba(0,0,0,0.25);` : 'box-shadow:0 3px 10px rgba(0,0,0,0.2);';
     return L.divIcon({
-      html: `<div style="background:${color};width:36px;height:36px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:3px solid white;box-shadow:0 3px 10px rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:center;"><span style="transform:rotate(45deg);font-size:15px;line-height:1;">${emoji}</span></div>`,
+      html: `<div style="background:${color};width:38px;height:38px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:3px solid white;${ring}display:flex;align-items:center;justify-content:center;"><span style="transform:rotate(45deg);font-size:16px;line-height:1;">${emoji}</span></div>`,
       className: '',
-      iconSize: [36, 36],
-      iconAnchor: [18, 36],
-      popupAnchor: [0, -40],
+      iconSize: [38, 38],
+      iconAnchor: [19, 38],
+      popupAnchor: [0, -42],
     });
   }
 
-  const icons = {
-    martenastate: makeIcon('#7b5d8c', '🏰'),
-    wandelen:     makeIcon('#8ba888', '🚶'),
-    fietsen:      makeIcon('#5a7055', '🚴'),
-    eten:         makeIcon('#e6c569', '☕'),
-    bezienswaardigheid: makeIcon('#a890b8', '⭐'),
+  const categoryConfig = {
+    home:      { color: '#7b5d8c', emoji: '🏕️', pulse: true },
+    eat:       { color: '#d4a843', emoji: '🍽️' },
+    shop:      { color: '#a890b8', emoji: '🛒' },
+    sight:     { color: '#7a9e7e', emoji: '⭐' },
+    transport: { color: '#5a7055', emoji: '🅿️' },
   };
 
-  const poi = [
-    // Martenastate & direct omgeving
-    { lat: 53.2018, lng: 5.7762, type: 'martenastate',
-      nl: 'Martenastate', en: 'Martenastate',
-      desc_nl: 'Historisch landgoed — vrij toegankelijk van zonsopgang tot zonsondergang. Stinzenflora-toplocatie.', desc_en: 'Historic estate — freely accessible sunrise to sunset. Top stinzenflora location.' },
-    { lat: 53.2013, lng: 5.7745, type: 'martenastate',
-      nl: 'Túnmanswente & B&B Stinzenflora', en: 'Túnmanswente & B&B Stinzenflora',
-      desc_nl: 'Theeschenkerij, B&B, knooppunt 10 & Jabikspaad-stempel. Open vr 13-17u, za/zo 11-17u.', desc_en: 'Tea garden, B&B, node 10 & Jabikspaad stamp. Open Fri 13-17h, Sat/Sun 11-17h.' },
-    { lat: 53.2023, lng: 5.7770, type: 'wandelen',
-      nl: 'Start wandelpaden park', en: 'Park walking paths',
-      desc_nl: 'Ingang wandelpaden Martenastate. Vrij toegankelijk.', desc_en: 'Entrance walking paths Martenastate. Freely accessible.' },
-    { lat: 53.2013, lng: 5.7745, type: 'fietsen',
-      nl: 'Fietsknooppunt 10', en: 'Cycling node 10',
-      desc_nl: 'Startpunt knooppuntennetwerk. Stel zelf je fietsroute samen.', desc_en: 'Start of cycling node network. Plan your own route.' },
+  const iconCache = {};
+  function getIcon(cat) {
+    if (!iconCache[cat]) {
+      const cfg = categoryConfig[cat] || { color: '#888', emoji: '📍' };
+      iconCache[cat] = makeIcon(cfg.color, cfg.emoji, cfg.pulse);
+    }
+    return iconCache[cat];
+  }
 
-    // Leeuwarden
-    { lat: 53.2014, lng: 5.7995, type: 'bezienswaardigheid',
-      nl: 'Leeuwarden centrum', en: 'Leeuwarden city centre',
-      desc_nl: 'Hoofdstad van Friesland, op ~5 km. Oldehove, historische grachten en levendige binnenstad.', desc_en: 'Capital of Friesland, ~5 km away. Oldehove, historic canals and vibrant city centre.' },
-    { lat: 53.2003, lng: 5.7956, type: 'bezienswaardigheid',
-      nl: 'Fries Museum', en: 'Fries Museum',
-      desc_nl: 'Het belangrijkste museum van Friesland — kunst, geschiedenis en Mata Hari.', desc_en: 'Friesland\'s leading museum — art, history and Mata Hari.' },
-    { lat: 53.2030, lng: 5.7870, type: 'bezienswaardigheid',
-      nl: 'Oldehove toren', en: 'Oldehove tower',
-      desc_nl: 'Scheefste toren van Nederland — schever dan de toren van Pisa.', desc_en: 'The most leaning tower in the Netherlands — more tilted than the Leaning Tower of Pisa.' },
-
-    // Eten & drinken
-    { lat: 53.2012, lng: 5.7988, type: 'eten',
-      nl: 'Restaurants Leeuwarden centrum', en: 'Restaurants Leeuwarden centre',
-      desc_nl: 'Ruim aanbod van restaurants, cafés en eetcafés in de historische binnenstad.', desc_en: 'Wide range of restaurants, cafés and eateries in the historic city centre.' },
-    { lat: 53.2013, lng: 5.7745, type: 'eten',
-      nl: 'Túnmanswente theeschenkerij', en: 'Túnmanswente tea garden',
-      desc_nl: 'Koffie, thee en lunch in historische setting. Open vr 13-17u, za/zo 11-17u.', desc_en: 'Coffee, tea and lunch in historic setting. Open Fri 13-17h, Sat/Sun 11-17h.' },
-
-    // Dokkum
-    { lat: 53.3248, lng: 6.0015, type: 'bezienswaardigheid',
-      nl: 'Dokkum', en: 'Dokkum',
-      desc_nl: 'Het enige volledig omwalde stadje van Nederland. Pittoresk centrum op ~30 km.', desc_en: 'The only fully moated town in the Netherlands. Picturesque centre ~30 km away.' },
-
-    // Franeker Planetarium
-    { lat: 53.1867, lng: 5.5436, type: 'bezienswaardigheid',
-      nl: 'Planetarium Franeker', en: 'Planetarium Franeker',
-      desc_nl: 'Het oudste nog werkende planetarium ter wereld (1781). UNESCO Werelderfgoed.', desc_en: 'The world\'s oldest still-operating planetarium (1781). UNESCO World Heritage.' },
-
-    // Harlingen / Waddenzee
-    { lat: 53.1743, lng: 5.4214, type: 'bezienswaardigheid',
-      nl: 'Harlingen & Waddenzee', en: 'Harlingen & Wadden Sea',
-      desc_nl: 'Historische havenstad aan de UNESCO Waddenzee. Vertrek voor wadlopen of boot naar eilanden.', desc_en: 'Historic harbour city on UNESCO Wadden Sea. Start for mudflat walking or ferry to islands.' },
-
-    // Sneek
-    { lat: 53.0325, lng: 5.6583, type: 'bezienswaardigheid',
-      nl: 'Sneek & Friese Meren', en: 'Sneek & Frisian Lakes',
-      desc_nl: 'Waterstad in hart van de Friese Merenstreek. Zeilen, varen en terrassen aan het water.', desc_en: 'Water city at heart of Frisian Lakes region. Sailing, boating and waterside terraces.' },
-
-    // Hindeloopen
-    { lat: 52.9408, lng: 5.4050, type: 'bezienswaardigheid',
-      nl: 'Hindeloopen', en: 'Hindeloopen',
-      desc_nl: 'Elfstedenstadje met houten huisjes, traditionele schilderkunst en klederdracht.', desc_en: 'Elfstedenstadje with wooden houses, traditional painting and traditional costume.' },
-
-    // Alde Feanen
-    { lat: 53.1030, lng: 5.9583, type: 'wandelen',
-      nl: 'Nationaal Park De Alde Feanen', en: 'National Park De Alde Feanen',
-      desc_nl: 'Moerassig natuurgebied vol waterlopen, rietvelden en vogels. Uniek laagveenlandschap.', desc_en: 'Marshy nature reserve with waterways, reed fields and birds. Unique peatland landscape.' },
-
-    // Elfstedenpad etappe
-    { lat: 53.2100, lng: 5.8050, type: 'wandelen',
-      nl: 'Elfstedenpad (etappe Oenkerk–Leeuwarden)', en: 'Elfstedenpad (stage Oenkerk–Leeuwarden)',
-      desc_nl: '15 km etappe van het 300 km lange Elfstedenpad langs alle Friese steden.', desc_en: '15 km stage of the 300 km Elfstedenpad through all Frisian cities.' },
-
-    // Elfsteden fietsroute start
-    { lat: 53.2000, lng: 5.7900, type: 'fietsen',
-      nl: 'Elfsteden Fietsroute (start)', en: 'Eleven Cities Cycling Route (start)',
-      desc_nl: '258 km langs alle 11 Friese steden. Start in Leeuwarden centrum.', desc_en: '258 km through all 11 Frisian cities. Starts in Leeuwarden centre.' },
-
-    // Ferry to Ameland
-    { lat: 53.3897, lng: 5.8836, type: 'bezienswaardigheid',
-      nl: 'Veerpont naar Ameland (Holwerd)', en: 'Ferry to Ameland (Holwerd)',
-      desc_nl: 'Veerpont vanuit Holwerd naar het waddeneiland Ameland. ~45 min vaartijd.', desc_en: 'Ferry from Holwerd to the Wadden Island Ameland. ~45 min sailing time.' },
-  ];
-
-  // Draw walking + cycling routes as polylines
+  // Route polylines
   const routeLayers = { walking: [], cycling: [] };
 
   function buildRoutePopup(route, kind) {
-    const lang = currentLang;
-    const name = lang === 'en' ? route.name_en : route.name_nl;
-    const desc = lang === 'en' ? route.desc_en : route.desc_nl;
-    const dur = lang === 'en' ? route.duration_en : route.duration_nl;
-    const diff = lang === 'en' ? route.difficulty_en : route.difficulty_nl;
-    const linkLabel = lang === 'en' ? 'Open route →' : 'Open route →';
-    const catLabel = kind === 'walking' ? t('kaart.legend.wandelen') : t('kaart.legend.fietsen');
-
+    const name = currentLang === 'en' ? route.name_en : route.name_nl;
+    const desc = currentLang === 'en' ? route.desc_en : route.desc_nl;
+    const dur = currentLang === 'en' ? route.duration_en : route.duration_nl;
+    const diff = currentLang === 'en' ? route.difficulty_en : route.difficulty_nl;
+    const catLabel = kind === 'walking' ? t('kaart.filter.wandelen') : t('kaart.filter.fietsen');
+    const chip = (txt) => `<span style="background:#e8dff0;color:#7b5d8c;padding:.15rem .5rem;border-radius:999px;font-size:.7rem;font-weight:600;">${txt}</span>`;
     return `
       <span class="popup-category">${catLabel}</span>
       <h4>${name}</h4>
-      <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin:.35rem 0;">
-        <span style="background:#e8dff0;color:#7b5d8c;padding:.15rem .5rem;border-radius:999px;font-size:.7rem;font-weight:600;">${route.distance}</span>
-        <span style="background:#e8dff0;color:#7b5d8c;padding:.15rem .5rem;border-radius:999px;font-size:.7rem;font-weight:600;">${dur}</span>
-        <span style="background:#e8dff0;color:#7b5d8c;padding:.15rem .5rem;border-radius:999px;font-size:.7rem;font-weight:600;">${diff}</span>
-      </div>
+      <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin:.35rem 0;">${chip(route.distance)}${chip(dur)}${chip(diff)}</div>
       <p style="margin:.35rem 0;font-size:.85rem;color:#5a4d5f;line-height:1.5;">${desc}</p>
-      <a href="${route.externalUrl}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.35rem;margin-top:.4rem;color:#7b5d8c;font-weight:600;font-size:.85rem;text-decoration:none;">${linkLabel}</a>
+      <a href="${route.externalUrl}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.35rem;margin-top:.4rem;color:#7b5d8c;font-weight:600;font-size:.85rem;text-decoration:none;">Open route →</a>
     `;
   }
 
   function drawRoutes(routes, kind, color) {
-    if (typeof walkingRoutes === 'undefined') return;
+    if (typeof routes === 'undefined') return;
     routes.forEach(route => {
-      const line = L.polyline(route.coords, {
-        color: color,
-        weight: kind === 'walking' ? 5 : 4,
-        opacity: 0.75,
-        dashArray: kind === 'walking' ? '1,8' : null,
-        lineCap: 'round',
-        lineJoin: 'round',
-        className: `route-line route-${kind}`
-      }).addTo(map);
-
-      // Bigger invisible hit area for easier clicking
-      const hitLine = L.polyline(route.coords, {
-        color: '#000',
-        weight: 20,
-        opacity: 0
-      }).addTo(map);
-
-      const popupHtml = buildRoutePopup(route, kind);
-      line.bindPopup(popupHtml, { maxWidth: 300 });
-      hitLine.bindPopup(popupHtml, { maxWidth: 300 });
-
-      // Hover effect
-      hitLine.on('mouseover', () => {
-        line.setStyle({ weight: kind === 'walking' ? 7 : 6, opacity: 1 });
-      });
-      hitLine.on('mouseout', () => {
-        line.setStyle({ weight: kind === 'walking' ? 5 : 4, opacity: 0.75 });
-      });
-
+      const opts = {
+        color, weight: kind === 'walking' ? 5 : 4,
+        opacity: 0.75, lineCap: 'round', lineJoin: 'round',
+        dashArray: kind === 'walking' ? '2,8' : null,
+        className: `route-line route-${kind}`,
+      };
+      const line = L.polyline(route.coords, opts).addTo(map);
+      const hitLine = L.polyline(route.coords, { color: '#000', weight: 22, opacity: 0 }).addTo(map);
+      const popup = buildRoutePopup(route, kind);
+      line.bindPopup(popup, { maxWidth: 300 });
+      hitLine.bindPopup(popup, { maxWidth: 300 });
+      hitLine.on('mouseover', () => line.setStyle({ weight: kind === 'walking' ? 7 : 6, opacity: 1 }));
+      hitLine.on('mouseout', () => line.setStyle({ weight: kind === 'walking' ? 5 : 4, opacity: 0.75 }));
       routeLayers[kind].push({ line, hitLine, id: route.id });
     });
   }
 
-  if (typeof walkingRoutes !== 'undefined') {
-    drawRoutes(walkingRoutes, 'walking', '#8ba888');
-  }
-  if (typeof cyclingRoutes !== 'undefined') {
-    drawRoutes(cyclingRoutes, 'cycling', '#5a7055');
-  }
+  if (typeof walkingRoutes !== 'undefined') drawRoutes(walkingRoutes, 'walking', '#8ba888');
+  if (typeof cyclingRoutes !== 'undefined') drawRoutes(cyclingRoutes, 'cycling', '#5a7055');
   window._martenaRouteLayers = routeLayers;
 
-  // Create markers with tracking for filtering
-  const markers = [];
-  poi.forEach(p => {
-    const lang = currentLang;
-    const name = lang === 'en' ? p.en : p.nl;
-    const desc = lang === 'en' ? p.desc_en : p.desc_nl;
-    const catLabel = t(`kaart.legend.${p.type}`);
+  // Place markers from places.js
+  const placeMarkers = [];
+  if (typeof mapPlaces !== 'undefined') {
+    mapPlaces.forEach(place => {
+      const name = currentLang === 'en' ? place.name_en : place.name_nl;
+      const desc = currentLang === 'en' ? place.desc_en : place.desc_nl;
+      const addr = currentLang === 'en' ? (place.addr_en || '') : (place.addr_nl || '');
+      const badge = place.badge_nl ? (currentLang === 'en' ? place.badge_en : place.badge_nl) : '';
 
-    const marker = L.marker([p.lat, p.lng], { icon: icons[p.type] })
-      .addTo(map)
-      .bindPopup(`<span class="popup-category">${catLabel}</span><h4>${name}</h4><p style="margin:0;font-size:.85rem;color:#5a4d5f;">${desc}</p>`);
-    markers.push({ marker, type: p.type });
-  });
+      const badgeHtml = badge ? `<span style="background:#e8dff0;color:#7b5d8c;padding:.15rem .5rem;border-radius:999px;font-size:.7rem;font-weight:600;margin-bottom:.4rem;display:inline-block;">${badge}</span> ` : '';
+      const addrHtml = addr ? `<div style="font-size:.78rem;color:#8a7d8f;margin-top:.3rem;">${addr}</div>` : '';
+      const linkHtml = place.externalUrl ? `<a href="${place.externalUrl}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.35rem;margin-top:.5rem;color:#7b5d8c;font-weight:600;font-size:.8rem;text-decoration:none;">${currentLang === 'en' ? 'Open in Maps →' : 'Open in Maps →'}</a>` : '';
 
-  // Category filter
-  const activeFilters = new Set(['martenastate', 'wandelen', 'fietsen', 'eten', 'bezienswaardigheid']);
+      const catFilter = currentLang === 'en' ? t(`kaart.filter.${place.category}`) : t(`kaart.filter.${place.category}`);
+      const popupHtml = `<span class="popup-category">${catFilter}</span><h4>${name}</h4>${badgeHtml}<p style="margin:.3rem 0;font-size:.85rem;color:#5a4d5f;line-height:1.5;">${desc}</p>${addrHtml}${linkHtml}`;
 
-  function applyMapFilter() {
-    markers.forEach(({ marker, type }) => {
-      if (activeFilters.has(type)) {
-        marker.addTo(map);
-      } else {
-        map.removeLayer(marker);
-      }
-    });
-    // Also toggle walking/cycling polylines
-    routeLayers.walking.forEach(({ line, hitLine }) => {
-      if (activeFilters.has('wandelen')) {
-        line.addTo(map); hitLine.addTo(map);
-      } else {
-        map.removeLayer(line); map.removeLayer(hitLine);
-      }
-    });
-    routeLayers.cycling.forEach(({ line, hitLine }) => {
-      if (activeFilters.has('fietsen')) {
-        line.addTo(map); hitLine.addTo(map);
-      } else {
-        map.removeLayer(line); map.removeLayer(hitLine);
-      }
+      const marker = L.marker(place.coord, { icon: getIcon(place.category) })
+        .addTo(map)
+        .bindPopup(popupHtml, { maxWidth: 300 });
+      placeMarkers.push({ marker, category: place.category, id: place.id });
     });
   }
 
-  document.querySelectorAll('.map-filter-btn').forEach(btn => {
+  // Unified filter state — all categories active by default
+  const activeFilters = new Set(['home', 'eat', 'shop', 'sight', 'transport', 'wandelen', 'fietsen']);
+
+  function applyMapFilter() {
+    placeMarkers.forEach(({ marker, category }) => {
+      if (activeFilters.has(category)) marker.addTo(map); else map.removeLayer(marker);
+    });
+    routeLayers.walking.forEach(({ line, hitLine }) => {
+      if (activeFilters.has('wandelen')) { line.addTo(map); hitLine.addTo(map); }
+      else { map.removeLayer(line); map.removeLayer(hitLine); }
+    });
+    routeLayers.cycling.forEach(({ line, hitLine }) => {
+      if (activeFilters.has('fietsen')) { line.addTo(map); hitLine.addTo(map); }
+      else { map.removeLayer(line); map.removeLayer(hitLine); }
+    });
+  }
+
+  document.querySelectorAll('.map-filter-btn[data-category]').forEach(btn => {
     btn.addEventListener('click', () => {
       const cat = btn.getAttribute('data-category');
-      if (activeFilters.has(cat)) {
-        activeFilters.delete(cat);
-        btn.classList.remove('active');
-      } else {
-        activeFilters.add(cat);
-        btn.classList.add('active');
-      }
+      if (activeFilters.has(cat)) { activeFilters.delete(cat); btn.classList.remove('active'); }
+      else { activeFilters.add(cat); btn.classList.add('active'); }
       applyMapFilter();
     });
   });
+
+  // "Mijn locatie" button
+  const locBtn = document.getElementById('myLocationBtn');
+  if (locBtn && navigator.geolocation) {
+    let locMarker = null;
+    locBtn.addEventListener('click', () => {
+      locBtn.textContent = '…';
+      navigator.geolocation.getCurrentPosition(
+        pos => {
+          const { latitude: lat, longitude: lng } = pos.coords;
+          if (locMarker) map.removeLayer(locMarker);
+          locMarker = L.circleMarker([lat, lng], {
+            radius: 10, fillColor: '#7b5d8c', fillOpacity: 0.9,
+            color: 'white', weight: 3,
+          }).addTo(map).bindPopup(t('kaart.mylocation.you')).openPopup();
+          map.setView([lat, lng], 14);
+          locBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg> <span data-i18n="kaart.mylocation">${t('kaart.mylocation')}</span>`;
+        },
+        () => {
+          locBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg> <span data-i18n="kaart.mylocation">${t('kaart.mylocation')}</span>`;
+          showToast(t('kaart.mylocation.error'));
+        }
+      );
+    });
+  } else if (locBtn) {
+    locBtn.style.display = 'none';
+  }
 }
 
 // Init everything

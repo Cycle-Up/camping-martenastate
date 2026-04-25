@@ -310,83 +310,194 @@
 
       <!-- Eten & drinken -->
       <div id="eten" class="tab-panel" role="tabpanel">
-        <div class="feature-row fade-in">
-          <div class="feature-image">
-            <div class="placeholder" style="background: linear-gradient(135deg, var(--color-aconite-soft), var(--color-lavender-soft));">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="width:80px;height:80px;" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-            </div>
-          </div>
-          <div class="feature-content">
-            <span class="section-eyebrow">Op het landgoed</span>
-            <h3 data-i18n="eten.tunman.title">Túnmanswente</h3>
-            <p data-i18n="eten.tunman.desc">Direct op het landgoed. Koffie, thee en lunch in een historische omgeving. Zomer-theetuin met uitzicht op het park.</p>
-            <div class="meta">
-              <span class="meta-chip" data-i18n="eten.tunman.chip1">Op het landgoed</span>
-              <span class="meta-chip" data-i18n="eten.tunman.chip2">vr 13-17u, za/zo 11-17u</span>
-            </div>
-            <div style="margin-top:1rem;">
-              <a href="https://www.tunmanswente.nl" target="_blank" rel="noopener" class="btn btn-outline" style="display:inline-flex;">tunmanswente.nl →</a>
+
+        <!-- Túnmanswente hero -->
+        <div class="callout fade-in" style="margin-bottom: var(--space-lg);">
+          <div style="display:flex; align-items:flex-start; gap:1rem; flex-wrap:wrap;">
+            <div style="font-size:3rem; line-height:1; flex-shrink:0;">☕</div>
+            <div style="flex:1; min-width:220px;">
+              <span class="section-eyebrow">Op het landgoed · Onze favoriet</span>
+              <h3 style="margin:.25rem 0 .5rem;" data-i18n="eten.tunman.title">Túnmanswente</h3>
+              <p style="margin:0 0 .75rem;" data-i18n="eten.tunman.full">Direct op het landgoed, op loopafstand van je tent of kamer. Verse koffie, zelfgemaakte appeltaart, broodjes en een heerlijke theetuin met uitzicht op het park. Begin hier de dag — of sluit er mee af.</p>
+              <div class="meta" style="margin-bottom:.75rem;">
+                <span class="meta-chip">Vr 13:00 – 17:00</span>
+                <span class="meta-chip">Za/zo 11:00 – 17:00</span>
+                <span class="meta-chip">27 mrt – 25 okt</span>
+                <span class="meta-chip">Knooppunt 10</span>
+              </div>
+              <a href="https://www.tunmanswente.nl" target="_blank" rel="noopener" class="btn btn-outline" style="display:inline-flex;font-size:.9rem;">tunmanswente.nl →</a>
             </div>
           </div>
         </div>
 
-        <div class="feature-row fade-in">
-          <div class="feature-content">
-            <span class="section-eyebrow">5 km fietsen</span>
-            <h3 data-i18n="eten.leeuwarden.title">Leeuwarden</h3>
-            <p data-i18n="eten.leeuwarden.desc">Op 5 minuten fietsen ligt de historische binnenstad van Leeuwarden met een breed aanbod van restaurants, cafés en markten.</p>
-            <div class="meta">
-              <span class="meta-chip" data-i18n="eten.leeuwarden.chip1">5 km fietsen</span>
-              <span class="meta-chip" data-i18n="eten.leeuwarden.chip2">Diverse keuze</span>
-            </div>
-          </div>
-          <div class="feature-image">
-            <div class="placeholder" style="background: linear-gradient(135deg, var(--color-lavender-soft), var(--color-aconite-soft));">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="width:80px;height:80px;" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            </div>
-          </div>
+        <!-- Restaurant grid Leeuwarden -->
+        <div class="section-header fade-in">
+          <span class="section-eyebrow">5 km fietsen</span>
+          <h2>Leeuwarden — onze picks</h2>
+          <p>Vijf minuten fietsen brengt je in het centrum van Leeuwarden. Dit zijn de plekken die we zelf aanraden.</p>
         </div>
 
-        <!-- Concrete aanbevelingen -->
+        <div class="restaurant-grid fade-in">
+
+          <div class="restaurant-card">
+            <div class="restaurant-header">
+              <span class="restaurant-icon">🍕</span>
+              <div>
+                <h4 class="restaurant-name">Wouters</h4>
+                <div class="restaurant-tags">
+                  <span class="tag">€€</span>
+                  <span class="tag">Lunch & diner</span>
+                  <span class="tag">Terras</span>
+                </div>
+              </div>
+            </div>
+            <p class="restaurant-desc">Populair restaurant in de binnenstad. Breed menu, goed voor lunch én diner. Op mooie dagen heeft het terras aan de gracht veel sfeer. Reserveer op vrijdag- en zaterdagavond.</p>
+            <div class="restaurant-meta">
+              <span>📍 Leeuwarden centrum</span>
+              <span>🕐 Dag. 11:00 – 22:00</span>
+            </div>
+            <a href="https://maps.google.com/?q=Wouters+Leeuwarden" target="_blank" rel="noopener" class="restaurant-link">Open in Maps →</a>
+          </div>
+
+          <div class="restaurant-card">
+            <div class="restaurant-header">
+              <span class="restaurant-icon">🍺</span>
+              <div>
+                <h4 class="restaurant-name">De Grietenij</h4>
+                <div class="restaurant-tags">
+                  <span class="tag">€€</span>
+                  <span class="tag">Eetcafé</span>
+                  <span class="tag">Friese keuken</span>
+                </div>
+              </div>
+            </div>
+            <p class="restaurant-desc">Sfeervolle bruine kroeg met goede eetgelegenheid. Hartelijke gerechten, Friese speciaalbieren en een warme sfeer. Een echte local favourite — druk op vrijdagavond.</p>
+            <div class="restaurant-meta">
+              <span>📍 Leeuwarden centrum</span>
+              <span>🕐 Ma–za vanaf 12:00</span>
+            </div>
+            <a href="https://maps.google.com/?q=De+Grietenij+Leeuwarden" target="_blank" rel="noopener" class="restaurant-link">Open in Maps →</a>
+          </div>
+
+          <div class="restaurant-card">
+            <div class="restaurant-header">
+              <span class="restaurant-icon">☕</span>
+              <div>
+                <h4 class="restaurant-name">Waag (bij de Oldehove)</h4>
+                <div class="restaurant-tags">
+                  <span class="tag">€</span>
+                  <span class="tag">Koffie & lunch</span>
+                  <span class="tag">Terras met uitzicht</span>
+                </div>
+              </div>
+            </div>
+            <p class="restaurant-desc">Koffie en lunch met direct uitzicht op de scheve Oldehove-toren. Ideale plek om even bij te komen na het fietsen. Groot terras op het Oldehoofsterkerkhof.</p>
+            <div class="restaurant-meta">
+              <span>📍 Oldehoofsterkerkhof</span>
+              <span>🕐 Dag. 9:00 – 17:00</span>
+            </div>
+            <a href="https://maps.google.com/?q=Waag+Leeuwarden" target="_blank" rel="noopener" class="restaurant-link">Open in Maps →</a>
+          </div>
+
+          <div class="restaurant-card">
+            <div class="restaurant-header">
+              <span class="restaurant-icon">🥗</span>
+              <div>
+                <h4 class="restaurant-name">Marktzijde (Wilhelminaplein)</h4>
+                <div class="restaurant-tags">
+                  <span class="tag">€€</span>
+                  <span class="tag">Grand café</span>
+                  <span class="tag">Naast Fries Museum</span>
+                </div>
+              </div>
+            </div>
+            <p class="restaurant-desc">Grand café direct naast het Fries Museum. Ideaal om te combineren met een museumbezoek. Ruime kaart van ontbijt tot diner. Groot terras op het Wilhelminaplein.</p>
+            <div class="restaurant-meta">
+              <span>📍 Wilhelminaplein</span>
+              <span>🕐 Dag. 9:00 – 22:00</span>
+            </div>
+            <a href="https://maps.google.com/?q=Marktzijde+Leeuwarden" target="_blank" rel="noopener" class="restaurant-link">Open in Maps →</a>
+          </div>
+
+          <div class="restaurant-card">
+            <div class="restaurant-header">
+              <span class="restaurant-icon">🌿</span>
+              <div>
+                <h4 class="restaurant-name">Mata Hari (locatie)</h4>
+                <div class="restaurant-tags">
+                  <span class="tag">€€€</span>
+                  <span class="tag">Fine dining</span>
+                  <span class="tag">Reserveren</span>
+                </div>
+              </div>
+            </div>
+            <p class="restaurant-desc">Voor een bijzonder avondje: fine dining in het historische hart van Leeuwarden. Lokale ingrediënten, creatieve keuken. Reserveer ruim van tevoren, zeker in het weekend.</p>
+            <div class="restaurant-meta">
+              <span>📍 Leeuwarden centrum</span>
+              <span>🕐 Di–za vanaf 18:00</span>
+            </div>
+            <a href="https://maps.google.com/?q=restaurants+Leeuwarden+centrum" target="_blank" rel="noopener" class="restaurant-link">Zoek in Maps →</a>
+          </div>
+
+          <div class="restaurant-card">
+            <div class="restaurant-header">
+              <span class="restaurant-icon">🥐</span>
+              <div>
+                <h4 class="restaurant-name">Bakkerij in Stiens</h4>
+                <div class="restaurant-tags">
+                  <span class="tag">€</span>
+                  <span class="tag">Ontbijt</span>
+                  <span class="tag">Friese specialiteiten</span>
+                </div>
+              </div>
+            </div>
+            <p class="restaurant-desc">Op 4 km fiets je naar de bakker in Stiens. Fries suikerbrood, oranjekoek en versgebakken brood. Zaterdag vroeg is altijd gezellig druk. Ideale start van een fietsdag.</p>
+            <div class="restaurant-meta">
+              <span>📍 Stiens centrum (4 km)</span>
+              <span>🕐 Di–za 7:00 – 17:00</span>
+            </div>
+            <a href="https://maps.google.com/?q=Bakkerij+Stiens" target="_blank" rel="noopener" class="restaurant-link">Open in Maps →</a>
+          </div>
+
+        </div>
+
+        <!-- Lokale tips -->
         <div class="section-header fade-in" style="margin-top: var(--space-xl);">
-          <span class="section-eyebrow">Categorie</span>
-          <h3>Waar te eten</h3>
+          <span class="section-eyebrow">Fris & lokaal</span>
+          <h3>Friese specialiteiten — niet overslaan</h3>
         </div>
 
-        <div class="tips-grid">
+        <div class="tips-grid" style="margin-top:0;">
           <div class="tip-card fade-in">
-            <span class="tip-icon">☕</span>
+            <span class="tip-icon">🧀</span>
             <div>
-              <h4>Voor koffie en lunch</h4>
-              <p>Túnmanswente op het landgoed zelf. In Leeuwarden: gezellige koffiezaken rondom De Brol en de Nieuwestad.</p>
-              <p class="tip-meta">Op het landgoed & in het centrum</p>
+              <h4>Friese nagelkaas</h4>
+              <p>De échte Friese kaas met karwijzaad. Koop hem bij de kaasboer op de Leeuwarden markt (za) of bij de AH in Stiens. Verplichte souvenir voor thuis.</p>
+              <p class="tip-meta">Leeuwarden markt · zaterdag</p>
             </div>
           </div>
-
           <div class="tip-card fade-in">
-            <span class="tip-icon">🍽️</span>
+            <span class="tip-icon">🍰</span>
             <div>
-              <h4>Voor een mooi diner</h4>
-              <p>Leeuwarden heeft diverse restaurants met Friese en internationale keuken. Zoek rondom de grote kerk of langs de grachten voor sfeervolle plekken.</p>
-              <p class="tip-meta">Reserveren aangeraden in weekend</p>
+              <h4>Oranjekoek</h4>
+              <p>Typisch Fries gebak — zacht, zoet, oranje glazuur. Bij elke bakker te krijgen. Heerlijk bij de koffie van Túnmanswente.</p>
+              <p class="tip-meta">Bij elke Friese bakker</p>
             </div>
           </div>
-
-          <div class="tip-card fade-in">
-            <span class="tip-icon">🍺</span>
-            <div>
-              <h4>Voor een biertje</h4>
-              <p>De Ruiterskwartier in Leeuwarden is het uitgaansgebied. Diverse bruine cafés en terrassen in het centrum.</p>
-              <p class="tip-meta">Levendig vooral vr/za</p>
-            </div>
-          </div>
-
           <div class="tip-card fade-in">
             <span class="tip-icon">🌾</span>
             <div>
-              <h4>Lokale Friese producten</h4>
-              <p>Probeer Fries suikerbrood, oranjekoek en natuurlijk Friese nagelkaas. Verkrijgbaar bij de lokale bakker in Stiens en op markten.</p>
-              <p class="tip-meta">Stiens: woensdag weekmarkt</p>
+              <h4>Leeuwarden markt</h4>
+              <p>Elke zaterdag op het Wilhelminaplein — kaas, groente, vis en Friese producten. Combineer met het Fries Museum of de Oldehove. Altijd gezellig.</p>
+              <p class="tip-meta">Zaterdag · Wilhelminaplein · 8–17u</p>
+            </div>
+          </div>
+          <div class="tip-card fade-in">
+            <span class="tip-icon">🍟</span>
+            <div>
+              <h4>Patat na het fietsen</h4>
+              <p>Friese traditie: een punt patat na een lange rit. In Leeuwarden zijn diverse goede snackbars rondom het centrum. Met friessaus of patatje speciaal.</p>
+              <p class="tip-meta">Leeuwarden centrum</p>
             </div>
           </div>
         </div>
@@ -605,5 +716,6 @@
 
   <script src="js/translations.js"></script>
   <script src="js/main.js"></script>
+  <script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js").catch(()=>{})}</script>
 </body>
 </html>

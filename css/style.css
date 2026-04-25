@@ -1767,3 +1767,310 @@ section {
 @media (max-width: 768px) {
   .toast { bottom: 90px; }
 }
+
+/* ==========================================================================
+   Restaurant cards (omgeving.html — Eten tab)
+   ========================================================================== */
+.restaurant-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.restaurant-card {
+  background: var(--color-soft-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  border: 1px solid rgba(201,184,212,0.2);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: all var(--transition-smooth);
+}
+
+.restaurant-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.restaurant-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.restaurant-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.restaurant-name {
+  margin: 0 0 0.3rem;
+  font-size: 1.15rem;
+  color: var(--color-aubergine);
+}
+
+.restaurant-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.restaurant-tags .tag {
+  background: var(--color-lavender-soft);
+  color: var(--color-crocus);
+  padding: 0.1rem 0.5rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.restaurant-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-soft);
+  line-height: 1.55;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.restaurant-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  border-top: 1px dashed rgba(123,93,140,0.15);
+  padding-top: 0.5rem;
+}
+
+.restaurant-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--color-crocus);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  margin-top: auto;
+}
+
+.restaurant-link:hover {
+  color: var(--color-aubergine);
+}
+
+/* ==========================================================================
+   Dag-inspiratie / day plan cards
+   ========================================================================== */
+.dayplan-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.dayplan-card {
+  background: var(--color-soft-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  border: 1px solid rgba(201,184,212,0.2);
+  box-shadow: var(--shadow-soft);
+  transition: all var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.dayplan-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.dayplan-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 700;
+  width: fit-content;
+  letter-spacing: 0.03em;
+}
+
+.dayplan-easy    { background: rgba(139,168,136,0.15); color: var(--color-moss); }
+.dayplan-active  { background: rgba(90,112,85,0.15);  color: #3d5c3a; }
+.dayplan-explore { background: rgba(230,197,105,0.2);  color: #9a7a20; }
+.dayplan-culture { background: rgba(123,93,140,0.15);  color: var(--color-crocus); }
+
+.dayplan-card h4 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--color-aubergine);
+}
+
+.dayplan-list {
+  list-style: none;
+  counter-reset: step;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.dayplan-list li {
+  counter-increment: step;
+  padding: 0.35rem 0 0.35rem 2rem;
+  position: relative;
+  font-size: 0.875rem;
+  color: var(--color-text-soft);
+  line-height: 1.4;
+  border-bottom: 1px dashed rgba(201,184,212,0.3);
+}
+
+.dayplan-list li:last-child { border-bottom: none; }
+
+.dayplan-list li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0.35rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  background: var(--color-lavender-soft);
+  color: var(--color-crocus);
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.dayplan-time {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(201,184,212,0.2);
+}
+
+/* ==========================================================================
+   Botanical section dividers
+   ========================================================================== */
+.botanical-divider {
+  text-align: center;
+  padding: var(--space-lg) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.botanical-divider svg {
+  width: min(600px, 90vw);
+  height: auto;
+  opacity: 0.35;
+}
+
+.botanical-divider::before,
+.botanical-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 30%;
+  height: 1px;
+  background: linear-gradient(to var(--dir, right), transparent, rgba(123,93,140,0.2));
+  --dir: right;
+}
+
+.botanical-divider::before {
+  left: 0;
+  --dir: right;
+}
+
+.botanical-divider::after {
+  right: 0;
+  background: linear-gradient(to left, transparent, rgba(123,93,140,0.2));
+}
+
+/* ==========================================================================
+   "Vandaag" improvement — animated dot pulse
+   ========================================================================== */
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(139,168,136,0.2); }
+  50% { box-shadow: 0 0 0 8px rgba(139,168,136,0.1); }
+}
+
+.today-status .status-dot {
+  animation: pulse-dot 2.5s ease-in-out infinite;
+}
+
+.today-status.closed .status-dot {
+  animation: none;
+}
+
+/* ==========================================================================
+   Improved hero with scroll hint
+   ========================================================================== */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce-down 2s ease-in-out infinite;
+}
+
+.scroll-indicator svg {
+  width: 28px;
+  height: 28px;
+  color: var(--color-crocus);
+  opacity: 0.6;
+}
+
+@keyframes bounce-down {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ==========================================================================
+   Section transition gradient bands
+   ========================================================================== */
+.section-transition {
+  height: 80px;
+  background: linear-gradient(180deg, var(--color-warm-white) 0%, var(--color-lavender-soft) 50%, var(--color-warm-white) 100%);
+  opacity: 0.5;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Improved print styles (pocket guide mode)
+   ========================================================================== */
+@media print {
+  .mobile-action-bar,
+  .back-to-top,
+  .map-container,
+  #map,
+  .floral-decoration,
+  .botanical-divider,
+  .scroll-indicator,
+  .hero-buttons,
+  nav.navbar,
+  footer.footer { display: none !important; }
+
+  body { font-size: 10pt; color: black; background: white; }
+  .hero { min-height: auto; padding: 1rem 0; background: none; }
+  .hero h1 { font-size: 24pt; }
+  .arrival-panel { border: 1px solid #ccc; box-shadow: none; margin: 0.5rem 0; page-break-inside: avoid; }
+  .arrival-grid { grid-template-columns: repeat(3, 1fr); }
+  .faq-item { border: 1px solid #ccc; page-break-inside: avoid; }
+  .faq-item summary::after { display: none; }
+  .faq-item .faq-answer { display: block !important; }
+  .tab-panel { display: block !important; page-break-inside: avoid; }
+  .restaurant-grid { grid-template-columns: repeat(2, 1fr); }
+  .restaurant-card { page-break-inside: avoid; border: 1px solid #ccc; box-shadow: none; }
+  a::after { content: '' !important; }
+  .tips-grid, .route-list { display: block; }
+  .tip-card, .route-card { page-break-inside: avoid; border: 1px solid #ccc; box-shadow: none; margin-bottom: 0.5rem; }
+}
