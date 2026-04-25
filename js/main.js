@@ -26,6 +26,9 @@ function setLang(lang) {
   currentLang = lang;
   localStorage.setItem('lang', lang);
   applyTranslations();
+  // Refresh dynamic content that depends on language
+  if (typeof initTodayWidget === 'function') initTodayWidget();
+  if (typeof renderRouteLists === 'function') renderRouteLists();
 }
 
 // Mobile nav toggle
@@ -367,6 +370,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initMap();
   renderRouteLists();
   initBackToTop();
+  initCopyable();
+  initTodayWidget();
 
   // Language buttons
   document.querySelectorAll('.lang-toggle button').forEach(btn => {
@@ -460,4 +465,124 @@ function initBackToTop() {
     btn.classList.toggle('visible', window.scrollY > 400);
   }, { passive: true });
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
+// Toast notification
+let toastTimeout = null;
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  if (!toast) return;
+  toast.textContent = message;
+  toast.classList.add('show');
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => toast.classList.remove('show'), 2000);
+}
+
+// Copy-to-clipboard for items with [data-copy]
+function initCopyable() {
+  document.querySelectorAll('[data-copy]').forEach(el => {
+    el.addEventListener('click', async (e) => {
+      const value = el.getAttribute('data-copy');
+      if (!value) return;
+      try {
+        await navigator.clipboard.writeText(value);
+        el.classList.add('copied');
+        showToast(t('toast.copied'));
+        setTimeout(() => el.classList.remove('copied'), 2000);
+      } catch (err) {
+        const ta = document.createElement('textarea');
+        ta.value = value;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); showToast(t('toast.copied')); } catch (e2) {}
+        document.body.removeChild(ta);
+      }
+    });
+  });
+}
+
+// Today widget — shows current season + opening hours of Túnmanswente + camping
+function initTodayWidget() {
+  const widget = document.getElementById('todayWidget');
+  if (!widget) return;
+
+  const now = new Date();
+  const month = now.getMonth() + 1;       // 1–12
+  const day = now.getDate();               // 1–31
+  const dayOfWeek = now.getDay();          // 0 = sun, 6 = sat
+
+  // Date label, localised per language
+  const dateEl = document.getElementById('todayDate');
+  if (dateEl) {
+    try {
+      dateEl.textContent = now.toLocaleDateString(currentLang === 'nl' ? 'nl-NL' : 'en-GB', {
+        weekday: 'long', day: 'numeric', month: 'long'
+      });
+    } catch (e) {
+      dateEl.textContent = now.toDateString();
+    }
+  }
+
+  // Determine season
+  let seasonKey;
+  if (month === 12 || month <= 2) seasonKey = 'winter';
+  else if (month >= 3 && month <= 5) seasonKey = 'spring';
+  else if (month >= 6 && month <= 8) seasonKey = 'summer';
+  else seasonKey = 'autumn';
+
+  const seasonTitleEl = document.getElementById('todaySeasonTitle');
+  const seasonTextEl = document.getElementById('todaySeasonText');
+  if (seasonTitleEl) {
+    seasonTitleEl.setAttribute('data-i18n', `today.season.${seasonKey}`);
+    seasonTitleEl.textContent = t(`today.season.${seasonKey}`);
+  }
+  if (seasonTextEl) {
+    seasonTextEl.setAttribute('data-i18n', `today.season.${seasonKey}.text`);
+    seasonTextEl.textContent = t(`today.season.${seasonKey}.text`);
+  }
+
+  // Túnmanswente status — open Fri 13–17, Sat/Sun 11–17, season 27 Mar – 25 Oct
+  const tunmanswenteEl = document.getElementById('statusTunmanswente');
+  const tunmanHoursEl = document.getElementById('tunmanswenteHours');
+  if (tunmanswenteEl && tunmanHoursEl) {
+    const inSeason = (month > 3 || (month === 3 && day >= 27)) && (month < 10 || (month === 10 && day <= 25));
+    let isOpen = false;
+    let detailText = '';
+    if (!inSeason) {
+      detailText = t('today.tunman.closed.season');
+      isOpen = false;
+    } else if (dayOfWeek === 5) { // Friday
+      detailText = t('today.tunman.open').replace('{hours}', '13:00 – 17:00');
+      isOpen = true;
+    } else if (dayOfWeek === 6 || dayOfWeek === 0) { // Sat / Sun
+      detailText = t('today.tunman.open').replace('{hours}', '11:00 – 17:00');
+      isOpen = true;
+    } else {
+      detailText = t('today.tunman.closed.weekday');
+      isOpen = false;
+    }
+    tunmanHoursEl.textContent = detailText;
+    tunmanswenteEl.classList.toggle('closed', !isOpen);
+  }
+
+  // Camping status — 1 Apr – 1 Oct
+  const campingEl = document.getElementById('statusCamping');
+  const campingStatusEl = document.getElementById('campingStatus');
+  if (campingEl && campingStatusEl) {
+    const inSeason = month >= 4 && month <= 9;
+    const isOpen = inSeason || (month === 10 && day === 1);
+    campingStatusEl.textContent = isOpen ? t('today.camping.open') : t('today.camping.closed');
+    campingEl.classList.toggle('closed', !isOpen);
+  }
+
+  // Daily tip
+  const tipEl = document.getElementById('todayTip');
+  if (tipEl) {
+    const days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+    const tipKey = `today.tip.${days[dayOfWeek]}`;
+    tipEl.setAttribute('data-i18n', tipKey);
+    tipEl.textContent = t(tipKey);
+  }
 }

@@ -1324,6 +1324,473 @@ section {
   flex-shrink: 0;
 }
 
+/* ==========================================================================
+   "Bij aankomst" arrival panel — direct praktische info
+   ========================================================================== */
+.arrival-panel {
+  background: linear-gradient(135deg, var(--color-soft-white) 0%, var(--color-lavender-soft) 100%);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-medium);
+  padding: var(--space-lg);
+  margin: -3rem auto var(--space-xl);
+  max-width: 1100px;
+  position: relative;
+  z-index: 5;
+  border: 1px solid rgba(201,184,212,0.3);
+}
+
+.arrival-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px dashed rgba(123,93,140,0.25);
+}
+
+.arrival-panel-header .arrival-emoji {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.arrival-panel-header h2 {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  margin: 0;
+}
+
+.arrival-panel-header .arrival-eyebrow {
+  font-family: var(--font-accent);
+  color: var(--color-crocus);
+  font-size: 1.3rem;
+  display: block;
+  line-height: 1;
+}
+
+.arrival-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-md);
+}
+
+.arrival-item {
+  background: rgba(255,255,255,0.55);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid rgba(255,255,255,0.8);
+  transition: all var(--transition-fast);
+}
+
+.arrival-item:hover {
+  background: rgba(255,255,255,0.85);
+  transform: translateY(-2px);
+}
+
+.arrival-item .arrival-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-crocus);
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.arrival-item .arrival-label svg {
+  width: 14px;
+  height: 14px;
+}
+
+.arrival-item .arrival-value {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--color-aubergine);
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.arrival-item .arrival-value a {
+  color: var(--color-aubergine);
+  border-bottom: 1px dotted var(--color-crocus);
+}
+
+.arrival-item .arrival-value a:hover {
+  color: var(--color-crocus);
+}
+
+.arrival-item .arrival-sub {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
+}
+
+.arrival-item.copyable {
+  cursor: pointer;
+  position: relative;
+}
+
+.arrival-item.copyable::after {
+  content: '📋';
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  font-size: 0.9rem;
+}
+
+.arrival-item.copyable:hover::after {
+  opacity: 0.6;
+}
+
+.arrival-item.copied::after {
+  content: '✓';
+  opacity: 1;
+  color: var(--color-sage);
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .arrival-panel {
+    margin: -2rem var(--space-sm) var(--space-lg);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+  }
+}
+
+/* ==========================================================================
+   Sticky mobile action bar (call, route, wifi)
+   ========================================================================== */
+.mobile-action-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(201,184,212,0.3);
+  display: none;
+  justify-content: space-around;
+  padding: 0.5rem 0.5rem calc(0.5rem + env(safe-area-inset-bottom, 0));
+  z-index: 999;
+  box-shadow: 0 -4px 24px rgba(58,42,64,0.08);
+}
+
+.mobile-action-bar a {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.4rem 0.25rem;
+  text-decoration: none;
+  color: var(--color-text-soft);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  min-width: 0;
+}
+
+.mobile-action-bar a:active {
+  background: var(--color-lavender-soft);
+  transform: scale(0.96);
+}
+
+.mobile-action-bar a svg {
+  width: 22px;
+  height: 22px;
+  color: var(--color-crocus);
+}
+
+.mobile-action-bar a span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .mobile-action-bar { display: flex; }
+  body { padding-bottom: 64px; }
+  .back-to-top { bottom: 80px; }
+}
+
+/* ==========================================================================
+   Today widget — opening hours + seasonal tip
+   ========================================================================== */
+.today-widget {
+  background: linear-gradient(135deg, #fdfbf7 0%, #f4e5b3 100%);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  border: 1px solid rgba(230,197,105,0.3);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.today-widget::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(230,197,105,0.4) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.today-widget-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--space-sm);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.today-widget-header .today-label {
+  font-family: var(--font-accent);
+  color: var(--color-crocus);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.today-widget-header .today-date {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.today-widget h3 {
+  margin-bottom: var(--space-sm);
+  position: relative;
+}
+
+.today-status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+  position: relative;
+}
+
+.today-status {
+  background: rgba(255,255,255,0.6);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.today-status .status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--color-sage);
+  box-shadow: 0 0 0 4px rgba(139,168,136,0.2);
+}
+
+.today-status.closed .status-dot {
+  background: #c97676;
+  box-shadow: 0 0 0 4px rgba(201,118,118,0.2);
+}
+
+.today-status .status-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-aubergine);
+  display: block;
+  line-height: 1.2;
+}
+
+.today-status .status-detail {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  display: block;
+  line-height: 1.2;
+}
+
+.today-tip {
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px dashed rgba(123,93,140,0.25);
+  position: relative;
+}
+
+.today-tip-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-crocus);
+  margin-bottom: 0.4rem;
+}
+
+.today-tip-text {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--color-aubergine);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ==========================================================================
+   FAQ accordion
+   ========================================================================== */
+.faq-list {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: var(--color-soft-white);
+  border-radius: var(--radius-md);
+  margin-bottom: 0.75rem;
+  border: 1px solid rgba(201,184,212,0.2);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  transition: all var(--transition-fast);
+}
+
+.faq-item[open] {
+  border-color: rgba(123,93,140,0.3);
+  box-shadow: var(--shadow-medium);
+}
+
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--color-aubergine);
+  font-weight: 500;
+  user-select: none;
+  transition: background var(--transition-fast);
+}
+
+.faq-item summary:hover {
+  background: rgba(232,223,240,0.3);
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+
+.faq-item summary::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid var(--color-crocus);
+  border-bottom: 2px solid var(--color-crocus);
+  transform: rotate(45deg);
+  transition: transform var(--transition-smooth);
+  flex-shrink: 0;
+  margin-top: -4px;
+}
+
+.faq-item[open] summary::after {
+  transform: rotate(-135deg);
+  margin-top: 4px;
+}
+
+.faq-item .faq-answer {
+  padding: 0 1.25rem 1.1rem;
+  color: var(--color-text-soft);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  border-top: 1px dashed rgba(123,93,140,0.15);
+  padding-top: 0.85rem;
+}
+
+.faq-item .faq-answer p { margin-bottom: 0.5rem; }
+.faq-item .faq-answer p:last-child { margin-bottom: 0; }
+
+.faq-category-label {
+  font-family: var(--font-accent);
+  color: var(--color-crocus);
+  font-size: 1.4rem;
+  margin: var(--space-md) 0 0.75rem;
+  display: block;
+}
+
+/* ==========================================================================
+   404 page
+   ========================================================================== */
+.error-page {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-xl) var(--space-md);
+  background: linear-gradient(180deg, var(--color-cream) 0%, var(--color-warm-white) 100%);
+}
+
+.error-page-content {
+  max-width: 600px;
+}
+
+.error-page-code {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 18vw, 9rem);
+  font-style: italic;
+  color: var(--color-crocus);
+  line-height: 1;
+  margin-bottom: var(--space-sm);
+  opacity: 0.6;
+}
+
+.error-page h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin-bottom: var(--space-sm);
+}
+
+.error-page p {
+  font-size: 1.05rem;
+  margin-bottom: var(--space-md);
+}
+
+/* ==========================================================================
+   Toast notification (for copy feedback)
+   ========================================================================== */
+.toast {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--color-aubergine);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: var(--shadow-hover);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 768px) {
+  .toast { bottom: 90px; }
+}
+
 </style>
 </head>
 <body>
@@ -1415,6 +1882,80 @@ section {
     </div>
   </section>
 
+  <!-- Bij aankomst — directe praktische info -->
+  <div class="container">
+    <div class="arrival-panel fade-in">
+      <div class="arrival-panel-header">
+        <span class="arrival-emoji" aria-hidden="true">🌿</span>
+        <div>
+          <span class="arrival-eyebrow" data-i18n="arrival.eyebrow">Fijn dat je er bent</span>
+          <h2 data-i18n="arrival.title">Bij aankomst</h2>
+        </div>
+      </div>
+      <div class="arrival-grid">
+        <div class="arrival-item">
+          <div class="arrival-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span data-i18n="arrival.address.label">Adres</span>
+          </div>
+          <div class="arrival-value">
+            <a href="https://maps.google.com/?q=Martenawei+2,+9056+PE+Koarnjum" target="_blank" rel="noopener">Martenawei 2<br>9056 PE Koarnjum</a>
+          </div>
+          <div class="arrival-sub" data-i18n="arrival.address.sub">Tik om in Maps te openen</div>
+        </div>
+
+        <div class="arrival-item copyable" data-copy="MartenastateGast2024">
+          <div class="arrival-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+            <span data-i18n="arrival.wifi.label">WiFi</span>
+          </div>
+          <div class="arrival-value">Martenastate-Gast</div>
+          <div class="arrival-sub" data-i18n="arrival.wifi.sub">Wachtwoord: MartenastateGast2024</div>
+        </div>
+
+        <div class="arrival-item">
+          <div class="arrival-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span data-i18n="arrival.contact.label">Contact</span>
+          </div>
+          <div class="arrival-value">
+            <a href="tel:+31636606521">+31 6 83 60 65 21</a>
+          </div>
+          <div class="arrival-sub" data-i18n="arrival.contact.sub">Robin Alkema · WhatsApp welkom</div>
+        </div>
+
+        <div class="arrival-item">
+          <div class="arrival-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span data-i18n="arrival.checkin.label">Check-in</span>
+          </div>
+          <div class="arrival-value" data-i18n="arrival.checkin.value">Vanaf 15:00</div>
+          <div class="arrival-sub" data-i18n="arrival.checkin.sub">Check-out vóór 11:00</div>
+        </div>
+
+        <div class="arrival-item">
+          <div class="arrival-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 17h-4l-3-7H5"/><path d="M9 17l3-7"/></svg>
+            <span data-i18n="arrival.parking.label">Parkeren</span>
+          </div>
+          <div class="arrival-value" data-i18n="arrival.parking.value">Bij ingang landgoed</div>
+          <div class="arrival-sub" data-i18n="arrival.parking.sub">Gratis · loopafstand naar verblijf</div>
+        </div>
+
+        <div class="arrival-item">
+          <div class="arrival-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+            <span data-i18n="arrival.emergency.label">In geval van nood</span>
+          </div>
+          <div class="arrival-value">
+            <a href="tel:112">112</a>
+          </div>
+          <div class="arrival-sub" data-i18n="arrival.emergency.sub">Huisarts Stiens: 058-257 1969</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Highlights -->
   <div class="highlights">
     <div class="container">
@@ -1438,6 +1979,49 @@ section {
       </div>
     </div>
   </div>
+
+  <!-- Vandaag widget -->
+  <section style="padding-top: var(--space-md);">
+    <div class="container">
+      <div class="today-widget fade-in" id="todayWidget">
+        <div class="today-widget-header">
+          <span class="today-label" data-i18n="today.label">Vandaag op het landgoed</span>
+          <span class="today-date" id="todayDate">—</span>
+        </div>
+        <h3 id="todaySeasonTitle" data-i18n="today.season.spring">Voorjaar — hoogtepunt stinzenflora</h3>
+        <p style="position:relative;color:var(--color-text-soft);" id="todaySeasonText" data-i18n="today.season.spring.text">De wilde hyacint en narcissen kleuren het park nu paarsblauw en geel. Een ideale tijd voor een vroege ochtendwandeling.</p>
+
+        <div class="today-status-grid">
+          <div class="today-status" id="statusTunmanswente">
+            <span class="status-dot"></span>
+            <div>
+              <span class="status-name">Túnmanswente</span>
+              <span class="status-detail" id="tunmanswenteHours">—</span>
+            </div>
+          </div>
+          <div class="today-status">
+            <span class="status-dot"></span>
+            <div>
+              <span class="status-name" data-i18n="today.park.name">Landgoed & park</span>
+              <span class="status-detail" data-i18n="today.park.hours">Hele dag vrij toegankelijk</span>
+            </div>
+          </div>
+          <div class="today-status" id="statusCamping">
+            <span class="status-dot"></span>
+            <div>
+              <span class="status-name" data-i18n="today.camping.name">Camping</span>
+              <span class="status-detail" id="campingStatus">—</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="today-tip">
+          <div class="today-tip-label" data-i18n="today.tip.label">Tip van vandaag</div>
+          <p class="today-tip-text" id="todayTip" data-i18n="today.tip.default">Loop bij zonsopgang door het park — de vogels zingen, de mist trekt op en de stinzenflora is op haar mooist in het ochtendlicht.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Navigation cards -->
   <section>
@@ -1708,10 +2292,33 @@ section {
     </div>
   </footer>
 
+  <!-- Mobile action bar -->
+  <nav class="mobile-action-bar" aria-label="Snelle acties">
+    <a href="tel:+31636606521" aria-label="Bellen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span data-i18n="action.call">Bellen</span>
+    </a>
+    <a href="https://maps.google.com/?q=Martenawei+2,+9056+PE+Koarnjum" target="_blank" rel="noopener" aria-label="Route naar Martenastate">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+      <span data-i18n="action.route">Route</span>
+    </a>
+    <a href="kaart.html" aria-label="Kaart en routes">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+      <span data-i18n="action.map">Kaart</span>
+    </a>
+    <a href="verblijf.html#faq" aria-label="Veelgestelde vragen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <span data-i18n="action.faq">Vragen</span>
+    </a>
+  </nav>
+
   <!-- Back to top -->
   <button class="back-to-top" aria-label="Terug naar boven" id="backToTop">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
   </button>
+
+  <!-- Toast for copy feedback -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
 const translations = {
@@ -1911,6 +2518,106 @@ const translations = {
     "footer.camping.address": "Camping: De Wier 7A, 9056 PM Koarnjum",
     "footer.phone": "+31 6 83 60 65 21",
     "footer.copyright": "Welkom bij Martenastate — Koarnjum, Friesland",
+
+    // Bij aankomst panel
+    "arrival.eyebrow": "Fijn dat je er bent",
+    "arrival.title": "Bij aankomst",
+    "arrival.address.label": "Adres",
+    "arrival.address.sub": "Tik om in Maps te openen",
+    "arrival.wifi.label": "WiFi",
+    "arrival.wifi.sub": "Wachtwoord: MartenastateGast2024",
+    "arrival.contact.label": "Contact",
+    "arrival.contact.sub": "Robin Alkema · WhatsApp welkom",
+    "arrival.checkin.label": "Check-in",
+    "arrival.checkin.value": "Vanaf 15:00",
+    "arrival.checkin.sub": "Check-out vóór 11:00",
+    "arrival.parking.label": "Parkeren",
+    "arrival.parking.value": "Bij ingang landgoed",
+    "arrival.parking.sub": "Gratis · loopafstand naar verblijf",
+    "arrival.emergency.label": "In geval van nood",
+    "arrival.emergency.sub": "Huisarts Stiens: 058-257 1969",
+
+    // Today widget
+    "today.label": "Vandaag op het landgoed",
+    "today.season.winter": "Winter & vroeg voorjaar — eerste sneeuwklokjes",
+    "today.season.winter.text": "Het park is rustig en mystiek. Sneeuwklokjes en winterakoniet wagen zich als eerste boven de grond.",
+    "today.season.spring": "Voorjaar — hoogtepunt stinzenflora",
+    "today.season.spring.text": "De wilde hyacint en narcissen kleuren het park nu paarsblauw en geel. Een ideale tijd voor een vroege ochtendwandeling.",
+    "today.season.summer": "Zomer — lange avonden in het groen",
+    "today.season.summer.text": "Het park staat in vol blad, de theetuin is open en de lange Friese zomeravonden zijn ideaal voor een fietstocht.",
+    "today.season.autumn": "Herfst — gouden bladeren en paddestoelen",
+    "today.season.autumn.text": "De beuken kleuren goud en oranje. Paddestoelen verschijnen langs de paden — neem je camera mee.",
+    "today.park.name": "Landgoed & park",
+    "today.park.hours": "Hele dag vrij toegankelijk",
+    "today.camping.name": "Camping",
+    "today.tip.label": "Tip van vandaag",
+    "today.tip.default": "Loop bij zonsopgang door het park — de vogels zingen, de mist trekt op en de stinzenflora is op haar mooist in het ochtendlicht.",
+    "today.tip.monday": "Begin de week rustig met koffie bij Túnmanswente — minder druk dan in het weekend.",
+    "today.tip.tuesday": "Pak de fiets naar Leeuwarden voor de markt op het Wilhelminaplein.",
+    "today.tip.wednesday": "Boek een geleide stinzenflora-excursie via It Fryske Gea — vandaag zijn er vaak plekken vrij.",
+    "today.tip.thursday": "Wandel het Jabikspaad-stuk naar Túnmanswente en haal je pelgrimsstempel.",
+    "today.tip.friday": "Túnmanswente opent vanmiddag (13:00) — perfect moment voor een verse appeltaart.",
+    "today.tip.saturday": "Stap op de fiets voor de Middelzee-route — pittoreske dorpjes en stille dijken.",
+    "today.tip.sunday": "Maak een ochtendwandeling naar Jelsum en kom terug langs de Dokkumer Ee.",
+    "today.tunman.open": "Open · {hours}",
+    "today.tunman.closed.weekday": "Vandaag gesloten · open vrij/za/zo",
+    "today.tunman.closed.season": "Wintersluiting · open vanaf 27 maart",
+    "today.camping.open": "Open · seizoen 1 apr – 1 okt",
+    "today.camping.closed": "Gesloten · open van 1 apr tot 1 okt",
+
+    // Mobile action bar
+    "action.call": "Bellen",
+    "action.route": "Route",
+    "action.map": "Kaart",
+    "action.faq": "Vragen",
+
+    // FAQ
+    "faq.eyebrow": "Praktisch",
+    "faq.title": "Veelgestelde vragen",
+    "faq.subtitle": "Antwoorden op de vragen die we het vaakst krijgen — zodat je je geen zorgen hoeft te maken en gewoon kunt genieten.",
+    "faq.cat.arrival": "Bij aankomst",
+    "faq.cat.daily": "Tijdens je verblijf",
+    "faq.cat.other": "Goed om te weten",
+    "faq.q.checkin": "Hoe laat kan ik aankomen?",
+    "faq.a.checkin": "Camping en B&B zijn beide vanaf 15:00 beschikbaar. Eerder aankomen is in overleg meestal geen probleem — laat het ons even weten via WhatsApp of telefoon. Check-out is op de vertrekdag uiterlijk 11:00.",
+    "faq.q.parking": "Waar parkeer ik?",
+    "faq.a.parking": "Je kunt gratis parkeren bij de hoofdingang van het landgoed (Martenawei). Voor de camping is er beperkt parkeerruimte direct bij het terrein op De Wier 7A. Volg de borden 'Camping' vanaf de Martenawei.",
+    "faq.q.wifi": "Wat is het WiFi-wachtwoord?",
+    "faq.a.wifi": "Netwerk: Martenastate-Gast. Wachtwoord: MartenastateGast2024. Het signaal bereikt zowel de B&B als de meeste plekken op de camping.",
+    "faq.q.keys": "Hoe werkt de check-in van de B&B?",
+    "faq.a.keys": "Robin ontvangt je persoonlijk bij aankomst, geeft een korte rondleiding en overhandigt de sleutel. Kun je niet op tijd komen? Bel of app ons en we maken een afspraak.",
+    "faq.q.toilet": "Waar zijn de toiletten en douches?",
+    "faq.a.toilet": "Op de camping staat een sanitairgebouw met toiletten, douches en een afwasplek. De B&B heeft een privé badkamer per kamer. Warm water is altijd beschikbaar.",
+    "faq.q.water": "Is het kraanwater drinkbaar?",
+    "faq.a.water": "Ja, alle kranen op het terrein leveren gewoon Fries kraanwater — schoon en lekker. Vul gerust je drinkfles bij voor onderweg.",
+    "faq.q.fire": "Mag ik een vuurtje of barbecue stoken?",
+    "faq.a.fire": "Open vuur op de grond is niet toegestaan. Een verhoogde gasbarbecue of vuurschaal op pootjes mag wel — graag op afstand van bomen en tenten. Bij extreme droogte kan een tijdelijk verbod gelden.",
+    "faq.q.trash": "Waar laat ik mijn afval?",
+    "faq.a.trash": "Bij het sanitairgebouw staan containers voor restafval, papier, glas en plastic/blik. We waarderen het als je afval scheidt — in lijn met het ecologische beheer van het landgoed.",
+    "faq.q.electric": "Kan ik mijn telefoon/auto opladen?",
+    "faq.a.electric": "Op de camping zijn enkele plekken met stroomaansluiting (€4,75 per dag). Voor elektrische auto's: openbare laadpaal in Stiens (4 km) of Leeuwarden (5 km).",
+    "faq.q.pets": "Zijn honden welkom?",
+    "faq.a.pets": "Op de camping zijn honden welkom, mits aangelijnd — dit beschermt de stinzenflora en de weidevogels. In de B&B in overleg. In het park is loslopen niet toegestaan.",
+    "faq.q.kids": "Is het geschikt voor kinderen?",
+    "faq.a.kids": "Absoluut. Kinderen vinden de natuur, het kasteel en de ruimte heerlijk. Het terrein is rustig en autoluw. Geen speeltoestellen, wel volop ruimte om te spelen.",
+    "faq.q.shop": "Waar haal ik boodschappen?",
+    "faq.a.shop": "In Stiens (4 km) vind je een AH, Lidl, Jumbo en bakker. Voor speciaalwinkels, een traiteur en uitgebreide markt: Leeuwarden (5 km).",
+    "faq.q.weather": "Wat als het regent?",
+    "faq.a.weather": "Een regenbui hoort bij Friesland — neem altijd een regenjas mee. Bij echt nat weer: bezoek het Fries Museum, drink koffie bij Túnmanswente of maak een autotocht naar Harlingen of het Woudagemaal.",
+    "faq.q.luggage": "Kan ik bagage achterlaten na check-out?",
+    "faq.a.luggage": "In overleg kunnen we bagage een paar uur voor je bewaren als je nog wat in de buurt wilt doen. Vraag het Robin even.",
+    "faq.q.help": "Wat doe ik bij problemen of nood?",
+    "faq.a.help": "Bel of app Robin op +31 6 83 60 65 21 — bij voorkeur vóór 22:00, maar in noodgevallen altijd. Bij medische nood: 112. Huisartsenpost Stiens: 058-257 1969.",
+
+    // 404
+    "error.eyebrow": "Verdwaald in het park",
+    "error.title": "Deze pagina is een paadje minder bekend",
+    "error.text": "Misschien is hij verplaatst, of bestaat hij niet meer. Geen zorgen — ga terug naar de welkomstgids en je vindt zo weer je weg.",
+    "error.btn.home": "Terug naar home",
+    "error.btn.map": "Open de kaart",
+
+    // Toast
+    "toast.copied": "Gekopieerd naar klembord",
   },
 
   en: {
@@ -2109,204 +2816,111 @@ const translations = {
     "footer.camping.address": "Camping: De Wier 7A, 9056 PM Koarnjum",
     "footer.phone": "+31 6 83 60 65 21",
     "footer.copyright": "Welcome to Martenastate — Koarnjum, Friesland",
+
+    // Bij aankomst panel
+    "arrival.eyebrow": "Glad you're here",
+    "arrival.title": "On arrival",
+    "arrival.address.label": "Address",
+    "arrival.address.sub": "Tap to open in Maps",
+    "arrival.wifi.label": "WiFi",
+    "arrival.wifi.sub": "Password: MartenastateGast2024",
+    "arrival.contact.label": "Contact",
+    "arrival.contact.sub": "Robin Alkema · WhatsApp welcome",
+    "arrival.checkin.label": "Check-in",
+    "arrival.checkin.value": "From 15:00",
+    "arrival.checkin.sub": "Check-out before 11:00",
+    "arrival.parking.label": "Parking",
+    "arrival.parking.value": "At estate entrance",
+    "arrival.parking.sub": "Free · short walk to your stay",
+    "arrival.emergency.label": "In case of emergency",
+    "arrival.emergency.sub": "GP Stiens: 058-257 1969",
+
+    // Today widget
+    "today.label": "Today on the estate",
+    "today.season.winter": "Winter & early spring — first snowdrops",
+    "today.season.winter.text": "The park is quiet and atmospheric. Snowdrops and winter aconite are the first to brave the cold.",
+    "today.season.spring": "Spring — peak stinzenflora",
+    "today.season.spring.text": "Wild hyacinths and daffodils colour the park blue-purple and yellow. An ideal time for an early morning walk.",
+    "today.season.summer": "Summer — long evenings in the green",
+    "today.season.summer.text": "The park is in full leaf, the tea garden is open and the long Frisian summer evenings are perfect for a bike ride.",
+    "today.season.autumn": "Autumn — golden leaves and mushrooms",
+    "today.season.autumn.text": "The beech trees turn gold and orange. Mushrooms appear along the paths — bring your camera.",
+    "today.park.name": "Estate & park",
+    "today.park.hours": "Freely accessible all day",
+    "today.camping.name": "Campsite",
+    "today.tip.label": "Tip of the day",
+    "today.tip.default": "Walk through the park at sunrise — the birds sing, the mist lifts and the stinzenflora is at its most beautiful in the morning light.",
+    "today.tip.monday": "Start the week peacefully with coffee at Túnmanswente — quieter than the weekend.",
+    "today.tip.tuesday": "Cycle to Leeuwarden for the market on Wilhelminaplein.",
+    "today.tip.wednesday": "Book a guided stinzenflora excursion via It Fryske Gea — spots often available today.",
+    "today.tip.thursday": "Walk the Jabikspaad section to Túnmanswente and collect your pilgrim stamp.",
+    "today.tip.friday": "Túnmanswente opens this afternoon (13:00) — perfect time for fresh apple pie.",
+    "today.tip.saturday": "Hop on the bike for the Middelzee route — picturesque villages and quiet dikes.",
+    "today.tip.sunday": "Take a morning walk to Jelsum and return along the Dokkumer Ee.",
+    "today.tunman.open": "Open · {hours}",
+    "today.tunman.closed.weekday": "Closed today · open Fri/Sat/Sun",
+    "today.tunman.closed.season": "Winter closure · open from 27 March",
+    "today.camping.open": "Open · season 1 Apr – 1 Oct",
+    "today.camping.closed": "Closed · open 1 Apr to 1 Oct",
+
+    // Mobile action bar
+    "action.call": "Call",
+    "action.route": "Route",
+    "action.map": "Map",
+    "action.faq": "FAQ",
+
+    // FAQ
+    "faq.eyebrow": "Practical",
+    "faq.title": "Frequently asked questions",
+    "faq.subtitle": "Answers to the questions we get most often — so you don't have to worry and can simply enjoy.",
+    "faq.cat.arrival": "On arrival",
+    "faq.cat.daily": "During your stay",
+    "faq.cat.other": "Good to know",
+    "faq.q.checkin": "What time can I arrive?",
+    "faq.a.checkin": "Both campsite and B&B are available from 15:00. Earlier arrival is usually fine by arrangement — let us know via WhatsApp or phone. Check-out is by 11:00 on departure day.",
+    "faq.q.parking": "Where do I park?",
+    "faq.a.parking": "Free parking at the main entrance (Martenawei). For the campsite there is limited parking at De Wier 7A. Follow the 'Camping' signs from Martenawei.",
+    "faq.q.wifi": "What is the WiFi password?",
+    "faq.a.wifi": "Network: Martenastate-Gast. Password: MartenastateGast2024. The signal reaches both the B&B and most of the campsite.",
+    "faq.q.keys": "How does B&B check-in work?",
+    "faq.a.keys": "Robin welcomes you personally on arrival, gives a brief tour and hands over the key. Can't make it on time? Call or message us to arrange.",
+    "faq.q.toilet": "Where are the toilets and showers?",
+    "faq.a.toilet": "On the campsite there's a sanitary block with toilets, showers and a washing-up area. The B&B has a private bathroom per room. Hot water is always available.",
+    "faq.q.water": "Is the tap water drinkable?",
+    "faq.a.water": "Yes, all taps deliver regular Frisian tap water — clean and tasty. Feel free to refill your water bottle.",
+    "faq.q.fire": "Can I make a fire or barbecue?",
+    "faq.a.fire": "Open ground fires are not permitted. A raised gas barbecue or fire bowl on legs is fine — please keep distance from trees and tents. In extreme drought a temporary ban may apply.",
+    "faq.q.trash": "Where do I put my rubbish?",
+    "faq.a.trash": "Containers for general waste, paper, glass and plastic/cans are at the sanitary block. We appreciate your help with separating waste — in line with the estate's ecological management.",
+    "faq.q.electric": "Can I charge my phone/car?",
+    "faq.a.electric": "A few campsite pitches have electricity (€4.75 per day). For EVs: public charger in Stiens (4 km) or Leeuwarden (5 km).",
+    "faq.q.pets": "Are dogs welcome?",
+    "faq.a.pets": "Dogs are welcome on the campsite, on a lead — to protect the stinzenflora and meadow birds. In the B&B by arrangement. Off-lead is not allowed in the park.",
+    "faq.q.kids": "Is it suitable for children?",
+    "faq.a.kids": "Absolutely. Children love the nature, the castle and the space. The site is quiet and traffic-free. No playground equipment, but plenty of room to play and explore.",
+    "faq.q.shop": "Where do I get groceries?",
+    "faq.a.shop": "In Stiens (4 km) you'll find AH, Lidl, Jumbo and a bakery. For specialty shops and an extensive market: Leeuwarden (5 km).",
+    "faq.q.weather": "What if it rains?",
+    "faq.a.weather": "Rain is part of Friesland — always bring a raincoat. For really wet weather: visit the Fries Museum, have coffee at Túnmanswente or drive to Harlingen or the Woudagemaal.",
+    "faq.q.luggage": "Can I leave luggage after check-out?",
+    "faq.a.luggage": "By arrangement we can store luggage for a few hours if you want to do something nearby. Just ask Robin.",
+    "faq.q.help": "What do I do in case of problems?",
+    "faq.a.help": "Call or message Robin on +31 6 83 60 65 21 — preferably before 22:00, but always in emergencies. Medical emergency: 112. GP out-of-hours Stiens: 058-257 1969.",
+
+    // 404
+    "error.eyebrow": "Lost in the park",
+    "error.title": "This path is a little less travelled",
+    "error.text": "Maybe it's been moved, or it doesn't exist anymore. Don't worry — head back to the welcome guide and you'll find your way again.",
+    "error.btn.home": "Back to home",
+    "error.btn.map": "Open the map",
+
+    // Toast
+    "toast.copied": "Copied to clipboard",
   }
 };
 
-// Wandel- en fietsroutes vanaf Martenastate
-// Coordinaten zijn indicatief — externe link opent actuele routebeschrijving
-
-const walkingRoutes = [
-  {
-    id: 'ochtendrondje',
-    name_nl: 'Ochtendrondje door het park',
-    name_en: 'Morning park loop',
-    distance: '2 km',
-    duration_nl: '±30 min',
-    duration_en: '±30 min',
-    difficulty_nl: 'Gemakkelijk',
-    difficulty_en: 'Easy',
-    desc_nl: 'Rustige lus vanaf Túnmanswente via de beukenlaan naar het kasteel en terug langs de stinzenflora-velden. Vlak terrein, geschikt voor iedereen.',
-    desc_en: 'A peaceful loop from Túnmanswente via the beech lane to the castle and back past the stinzenflora fields. Flat terrain, suitable for everyone.',
-    coords: [
-      [53.2013, 5.7745],
-      [53.2023, 5.7770],
-      [53.2030, 5.7765],
-      [53.2035, 5.7755],
-      [53.2032, 5.7738],
-      [53.2020, 5.7725],
-      [53.2013, 5.7735],
-      [53.2013, 5.7745]
-    ],
-    externalUrl: 'https://www.google.com/maps/dir/?api=1&origin=53.2013,5.7745&destination=53.2013,5.7745&waypoints=53.2023,5.7770%7C53.2035,5.7755%7C53.2020,5.7725&travelmode=walking'
-  },
-  {
-    id: 'middagtocht',
-    name_nl: 'Middagtocht via Jelsum',
-    name_en: 'Afternoon walk via Jelsum',
-    distance: '5 km',
-    duration_nl: '±1,5 uur',
-    duration_en: '±1.5 hours',
-    difficulty_nl: 'Gemakkelijk',
-    difficulty_en: 'Easy',
-    desc_nl: 'Combineer het park met de omliggende polder. Via Koarnjum door de weilanden naar buurdorp Jelsum, terug langs het Dokkumer Ee. Weidelandschap met veel weidevogels.',
-    desc_en: 'Combine the park with the surrounding polder. Via Koarnjum through the meadows to the neighbouring village Jelsum, back along the Dokkumer Ee. Meadow landscape with many meadow birds.',
-    coords: [
-      [53.2013, 5.7745],
-      [53.2050, 5.7780],
-      [53.2120, 5.7770],
-      [53.2180, 5.7730],
-      [53.2214, 5.7694],
-      [53.2200, 5.7650],
-      [53.2160, 5.7620],
-      [53.2100, 5.7660],
-      [53.2050, 5.7710],
-      [53.2013, 5.7745]
-    ],
-    externalUrl: 'https://www.google.com/maps/dir/?api=1&origin=53.2013,5.7745&destination=53.2013,5.7745&waypoints=53.2214,5.7694%7C53.2200,5.7650%7C53.2100,5.7660&travelmode=walking'
-  },
-  {
-    id: 'dagtocht-leeuwarden',
-    name_nl: 'Dagtocht naar Leeuwarden (Jabikspaad)',
-    name_en: 'Day walk to Leeuwarden (Jabikspaad)',
-    distance: '12 km',
-    duration_nl: '±4 uur',
-    duration_en: '±4 hours',
-    difficulty_nl: 'Gemiddeld',
-    difficulty_en: 'Moderate',
-    desc_nl: 'Vanaf Martenastate via het Jabikspaad richting Leeuwarden. Pauze in het centrum bij het Fries Museum, dan terug langs dezelfde of andere route. Laat je pelgrimspaspoort stempelen bij Túnmanswente.',
-    desc_en: 'From Martenastate via the Jabikspaad towards Leeuwarden. Break in the centre at the Fries Museum, then back via the same or another route. Get your pilgrim passport stamped at Túnmanswente.',
-    coords: [
-      [53.2013, 5.7745],
-      [53.2015, 5.7810],
-      [53.2025, 5.7870],
-      [53.2030, 5.7920],
-      [53.2014, 5.7995],
-      [53.2003, 5.7956]
-    ],
-    externalUrl: 'https://www.google.com/maps/dir/?api=1&origin=53.2013,5.7745&destination=53.2014,5.7995&travelmode=walking'
-  },
-  {
-    id: 'elfstedenpad',
-    name_nl: 'Elfstedenpad etappe Oenkerk–Leeuwarden',
-    name_en: 'Elfstedenpad stage Oenkerk–Leeuwarden',
-    distance: '15 km',
-    duration_nl: '±4,5 uur',
-    duration_en: '±4.5 hours',
-    difficulty_nl: 'Gemiddeld',
-    difficulty_en: 'Moderate',
-    desc_nl: 'Een etappe van het 300 km lange Elfstedenpad langs alle 11 Friese steden. Gemarkeerd met geel-rode tekens. Van Oenkerk naar Leeuwarden, passeert vlak langs Martenastate.',
-    desc_en: 'A stage of the 300 km Elfstedenpad through all 11 Frisian cities. Marked with yellow-red signs. From Oenkerk to Leeuwarden, passing close to Martenastate.',
-    coords: [
-      [53.2525, 5.8658],
-      [53.2400, 5.8500],
-      [53.2300, 5.8350],
-      [53.2200, 5.8200],
-      [53.2100, 5.8050],
-      [53.2050, 5.8000],
-      [53.2014, 5.7995]
-    ],
-    externalUrl: 'https://www.wandelnet.nl/streekpaden/elfstedenpad'
-  }
-];
-
-const cyclingRoutes = [
-  {
-    id: 'middelzee-route',
-    name_nl: 'Middelzee-route (20 km)',
-    name_en: 'Middelzee route (20 km)',
-    distance: '20 km',
-    duration_nl: '±1,5 uur',
-    duration_en: '±1.5 hours',
-    difficulty_nl: 'Gemakkelijk',
-    difficulty_en: 'Easy',
-    desc_nl: 'Korte, vlakke lus door het oude Middelzee-landschap. Langs pittoreske dorpjes en oude zeedijken. Via knooppunten: 10 → 11 → 13 → 14 → 10.',
-    desc_en: 'Short, flat loop through the old Middelzee landscape. Past picturesque villages and old sea dikes. Via nodes: 10 → 11 → 13 → 14 → 10.',
-    coords: [
-      [53.2013, 5.7745],
-      [53.2200, 5.7600],
-      [53.2350, 5.7500],
-      [53.2450, 5.7650],
-      [53.2500, 5.7850],
-      [53.2400, 5.8000],
-      [53.2250, 5.8050],
-      [53.2100, 5.7900],
-      [53.2013, 5.7745]
-    ],
-    externalUrl: 'https://www.fietsknoop.nl/route/friesland'
-  },
-  {
-    id: 'leeuwarden-fiets',
-    name_nl: 'Leeuwarden heen & terug',
-    name_en: 'Leeuwarden and back',
-    distance: '15 km',
-    duration_nl: '±1 uur',
-    duration_en: '±1 hour',
-    difficulty_nl: 'Gemakkelijk',
-    difficulty_en: 'Easy',
-    desc_nl: 'Fiets naar het centrum van Leeuwarden voor een halve dag. Pauze bij de Oldehove, koffie op een terras, terug via een andere route. Ideale halvedagtocht.',
-    desc_en: 'Cycle to the centre of Leeuwarden for a half day. Break at the Oldehove, coffee on a terrace, back via another route. Ideal half-day trip.',
-    coords: [
-      [53.2013, 5.7745],
-      [53.2050, 5.7850],
-      [53.2020, 5.7950],
-      [53.2014, 5.7995],
-      [53.2030, 5.7870],
-      [53.2080, 5.7780],
-      [53.2013, 5.7745]
-    ],
-    externalUrl: 'https://www.google.com/maps/dir/?api=1&origin=53.2013,5.7745&destination=53.2014,5.7995&travelmode=bicycling'
-  },
-  {
-    id: 'dokkum-fiets',
-    name_nl: 'Dokkum heen & terug',
-    name_en: 'Dokkum and back',
-    distance: '45 km',
-    duration_nl: '±3 uur',
-    duration_en: '±3 hours',
-    difficulty_nl: 'Gemiddeld',
-    difficulty_en: 'Moderate',
-    desc_nl: 'Fietstocht naar het omwalde stadje Dokkum. Door weilanden, via kleine dorpjes — typisch Fries landschap. Neem de tijd voor een pauze in het centrum van Dokkum.',
-    desc_en: 'Cycling trip to the moated town of Dokkum. Through meadows, via small villages — typical Frisian landscape. Take time for a break in the centre of Dokkum.',
-    coords: [
-      [53.2013, 5.7745],
-      [53.2200, 5.7800],
-      [53.2400, 5.7900],
-      [53.2600, 5.8200],
-      [53.2800, 5.8600],
-      [53.3000, 5.9000],
-      [53.3150, 5.9500],
-      [53.3248, 6.0015]
-    ],
-    externalUrl: 'https://www.google.com/maps/dir/?api=1&origin=53.2013,5.7745&destination=53.3248,6.0015&travelmode=bicycling'
-  },
-  {
-    id: 'elfsteden-fiets',
-    name_nl: 'Elfsteden Fietsroute (start)',
-    name_en: 'Eleven Cities Cycling Route (start)',
-    distance: '258 km',
-    duration_nl: '3-5 dagen',
-    duration_en: '3-5 days',
-    difficulty_nl: 'Meerdaags',
-    difficulty_en: 'Multi-day',
-    desc_nl: 'De klassieke route langs alle 11 Friese steden. Start in Leeuwarden (5 km van Martenastate). Ideaal voor meerdaagse fietsers. Volledig gemarkeerd.',
-    desc_en: 'The classic route through all 11 Frisian cities. Starts in Leeuwarden (5 km from Martenastate). Ideal for multi-day cyclists. Fully marked.',
-    coords: [
-      [53.2014, 5.7995],
-      [53.1500, 5.8500],
-      [53.0500, 5.7500],
-      [53.0300, 5.6600],
-      [52.9400, 5.4000],
-      [52.9000, 5.4400],
-      [53.1000, 5.4200],
-      [53.1743, 5.4214],
-      [53.2014, 5.7995]
-    ],
-    externalUrl: 'https://www.friesland.nl/nl/ondernemers/elfstedentocht'
-  }
-];
-
 </script>
-  <script>
+<script>
 // Language state
 let currentLang = localStorage.getItem('lang') || 'nl';
 
@@ -2335,6 +2949,9 @@ function setLang(lang) {
   currentLang = lang;
   localStorage.setItem('lang', lang);
   applyTranslations();
+  // Refresh dynamic content that depends on language
+  if (typeof initTodayWidget === 'function') initTodayWidget();
+  if (typeof renderRouteLists === 'function') renderRouteLists();
 }
 
 // Mobile nav toggle
@@ -2676,6 +3293,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initMap();
   renderRouteLists();
   initBackToTop();
+  initCopyable();
+  initTodayWidget();
 
   // Language buttons
   document.querySelectorAll('.lang-toggle button').forEach(btn => {
@@ -2769,6 +3388,126 @@ function initBackToTop() {
     btn.classList.toggle('visible', window.scrollY > 400);
   }, { passive: true });
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
+// Toast notification
+let toastTimeout = null;
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  if (!toast) return;
+  toast.textContent = message;
+  toast.classList.add('show');
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => toast.classList.remove('show'), 2000);
+}
+
+// Copy-to-clipboard for items with [data-copy]
+function initCopyable() {
+  document.querySelectorAll('[data-copy]').forEach(el => {
+    el.addEventListener('click', async (e) => {
+      const value = el.getAttribute('data-copy');
+      if (!value) return;
+      try {
+        await navigator.clipboard.writeText(value);
+        el.classList.add('copied');
+        showToast(t('toast.copied'));
+        setTimeout(() => el.classList.remove('copied'), 2000);
+      } catch (err) {
+        const ta = document.createElement('textarea');
+        ta.value = value;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); showToast(t('toast.copied')); } catch (e2) {}
+        document.body.removeChild(ta);
+      }
+    });
+  });
+}
+
+// Today widget — shows current season + opening hours of Túnmanswente + camping
+function initTodayWidget() {
+  const widget = document.getElementById('todayWidget');
+  if (!widget) return;
+
+  const now = new Date();
+  const month = now.getMonth() + 1;       // 1–12
+  const day = now.getDate();               // 1–31
+  const dayOfWeek = now.getDay();          // 0 = sun, 6 = sat
+
+  // Date label, localised per language
+  const dateEl = document.getElementById('todayDate');
+  if (dateEl) {
+    try {
+      dateEl.textContent = now.toLocaleDateString(currentLang === 'nl' ? 'nl-NL' : 'en-GB', {
+        weekday: 'long', day: 'numeric', month: 'long'
+      });
+    } catch (e) {
+      dateEl.textContent = now.toDateString();
+    }
+  }
+
+  // Determine season
+  let seasonKey;
+  if (month === 12 || month <= 2) seasonKey = 'winter';
+  else if (month >= 3 && month <= 5) seasonKey = 'spring';
+  else if (month >= 6 && month <= 8) seasonKey = 'summer';
+  else seasonKey = 'autumn';
+
+  const seasonTitleEl = document.getElementById('todaySeasonTitle');
+  const seasonTextEl = document.getElementById('todaySeasonText');
+  if (seasonTitleEl) {
+    seasonTitleEl.setAttribute('data-i18n', `today.season.${seasonKey}`);
+    seasonTitleEl.textContent = t(`today.season.${seasonKey}`);
+  }
+  if (seasonTextEl) {
+    seasonTextEl.setAttribute('data-i18n', `today.season.${seasonKey}.text`);
+    seasonTextEl.textContent = t(`today.season.${seasonKey}.text`);
+  }
+
+  // Túnmanswente status — open Fri 13–17, Sat/Sun 11–17, season 27 Mar – 25 Oct
+  const tunmanswenteEl = document.getElementById('statusTunmanswente');
+  const tunmanHoursEl = document.getElementById('tunmanswenteHours');
+  if (tunmanswenteEl && tunmanHoursEl) {
+    const inSeason = (month > 3 || (month === 3 && day >= 27)) && (month < 10 || (month === 10 && day <= 25));
+    let isOpen = false;
+    let detailText = '';
+    if (!inSeason) {
+      detailText = t('today.tunman.closed.season');
+      isOpen = false;
+    } else if (dayOfWeek === 5) { // Friday
+      detailText = t('today.tunman.open').replace('{hours}', '13:00 – 17:00');
+      isOpen = true;
+    } else if (dayOfWeek === 6 || dayOfWeek === 0) { // Sat / Sun
+      detailText = t('today.tunman.open').replace('{hours}', '11:00 – 17:00');
+      isOpen = true;
+    } else {
+      detailText = t('today.tunman.closed.weekday');
+      isOpen = false;
+    }
+    tunmanHoursEl.textContent = detailText;
+    tunmanswenteEl.classList.toggle('closed', !isOpen);
+  }
+
+  // Camping status — 1 Apr – 1 Oct
+  const campingEl = document.getElementById('statusCamping');
+  const campingStatusEl = document.getElementById('campingStatus');
+  if (campingEl && campingStatusEl) {
+    const inSeason = month >= 4 && month <= 9;
+    const isOpen = inSeason || (month === 10 && day === 1);
+    campingStatusEl.textContent = isOpen ? t('today.camping.open') : t('today.camping.closed');
+    campingEl.classList.toggle('closed', !isOpen);
+  }
+
+  // Daily tip
+  const tipEl = document.getElementById('todayTip');
+  if (tipEl) {
+    const days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+    const tipKey = `today.tip.${days[dayOfWeek]}`;
+    tipEl.setAttribute('data-i18n', tipKey);
+    tipEl.textContent = t(tipKey);
+  }
 }
 
 </script>
