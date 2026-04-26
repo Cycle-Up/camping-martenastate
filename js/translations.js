@@ -478,6 +478,11 @@ const translations = {
     "act.filter.dagtrip": "Dagtrips",
     "act.omgeving.cta": "Bekijk alle routes interactief →",
 
+    // Podcasts
+    "podcast.eyebrow": "Luister verder",
+    "podcast.title": "Verdiep je in Friesland",
+    "podcast.subtitle": "Twee podcastafleveringen die het gevoel van Friesland prachtig vangen.",
+
     // Photo gallery
     "gallery.eyebrow": "Sfeer",
     "gallery.title": "Sfeer op de state",
@@ -970,6 +975,11 @@ const translations = {
     "act.filter.fietsen": "Cycling",
     "act.filter.dagtrip": "Day trips",
     "act.omgeving.cta": "View all routes interactively →",
+
+    // Podcasts
+    "podcast.eyebrow": "Listen further",
+    "podcast.title": "Discover Friesland through podcasts",
+    "podcast.subtitle": "Two episodes that beautifully capture the feeling of Friesland.",
 
     // Photo gallery
     "gallery.eyebrow": "Atmosphere",
