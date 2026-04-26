@@ -413,6 +413,22 @@ const translations = {
     "weather.precip": "Neerslag",
     "weather.offline": "Geen verbinding — weersinformatie niet beschikbaar",
 
+    // Stinzenflora bloom calendar
+    "bloom.title": "Stinzenflora in bloei",
+    "bloom.note": "Bloeitijden zijn indicatief — afhankelijk van het seizoen.",
+    "bloom.now": "Nu in bloei",
+    "bloom.snowdrop": "Sneeuwklokje",
+    "bloom.winteraconite": "Winterakoniet",
+    "bloom.crocus": "Krokus",
+    "bloom.scilla": "Wilde hyacint",
+    "bloom.vinca": "Grote maagdenpalm",
+    "bloom.daffodil": "Narcis",
+    "bloom.anemone": "Bosanemoon",
+    "bloom.month.feb": "Feb",
+    "bloom.month.mar": "Mrt",
+    "bloom.month.apr": "Apr",
+    "bloom.month.may": "Mei",
+
     // Photo gallery
     "gallery.eyebrow": "Sfeer",
     "gallery.title": "Sfeer op de state",
@@ -840,6 +856,22 @@ const translations = {
     "weather.wind": "Wind",
     "weather.precip": "Precipitation",
     "weather.offline": "No connection — weather unavailable",
+
+    // Stinzenflora bloom calendar
+    "bloom.title": "Stinzenflora in bloom",
+    "bloom.note": "Bloom periods are approximate — depending on the season.",
+    "bloom.now": "In bloom now",
+    "bloom.snowdrop": "Snowdrop",
+    "bloom.winteraconite": "Winter aconite",
+    "bloom.crocus": "Crocus",
+    "bloom.scilla": "Wild hyacinth",
+    "bloom.vinca": "Greater periwinkle",
+    "bloom.daffodil": "Daffodil",
+    "bloom.anemone": "Wood anemone",
+    "bloom.month.feb": "Feb",
+    "bloom.month.mar": "Mar",
+    "bloom.month.apr": "Apr",
+    "bloom.month.may": "May",
 
     // Photo gallery
     "gallery.eyebrow": "Atmosphere",

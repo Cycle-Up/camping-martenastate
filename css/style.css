@@ -1620,6 +1620,101 @@ section {
 }
 
 /* ==========================================================================
+   Bloom calendar (inside today-widget)
+   ========================================================================== */
+.bloom-calendar {
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px dashed rgba(123,93,140,0.25);
+}
+
+.bloom-calendar h4 {
+  font-family: var(--font-accent);
+  font-size: 1rem;
+  color: var(--color-crocus);
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.bloom-grid {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.bloom-header-row,
+.bloom-row {
+  display: table-row;
+}
+
+.bloom-name-col {
+  display: table-cell;
+  padding: 0.25rem 0.5rem 0.25rem 0;
+  color: var(--color-aubergine);
+  white-space: nowrap;
+  vertical-align: middle;
+  min-width: 130px;
+  font-size: 0.82rem;
+}
+
+.bloom-month-col {
+  display: table-cell;
+  padding: 0.2rem 0.25rem;
+  text-align: center;
+  vertical-align: middle;
+  width: 20%;
+}
+
+.bloom-header-row .bloom-month-col {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  padding-bottom: 0.4rem;
+}
+
+.bloom-header-row .bloom-current-month {
+  color: var(--color-crocus);
+}
+
+.bloom-bar {
+  height: 10px;
+  border-radius: 99px;
+  background: transparent;
+}
+
+.bloom-bar-active {
+  opacity: 0.55;
+}
+
+.bloom-bar-current {
+  opacity: 1;
+  box-shadow: 0 0 0 2px rgba(123,93,140,0.3);
+}
+
+.bloom-now-badge {
+  display: inline-block;
+  background: rgba(123,93,140,0.12);
+  color: var(--color-crocus);
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.1rem 0.4rem;
+  border-radius: 99px;
+  vertical-align: middle;
+  margin-left: 0.3rem;
+  white-space: nowrap;
+}
+
+.bloom-note {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin: 0.6rem 0 0;
+  font-style: italic;
+}
+
+/* ==========================================================================
    FAQ accordion
    ========================================================================== */
 .faq-list {

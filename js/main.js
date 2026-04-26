@@ -38,6 +38,7 @@ function setLang(lang) {
   if (typeof initGuestPersonalization === 'function') initGuestPersonalization();
   if (typeof initWeatherWidget === 'function') initWeatherWidget();
   if (typeof renderRouteLists === 'function') renderRouteLists();
+  if (typeof initBloomCalendar === 'function') initBloomCalendar();
   if (typeof window._martenaRefreshMapLang === 'function') window._martenaRefreshMapLang();
 }
 
@@ -557,6 +558,7 @@ function bootMartenastate() {
   initBackToTop();
   initCopyable();
   initTodayWidget();
+  initBloomCalendar();
   initWeatherWidget();
   initGallery();
   initShare();
@@ -834,6 +836,61 @@ function initTodayWidget() {
     tipEl.setAttribute('data-i18n', tipKey);
     tipEl.textContent = t(tipKey);
   }
+}
+
+// Stinzenflora bloom calendar — only shown Feb–May, current month highlighted
+function initBloomCalendar() {
+  const cal = document.getElementById('bloomCalendar');
+  const grid = document.getElementById('bloomGrid');
+  if (!cal || !grid) return;
+
+  const month = new Date().getMonth() + 1; // 1–12
+
+  if (month < 2 || month > 5) {
+    cal.setAttribute('hidden', '');
+    return;
+  }
+  cal.removeAttribute('hidden');
+
+  const MONTHS = [2, 3, 4, 5];
+  const MONTH_KEYS = ['bloom.month.feb', 'bloom.month.mar', 'bloom.month.apr', 'bloom.month.may'];
+
+  const blooms = [
+    { key: 'bloom.snowdrop',      from: 2, to: 3, color: '#c9b8d4' },
+    { key: 'bloom.winteraconite', from: 2, to: 3, color: '#d4a843' },
+    { key: 'bloom.crocus',        from: 3, to: 3, color: '#7b5d8c' },
+    { key: 'bloom.scilla',        from: 3, to: 4, color: '#5a7aad' },
+    { key: 'bloom.vinca',         from: 3, to: 5, color: '#8ba888' },
+    { key: 'bloom.daffodil',      from: 4, to: 4, color: '#e6c569' },
+    { key: 'bloom.anemone',       from: 4, to: 5, color: '#a890b8' },
+  ];
+
+  grid.innerHTML = '';
+
+  // Header row with month labels
+  const headerRow = document.createElement('div');
+  headerRow.className = 'bloom-header-row';
+  headerRow.innerHTML = '<div class="bloom-name-col"></div>' +
+    MONTHS.map((m, i) =>
+      `<div class="bloom-month-col${m === month ? ' bloom-current-month' : ''}">${t(MONTH_KEYS[i])}</div>`
+    ).join('');
+  grid.appendChild(headerRow);
+
+  // One row per flower
+  blooms.forEach(bloom => {
+    const row = document.createElement('div');
+    row.className = 'bloom-row';
+    const inBloom = month >= bloom.from && month <= bloom.to;
+    const badge = inBloom ? ` <span class="bloom-now-badge">${t('bloom.now')}</span>` : '';
+    let html = `<div class="bloom-name-col">${t(bloom.key)}${badge}</div>`;
+    MONTHS.forEach(m => {
+      const active = m >= bloom.from && m <= bloom.to;
+      const current = active && m === month;
+      html += `<div class="bloom-month-col"><div class="bloom-bar${active ? ' bloom-bar-active' : ''}${current ? ' bloom-bar-current' : ''}" style="${active ? `background:${bloom.color}` : ''}"></div></div>`;
+    });
+    row.innerHTML = html;
+    grid.appendChild(row);
+  });
 }
 
 // Share button — uses Web Share API on mobile, falls back to clipboard
