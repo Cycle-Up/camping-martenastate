@@ -18,7 +18,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -29,11 +29,12 @@
     <div class="navbar-inner">
       <a href="index.html" class="brand" aria-label="Martenastate home">
         <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M16 3 C16 3 8 9 8 17 C8 21.4 11.6 25 16 25 C20.4 25 24 21.4 24 17 C24 9 16 3 16 3Z" fill="currentColor" opacity="0.2"/>
-          <path d="M16 6 C13 10 10 13 10 17 C10 20.3 12.7 23 16 23 C19.3 23 22 20.3 22 17 C22 13 19 10 16 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-          <path d="M16 10 C16 10 12 14 12 17 C12 19.2 13.8 21 16 21" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.6"/>
-          <line x1="16" y1="23" x2="16" y2="29" stroke="currentColor" stroke-width="1.5"/>
-          <line x1="12" y1="27" x2="20" y2="27" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M16 3 C14 5 8 9 8 14 C8 17 10 18 12 18 L12 27 L20 27 L20 18 C22 18 24 17 24 14 C24 9 18 5 16 3Z" fill="currentColor" opacity="0.2"/>
+          <path d="M16 3 C14 5 8 9 8 14 C8 17 10 18 12 18 L12 27 L20 27 L20 18 C22 18 24 17 24 14 C24 9 18 5 16 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <line x1="12" y1="18" x2="20" y2="18" stroke="currentColor" stroke-width="1"/>
+          <path d="M14 27 L14 22 Q16 20 18 22 L18 27" stroke="currentColor" stroke-width="1" fill="none"/>
+          <circle cx="8" cy="29" r="1.5" fill="currentColor" opacity="0.4"/>
+          <circle cx="24" cy="29" r="1.5" fill="currentColor" opacity="0.4"/>
         </svg>
         Martenastate
       </a>
@@ -43,6 +44,7 @@
         <li><a href="verblijf.html" data-i18n="nav.verblijf">Verblijf</a></li>
         <li><a href="omgeving.html" data-i18n="nav.omgeving">Omgeving</a></li>
         <li><a href="kaart.html" data-i18n="nav.kaart">Kaart</a></li>
+        <li><a href="restaurants.html" data-i18n="nav.restaurants">Restaurants</a></li>
         <li>
           <div class="lang-toggle" role="group" aria-label="Taal kiezen">
             <button data-lang="nl" class="active">NL</button>
@@ -787,7 +789,14 @@
       <div class="footer-grid">
         <div>
           <div class="footer-brand">
-            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16 3 C16 3 8 9 8 17 C8 21.4 11.6 25 16 25 C20.4 25 24 21.4 24 17 C24 9 16 3 16 3Z" fill="currentColor" opacity="0.3"/><path d="M16 6 C13 10 10 13 10 17 C10 20.3 12.7 23 16 23 C19.3 23 22 20.3 22 17 C22 13 19 10 16 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="16" y1="23" x2="16" y2="29" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="27" x2="20" y2="27" stroke="currentColor" stroke-width="1.5"/></svg>
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M16 3 C14 5 8 9 8 14 C8 17 10 18 12 18 L12 27 L20 27 L20 18 C22 18 24 17 24 14 C24 9 18 5 16 3Z" fill="currentColor" opacity="0.2"/>
+          <path d="M16 3 C14 5 8 9 8 14 C8 17 10 18 12 18 L12 27 L20 27 L20 18 C22 18 24 17 24 14 C24 9 18 5 16 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <line x1="12" y1="18" x2="20" y2="18" stroke="currentColor" stroke-width="1"/>
+          <path d="M14 27 L14 22 Q16 20 18 22 L18 27" stroke="currentColor" stroke-width="1" fill="none"/>
+          <circle cx="8" cy="29" r="1.5" fill="currentColor" opacity="0.4"/>
+          <circle cx="24" cy="29" r="1.5" fill="currentColor" opacity="0.4"/>
+        </svg>
             Martenastate
           </div>
           <p data-i18n="footer.tagline" style="color: var(--color-lavender); opacity:.8;">Een historisch landgoed in het hart van Friesland.</p>
@@ -799,6 +808,7 @@
             <li><a href="verblijf.html" data-i18n="nav.verblijf">Verblijf</a></li>
             <li><a href="omgeving.html" data-i18n="nav.omgeving">Omgeving</a></li>
             <li><a href="kaart.html" data-i18n="nav.kaart">Kaart</a></li>
+            <li><a href="restaurants.html" data-i18n="nav.restaurants">Restaurants</a></li>
           </ul>
         </div>
         <div>
