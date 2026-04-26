@@ -2,7 +2,7 @@
 // Caches core pages for offline access. Gasten kunnen de gids lezen
 // ook zonder internetverbinding (in het park of met slecht signaal).
 
-const CACHE_NAME = 'martenastate-v2';
+const CACHE_NAME = 'martenastate-v3';
 
 const CORE_ASSETS = [
   '/',
@@ -49,8 +49,8 @@ self.addEventListener('fetch', event => {
   // Only handle GET requests
   if (request.method !== 'GET') return;
 
-  // Leaflet CDN and map tiles — network first, no offline fallback (map needs internet)
-  if (url.hostname === 'unpkg.com' || url.hostname.includes('tile.openstreetmap')) {
+  // External CDNs and APIs — network first, no caching
+  if (url.hostname === 'unpkg.com' || url.hostname.includes('tile.openstreetmap') || url.hostname === 'api.open-meteo.com') {
     event.respondWith(fetch(request).catch(() => new Response('', { status: 503 })));
     return;
   }

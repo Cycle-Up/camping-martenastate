@@ -369,6 +369,56 @@ const translations = {
     // Pocket guide
     "pocket.title": "Pocket-guide — Welkom bij Martenastate",
     "pocket.intro": "Een eenvoudig overzicht van alle praktische info — geschikt om af te drukken op A4 en mee te nemen.",
+
+    // Guest personalization
+    "guest.welcome": "Welkom, {naam}! Fijn dat jullie er zijn.",
+    "guest.welcome.short": "Welkom, {naam}",
+
+    // WhatsApp
+    "whatsapp.btn": "Stuur een WhatsApp bericht",
+    "whatsapp.label": "WhatsApp",
+    "action.whatsapp": "WhatsApp",
+
+    // Weather widget
+    "weather.label": "Huidig weer",
+    "weather.condition.clear": "Helder",
+    "weather.condition.mainly_clear": "Overwegend helder",
+    "weather.condition.partly_cloudy": "Gedeeltelijk bewolkt",
+    "weather.condition.overcast": "Bewolkt",
+    "weather.condition.fog": "Mist",
+    "weather.condition.drizzle_light": "Lichte motregen",
+    "weather.condition.drizzle": "Motregen",
+    "weather.condition.drizzle_heavy": "Zware motregen",
+    "weather.condition.rain_light": "Lichte regen",
+    "weather.condition.rain": "Regen",
+    "weather.condition.rain_heavy": "Zware regen",
+    "weather.condition.snow_light": "Lichte sneeuw",
+    "weather.condition.snow": "Sneeuw",
+    "weather.condition.snow_heavy": "Zware sneeuw",
+    "weather.condition.showers_light": "Lichte buien",
+    "weather.condition.showers": "Buien",
+    "weather.condition.showers_heavy": "Zware buien",
+    "weather.condition.snow_showers": "Sneeuwbuien",
+    "weather.condition.snow_showers_heavy": "Zware sneeuwbuien",
+    "weather.condition.thunderstorm": "Onweer",
+    "weather.condition.thunderstorm_hail": "Onweer met hagel",
+    "weather.condition.unknown": "Onbekend",
+    "weather.wind": "Wind",
+    "weather.precip": "Neerslag",
+    "weather.offline": "Geen verbinding — weersinformatie niet beschikbaar",
+
+    // Photo gallery
+    "gallery.eyebrow": "Sfeer",
+    "gallery.title": "Sfeer op de state",
+    "gallery.subtitle": "Een blik op het landgoed, in elk seizoen bijzonder.",
+    "gallery.caption.1": "Stinzenflora in het voorjaar",
+    "gallery.caption.2": "Wilde hyacint langs het pad",
+    "gallery.caption.3": "Kampeerplekken achter de beuken",
+    "gallery.caption.4": "B&B Stinzenflora",
+    "gallery.caption.5": "Túnmanswente theetuin",
+    "gallery.caption.6": "Wandelen door het park",
+    "gallery.caption.7": "Leeuwarden — 5 km fietsen",
+    "gallery.caption.8": "Herfst op het landgoed",
   },
 
   en: {
@@ -741,5 +791,55 @@ const translations = {
     // Pocket guide
     "pocket.title": "Pocket guide — Welcome to Martenastate",
     "pocket.intro": "A simple overview of all practical info — suitable for printing on A4 and taking with you.",
+
+    // Guest personalization
+    "guest.welcome": "Welcome, {naam}! Great to have you here.",
+    "guest.welcome.short": "Welcome, {naam}",
+
+    // WhatsApp
+    "whatsapp.btn": "Send a WhatsApp message",
+    "whatsapp.label": "WhatsApp",
+    "action.whatsapp": "WhatsApp",
+
+    // Weather widget
+    "weather.label": "Current weather",
+    "weather.condition.clear": "Clear",
+    "weather.condition.mainly_clear": "Mainly clear",
+    "weather.condition.partly_cloudy": "Partly cloudy",
+    "weather.condition.overcast": "Overcast",
+    "weather.condition.fog": "Fog",
+    "weather.condition.drizzle_light": "Light drizzle",
+    "weather.condition.drizzle": "Drizzle",
+    "weather.condition.drizzle_heavy": "Heavy drizzle",
+    "weather.condition.rain_light": "Light rain",
+    "weather.condition.rain": "Rain",
+    "weather.condition.rain_heavy": "Heavy rain",
+    "weather.condition.snow_light": "Light snow",
+    "weather.condition.snow": "Snow",
+    "weather.condition.snow_heavy": "Heavy snow",
+    "weather.condition.showers_light": "Light showers",
+    "weather.condition.showers": "Showers",
+    "weather.condition.showers_heavy": "Heavy showers",
+    "weather.condition.snow_showers": "Snow showers",
+    "weather.condition.snow_showers_heavy": "Heavy snow showers",
+    "weather.condition.thunderstorm": "Thunderstorm",
+    "weather.condition.thunderstorm_hail": "Thunderstorm with hail",
+    "weather.condition.unknown": "Unknown",
+    "weather.wind": "Wind",
+    "weather.precip": "Precipitation",
+    "weather.offline": "No connection — weather unavailable",
+
+    // Photo gallery
+    "gallery.eyebrow": "Atmosphere",
+    "gallery.title": "Atmosphere on the estate",
+    "gallery.subtitle": "A glimpse of the estate, special in every season.",
+    "gallery.caption.1": "Stinzenflora in spring",
+    "gallery.caption.2": "Wild hyacinth along the path",
+    "gallery.caption.3": "Camping pitches behind the beeches",
+    "gallery.caption.4": "B&B Stinzenflora",
+    "gallery.caption.5": "Túnmanswente tea garden",
+    "gallery.caption.6": "Walking through the park",
+    "gallery.caption.7": "Leeuwarden — 5 km by bike",
+    "gallery.caption.8": "Autumn on the estate",
   }
 };

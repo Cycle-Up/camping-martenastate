@@ -91,6 +91,7 @@
         Welkom bij<br>
         <span class="italic" data-i18n="home.title.italic">Martenastate</span>
       </h1>
+      <p class="guest-greeting-hero" id="guestGreeting" hidden></p>
       <p class="hero-subtitle" data-i18n="home.subtitle">
         Een verborgen parel in het groen van Friesland. Wij hopen dat je een heerlijk verblijf hebt op dit historische landgoed in Koarnjum.
       </p>
@@ -151,6 +152,10 @@
             <a href="tel:+31636606521">+31 6 83 60 65 21</a>
           </div>
           <div class="arrival-sub" data-i18n="arrival.contact.sub">Robin Alkema · WhatsApp welkom</div>
+          <a href="https://wa.me/31636606521?text=Hallo%2C%20ik%20ben%20gast%20bij%20Martenastate%20en%20heb%20een%20vraag..." class="btn-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp Robin">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.534 5.852L0 24l6.335-1.518A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.879 0-3.629-.491-5.148-1.348l-.37-.218-3.758.9.938-3.665-.24-.383A9.775 9.775 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182c5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+            <span data-i18n="whatsapp.btn">Stuur een WhatsApp bericht</span>
+          </a>
         </div>
 
         <div class="arrival-item">
@@ -243,6 +248,8 @@
             </div>
           </div>
         </div>
+
+        <div class="weather-row" id="weatherRow" aria-live="polite" hidden></div>
 
         <div class="today-tip">
           <div class="today-tip-label" data-i18n="today.tip.label">Tip van vandaag</div>
@@ -490,6 +497,79 @@
 
   <div class="flower-divider" aria-hidden="true">✿ ✾ ✿</div>
 
+  <!-- Sfeer op de state — photo gallery -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-eyebrow" data-i18n="gallery.eyebrow">Sfeer</span>
+        <h2 data-i18n="gallery.title">Sfeer op de state</h2>
+        <p data-i18n="gallery.subtitle">Een blik op het landgoed, in elk seizoen bijzonder.</p>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid">
+        <figure class="gallery-item fade-in" aria-label="Foto 1">
+          <div class="gallery-img-wrap">
+            <img src="images/park-lente.jpg" alt="" loading="lazy" data-caption-key="gallery.caption.1" onerror="this.parentElement.classList.add('gallery-placeholder')">
+          </div>
+          <figcaption class="gallery-caption" data-i18n="gallery.caption.1">Stinzenflora in het voorjaar</figcaption>
+        </figure>
+        <figure class="gallery-item fade-in" aria-label="Foto 2">
+          <div class="gallery-img-wrap">
+            <img src="images/stinzenflora.jpg" alt="" loading="lazy" data-caption-key="gallery.caption.2" onerror="this.parentElement.classList.add('gallery-placeholder')">
+          </div>
+          <figcaption class="gallery-caption" data-i18n="gallery.caption.2">Wilde hyacint langs het pad</figcaption>
+        </figure>
+        <figure class="gallery-item fade-in" aria-label="Foto 3">
+          <div class="gallery-img-wrap">
+            <img src="images/camping.jpg" alt="" loading="lazy" data-caption-key="gallery.caption.3" onerror="this.parentElement.classList.add('gallery-placeholder')">
+          </div>
+          <figcaption class="gallery-caption" data-i18n="gallery.caption.3">Kampeerplekken achter de beuken</figcaption>
+        </figure>
+        <figure class="gallery-item fade-in" aria-label="Foto 4">
+          <div class="gallery-img-wrap">
+            <img src="images/bb-kamer-1.jpg" alt="" loading="lazy" data-caption-key="gallery.caption.4" onerror="this.parentElement.classList.add('gallery-placeholder')">
+          </div>
+          <figcaption class="gallery-caption" data-i18n="gallery.caption.4">B&amp;B Stinzenflora</figcaption>
+        </figure>
+        <figure class="gallery-item fade-in" aria-label="Foto 5">
+          <div class="gallery-img-wrap">
+            <img src="images/tunmanswente.jpg" alt="" loading="lazy" data-caption-key="gallery.caption.5" onerror="this.parentElement.classList.add('gallery-placeholder')">
+          </div>
+          <figcaption class="gallery-caption" data-i18n="gallery.caption.5">Túnmanswente theetuin</figcaption>
+        </figure>
+        <figure class="gallery-item fade-in" aria-label="Foto 6">
+          <div class="gallery-img-wrap">
+            <img src="images/wandelen-park.jpg" alt="" loading="lazy" data-caption-key="gallery.caption.6" onerror="this.parentElement.classList.add('gallery-placeholder')">
+          </div>
+          <figcaption class="gallery-caption" data-i18n="gallery.caption.6">Wandelen door het park</figcaption>
+        </figure>
+        <figure class="gallery-item fade-in" aria-label="Foto 7">
+          <div class="gallery-img-wrap">
+            <img src="images/leeuwarden.jpg" alt="" loading="lazy" data-caption-key="gallery.caption.7" onerror="this.parentElement.classList.add('gallery-placeholder')">
+          </div>
+          <figcaption class="gallery-caption" data-i18n="gallery.caption.7">Leeuwarden — 5 km fietsen</figcaption>
+        </figure>
+        <figure class="gallery-item fade-in" aria-label="Foto 8">
+          <div class="gallery-img-wrap">
+            <img src="images/herfst-park.jpg" alt="" loading="lazy" data-caption-key="gallery.caption.8" onerror="this.parentElement.classList.add('gallery-placeholder')">
+          </div>
+          <figcaption class="gallery-caption" data-i18n="gallery.caption.8">Herfst op het landgoed</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-label="Foto" hidden>
+    <button class="lightbox-close" id="lightboxClose" aria-label="Sluiten">✕</button>
+    <button class="lightbox-prev" id="lightboxPrev" aria-label="Vorige foto">&#8249;</button>
+    <button class="lightbox-next" id="lightboxNext" aria-label="Volgende foto">&#8250;</button>
+    <figure class="lightbox-content">
+      <img src="" alt="" id="lightboxImg">
+      <figcaption id="lightboxCaption" class="lightbox-caption"></figcaption>
+    </figure>
+  </div>
+
   <!-- Onze tips -->
   <section>
     <div class="container">
@@ -630,6 +710,10 @@
     <a href="verblijf.html#faq" aria-label="Veelgestelde vragen">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
       <span data-i18n="action.faq">Vragen</span>
+    </a>
+    <a href="https://wa.me/31636606521?text=Hallo%2C%20ik%20ben%20gast%20bij%20Martenastate%20en%20heb%20een%20vraag..." target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="color:#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.534 5.852L0 24l6.335-1.518A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.879 0-3.629-.491-5.148-1.348l-.37-.218-3.758.9.938-3.665-.24-.383A9.775 9.775 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182c5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+      <span data-i18n="action.whatsapp">WhatsApp</span>
     </a>
   </nav>
 

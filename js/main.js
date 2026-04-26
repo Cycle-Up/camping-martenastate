@@ -35,6 +35,8 @@ function setLang(lang) {
   applyTranslations();
   // Refresh dynamic content that depends on language
   if (typeof initTodayWidget === 'function') initTodayWidget();
+  if (typeof initGuestPersonalization === 'function') initGuestPersonalization();
+  if (typeof initWeatherWidget === 'function') initWeatherWidget();
   if (typeof renderRouteLists === 'function') renderRouteLists();
   if (typeof window._martenaRefreshMapLang === 'function') window._martenaRefreshMapLang();
 }
@@ -320,6 +322,221 @@ function initMap() {
   }
 }
 
+// Guest name personalization via ?gast= URL param
+function initGuestPersonalization() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const paramName = params.get('gast');
+    if (paramName && paramName.trim()) {
+      safeSet('guestName', paramName.trim());
+    }
+  } catch (e) { /* URL parsing unavailable */ }
+
+  const name = safeGet('guestName');
+  if (!name) return;
+
+  const heroEl = document.getElementById('guestGreeting');
+  if (heroEl) {
+    heroEl.textContent = t('guest.welcome').replace('{naam}', name);
+    heroEl.removeAttribute('hidden');
+  }
+}
+
+// Weather widget using Open-Meteo (free, no API key)
+const WEATHER_CACHE_KEY = 'martenaWeatherCache';
+const WEATHER_CACHE_TTL = 30 * 60 * 1000;
+
+const WMO_MAP = {
+  0:  { icon: '☀️',  key: 'clear' },
+  1:  { icon: '🌤️', key: 'mainly_clear' },
+  2:  { icon: '⛅',  key: 'partly_cloudy' },
+  3:  { icon: '☁️',  key: 'overcast' },
+  45: { icon: '🌫️', key: 'fog' },
+  48: { icon: '🌫️', key: 'fog' },
+  51: { icon: '🌦️', key: 'drizzle_light' },
+  53: { icon: '🌦️', key: 'drizzle' },
+  55: { icon: '🌦️', key: 'drizzle_heavy' },
+  61: { icon: '🌧️', key: 'rain_light' },
+  63: { icon: '🌧️', key: 'rain' },
+  65: { icon: '🌧️', key: 'rain_heavy' },
+  71: { icon: '🌨️', key: 'snow_light' },
+  73: { icon: '🌨️', key: 'snow' },
+  75: { icon: '❄️',  key: 'snow_heavy' },
+  80: { icon: '🌦️', key: 'showers_light' },
+  81: { icon: '🌧️', key: 'showers' },
+  82: { icon: '⛈️',  key: 'showers_heavy' },
+  85: { icon: '🌨️', key: 'snow_showers' },
+  86: { icon: '🌨️', key: 'snow_showers_heavy' },
+  95: { icon: '⛈️',  key: 'thunderstorm' },
+  99: { icon: '⛈️',  key: 'thunderstorm_hail' },
+};
+
+function _getWMOInfo(code) {
+  return WMO_MAP[code] || WMO_MAP[Math.floor(code / 10) * 10] || { icon: '🌡️', key: 'unknown' };
+}
+
+function _renderWeatherRow(data) {
+  const row = document.getElementById('weatherRow');
+  if (!row) return;
+  const { temperature_2m, weathercode, windspeed_10m, precipitation } = data.current;
+  const info = _getWMOInfo(weathercode);
+
+  row.innerHTML = '';
+
+  const iconEl = document.createElement('span');
+  iconEl.className = 'weather-icon';
+  iconEl.setAttribute('aria-hidden', 'true');
+  iconEl.textContent = info.icon;
+
+  const detailsEl = document.createElement('div');
+  detailsEl.className = 'weather-details';
+
+  const tempEl = document.createElement('span');
+  tempEl.className = 'weather-temp';
+  tempEl.textContent = `${Math.round(temperature_2m)}°C`;
+
+  const descEl = document.createElement('span');
+  descEl.className = 'weather-desc';
+  descEl.textContent = t(`weather.condition.${info.key}`);
+
+  detailsEl.appendChild(tempEl);
+  detailsEl.appendChild(descEl);
+
+  const metaEl = document.createElement('div');
+  metaEl.className = 'weather-meta';
+
+  const windEl = document.createElement('span');
+  windEl.textContent = `💨 ${Math.round(windspeed_10m)} km/u`;
+
+  const precipEl = document.createElement('span');
+  precipEl.textContent = `🌧 ${precipitation} mm`;
+
+  metaEl.appendChild(windEl);
+  metaEl.appendChild(precipEl);
+
+  row.appendChild(iconEl);
+  row.appendChild(detailsEl);
+  row.appendChild(metaEl);
+  row.removeAttribute('hidden');
+}
+
+function _renderWeatherOffline() {
+  const row = document.getElementById('weatherRow');
+  if (!row) return;
+  row.innerHTML = '';
+  const msg = document.createElement('span');
+  msg.className = 'weather-offline';
+  msg.textContent = t('weather.offline');
+  row.appendChild(msg);
+  row.removeAttribute('hidden');
+}
+
+function initWeatherWidget() {
+  const row = document.getElementById('weatherRow');
+  if (!row) return;
+
+  // Try sessionStorage cache first
+  try {
+    const raw = window.sessionStorage.getItem(WEATHER_CACHE_KEY);
+    if (raw) {
+      const cached = JSON.parse(raw);
+      if (Date.now() - cached.ts < WEATHER_CACHE_TTL) {
+        _renderWeatherRow(cached.data);
+        return;
+      }
+    }
+  } catch (e) { /* sessionStorage unavailable */ }
+
+  if (!navigator.onLine || typeof fetch === 'undefined') {
+    _renderWeatherOffline();
+    return;
+  }
+
+  const API_URL = 'https://api.open-meteo.com/v1/forecast?latitude=53.2013&longitude=5.7745&current=temperature_2m,weathercode,windspeed_10m,precipitation&wind_speed_unit=kmh&timezone=Europe%2FAmsterdam';
+
+  fetch(API_URL)
+    .then(r => {
+      if (!r.ok) throw new Error('API error');
+      return r.json();
+    })
+    .then(data => {
+      try {
+        window.sessionStorage.setItem(WEATHER_CACHE_KEY, JSON.stringify({ ts: Date.now(), data }));
+      } catch (e) { /* storage full */ }
+      _renderWeatherRow(data);
+    })
+    .catch(() => {
+      try {
+        const raw = window.sessionStorage.getItem(WEATHER_CACHE_KEY);
+        if (raw) { _renderWeatherRow(JSON.parse(raw).data); return; }
+      } catch (e) { /* ignore */ }
+      _renderWeatherOffline();
+    });
+}
+
+// Photo gallery with lightbox
+function initGallery() {
+  const grid = document.getElementById('galleryGrid');
+  const lightbox = document.getElementById('galleryLightbox');
+  if (!grid || !lightbox) return;
+
+  const items = Array.from(grid.querySelectorAll('.gallery-item'));
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    const item = items[index];
+    const img = item.querySelector('img');
+    const captionKey = img ? img.getAttribute('data-caption-key') : '';
+    lightboxImg.src = img ? img.src : '';
+    lightboxImg.alt = img ? img.alt : '';
+    lightboxCaption.textContent = captionKey ? t(captionKey) : '';
+    lightbox.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+    const closeBtn = document.getElementById('lightboxClose');
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.setAttribute('hidden', '');
+    document.body.style.overflow = '';
+  }
+
+  function navigate(dir) {
+    currentIndex = (currentIndex + dir + items.length) % items.length;
+    openLightbox(currentIndex);
+  }
+
+  items.forEach((item, i) => {
+    item.setAttribute('tabindex', '0');
+    item.setAttribute('role', 'button');
+    item.addEventListener('click', () => openLightbox(i));
+    item.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(i); }
+    });
+  });
+
+  const closeBtn = document.getElementById('lightboxClose');
+  const prevBtn = document.getElementById('lightboxPrev');
+  const nextBtn = document.getElementById('lightboxNext');
+
+  if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+  if (prevBtn) prevBtn.addEventListener('click', () => navigate(-1));
+  if (nextBtn) nextBtn.addEventListener('click', () => navigate(1));
+
+  lightbox.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navigate(-1);
+    if (e.key === 'ArrowRight') navigate(1);
+  });
+
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) closeLightbox();
+  });
+}
+
 // Expose key functions on window for debugging and testing
 if (typeof window !== 'undefined') {
   window.setLang = setLang;
@@ -330,6 +547,7 @@ if (typeof window !== 'undefined') {
 // Init everything
 function bootMartenastate() {
   applyTranslations();
+  initGuestPersonalization();
   initNav();
   initTabs();
   initScrollAnimations();
@@ -339,6 +557,8 @@ function bootMartenastate() {
   initBackToTop();
   initCopyable();
   initTodayWidget();
+  initWeatherWidget();
+  initGallery();
   initShare();
   initSmoothAnchors();
 
