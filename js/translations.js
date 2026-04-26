@@ -429,6 +429,23 @@ const translations = {
     "bloom.month.apr": "Apr",
     "bloom.month.may": "Mei",
 
+    // Restaurants page
+    "nav.restaurants": "Restaurants",
+    "card.restaurants.title": "Restaurants",
+    "card.restaurants.desc": "De beste eettips in Leeuwarden en Stiens, met live openingstijden.",
+    "card.restaurants.link": "Bekijk kaart",
+    "restaurants.title": "Beste restaurants",
+    "restaurants.subtitle": "Toprestaurants in Leeuwarden en Stiens — geselecteerd op Google Maps-beoordeling (min. 50 reviews) — met live openingstijden.",
+    "restaurants.filter.all": "Alle",
+    "restaurants.updated": "Data bijgewerkt:",
+    "rest.updated.note": "Openingstijden zijn indicatief. Controleer actuele tijden via de Google Maps-link.",
+    "rest.filter.city": "Stad:",
+    "rest.cat.italian": "Italiaans",
+    "rest.cat.asian": "Aziatisch",
+    "rest.cat.international": "Internationaal",
+    "rest.cat.casual": "Casual",
+    "rest.cat.dutch": "Nederlands",
+
     // Stinzenflora verdieping
     "stinzen.eyebrow": "Meer over stinzenflora",
     "stinzen.title": "Een levend erfgoed",
@@ -891,6 +908,23 @@ const translations = {
     "bloom.month.mar": "Mar",
     "bloom.month.apr": "Apr",
     "bloom.month.may": "May",
+
+    // Restaurants page
+    "nav.restaurants": "Restaurants",
+    "card.restaurants.title": "Restaurants",
+    "card.restaurants.desc": "The best dining tips in Leeuwarden and Stiens, with live opening hours.",
+    "card.restaurants.link": "View map",
+    "restaurants.title": "Best restaurants",
+    "restaurants.subtitle": "Top restaurants in Leeuwarden and Stiens — selected by Google Maps rating (min. 50 reviews) — with live opening hours.",
+    "restaurants.filter.all": "All",
+    "restaurants.updated": "Data updated:",
+    "rest.updated.note": "Opening hours are indicative. Check current hours via the Google Maps link.",
+    "rest.filter.city": "City:",
+    "rest.cat.italian": "Italian",
+    "rest.cat.asian": "Asian",
+    "rest.cat.international": "International",
+    "rest.cat.casual": "Casual",
+    "rest.cat.dutch": "Dutch",
 
     // Stinzenflora deep-dive section
     "stinzen.eyebrow": "About stinzenflora",

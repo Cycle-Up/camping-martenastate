@@ -40,6 +40,7 @@ function setLang(lang) {
   if (typeof renderRouteLists === 'function') renderRouteLists();
   if (typeof initBloomCalendar === 'function') initBloomCalendar();
   if (typeof window._martenaRefreshMapLang === 'function') window._martenaRefreshMapLang();
+  if (typeof window._martenaRefreshRestaurantLang === 'function') window._martenaRefreshRestaurantLang();
 }
 
 // Mobile nav toggle

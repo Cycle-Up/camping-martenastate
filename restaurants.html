@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurants — Martenastate</title>
+  <meta name="description" content="De best beoordeelde restaurants in Leeuwarden en Stiens — met live openingstijden en directe link naar Google Maps.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Restaurants — Martenastate">
+  <meta property="og:description" content="De best beoordeelde restaurants in Leeuwarden en Stiens, geselecteerd op Google Maps-beoordeling.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="nl_NL">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    #restaurantMap { height: 480px; border-radius: var(--radius-lg); }
+    @media (max-width: 768px) { #restaurantMap { height: 360px; } }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" role="navigation">
+    <div class="navbar-inner">
+      <a href="index.html" class="brand" aria-label="Martenastate home">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M16 3 C16 3 8 9 8 17 C8 21.4 11.6 25 16 25 C20.4 25 24 21.4 24 17 C24 9 16 3 16 3Z" fill="currentColor" opacity="0.2"/>
+          <path d="M16 6 C13 10 10 13 10 17 C10 20.3 12.7 23 16 23 C19.3 23 22 20.3 22 17 C22 13 19 10 16 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <line x1="16" y1="23" x2="16" y2="29" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="12" y1="27" x2="20" y2="27" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        Martenastate
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="verblijf.html" data-i18n="nav.verblijf">Verblijf</a></li>
+        <li><a href="omgeving.html" data-i18n="nav.omgeving">Omgeving</a></li>
+        <li><a href="kaart.html" data-i18n="nav.kaart">Kaart</a></li>
+        <li>
+          <div class="lang-toggle" role="group" aria-label="Taal kiezen">
+            <button data-lang="nl" class="active">NL</button>
+            <button data-lang="en">EN</button>
+          </div>
+        </li>
+      </ul>
+      <button class="menu-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="nav-links">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page hero -->
+  <div style="padding: 8rem 0 3rem; text-align: center; background: linear-gradient(180deg, var(--color-aconite-soft) 0%, var(--color-warm-white) 100%);">
+    <div class="container-narrow">
+      <span class="section-eyebrow" style="font-size:2rem;">🍽️</span>
+      <h1 data-i18n="restaurants.title">Beste restaurants</h1>
+      <p style="font-size:1.1rem; max-width:520px; margin: 1rem auto 0;" data-i18n="restaurants.subtitle">Toprestaurants in Leeuwarden en Stiens — geselecteerd op Google Maps-beoordeling (min. 50 reviews) — met live openingstijden.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+
+      <!-- Filter bars -->
+      <div class="rest-filter-bar" style="margin-bottom:var(--space-md);">
+
+        <!-- Categorie filter -->
+        <div class="rest-filter-group" role="group" aria-label="Filter op categorie">
+          <button class="map-filter-btn active" data-cat-filter="all" data-i18n="restaurants.filter.all">Alle</button>
+          <button class="map-filter-btn" data-cat-filter="finedining">
+            <span>🍽️</span> Fine dining
+          </button>
+          <button class="map-filter-btn" data-cat-filter="italiaans">
+            <span>🍕</span> <span data-i18n="rest.cat.italian">Italiaans</span>
+          </button>
+          <button class="map-filter-btn" data-cat-filter="aziatisch">
+            <span>🥢</span> <span data-i18n="rest.cat.asian">Aziatisch</span>
+          </button>
+          <button class="map-filter-btn" data-cat-filter="internationaal">
+            <span>🌍</span> <span data-i18n="rest.cat.international">Internationaal</span>
+          </button>
+          <button class="map-filter-btn" data-cat-filter="casual">
+            <span>🍔</span> <span data-i18n="rest.cat.casual">Casual</span>
+          </button>
+          <button class="map-filter-btn" data-cat-filter="nederlands">
+            <span>🧀</span> <span data-i18n="rest.cat.dutch">Nederlands</span>
+          </button>
+        </div>
+
+        <!-- Stad filter -->
+        <div class="rest-filter-group" role="group" aria-label="Filter op stad" style="margin-top:.5rem;">
+          <span class="rest-filter-label" data-i18n="rest.filter.city">Stad:</span>
+          <button class="map-filter-btn active" data-city-filter="all" data-i18n="restaurants.filter.all">Alle</button>
+          <button class="map-filter-btn" data-city-filter="leeuwarden">Leeuwarden</button>
+          <button class="map-filter-btn" data-city-filter="stiens">Stiens</button>
+        </div>
+      </div>
+
+      <!-- Map -->
+      <div class="map-container" style="height:auto; margin-bottom:var(--space-xl);">
+        <div id="restaurantMap"></div>
+      </div>
+
+      <!-- Data-update notice -->
+      <p class="rest-data-notice">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span data-i18n="restaurants.updated">Data bijgewerkt:</span>
+        <strong id="dataUpdatedDate">—</strong>
+        — <span data-i18n="rest.updated.note">Openingstijden zijn indicatief. Controleer actuele tijden via de Google Maps-link.</span>
+      </p>
+
+      <!-- Restaurant cards -->
+      <div id="restaurantGrid" class="restaurant-grid"></div>
+
+      <!-- Quick links -->
+      <div class="card-grid cols-3" style="margin-top:var(--space-2xl);">
+        <a href="kaart.html" class="nav-card fade-in">
+          <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg></div>
+          <h3 data-i18n="card.kaart.title">Interactieve kaart</h3>
+          <p data-i18n="card.kaart.desc">Bekijk alle tips, routes en adressen op de kaart.</p>
+          <span class="card-link" data-i18n="card.kaart.link">Open kaart</span>
+        </a>
+        <a href="omgeving.html" class="nav-card fade-in">
+          <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1-2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z"/><circle cx="12" cy="11" r="3"/></svg></div>
+          <h3 data-i18n="card.omgeving.title">In de omgeving</h3>
+          <p data-i18n="card.omgeving.desc">Wandelen, fietsen, eten en meer.</p>
+          <span class="card-link" data-i18n="card.omgeving.link">Ontdek de omgeving</span>
+        </a>
+        <div class="nav-card fade-in">
+          <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78A16 16 0 0 0 16 16.85l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <h3>Contact</h3>
+          <p>Robin Alkema<br><a href="tel:+31636606521">+31 6 83 60 65 21</a></p>
+          <p style="margin:0;"><a href="https://martenastate.nl" target="_blank" rel="noopener">martenastate.nl</a></p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16 3 C16 3 8 9 8 17 C8 21.4 11.6 25 16 25 C20.4 25 24 21.4 24 17 C24 9 16 3 16 3Z" fill="currentColor" opacity="0.3"/><path d="M16 6 C13 10 10 13 10 17 C10 20.3 12.7 23 16 23 C19.3 23 22 20.3 22 17 C22 13 19 10 16 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="16" y1="23" x2="16" y2="29" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="27" x2="20" y2="27" stroke="currentColor" stroke-width="1.5"/></svg>
+            Martenastate
+          </div>
+          <p style="color:var(--color-lavender);opacity:.8;" data-i18n="footer.tagline">Een historisch landgoed in het hart van Friesland.</p>
+        </div>
+        <div>
+          <h4 data-i18n="footer.nav">Navigatie</h4>
+          <ul>
+            <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+            <li><a href="verblijf.html" data-i18n="nav.verblijf">Verblijf</a></li>
+            <li><a href="omgeving.html" data-i18n="nav.omgeving">Omgeving</a></li>
+            <li><a href="kaart.html" data-i18n="nav.kaart">Kaart</a></li>
+            <li><a href="restaurants.html" data-i18n="nav.restaurants">Restaurants</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="footer.contact">Contact</h4>
+          <ul>
+            <li data-i18n="footer.address">Martenawei 2, 9056 PE Koarnjum</li>
+            <li data-i18n="footer.camping.address">Camping: De Wier 7A</li>
+            <li><a href="tel:+31636606521" data-i18n="footer.phone">+31 6 83 60 65 21</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">Welkom bij Martenastate — Koarnjum, Friesland</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile action bar -->
+  <nav class="mobile-action-bar" aria-label="Snelle acties">
+    <a href="tel:+31636606521" aria-label="Bellen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span data-i18n="action.call">Bellen</span>
+    </a>
+    <a href="https://maps.google.com/?q=Martenawei+2,+9056+PE+Koarnjum" target="_blank" rel="noopener" aria-label="Route naar Martenastate">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+      <span data-i18n="action.route">Route</span>
+    </a>
+    <a href="kaart.html" aria-label="Kaart en routes">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+      <span data-i18n="action.map">Kaart</span>
+    </a>
+    <a href="verblijf.html#faq" aria-label="Veelgestelde vragen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <span data-i18n="action.faq">Vragen</span>
+    </a>
+  </nav>
+
+  <!-- Back to top -->
+  <button class="back-to-top" aria-label="Terug naar boven" id="backToTop">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/mbng=" crossorigin=""></script>
+  <script src="js/translations.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/restaurants.js"></script>
+  <script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js").catch(()=>{})}</script>
+</body>
+</html>
