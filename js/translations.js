@@ -429,6 +429,25 @@ const translations = {
     "bloom.month.apr": "Apr",
     "bloom.month.may": "Mei",
 
+    // Stinzenflora verdieping
+    "stinzen.eyebrow": "Meer over stinzenflora",
+    "stinzen.title": "Een levend erfgoed",
+    "stinzen.what.title": "Wat zijn stinzenplanten?",
+    "stinzen.what.p1": "Stinzenplanten zijn verwilderde bolgewassen die al eeuwen groeien op de terreinen van historische Friese landgoederen. Het woord 'stinze' is Fries voor 'stenen huis' — en precies rondom die stenen huizen werden de bolgewassen als tuinsieraad geplant.",
+    "stinzen.what.p2": "In de loop van de eeuwen verwilderden ze en verspreidden ze zich door het park. Dat maakt ze zo bijzonder: ze groeien precies waar ze altijd groeiden, als levend bewijs van een rijke tuinhistorie.",
+    "stinzen.martena.title": "Waarom Martenastate zo bijzonder is",
+    "stinzen.martena.text": "Martenastate geldt als één van de mooiste stinzenflora-locaties van Nederland. It Fryske Gea beheert het park ecologisch zodat de bloemen zichzelf elk jaar opnieuw kunnen hernieuwen. Geen kunstgrepen — de bloemen bloeien simpelweg omdat ze er altijd zijn geweest.",
+    "stinzen.species.title": "Bloemensoorten op het landgoed",
+    "stinzen.photo.alt": "Stinzenflora in bloei op Martenastate",
+    "stinzen.photo.caption": "Stinzenflora in het voorjaar op Martenastate — elk jaar opnieuw een betoverend schouwspel",
+    "stinzen.snowdrop.desc": "De eerste bode van het voorjaar, al zichtbaar als de grond nog koud is. Hangende witte bloempjes.",
+    "stinzen.winteraconite.desc": "Kleine goudgele bloempjes die de bodem bedekken nog vóór de sneeuw is gesmolten.",
+    "stinzen.crocus.desc": "Een tapijt van paars, wit en geel in maart — de kleur die je herkent op honderden meters afstand.",
+    "stinzen.scilla.desc": "Stralend blauwpaars en massaal aanwezig. De kleur waarvoor bezoekers speciaal naar Martenastate komen.",
+    "stinzen.vinca.desc": "Immergroen met paarse bloemen. Bloeit lang en vormt een dicht tapijt in het schaduwrijke park.",
+    "stinzen.daffodil.desc": "Vrolijk geel en wit, weelderig langs de paden in april. Klassiek en altijd indrukwekkend.",
+    "stinzen.anemone.desc": "Tere witte bloemen die de bosbodem bedekken. Delicaat en vergankelijk — een verrassing voor de aandachtige wandelaar.",
+
     // Photo gallery
     "gallery.eyebrow": "Sfeer",
     "gallery.title": "Sfeer op de state",
@@ -872,6 +891,25 @@ const translations = {
     "bloom.month.mar": "Mar",
     "bloom.month.apr": "Apr",
     "bloom.month.may": "May",
+
+    // Stinzenflora deep-dive section
+    "stinzen.eyebrow": "About stinzenflora",
+    "stinzen.title": "A living heritage",
+    "stinzen.what.title": "What are stinzenplants?",
+    "stinzen.what.p1": "Stinzenplants are naturalised bulb flowers that have grown on the grounds of historic Frisian estates for centuries. The word 'stinze' is Frisian for 'stone house' — and it was around those stone houses that the bulbs were planted as ornamental features.",
+    "stinzen.what.p2": "Over the centuries they naturalised and spread through the park. That is what makes them so special: they grow exactly where they always have, as living proof of a rich horticultural history.",
+    "stinzen.martena.title": "Why Martenastate is exceptional",
+    "stinzen.martena.text": "Martenastate is considered one of the finest stinzenflora locations in the Netherlands. It Fryske Gea manages the park ecologically so that the flowers can renew themselves every year. No interventions — the flowers bloom simply because they have always been there.",
+    "stinzen.species.title": "Flower species on the estate",
+    "stinzen.photo.alt": "Stinzenflora in bloom at Martenastate",
+    "stinzen.photo.caption": "Stinzenflora in spring at Martenastate — a spectacle that returns every year",
+    "stinzen.snowdrop.desc": "The first herald of spring, visible even when the ground is still cold. Delicate hanging white flowers.",
+    "stinzen.winteraconite.desc": "Small golden-yellow flowers carpeting the ground before the snow has melted.",
+    "stinzen.crocus.desc": "A carpet of purple, white and yellow in March — the colour you spot from a hundred metres away.",
+    "stinzen.scilla.desc": "Brilliant blue-purple and abundant. The colour visitors come to Martenastate specifically to see.",
+    "stinzen.vinca.desc": "Evergreen with purple flowers. Long-blooming, forming a dense carpet in the shaded park.",
+    "stinzen.daffodil.desc": "Cheerful yellow and white, lush along the paths in April. Classic and always impressive.",
+    "stinzen.anemone.desc": "Delicate white flowers covering the forest floor. Subtle and fleeting — a true discovery for the attentive walker.",
 
     // Photo gallery
     "gallery.eyebrow": "Atmosphere",
