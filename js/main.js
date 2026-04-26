@@ -41,6 +41,7 @@ function setLang(lang) {
   if (typeof initBloomCalendar === 'function') initBloomCalendar();
   if (typeof window._martenaRefreshMapLang === 'function') window._martenaRefreshMapLang();
   if (typeof window._martenaRefreshRestaurantLang === 'function') window._martenaRefreshRestaurantLang();
+  if (typeof window._martenaRefreshActivitiesLang === 'function') window._martenaRefreshActivitiesLang();
 }
 
 // Mobile nav toggle

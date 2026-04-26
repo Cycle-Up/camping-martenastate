@@ -465,6 +465,19 @@ const translations = {
     "stinzen.daffodil.desc": "Vrolijk geel en wit, weelderig langs de paden in april. Klassiek en altijd indrukwekkend.",
     "stinzen.anemone.desc": "Tere witte bloemen die de bosbodem bedekken. Delicaat en vergankelijk — een verrassing voor de aandachtige wandelaar.",
 
+    // Activiteiten pagina
+    "nav.activiteiten": "Activiteiten",
+    "card.activiteiten.title": "Activiteiten",
+    "card.activiteiten.desc": "Wandelroutes, fietsroutes en dagtrips vanuit Martenastate — met interactieve kaart.",
+    "card.activiteiten.link": "Bekijk routes",
+    "act.title": "Routes & dagtrips",
+    "act.subtitle": "Wandelen, fietsen en dagtrips vanuit Martenastate — met afstand, duur en directe routelink.",
+    "act.filter.all": "Alle",
+    "act.filter.wandelen": "Wandelen",
+    "act.filter.fietsen": "Fietsen",
+    "act.filter.dagtrip": "Dagtrips",
+    "act.omgeving.cta": "Bekijk alle routes interactief →",
+
     // Photo gallery
     "gallery.eyebrow": "Sfeer",
     "gallery.title": "Sfeer op de state",
@@ -944,6 +957,19 @@ const translations = {
     "stinzen.vinca.desc": "Evergreen with purple flowers. Long-blooming, forming a dense carpet in the shaded park.",
     "stinzen.daffodil.desc": "Cheerful yellow and white, lush along the paths in April. Classic and always impressive.",
     "stinzen.anemone.desc": "Delicate white flowers covering the forest floor. Subtle and fleeting — a true discovery for the attentive walker.",
+
+    // Activities page
+    "nav.activiteiten": "Activities",
+    "card.activiteiten.title": "Activities",
+    "card.activiteiten.desc": "Walking routes, cycling routes and day trips from Martenastate — with interactive map.",
+    "card.activiteiten.link": "View routes",
+    "act.title": "Routes & day trips",
+    "act.subtitle": "Walking, cycling and day trips from Martenastate — with distance, duration and direct route link.",
+    "act.filter.all": "All",
+    "act.filter.wandelen": "Walking",
+    "act.filter.fietsen": "Cycling",
+    "act.filter.dagtrip": "Day trips",
+    "act.omgeving.cta": "View all routes interactively →",
 
     // Photo gallery
     "gallery.eyebrow": "Atmosphere",

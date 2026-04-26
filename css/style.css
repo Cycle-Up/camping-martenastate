@@ -2770,6 +2770,112 @@ section {
 .lightbox-prev:hover,
 .lightbox-next:hover { background: rgba(255,255,255,0.2); }
 
+/* ── Activiteiten pagina ─────────────────────────────────────────────────── */
+
+.act-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .45rem .9rem;
+  border: 1.5px solid var(--color-lavender);
+  border-radius: var(--radius-pill);
+  background: rgba(255,255,255,0.85);
+  font-size: .85rem;
+  font-family: var(--font-body);
+  color: var(--color-aubergine);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+.act-filter-btn.active,
+.act-filter-btn:hover {
+  background: var(--color-crocus);
+  color: #fff;
+  border-color: var(--color-crocus);
+}
+
+.act-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.act-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+.act-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+
+.act-card-header {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+
+.act-type-badge {
+  font-size: .75rem;
+  font-weight: 600;
+  padding: .25rem .65rem;
+  border-radius: var(--radius-pill);
+  letter-spacing: .02em;
+}
+.act-badge-walk  { background: rgba(139,168,136,0.18); color: #3d6e3a; }
+.act-badge-cycle { background: rgba(90,112,85,0.18);  color: #2e4e2b; }
+.act-badge-trip  { background: rgba(230,197,105,0.22); color: #7a5900; }
+
+.act-diff-badge {
+  font-size: .72rem;
+  font-weight: 500;
+  padding: .2rem .55rem;
+  border-radius: var(--radius-pill);
+  margin-left: auto;
+}
+.diff-easy     { background: var(--color-open-bg);  color: var(--color-open); }
+.diff-moderate { background: rgba(180,100,20,0.1);   color: #8a4e0a; }
+.diff-multiday { background: rgba(123,93,140,0.12);  color: var(--color-crocus); }
+.diff-season   { background: rgba(100,100,100,0.08); color: var(--color-text-soft); }
+
+.act-card-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-aubergine);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.act-card-meta { display: flex; flex-wrap: wrap; gap: .35rem; }
+
+.act-card-desc {
+  font-size: .875rem;
+  color: var(--color-text-soft);
+  line-height: 1.55;
+  margin: 0;
+  flex: 1;
+}
+
+.act-card-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--color-crocus);
+  text-decoration: none;
+  margin-top: auto;
+  padding-top: .25rem;
+}
+.act-card-link:hover { text-decoration: underline; }
+
+@media (max-width: 600px) {
+  .act-grid { grid-template-columns: 1fr; }
+}
+
 @media print {
   .mobile-action-bar,
   .back-to-top,
