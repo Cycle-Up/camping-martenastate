@@ -699,17 +699,18 @@ function initCopyable() {
   });
 }
 
-// Today widget — shows current season + opening hours of Túnmanswente + camping
+// Today widget — shows current season + real-time opening hours + weather-aware tip
 function initTodayWidget() {
   const widget = document.getElementById('todayWidget');
   if (!widget) return;
 
   const now = new Date();
-  const month = now.getMonth() + 1;       // 1–12
-  const day = now.getDate();               // 1–31
-  const dayOfWeek = now.getDay();          // 0 = sun, 6 = sat
+  const month = now.getMonth() + 1;
+  const day = now.getDate();
+  const dayOfWeek = now.getDay();           // 0 = sun, 6 = sat
+  const currentMinutes = now.getHours() * 60 + now.getMinutes();
 
-  // Date label, localised per language
+  // Date label
   const dateEl = document.getElementById('todayDate');
   if (dateEl) {
     try {
@@ -721,7 +722,7 @@ function initTodayWidget() {
     }
   }
 
-  // Determine season
+  // Season
   let seasonKey;
   if (month === 12 || month <= 2) seasonKey = 'winter';
   else if (month >= 3 && month <= 5) seasonKey = 'spring';
@@ -739,26 +740,61 @@ function initTodayWidget() {
     seasonTextEl.textContent = t(`today.season.${seasonKey}.text`);
   }
 
-  // Túnmanswente status — open Fri 13–17, Sat/Sun 11–17, season 27 Mar – 25 Oct
+  // Túnmanswente — real-time hour-precise status
+  // Schedule: Fri 13–17, Sat/Sun 11–17, season 27 Mar – 25 Oct
   const tunmanswenteEl = document.getElementById('statusTunmanswente');
   const tunmanHoursEl = document.getElementById('tunmanswenteHours');
   if (tunmanswenteEl && tunmanHoursEl) {
     const inSeason = (month > 3 || (month === 3 && day >= 27)) && (month < 10 || (month === 10 && day <= 25));
+
+    function tunmanScheduleForDay(dow) {
+      if (dow === 5) return { open: 13 * 60, close: 17 * 60 };
+      if (dow === 6 || dow === 0) return { open: 11 * 60, close: 17 * 60 };
+      return null;
+    }
+
+    function fmtTime(totalMinutes) {
+      return `${String(Math.floor(totalMinutes / 60)).padStart(2, '0')}:00`;
+    }
+
     let isOpen = false;
     let detailText = '';
+
     if (!inSeason) {
       detailText = t('today.tunman.closed.season');
-      isOpen = false;
-    } else if (dayOfWeek === 5) { // Friday
-      detailText = t('today.tunman.open').replace('{hours}', '13:00 – 17:00');
-      isOpen = true;
-    } else if (dayOfWeek === 6 || dayOfWeek === 0) { // Sat / Sun
-      detailText = t('today.tunman.open').replace('{hours}', '11:00 – 17:00');
-      isOpen = true;
     } else {
-      detailText = t('today.tunman.closed.weekday');
-      isOpen = false;
+      const todaySchedule = tunmanScheduleForDay(dayOfWeek);
+
+      if (todaySchedule && currentMinutes >= todaySchedule.open && currentMinutes < todaySchedule.close) {
+        // Currently open
+        detailText = t('today.tunman.now.open').replace('{time}', fmtTime(todaySchedule.close));
+        isOpen = true;
+      } else if (todaySchedule && currentMinutes < todaySchedule.open) {
+        const minsUntil = todaySchedule.open - currentMinutes;
+        if (minsUntil <= 120) {
+          detailText = t('today.tunman.opens.soon').replace('{min}', minsUntil);
+        } else {
+          detailText = t('today.tunman.opens.at').replace('{time}', fmtTime(todaySchedule.open));
+        }
+      } else {
+        // Find next opening day (within next 7 days)
+        let found = null;
+        for (let i = 1; i <= 7; i++) {
+          const nextDow = (dayOfWeek + i) % 7;
+          const sched = tunmanScheduleForDay(nextDow);
+          if (sched) {
+            const nextDate = new Date(now);
+            nextDate.setDate(nextDate.getDate() + i);
+            const locale = currentLang === 'nl' ? 'nl-NL' : 'en-GB';
+            const dayName = nextDate.toLocaleDateString(locale, { weekday: 'long' });
+            found = t('today.tunman.next').replace('{day}', dayName).replace('{time}', fmtTime(sched.open));
+            break;
+          }
+        }
+        detailText = found || t('today.tunman.closed.weekday');
+      }
     }
+
     tunmanHoursEl.textContent = detailText;
     tunmanswenteEl.classList.toggle('closed', !isOpen);
   }
@@ -773,11 +809,28 @@ function initTodayWidget() {
     campingEl.classList.toggle('closed', !isOpen);
   }
 
-  // Daily tip
+  // Weather-aware daily tip — uses live weather cache when available
   const tipEl = document.getElementById('todayTip');
   if (tipEl) {
     const days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
-    const tipKey = `today.tip.${days[dayOfWeek]}`;
+    let tipKey = `today.tip.${days[dayOfWeek]}`;
+
+    try {
+      const raw = window.sessionStorage.getItem(WEATHER_CACHE_KEY);
+      if (raw) {
+        const cached = JSON.parse(raw);
+        if (Date.now() - cached.ts < WEATHER_CACHE_TTL) {
+          const code = cached.data.current.weathercode;
+          const temp = Math.round(cached.data.current.temperature_2m);
+          if (code >= 51 && code <= 82) {
+            tipKey = 'today.tip.rain';
+          } else if ((code === 0 || code === 1) && temp >= 18) {
+            tipKey = 'today.tip.sunny';
+          }
+        }
+      }
+    } catch (e) { /* sessionStorage unavailable or malformed */ }
+
     tipEl.setAttribute('data-i18n', tipKey);
     tipEl.textContent = t(tipKey);
   }
