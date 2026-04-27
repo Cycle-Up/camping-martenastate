@@ -3,8 +3,8 @@ const translations = {
     // Nav
     "nav.home": "Home",
     "nav.verblijf": "Verblijf",
-    "nav.omgeving": "Omgeving",
-    "nav.kaart": "Kaart",
+    "nav.omgeving": "Landgoed Martenastate",
+    "nav.kaart": "Fietsen en wandelen",
 
     // Homepage hero
     "home.eyebrow": "Welkom",
@@ -28,12 +28,12 @@ const translations = {
     "card.verblijf.title": "Over je verblijf",
     "card.verblijf.desc": "Alles over de camping en B&B: tarieven, faciliteiten en handige tips.",
     "card.verblijf.link": "Bekijk details",
-    "card.omgeving.title": "In de omgeving",
-    "card.omgeving.desc": "Wandelroutes, fietsroutes, restaurants en bezienswaardigheden.",
-    "card.omgeving.link": "Ontdek de omgeving",
-    "card.kaart.title": "Interactieve kaart",
-    "card.kaart.desc": "Bekijk alle tips, routes en adressen op de kaart.",
-    "card.kaart.link": "Open kaart",
+    "card.omgeving.title": "Landgoed Martenastate",
+    "card.omgeving.desc": "Stinzenflora, het landschapspark, bezienswaardigheden en dagtrips.",
+    "card.omgeving.link": "Ontdek het landgoed",
+    "card.kaart.title": "Fietsen en wandelen",
+    "card.kaart.desc": "Wandel- en fietsroutes en interactieve kaart.",
+    "card.kaart.link": "Bekijk routes",
 
     // Quote
     "quote.text": "In ieder seizoen valt er veel te zien én te beleven op Martenastate",
@@ -106,7 +106,7 @@ const translations = {
     "tunman.trouw": "Officiële trouwlocatie gemeente Leeuwarden",
 
     // Omgeving page
-    "omgeving.title": "In de omgeving",
+    "omgeving.title": "Landgoed Martenastate",
     "omgeving.subtitle": "Koarnjum ligt op fietsafstand van Leeuwarden en midden in een prachtig Fries landschap. Hier zijn onze favoriete tips.",
     "tab.wandelen": "Wandelen",
     "tab.fietsen": "Fietsen",
@@ -179,8 +179,8 @@ const translations = {
     "bezienswaardigheid.waddenzee.chip2": "UNESCO Werelderfgoed",
 
     // Kaart
-    "kaart.title": "Kaart",
-    "kaart.subtitle": "Alle highlights, routes en adressen op één kaart.",
+    "kaart.title": "Fietsen en wandelen",
+    "kaart.subtitle": "Alle wandel- en fietsroutes en highlights op één kaart.",
     "kaart.legend.martenastate": "Martenastate",
     "kaart.legend.wandelen": "Wandelen",
     "kaart.legend.fietsen": "Fietsen",
@@ -280,7 +280,7 @@ const translations = {
     // Mobile action bar
     "action.call": "Bellen",
     "action.route": "Route",
-    "action.map": "Kaart",
+    "action.map": "Routes",
     "action.faq": "Vragen",
 
     // FAQ
@@ -446,11 +446,11 @@ const translations = {
     "bloom.month.may": "Mei",
 
     // Restaurants page
-    "nav.restaurants": "Restaurants",
-    "card.restaurants.title": "Restaurants",
+    "nav.restaurants": "Eten en drinken",
+    "card.restaurants.title": "Eten en drinken",
     "card.restaurants.desc": "De beste eettips in Leeuwarden en Stiens, met live openingstijden.",
     "card.restaurants.link": "Bekijk kaart",
-    "restaurants.title": "Beste restaurants",
+    "restaurants.title": "Eten en drinken",
     "restaurants.subtitle": "Toprestaurants in Leeuwarden en Stiens — geselecteerd op Google Maps-beoordeling (min. 50 reviews) — met live openingstijden.",
     "restaurants.filter.all": "Alle",
     "restaurants.updated": "Data bijgewerkt:",
@@ -517,8 +517,8 @@ const translations = {
     // Nav
     "nav.home": "Home",
     "nav.verblijf": "Your Stay",
-    "nav.omgeving": "The Area",
-    "nav.kaart": "Map",
+    "nav.omgeving": "Martenastate Estate",
+    "nav.kaart": "Cycling & Walking",
 
     // Homepage hero
     "home.eyebrow": "Welcome",
@@ -542,12 +542,12 @@ const translations = {
     "card.verblijf.title": "About your stay",
     "card.verblijf.desc": "Everything about the campsite and B&B: rates, facilities and useful tips.",
     "card.verblijf.link": "View details",
-    "card.omgeving.title": "The area",
-    "card.omgeving.desc": "Walking routes, cycling routes, restaurants and sights.",
-    "card.omgeving.link": "Explore the area",
-    "card.kaart.title": "Interactive map",
-    "card.kaart.desc": "View all tips, routes and addresses on the map.",
-    "card.kaart.link": "Open map",
+    "card.omgeving.title": "Martenastate Estate",
+    "card.omgeving.desc": "Stinzenflora, the landscape park, sights and day trips.",
+    "card.omgeving.link": "Explore the estate",
+    "card.kaart.title": "Cycling & Walking",
+    "card.kaart.desc": "Walking and cycling routes plus an interactive map.",
+    "card.kaart.link": "View routes",
 
     // Quote
     "quote.text": "Every season there is so much to see and experience at Martenastate",
@@ -620,7 +620,7 @@ const translations = {
     "tunman.trouw": "Official wedding venue, municipality of Leeuwarden",
 
     // Omgeving page
-    "omgeving.title": "The area",
+    "omgeving.title": "Martenastate Estate",
     "omgeving.subtitle": "Koarnjum is a short cycle from Leeuwarden and set in a beautiful Frisian landscape. Here are our favourite tips.",
     "tab.wandelen": "Walking",
     "tab.fietsen": "Cycling",
@@ -693,8 +693,8 @@ const translations = {
     "bezienswaardigheid.waddenzee.chip2": "UNESCO World Heritage",
 
     // Kaart
-    "kaart.title": "Map",
-    "kaart.subtitle": "All highlights, routes and addresses on one map.",
+    "kaart.title": "Cycling & Walking",
+    "kaart.subtitle": "All walking and cycling routes plus highlights on one map.",
     "kaart.legend.martenastate": "Martenastate",
     "kaart.legend.wandelen": "Walking",
     "kaart.legend.fietsen": "Cycling",
@@ -794,7 +794,7 @@ const translations = {
     // Mobile action bar
     "action.call": "Call",
     "action.route": "Route",
-    "action.map": "Map",
+    "action.map": "Routes",
     "action.faq": "FAQ",
 
     // FAQ
@@ -960,11 +960,11 @@ const translations = {
     "bloom.month.may": "May",
 
     // Restaurants page
-    "nav.restaurants": "Restaurants",
-    "card.restaurants.title": "Restaurants",
+    "nav.restaurants": "Food & Drink",
+    "card.restaurants.title": "Food & Drink",
     "card.restaurants.desc": "The best dining tips in Leeuwarden and Stiens, with live opening hours.",
     "card.restaurants.link": "View map",
-    "restaurants.title": "Best restaurants",
+    "restaurants.title": "Food & Drink",
     "restaurants.subtitle": "Top restaurants in Leeuwarden and Stiens — selected by Google Maps rating (min. 50 reviews) — with live opening hours.",
     "restaurants.filter.all": "All",
     "restaurants.updated": "Data updated:",
