@@ -3,6 +3,7 @@ const translations = {
     // Nav
     "nav.home": "Home",
     "nav.verblijf": "Verblijf",
+    "nav.activiteiten": "Activiteiten",
     "nav.omgeving": "Omgeving",
     "nav.kaart": "Kaart",
 
@@ -28,6 +29,9 @@ const translations = {
     "card.verblijf.title": "Over je verblijf",
     "card.verblijf.desc": "Alles over de camping en B&B: tarieven, faciliteiten en handige tips.",
     "card.verblijf.link": "Bekijk details",
+    "card.activiteiten.title": "Activiteiten",
+    "card.activiteiten.desc": "Kies snel wat past bij je dag: dichtbij, met kinderen, bij regen of een dagtrip.",
+    "card.activiteiten.link": "Bekijk activiteiten",
     "card.omgeving.title": "In de omgeving",
     "card.omgeving.desc": "Wandelroutes, fietsroutes, restaurants en bezienswaardigheden.",
     "card.omgeving.link": "Ontdek de omgeving",
@@ -425,6 +429,7 @@ const translations = {
     // Nav
     "nav.home": "Home",
     "nav.verblijf": "Your Stay",
+    "nav.activiteiten": "Activities",
     "nav.omgeving": "The Area",
     "nav.kaart": "Map",
 
@@ -450,6 +455,9 @@ const translations = {
     "card.verblijf.title": "About your stay",
     "card.verblijf.desc": "Everything about the campsite and B&B: rates, facilities and useful tips.",
     "card.verblijf.link": "View details",
+    "card.activiteiten.title": "Activities",
+    "card.activiteiten.desc": "Quickly choose what fits your day: nearby, with children, rainy day or day trip.",
+    "card.activiteiten.link": "View activities",
     "card.omgeving.title": "The area",
     "card.omgeving.desc": "Walking routes, cycling routes, restaurants and sights.",
     "card.omgeving.link": "Explore the area",

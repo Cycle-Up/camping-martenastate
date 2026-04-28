@@ -587,6 +587,304 @@ section {
 }
 .feature-content .meta-chip svg { width: 14px; height: 14px; }
 
+/* ===== Activities page ===== */
+.activities-hero {
+  padding: 8rem 0 5rem;
+  background:
+    linear-gradient(135deg, rgba(184, 204, 181, 0.78), rgba(244, 229, 179, 0.62)),
+    linear-gradient(180deg, var(--color-cream), var(--color-warm-white));
+  overflow: hidden;
+}
+
+.activities-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.activities-hero-copy h1 {
+  max-width: 760px;
+  margin-bottom: var(--space-md);
+}
+
+.activities-hero-copy p {
+  max-width: 720px;
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+}
+
+.activities-hero-actions {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  margin-top: var(--space-md);
+}
+
+.activities-hero-actions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0.55rem 0.9rem;
+  border-radius: var(--radius-pill);
+  background: rgba(253, 251, 247, 0.82);
+  color: var(--color-aubergine);
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 2px 12px rgba(58, 42, 64, 0.08);
+}
+
+.activities-hero-panel {
+  position: relative;
+  min-height: 390px;
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  background:
+    radial-gradient(circle at 18% 28%, rgba(123, 93, 140, 0.2) 0 7px, transparent 8px),
+    radial-gradient(circle at 76% 22%, rgba(90, 112, 85, 0.24) 0 8px, transparent 9px),
+    radial-gradient(circle at 48% 68%, rgba(230, 197, 105, 0.32) 0 9px, transparent 10px),
+    linear-gradient(145deg, rgba(253, 251, 247, 0.9), rgba(232, 223, 240, 0.7));
+  box-shadow: var(--shadow-medium);
+  border: 1px solid rgba(201, 184, 212, 0.25);
+}
+
+.activities-hero-panel::before {
+  content: '';
+  position: absolute;
+  inset: 16% 13%;
+  border: 2px dashed rgba(90, 112, 85, 0.34);
+  border-radius: 48% 42% 55% 40%;
+  transform: rotate(-8deg);
+}
+
+.activity-map-card {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 280px);
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+  background: var(--color-soft-white);
+  box-shadow: var(--shadow-soft);
+}
+
+.activity-map-card + .activity-map-card { margin-top: var(--space-md); margin-left: auto; }
+.activity-map-card:nth-child(3) { margin-left: 18%; }
+
+.activity-map-card span,
+.activity-card-top,
+.activity-route-card span {
+  color: var(--color-crocus);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.activity-map-card strong {
+  display: block;
+  margin: 0.25rem 0;
+  color: var(--color-aubergine);
+  font-family: var(--font-display);
+  font-size: 1.28rem;
+  line-height: 1.15;
+  font-weight: 500;
+}
+
+.activity-map-card small {
+  color: var(--color-text-soft);
+  font-size: 0.88rem;
+}
+
+.activities-choice {
+  padding-top: var(--space-xl);
+}
+
+.activity-choice-grid,
+.activity-card-grid,
+.activity-route-grid,
+.activity-season-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.activity-choice-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.activity-choice-card {
+  min-height: 150px;
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--color-soft-white);
+  color: inherit;
+  border: 1px solid rgba(201, 184, 212, 0.22);
+  box-shadow: var(--shadow-soft);
+}
+
+.activity-choice-card span {
+  display: inline-flex;
+  margin-bottom: 0.8rem;
+  color: var(--color-crocus);
+  font-weight: 700;
+  font-size: 0.88rem;
+}
+
+.activity-choice-card strong {
+  display: block;
+  color: var(--color-aubergine);
+  font-family: var(--font-display);
+  font-size: 1.28rem;
+  line-height: 1.25;
+  font-weight: 500;
+}
+
+.activity-choice-card:hover,
+.activity-card:hover,
+.activity-route-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.activities-tabs-section {
+  padding-top: var(--space-xl);
+}
+
+.activities-choice .fade-in,
+.activities-tabs-section .fade-in,
+.activity-routes .fade-in,
+.activity-seasons .fade-in,
+.activity-note .fade-in {
+  opacity: 1;
+  transform: none;
+}
+
+.activity-section-intro {
+  max-width: 760px;
+  margin: 0 auto var(--space-lg);
+  text-align: center;
+}
+
+.activity-card-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.activity-card,
+.activity-route-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--color-soft-white);
+  border: 1px solid rgba(201, 184, 212, 0.22);
+  box-shadow: var(--shadow-soft);
+  transition: all var(--transition-smooth);
+}
+
+.activity-card-top {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  align-items: flex-start;
+  margin-bottom: 0.85rem;
+}
+
+.activity-time {
+  text-align: right;
+  color: var(--color-moss);
+}
+
+.activity-card h3,
+.activity-route-card h3 {
+  margin-bottom: 0.7rem;
+}
+
+.activity-card p {
+  margin-bottom: 0.85rem;
+}
+
+.activity-card ul {
+  margin: 0 0 var(--space-sm) 1rem;
+  color: var(--color-text-soft);
+  font-size: 0.92rem;
+}
+
+.activity-link {
+  margin-top: auto;
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--color-crocus);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.activity-link::after {
+  content: '→';
+  transition: transform var(--transition-fast);
+}
+
+.activity-link:hover::after {
+  transform: translateX(4px);
+}
+
+.activity-route-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.activity-route-card ol {
+  margin-left: 1.1rem;
+  color: var(--color-text-soft);
+}
+
+.activity-route-card li + li {
+  margin-top: 0.35rem;
+}
+
+.activity-seasons {
+  background: linear-gradient(135deg, var(--color-lavender-soft) 0%, var(--color-cream) 100%);
+}
+
+.activity-season-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.activity-note {
+  padding-top: var(--space-xl);
+}
+
+@media (max-width: 860px) {
+  .activities-hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .activities-hero-panel {
+    min-height: auto;
+  }
+
+  .activity-map-card,
+  .activity-map-card + .activity-map-card,
+  .activity-map-card:nth-child(3) {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .activities-hero {
+    padding-top: 7rem;
+  }
+
+  .activity-card-top {
+    display: block;
+  }
+
+  .activity-time {
+    display: block;
+    margin-top: 0.25rem;
+    text-align: left;
+  }
+}
+
 /* ===== Map ===== */
 .map-container {
   border-radius: var(--radius-lg);
