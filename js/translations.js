@@ -281,6 +281,17 @@ const translations = {
     "action.map": "Kaart",
     "action.faq": "Vragen",
 
+
+    // Guestbook
+    "guestbook.eyebrow": "Community",
+    "guestbook.title": "Digitaal Gastenboek",
+    "guestbook.subtitle": "Laat een berichtje, tip of groet achter voor toekomstige gasten van Martenastate.",
+    "guestbook.name.label": "Je naam",
+    "guestbook.message.label": "Je berichtje",
+    "guestbook.submit": "Plaats bericht",
+    "guestbook.empty": "Nog geen berichten. Wees de eerste!",
+    "toast.guestbook_posted": "Bericht geplaatst!",
+
     // FAQ
     "faq.eyebrow": "Praktisch",
     "faq.title": "Veelgestelde vragen",
@@ -706,6 +717,17 @@ const translations = {
     "action.route": "Route",
     "action.map": "Map",
     "action.faq": "FAQ",
+
+
+    // Guestbook
+    "guestbook.eyebrow": "Community",
+    "guestbook.title": "Digital Guestbook",
+    "guestbook.subtitle": "Leave a message, tip, or greeting for future guests of Martenastate.",
+    "guestbook.name.label": "Your name",
+    "guestbook.message.label": "Your message",
+    "guestbook.submit": "Post message",
+    "guestbook.empty": "No messages yet. Be the first!",
+    "toast.guestbook_posted": "Message posted!",
 
     // FAQ
     "faq.eyebrow": "Practical",

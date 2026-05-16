@@ -538,6 +538,87 @@ function initGallery() {
 }
 
 // Expose key functions on window for debugging and testing
+
+// Digitaal Gastenboek
+function initGuestbook() {
+  const form = document.getElementById('guestbookForm');
+  const entriesContainer = document.getElementById('guestbookEntries');
+  if (!form || !entriesContainer) return;
+
+  const STORAGE_KEY = 'martenastate_guestbook';
+
+  // Seed with some dummy data if empty
+  if (!safeGet(STORAGE_KEY)) {
+    const dummyData = [
+      { name: "Fam. de Vries", date: new Date(Date.now() - 86400000 * 2).toISOString(), message: "Heerlijk genoten van de rust en de stinzenflora! Tip: wandel bij zonsopgang." },
+      { name: "Jan & Mieke", date: new Date(Date.now() - 86400000 * 5).toISOString(), message: "Wat een prachtige plek. De appeltaart bij Túnmanswente is een aanrader." }
+    ];
+    safeSet(STORAGE_KEY, JSON.stringify(dummyData));
+  }
+
+  function renderEntries() {
+    const data = JSON.parse(safeGet(STORAGE_KEY) || '[]');
+    entriesContainer.innerHTML = '';
+
+    if (data.length === 0) {
+      entriesContainer.innerHTML = `<p style="text-align:center; color: var(--color-text-muted); padding: 2rem;" data-i18n="guestbook.empty">${t('guestbook.empty') || 'Nog geen berichten. Wees de eerste!'}</p>`;
+      return;
+    }
+
+    data.reverse().forEach(entry => {
+      const el = document.createElement('div');
+      el.style.cssText = 'background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border-left: 4px solid var(--color-sage);';
+
+      const dateStr = new Date(entry.date).toLocaleDateString(currentLang === 'nl' ? 'nl-NL' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+
+      // Sanitize input to prevent XSS
+      const escapeHTML = str => str.replace(/[&<>'"]/g,
+        tag => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            "'": '&#39;',
+            '"': '&quot;'
+          }[tag] || tag));
+
+      el.innerHTML = `
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.75rem;">
+          <strong style="font-size: 1.1rem; color: var(--color-text);">${escapeHTML(entry.name)}</strong>
+          <span style="font-size: 0.85rem; color: var(--color-text-muted);">${dateStr}</span>
+        </div>
+        <p style="margin: 0; color: var(--color-text-soft); line-height: 1.5;">${escapeHTML(entry.message)}</p>
+      `;
+      entriesContainer.appendChild(el);
+    });
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nameEl = document.getElementById('gbName');
+    const msgEl = document.getElementById('gbMessage');
+
+    if (!nameEl.value.trim() || !msgEl.value.trim()) return;
+
+    const newEntry = {
+      name: nameEl.value.trim(),
+      message: msgEl.value.trim(),
+      date: new Date().toISOString()
+    };
+
+    const data = JSON.parse(safeGet(STORAGE_KEY) || '[]');
+    data.push(newEntry);
+    safeSet(STORAGE_KEY, JSON.stringify(data));
+
+    nameEl.value = '';
+    msgEl.value = '';
+
+    renderEntries();
+    showToast(t('toast.guestbook_posted') || 'Bericht geplaatst!');
+  });
+
+  renderEntries();
+}
+
 if (typeof window !== 'undefined') {
   window.setLang = setLang;
   window.t = t;
@@ -560,6 +641,7 @@ function bootMartenastate() {
   initWeatherWidget();
   initGallery();
   initShare();
+  initGuestbook();
   initSmoothAnchors();
 
   // Language buttons

@@ -116,7 +116,7 @@
               </div>
               <div>
                 <h4 data-i18n="camping.contact.label">Beheerder</h4>
-                <p><a href="tel:+31636606521" data-i18n="camping.contact.value">Robin Alkema — +31 6 83 60 65 21</a></p>
+                <p><a href="tel:+31683606521" data-i18n="camping.contact.value">Robin Alkema — +31 6 83 60 65 21</a></p>
               </div>
             </div>
           </div>
@@ -549,9 +549,73 @@
         <details class="faq-item">
           <summary data-i18n="faq.q.help">Wat doe ik bij problemen of nood?</summary>
           <div class="faq-answer">
-            <p data-i18n="faq.a.help">Bel of app Robin op <a href="tel:+31636606521">+31 6 83 60 65 21</a> — bij voorkeur vóór 22:00, maar in noodgevallen altijd. Bij medische nood: alarmnummer 112. Huisartsenpost Stiens: 058-257 1969.</p>
+            <p data-i18n="faq.a.help">Bel of app Robin op <a href="tel:+31683606521">+31 6 83 60 65 21</a> — bij voorkeur vóór 22:00, maar in noodgevallen altijd. Bij medische nood: alarmnummer 112. Huisartsenpost Stiens: 058-257 1969.</p>
           </div>
         </details>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Digitaal Gastenboek -->
+  <section class="section-tinted" style="background: linear-gradient(180deg, var(--color-warm-white) 0%, var(--color-cream) 100%);">
+    <div class="container-narrow">
+      <div class="section-header fade-in">
+        <span class="section-eyebrow" data-i18n="guestbook.eyebrow">Community</span>
+        <h2 data-i18n="guestbook.title">Digitaal Gastenboek</h2>
+        <p data-i18n="guestbook.subtitle">Laat een berichtje, tip of groet achter voor toekomstige gasten van Martenastate.</p>
+      </div>
+
+      <div class="guestbook-container fade-in">
+        <form id="guestbookForm" class="guestbook-form" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 2rem;">
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <div>
+              <label for="gbName" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--color-text);" data-i18n="guestbook.name.label">Je naam</label>
+              <input type="text" id="gbName" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-stone); border-radius: 8px; font-family: var(--font-body); font-size: 1rem;">
+            </div>
+            <div>
+              <label for="gbMessage" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--color-text);" data-i18n="guestbook.message.label">Je berichtje</label>
+              <textarea id="gbMessage" rows="3" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-stone); border-radius: 8px; font-family: var(--font-body); font-size: 1rem; resize: vertical;" placeholder="Wat was het hoogtepunt van je verblijf?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="align-self: flex-start;">
+              <span data-i18n="guestbook.submit">Plaats bericht</span>
+            </button>
+          </div>
+        </form>
+
+        <div id="guestbookEntries" style="display: flex; flex-direction: column; gap: 1rem;">
+          <!-- Entries will be injected here via JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Feedback sectie -->
+  <section class="section-tinted">
+    <div class="container-narrow">
+      <div class="section-header fade-in">
+        <span class="section-eyebrow" data-i18n="feedback.eyebrow">Jouw mening</span>
+        <h2 data-i18n="feedback.title">Hoe was je verblijf?</h2>
+        <p data-i18n="feedback.subtitle">We horen graag wat je van Martenastate vond en of we dingen kunnen verbeteren.</p>
+      </div>
+      <div class="card-grid" style="grid-template-columns: 1fr;">
+        <div class="nav-card fade-in" style="padding: 2rem; cursor: default;">
+          <form id="feedbackForm" action="mailto:jouwadres@example.com?subject=Feedback Martenastate" method="post" enctype="text/plain" style="display: flex; flex-direction: column; gap: 1rem;">
+            <div>
+              <label for="feedbackName" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--color-text);" data-i18n="feedback.name.label">Naam (optioneel)</label>
+              <input type="text" id="feedbackName" name="Naam" style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-stone); border-radius: 8px; font-family: var(--font-body); font-size: 1rem;">
+            </div>
+            <div>
+              <label for="feedbackMessage" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--color-text);" data-i18n="feedback.message.label">Je feedback</label>
+              <textarea id="feedbackMessage" name="Feedback" rows="5" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-stone); border-radius: 8px; font-family: var(--font-body); font-size: 1rem; resize: vertical;"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="align-self: flex-start;">
+              <span data-i18n="feedback.submit">Verstuur feedback</span>
+            </button>
+          </form>
+          <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 1rem;" data-i18n="feedback.mailto_note">* Dit opent je e-mailprogramma om het bericht te versturen.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -581,7 +645,7 @@
           <ul>
             <li data-i18n="footer.address">Martenawei 2, 9056 PE Koarnjum</li>
             <li data-i18n="footer.camping.address">Camping: De Wier 7A</li>
-            <li><a href="tel:+31636606521" data-i18n="footer.phone">+31 6 83 60 65 21</a></li>
+            <li><a href="tel:+31683606521" data-i18n="footer.phone">+31 6 83 60 65 21</a></li>
           </ul>
         </div>
       </div>
@@ -594,7 +658,7 @@
 
   <!-- Mobile action bar -->
   <nav class="mobile-action-bar" aria-label="Snelle acties">
-    <a href="tel:+31636606521" aria-label="Bellen">
+    <a href="tel:+31683606521" aria-label="Bellen">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       <span data-i18n="action.call">Bellen</span>
     </a>
