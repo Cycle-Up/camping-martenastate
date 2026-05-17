@@ -542,6 +542,7 @@ if (typeof window !== 'undefined') {
   window.setLang = setLang;
   window.t = t;
   window.applyTranslations = applyTranslations;
+  window._getWMOInfo = _getWMOInfo;
 }
 
 // Init everything
