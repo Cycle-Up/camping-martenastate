@@ -2645,3 +2645,9 @@ section {
   .tip-card, .route-card { page-break-inside: avoid; border: 1px solid #ccc; box-shadow: none; margin-bottom: 0.5rem; }
   .gallery-section, .gallery-lightbox, .weather-row, .btn-whatsapp, .guest-greeting-hero { display: none !important; }
 }
+
+/* Global focus styles for accessibility */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, [tabindex]:not([tabindex="-1"]):focus-visible {
+  outline: 2px solid var(--color-crocus);
+  outline-offset: 2px;
+}
