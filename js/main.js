@@ -52,8 +52,10 @@ function initNav() {
     toggle.setAttribute('aria-expanded', links.classList.contains('open'));
   });
 
+  const navLinksList = links.querySelectorAll('a');
+
   // Close on link click
-  links.querySelectorAll('a').forEach(a => {
+  navLinksList.forEach(a => {
     a.addEventListener('click', () => links.classList.remove('open'));
   });
 
@@ -66,7 +68,7 @@ function initNav() {
 
   // Highlight active nav link
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  links.querySelectorAll('a').forEach(a => {
+  navLinksList.forEach(a => {
     const href = a.getAttribute('href');
     if (href === currentPage || (currentPage === '' && href === 'index.html')) {
       a.classList.add('active');
