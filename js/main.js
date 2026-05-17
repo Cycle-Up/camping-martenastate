@@ -12,19 +12,37 @@ function t(key) {
   return (translations[currentLang] && translations[currentLang][key]) || key;
 }
 
+// Cache DOM query results for translation targets to avoid redundant DOM traversal
+let cachedI18nElements = null;
+let cachedI18nHrefElements = null;
+let cachedI18nPlaceholderElements = null;
+let cachedLangToggleButtons = null;
+
+function cacheTranslationsElements() {
+  cachedI18nElements = document.querySelectorAll('[data-i18n]');
+  cachedI18nHrefElements = document.querySelectorAll('[data-i18n-href]');
+  cachedI18nPlaceholderElements = document.querySelectorAll('[data-i18n-placeholder]');
+  cachedLangToggleButtons = document.querySelectorAll('.lang-toggle button');
+}
+
 function applyTranslations() {
-  document.querySelectorAll('[data-i18n]').forEach(el => {
+  // Populate the cache if it's the first time applying translations
+  if (!cachedI18nElements) {
+    cacheTranslationsElements();
+  }
+
+  cachedI18nElements.forEach(el => {
     const key = el.getAttribute('data-i18n');
     el.textContent = t(key);
   });
-  document.querySelectorAll('[data-i18n-href]').forEach(el => {
+  cachedI18nHrefElements.forEach(el => {
     el.href = t(el.getAttribute('data-i18n-href'));
   });
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+  cachedI18nPlaceholderElements.forEach(el => {
     el.placeholder = t(el.getAttribute('data-i18n-placeholder'));
   });
   document.documentElement.lang = currentLang;
-  document.querySelectorAll('.lang-toggle button').forEach(btn => {
+  cachedLangToggleButtons.forEach(btn => {
     btn.classList.toggle('active', btn.getAttribute('data-lang') === currentLang);
   });
 }
