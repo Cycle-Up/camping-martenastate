@@ -1,0 +1,3 @@
+## 2024-05-17 - Scroll Event Throttling for Performance
+**Learning:** Found multiple scroll event listeners (`initNavbarScroll` and `initBackToTop` in `js/main.js` and `preview.html`) triggering style updates and class toggles directly on every scroll event without any state checks or requestAnimationFrame. This is a common performance bottleneck (layout thrashing) especially on mobile devices.
+**Action:** Always wrap style/class changes inside `window.requestAnimationFrame` in scroll handlers, and add a state check variable to prevent unnecessary `requestAnimationFrame` calls if the state hasn't actually changed.

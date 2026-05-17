@@ -128,10 +128,17 @@ function initScrollAnimations() {
 function initNavbarScroll() {
   const navbar = document.querySelector('.navbar');
   if (!navbar) return;
+  let isScrolled = false;
   window.addEventListener('scroll', () => {
-    navbar.style.boxShadow = window.scrollY > 20
-      ? '0 4px 24px rgba(58,42,64,0.10)'
-      : 'none';
+    const shouldBeScrolled = window.scrollY > 20;
+    if (isScrolled !== shouldBeScrolled) {
+      isScrolled = shouldBeScrolled;
+      window.requestAnimationFrame(() => {
+        navbar.style.boxShadow = isScrolled
+          ? '0 4px 24px rgba(58,42,64,0.10)'
+          : 'none';
+      });
+    }
   }, { passive: true });
 }
 
@@ -657,8 +664,15 @@ function renderRouteLists() {
 function initBackToTop() {
   const btn = document.getElementById('backToTop');
   if (!btn) return;
+  let isVisible = false;
   window.addEventListener('scroll', () => {
-    btn.classList.toggle('visible', window.scrollY > 400);
+    const shouldBeVisible = window.scrollY > 400;
+    if (isVisible !== shouldBeVisible) {
+      isVisible = shouldBeVisible;
+      window.requestAnimationFrame(() => {
+        btn.classList.toggle('visible', isVisible);
+      });
+    }
   }, { passive: true });
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
