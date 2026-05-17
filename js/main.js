@@ -1,3 +1,17 @@
+// Helper to escape HTML characters
+function escapeHTML(str) {
+  if (str === null || str === undefined) return '';
+  return String(str).replace(/[&<>"']/g, function (match) {
+    switch (match) {
+      case '&': return '&amp;';
+      case '<': return '&lt;';
+      case '>': return '&gt;';
+      case '"': return '&quot;';
+      case "'": return '&#39;';
+    }
+  });
+}
+
 // Language state — guard against localStorage being unavailable (file://, private mode)
 function safeGet(key) {
   try { return window.localStorage.getItem(key); } catch (e) { return null; }
@@ -593,26 +607,35 @@ function renderRouteLists() {
     const icon = kind === 'walking' ? '🚶' : '🚴';
     const color = kind === 'walking' ? '#8ba888' : '#5a7055';
 
+    const safeName = escapeHTML(name);
+    const safeDesc = escapeHTML(desc);
+    const safeDur = escapeHTML(dur);
+    const safeDiff = escapeHTML(diff);
+    const safeDistance = escapeHTML(route.distance);
+    const safeId = escapeHTML(route.id);
+    const safeKind = escapeHTML(kind);
+    const safeUrl = escapeHTML(route.externalUrl);
+
     return `
-      <article class="route-card" data-route-id="${route.id}" data-route-kind="${kind}">
+      <article class="route-card" data-route-id="${safeId}" data-route-kind="${safeKind}">
         <div class="route-card-header" style="border-left: 4px solid ${color};">
           <span class="route-icon">${icon}</span>
           <div>
-            <h4>${name}</h4>
+            <h4>${safeName}</h4>
             <div class="route-meta">
-              <span class="meta-chip">${route.distance}</span>
-              <span class="meta-chip">${dur}</span>
-              <span class="meta-chip">${diff}</span>
+              <span class="meta-chip">${safeDistance}</span>
+              <span class="meta-chip">${safeDur}</span>
+              <span class="meta-chip">${safeDiff}</span>
             </div>
           </div>
         </div>
-        <p class="route-desc">${desc}</p>
+        <p class="route-desc">${safeDesc}</p>
         <div class="route-actions">
-          <button class="btn-route-focus" data-route-id="${route.id}" data-route-kind="${kind}">
+          <button class="btn-route-focus" data-route-id="${safeId}" data-route-kind="${safeKind}">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
             ${mapLabel}
           </button>
-          <a href="${route.externalUrl}" target="_blank" rel="noopener" class="btn-route-open">
+          <a href="${safeUrl}" target="_blank" rel="noopener" class="btn-route-open">
             ${btnLabel}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
           </a>
