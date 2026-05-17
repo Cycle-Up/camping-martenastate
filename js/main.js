@@ -77,28 +77,27 @@ function initNav() {
 // Tab switching
 function initTabs() {
   document.querySelectorAll('.tabs').forEach(tabGroup => {
-    const buttons = tabGroup.querySelectorAll('.tab-btn');
+    const buttons = Array.from(tabGroup.querySelectorAll('.tab-btn'));
 
-    buttons.forEach(btn => {
+    // Pre-query the panels corresponding to the buttons
+    const panels = buttons.map(btn => document.getElementById(btn.getAttribute('data-tab')));
+
+    buttons.forEach((btn, index) => {
       btn.addEventListener('click', () => {
-        const target = btn.getAttribute('data-tab');
-
-        // Deactivate all buttons in this group
-        buttons.forEach(b => {
+        // Deactivate all buttons and panels in this group
+        buttons.forEach((b, i) => {
           b.classList.remove('active');
           b.setAttribute('aria-selected', 'false');
-        });
-
-        // Deactivate only panels that belong to this tab group
-        buttons.forEach(b => {
-          const panel = document.getElementById(b.getAttribute('data-tab'));
-          if (panel) panel.classList.remove('active');
+          if (panels[i]) {
+            panels[i].classList.remove('active');
+          }
         });
 
         btn.classList.add('active');
         btn.setAttribute('aria-selected', 'true');
-        const panel = document.getElementById(target);
-        if (panel) panel.classList.add('active');
+        if (panels[index]) {
+          panels[index].classList.add('active');
+        }
       });
     });
   });
