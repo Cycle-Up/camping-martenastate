@@ -547,13 +547,17 @@ function initGuestbook() {
 
   const STORAGE_KEY = 'martenastate_guestbook';
 
-  // Seed with some dummy data if empty
+  // Seed with some realistic dummy data if empty
   if (!safeGet(STORAGE_KEY)) {
-    const dummyData = [
-      { name: "Fam. de Vries", date: new Date(Date.now() - 86400000 * 2).toISOString(), message: "Heerlijk genoten van de rust en de stinzenflora! Tip: wandel bij zonsopgang." },
-      { name: "Jan & Mieke", date: new Date(Date.now() - 86400000 * 5).toISOString(), message: "Wat een prachtige plek. De appeltaart bij Túnmanswente is een aanrader." }
+    const pastData = [
+      { id: '1', name: "Ineke en Bert", date: "2024-03-15T14:30:00.000Z", message: "Wat een prachtig stukje natuur! De stinzenflora stond er schitterend bij. Aanrader om de wandelroute 's ochtends vroeg te doen als de mist nog over de velden hangt.", likes: 12 },
+      { id: '2', name: "Sander", date: "2024-04-02T10:15:00.000Z", message: "De appeltaart bij Túnmanswente is de beste die we ooit geproefd hebben. Heerlijk in het zonnetje op het terras gezeten na een mooie fietstocht vanaf Leeuwarden.", likes: 8 },
+      { id: '3', name: "Fam. Dijkstra", date: "2024-06-20T16:45:00.000Z", message: "We hebben genoten van ons verblijf op de camping. Zo heerlijk rustig onder de oude bomen, en de kinderen konden overal spelen. Sanitair was ook top in orde.", likes: 4 },
+      { id: '4', name: "Anna V.", date: "2024-08-10T09:20:00.000Z", message: "Kasteel Martenastate is van de buitenkant echt sprookjesachtig. Neem zeker even de tijd om de infoborden te lezen en rond de slotgracht te wandelen.", likes: 6 },
+      { id: '5', name: "Lars", date: "2024-09-28T18:00:00.000Z", message: "Mooie herfstkleuren! De fietstocht via de Middelzee route is erg leuk om de omgeving te verkennen.", likes: 3 },
+      { id: '6', name: "Maria & Joost", date: "2024-02-28T11:10:00.000Z", message: "De eerste sneeuwklokjes en krokussen gezien. Je kan hier fantastisch fotograferen. Kom zeker nog eens terug in april!", likes: 15 }
     ];
-    safeSet(STORAGE_KEY, JSON.stringify(dummyData));
+    safeSet(STORAGE_KEY, JSON.stringify(pastData));
   }
 
   function renderEntries() {
@@ -565,9 +569,12 @@ function initGuestbook() {
       return;
     }
 
-    data.reverse().forEach(entry => {
+    // Sort by date descending
+    const sortedData = [...data].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    sortedData.forEach(entry => {
       const el = document.createElement('div');
-      el.style.cssText = 'background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border-left: 4px solid var(--color-sage);';
+      el.style.cssText = 'background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border-left: 4px solid var(--color-sage); display: flex; flex-direction: column; gap: 0.5rem;';
 
       const dateStr = new Date(entry.date).toLocaleDateString(currentLang === 'nl' ? 'nl-NL' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 
@@ -581,14 +588,43 @@ function initGuestbook() {
             '"': '&quot;'
           }[tag] || tag));
 
+      const entryId = entry.id || Date.now().toString();
+      const likesCount = entry.likes || 0;
+
       el.innerHTML = `
-        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.75rem;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
           <strong style="font-size: 1.1rem; color: var(--color-text);">${escapeHTML(entry.name)}</strong>
           <span style="font-size: 0.85rem; color: var(--color-text-muted);">${dateStr}</span>
         </div>
         <p style="margin: 0; color: var(--color-text-soft); line-height: 1.5;">${escapeHTML(entry.message)}</p>
+        <div style="display: flex; align-items: center; justify-content: flex-end; margin-top: 0.5rem;">
+          <button class="btn-like" data-id="${entryId}" style="background: none; border: none; cursor: pointer; color: var(--color-sage); display: flex; align-items: center; gap: 0.25rem; font-size: 0.9rem; font-weight: 600; padding: 0.25rem 0.5rem; border-radius: 4px; transition: background 0.2s;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+            <span class="like-count">${likesCount}</span>
+          </button>
+        </div>
       `;
       entriesContainer.appendChild(el);
+    });
+
+    // Add like button functionality
+    document.querySelectorAll('.btn-like').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const id = btn.getAttribute('data-id');
+        const storageData = JSON.parse(safeGet(STORAGE_KEY) || '[]');
+        const idx = storageData.findIndex(item => item.id === id);
+        if (idx !== -1) {
+          // Simplistic like system (allows multiple likes, good enough for simulation)
+          storageData[idx].likes = (storageData[idx].likes || 0) + 1;
+          safeSet(STORAGE_KEY, JSON.stringify(storageData));
+
+          // Animate and update UI instantly
+          const countSpan = btn.querySelector('.like-count');
+          countSpan.textContent = storageData[idx].likes;
+          btn.style.transform = 'scale(1.1)';
+          setTimeout(() => btn.style.transform = 'scale(1)', 200);
+        }
+      });
     });
   }
 
@@ -600,9 +636,11 @@ function initGuestbook() {
     if (!nameEl.value.trim() || !msgEl.value.trim()) return;
 
     const newEntry = {
+      id: Date.now().toString(),
       name: nameEl.value.trim(),
       message: msgEl.value.trim(),
-      date: new Date().toISOString()
+      date: new Date().toISOString(),
+      likes: 0
     };
 
     const data = JSON.parse(safeGet(STORAGE_KEY) || '[]');
