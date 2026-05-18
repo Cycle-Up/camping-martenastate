@@ -1,0 +1,179 @@
+/* ==========================================================================
+   Martenastate — Design Tokens
+   Authoritative source for colors, type, spacing, radii, shadows, motion.
+   Replaces the legacy stinzenflora purple palette with the official
+   Martenastate identity (Leien blauw + Martena Rood + paper neutrals).
+   ========================================================================== */
+
+:root {
+  /* ───────────────── HERITAGE COLORS ───────────────── */
+  --ms-leien-blauw:       #0F4A4F;
+  --ms-leien-blauw-deep:  #093438;
+  --ms-leien-blauw-soft:  #2A6F75;
+
+  --ms-martena-rood:      #E36447;
+  --ms-martena-rood-deep: #C84A2E;
+  --ms-martena-rood-soft: #F1947F;
+
+  /* ───────────────── FLORA / SUB-BRAND COLORS ───────────────── */
+  --ms-bostulp-goud:       #F2C12E;
+  --ms-bostulp-goud-deep:  #C99B12;
+  --ms-bostulp-goud-soft:  #F8DE7A;
+
+  --ms-daslook-wit:        #DDE3E0;
+  --ms-daslook-wit-deep:   #B6BEBB;
+
+  --ms-haarlems-groen:     #BBD590;
+  --ms-haarlems-groen-deep:#7A9954;
+  --ms-haarlems-groen-soft:#D7E6BB;
+
+  --ms-longkruid-paars:    #B49DC8;
+  --ms-longkruid-paars-deep:#7E6594;
+  --ms-longkruid-paars-soft:#D9CCE5;
+
+  /* Sub-brand role tokens */
+  --subbrand-theetuin:     var(--ms-martena-rood);
+  --subbrand-koetshuis:    var(--ms-bostulp-goud);
+  --subbrand-bnb:          var(--ms-leien-blauw);
+  --subbrand-camping:      var(--ms-haarlems-groen-deep);
+  --subbrand-buitenplaats: var(--ms-longkruid-paars);
+
+  /* ───────────────── PAPER / INK NEUTRALS ───────────────── */
+  --ms-paper:       #F4EFE6;   /* default page background */
+  --ms-paper-warm:  #ECE5D6;   /* alt sections             */
+  --ms-paper-soft:  #FBF8F1;   /* cards / lightest surface */
+
+  --ms-ink:         #1A1A1A;
+  --ms-ink-soft:    #2A2723;
+  --ms-ink-mute:    #6F6A60;
+
+  --ms-line:        #D8D2C5;   /* hairline on paper        */
+  --ms-line-dark:   rgba(255, 255, 255, 0.18);
+
+  /* ───────────────── SEMANTIC ROLES ───────────────── */
+  --accent:         var(--ms-martena-rood);  /* warm CTA accent */
+  --accent-2:       var(--ms-bostulp-goud);
+
+  --bg:             var(--ms-paper);
+  --bg-alt:         var(--ms-paper-warm);
+  --bg-soft:        var(--ms-paper-soft);
+  --bg-dark:        var(--ms-leien-blauw);
+  --bg-dark-deep:   var(--ms-leien-blauw-deep);
+
+  --fg:             var(--ms-ink);
+  --fg-soft:        var(--ms-ink-soft);
+  --fg-mute:        var(--ms-ink-mute);
+  --fg-on-dark:     #F4EFE6;
+  --fg-on-dark-soft: rgba(244, 239, 230, 0.78);
+
+  --hairline:        var(--ms-line);
+  --hairline-on-dark:var(--ms-line-dark);
+
+  /* ───────────────── TYPOGRAPHY ───────────────── */
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-sans:    'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-serif:   'Lora', 'Iowan Old Style', Georgia, serif;
+  --font-script:  'Caveat', 'Dancing Script', cursive;
+
+  /* Type scale — modular, generous. Body never below 16px. */
+  --fs-12:  0.75rem;   /* meta/eyebrow caps   */
+  --fs-14:  0.875rem;  /* small ui            */
+  --fs-16:  1rem;      /* body                */
+  --fs-18:  1.125rem;  /* body-large          */
+  --fs-20:  1.25rem;   /* lead                */
+  --fs-24:  1.5rem;    /* h5                  */
+  --fs-32:  2rem;      /* h4                  */
+  --fs-40:  2.5rem;    /* h3                  */
+  --fs-48:  3rem;      /* h2                  */
+  --fs-64:  4rem;      /* h1                  */
+  --fs-80:  5rem;      /* display             */
+  --fs-96:  6rem;      /* mega-display        */
+
+  --lh-tight:  1.05;
+  --lh-snug:   1.2;
+  --lh-normal: 1.55;
+  --lh-loose:  1.75;
+
+  /* ───────────────── SPACING ───────────────── */
+  --space-1:   0.25rem;
+  --space-2:   0.5rem;
+  --space-3:   0.75rem;
+  --space-4:   1rem;
+  --space-5:   1.5rem;
+  --space-6:   2rem;
+  --space-7:   3rem;
+  --space-8:   4rem;
+  --space-9:   6rem;
+  --space-10:  8rem;
+  --space-11:  10rem;
+
+  /* Legacy aliases used in original code */
+  --space-xs:  var(--space-2);
+  --space-sm:  var(--space-4);
+  --space-md:  var(--space-5);
+  --space-lg:  var(--space-7);
+  --space-xl:  var(--space-8);
+  --space-2xl: var(--space-9);
+
+  /* ───────────────── CONTAINERS ───────────────── */
+  --container-max:    1240px;
+  --container-narrow: 760px;
+
+  /* ───────────────── RADII ───────────────── */
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --radius-xl:   28px;
+  --radius-pill: 999px;
+
+  /* Signature: arch shape from the estate's stone gate silhouette */
+  --shape-arch: 50% 50% 0 0 / 40% 40% 0 0;
+
+  /* ───────────────── SHADOWS (soft, teal-tinted) ───────────────── */
+  --shadow-xs: 0 1px 2px rgba(15, 74, 79, 0.06);
+  --shadow-sm: 0 2px 8px rgba(15, 74, 79, 0.06), 0 1px 2px rgba(15, 74, 79, 0.04);
+  --shadow-md: 0 8px 24px rgba(15, 74, 79, 0.08), 0 2px 6px rgba(15, 74, 79, 0.05);
+  --shadow-lg: 0 18px 40px rgba(15, 74, 79, 0.12), 0 4px 12px rgba(15, 74, 79, 0.06);
+
+  /* ───────────────── MOTION ───────────────── */
+  --dur-fast:  160ms;
+  --dur-med:   280ms;
+  --dur-slow:  520ms;
+  --ease-out:    cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+
+  /* ───────────────── LEGACY ALIASES (do not remove) ─────────────────
+     The original codebase uses --color-crocus etc. inline on many pages.
+     We map them onto the new palette so existing markup still renders
+     correctly without touching every inline style. */
+  --color-crocus:        var(--ms-leien-blauw);
+  --color-crocus-light:  var(--ms-leien-blauw-soft);
+  --color-lavender:      rgba(244, 239, 230, 0.72);
+  --color-lavender-soft: var(--ms-paper-warm);
+  --color-aubergine:     var(--ms-leien-blauw-deep);
+  --color-sage:          var(--ms-haarlems-groen-deep);
+  --color-sage-light:    var(--ms-haarlems-groen-soft);
+  --color-moss:          var(--ms-haarlems-groen-deep);
+  --color-aconite:       var(--ms-bostulp-goud);
+  --color-aconite-soft:  var(--ms-bostulp-goud-soft);
+  --color-cream:         var(--ms-paper);
+  --color-warm-white:    var(--ms-paper);
+  --color-soft-white:    var(--ms-paper-soft);
+  --color-stone:         var(--ms-line);
+  --color-earth:         var(--ms-ink-soft);
+  --color-text:          var(--ms-ink);
+  --color-text-soft:     var(--ms-ink-soft);
+  --color-text-muted:    var(--ms-ink-mute);
+  --color-dark:          var(--ms-ink);
+
+  --font-body:    var(--font-sans);
+  --font-accent:  var(--font-script);
+
+  --radius-md-legacy: 16px;
+  --shadow-soft:   var(--shadow-sm);
+  --shadow-medium: var(--shadow-md);
+  --shadow-hover:  var(--shadow-lg);
+
+  --transition-fast:   var(--dur-fast) var(--ease-out);
+  --transition-smooth: var(--dur-med)  var(--ease-out);
+}

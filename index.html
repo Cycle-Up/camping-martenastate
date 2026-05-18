@@ -4,37 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welkom bij Martenastate</title>
-  <meta name="description" content="Jouw gids voor een heerlijk verblijf op Martenastate, Koarnjum — historisch landgoed in Friesland.">
+  <meta name="description" content="Jouw gids voor je verblijf op Martenastate, Koarnjum — buitenplaats in Friesland.">
 
-  <!-- Open Graph -->
   <meta property="og:title" content="Welkom bij Martenastate">
-  <meta property="og:description" content="Jouw gids voor een heerlijk verblijf op dit historische landgoed in Koarnjum, Friesland.">
+  <meta property="og:description" content="Jouw gids voor je verblijf op de buitenplaats in Koarnjum, Friesland.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="nl_NL">
 
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
   <!-- Navigation -->
-  <nav class="navbar" role="navigation">
+  <nav class="navbar on-dark" role="navigation">
     <div class="navbar-inner">
       <a href="index.html" class="brand" aria-label="Martenastate home">
-        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M16 3 C16 3 8 9 8 17 C8 21.4 11.6 25 16 25 C20.4 25 24 21.4 24 17 C24 9 16 3 16 3Z" fill="currentColor" opacity="0.2"/>
-          <path d="M16 6 C13 10 10 13 10 17 C10 20.3 12.7 23 16 23 C19.3 23 22 20.3 22 17 C22 13 19 10 16 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-          <path d="M16 10 C16 10 12 14 12 17 C12 19.2 13.8 21 16 21" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.6"/>
-          <line x1="16" y1="23" x2="16" y2="29" stroke="currentColor" stroke-width="1.5"/>
-          <line x1="12" y1="27" x2="20" y2="27" stroke="currentColor" stroke-width="1.5"/>
-        </svg>
         Martenastate
       </a>
 
@@ -43,7 +34,8 @@
         <li><a href="verblijf.html" data-i18n="nav.verblijf">Verblijf</a></li>
         <li><a href="activiteiten.html" data-i18n="nav.activiteiten">Activiteiten</a></li>
         <li><a href="omgeving.html" data-i18n="nav.omgeving">Omgeving</a></li>
-        <li><a href="kaart.html" data-i18n="nav.kaart">Kaart</a></li>
+        <li><a href="gastenboek.html" data-i18n="nav.gastenboek">Gastenboek</a></li>
+        <li><a href="boeken.html" data-i18n="nav.boeken" style="color: var(--ms-martena-rood);">Boeken</a></li>
         <li>
           <div class="lang-toggle" role="group" aria-label="Taal kiezen">
             <button data-lang="nl" class="active">NL</button>
@@ -60,49 +52,24 @@
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section class="hero">
-    <!-- Decorative floral SVGs -->
-    <svg class="floral-decoration floral-top-left" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <circle cx="100" cy="60" r="18" fill="#7b5d8c" opacity="0.3"/>
-      <circle cx="75" cy="90" r="12" fill="#c9b8d4" opacity="0.4"/>
-      <circle cx="125" cy="85" r="14" fill="#7b5d8c" opacity="0.25"/>
-      <circle cx="100" cy="115" r="10" fill="#e6c569" opacity="0.35"/>
-      <ellipse cx="55" cy="70" rx="8" ry="16" fill="#8ba888" opacity="0.3" transform="rotate(-30 55 70)"/>
-      <ellipse cx="145" cy="65" rx="8" ry="18" fill="#8ba888" opacity="0.25" transform="rotate(25 145 65)"/>
-      <line x1="100" y1="78" x2="100" y2="160" stroke="#8ba888" stroke-width="2" opacity="0.4"/>
-      <line x1="82" y1="100" x2="118" y2="130" stroke="#8ba888" stroke-width="1.5" opacity="0.3"/>
-    </svg>
-
-    <svg class="floral-decoration floral-bottom-right" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <circle cx="120" cy="80" r="22" fill="#7b5d8c" opacity="0.2"/>
-      <circle cx="88" cy="110" r="15" fill="#c9b8d4" opacity="0.35"/>
-      <circle cx="152" cy="105" r="17" fill="#8ba888" opacity="0.25"/>
-      <circle cx="120" cy="140" r="12" fill="#e6c569" opacity="0.3"/>
-      <circle cx="90" cy="155" r="9" fill="#7b5d8c" opacity="0.2"/>
-      <circle cx="150" cy="150" r="11" fill="#c9b8d4" opacity="0.3"/>
-      <ellipse cx="68" cy="88" rx="9" ry="20" fill="#8ba888" opacity="0.25" transform="rotate(-20 68 88)"/>
-      <ellipse cx="172" cy="82" rx="9" ry="22" fill="#8ba888" opacity="0.2" transform="rotate(15 172 82)"/>
-      <line x1="120" y1="102" x2="120" y2="200" stroke="#8ba888" stroke-width="2" opacity="0.35"/>
-    </svg>
-
+  <!-- ───────────────── Cinematic hero ─────────────────  -->
+  <section class="hero" style="background-image: url('images/photo-poort.webp');">
     <div class="hero-content">
-      <span class="hero-eyebrow" data-i18n="home.eyebrow">Welkom</span>
-      <h1>
-        Welkom bij<br>
+      <span class="hero-eyebrow" data-i18n="home.eyebrow">Koarnjum · Friesland</span>
+      <h1 data-i18n-html="home.h1">
+        Welkom op<br>
         <span class="italic" data-i18n="home.title.italic">Martenastate</span>
       </h1>
       <p class="guest-greeting-hero" id="guestGreeting" hidden></p>
       <p class="hero-subtitle" data-i18n="home.subtitle">
-        Een verborgen parel in het groen van Friesland. Wij hopen dat je een heerlijk verblijf hebt op dit historische landgoed in Koarnjum.
+        Jouw buitenplaats in Koarnjum. De natuur doet het werk, jij bepaalt het tempo. Hier ruil je hectiek in voor een eigen ritme.
       </p>
       <div class="hero-buttons">
         <a href="verblijf.html" class="btn btn-primary">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           <span data-i18n="home.btn.verblijf">Over je verblijf</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a href="omgeving.html" class="btn btn-outline">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <a href="activiteiten.html" class="btn btn-outline">
           <span data-i18n="home.btn.omgeving">Wat te doen</span>
         </a>
       </div>
@@ -113,11 +80,10 @@
     </div>
   </section>
 
-  <!-- Bij aankomst — directe praktische info -->
+  <!-- ───────────────── Bij aankomst ─────────────────  -->
   <div class="container">
     <div class="arrival-panel fade-in">
       <div class="arrival-panel-header">
-        <span class="arrival-emoji" aria-hidden="true">🌿</span>
         <div>
           <span class="arrival-eyebrow" data-i18n="arrival.eyebrow">Fijn dat je er bent</span>
           <h2 data-i18n="arrival.title">Bij aankomst</h2>
@@ -141,7 +107,7 @@
             <span data-i18n="arrival.wifi.label">WiFi</span>
           </div>
           <div class="arrival-value">Martenastate-Gast</div>
-          <div class="arrival-sub" data-i18n="arrival.wifi.sub">Wachtwoord: MartenastateGast2024</div>
+          <div class="arrival-sub" data-i18n-html="arrival.wifi.sub">Wachtwoord: MartenastateGast2024<br><br>Let op: bij de B&amp;B's en Túnmanswente is goede WiFi.</div>
         </div>
 
         <div class="arrival-item">
@@ -150,12 +116,12 @@
             <span data-i18n="arrival.contact.label">Contact</span>
           </div>
           <div class="arrival-value">
-            <a href="tel:+31636606521">+31 6 83 60 65 21</a>
+            <a href="tel:+31683606521">+31 6 83 60 65 21</a>
           </div>
           <div class="arrival-sub" data-i18n="arrival.contact.sub">Robin Alkema · WhatsApp welkom</div>
-          <a href="https://wa.me/31636606521?text=Hallo%2C%20ik%20ben%20gast%20bij%20Martenastate%20en%20heb%20een%20vraag..." class="btn-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp Robin">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.534 5.852L0 24l6.335-1.518A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.879 0-3.629-.491-5.148-1.348l-.37-.218-3.758.9.938-3.665-.24-.383A9.775 9.775 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182c5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
-            <span data-i18n="whatsapp.btn">Stuur een WhatsApp bericht</span>
+          <a href="https://wa.me/31683606521?text=Hallo%2C%20ik%20ben%20gast%20bij%20Martenastate%20en%20heb%20een%20vraag..." class="btn-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp Robin">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.534 5.852L0 24l6.335-1.518A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.879 0-3.629-.491-5.148-1.348l-.37-.218-3.758.9.938-3.665-.24-.383A9.775 9.775 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182c5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+            <span data-i18n="whatsapp.btn">WhatsApp Robin</span>
           </a>
         </div>
 
@@ -191,40 +157,17 @@
     </div>
   </div>
 
-  <!-- Highlights -->
-  <div class="highlights">
-    <div class="container">
-      <div class="highlights-grid">
-        <div class="highlight-item fade-in">
-          <div class="value" data-i18n="highlights.since">Sinds ~1400</div>
-          <div class="label" data-i18n="highlights.since.label">Historisch landgoed</div>
-        </div>
-        <div class="highlight-item fade-in">
-          <div class="value" data-i18n="highlights.ha">21.000 ha</div>
-          <div class="label" data-i18n="highlights.ha.label">Natuur beheerd door It Fryske Gea</div>
-        </div>
-        <div class="highlight-item fade-in">
-          <div class="value" data-i18n="highlights.km">5 min</div>
-          <div class="label" data-i18n="highlights.km.label">Fietsen naar Leeuwarden</div>
-        </div>
-        <div class="highlight-item fade-in">
-          <div class="value" data-i18n="highlights.season">1 apr – 1 okt</div>
-          <div class="label" data-i18n="highlights.season.label">Kampeerseizoen</div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- Vandaag widget -->
-  <section style="padding-top: var(--space-md);">
+  <!-- ───────────────── Vandaag widget ─────────────────  -->
+  <section style="padding-top: var(--space-7); padding-bottom: var(--space-5);">
     <div class="container">
       <div class="today-widget fade-in" id="todayWidget">
         <div class="today-widget-header">
-          <span class="today-label" data-i18n="today.label">Vandaag op het landgoed</span>
+          <span class="today-label" data-i18n="today.label">Vandaag op de buitenplaats</span>
           <span class="today-date" id="todayDate">—</span>
         </div>
         <h3 id="todaySeasonTitle" data-i18n="today.season.spring">Voorjaar — hoogtepunt stinzenflora</h3>
-        <p style="position:relative;color:var(--color-text-soft);" id="todaySeasonText" data-i18n="today.season.spring.text">De wilde hyacint en narcissen kleuren het park nu paarsblauw en geel. Een ideale tijd voor een vroege ochtendwandeling.</p>
+        <p id="todaySeasonText" data-i18n="today.season.spring.text">De wilde hyacint en narcissen kleuren het park nu paarsblauw en geel. Een goed moment voor een vroege ochtendwandeling.</p>
 
         <div class="today-status-grid">
           <div class="today-status" id="statusTunmanswente">
@@ -237,8 +180,8 @@
           <div class="today-status">
             <span class="status-dot"></span>
             <div>
-              <span class="status-name" data-i18n="today.park.name">Landgoed & park</span>
-              <span class="status-detail" data-i18n="today.park.hours">Hele dag vrij toegankelijk</span>
+              <span class="status-name" data-i18n="today.park.name">Park</span>
+              <span class="status-detail" data-i18n="today.park.hours">Vrij toegankelijk</span>
             </div>
           </div>
           <div class="today-status" id="statusCamping">
@@ -260,13 +203,13 @@
     </div>
   </section>
 
-  <!-- Navigation cards -->
+  <!-- ───────────────── Navigation cards ─────────────────  -->
   <section>
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-eyebrow">Jouw gids</span>
-        <h2>Alles voor je verblijf</h2>
-        <p>Hier vind je alles wat je nodig hebt — van informatie over je verblijfplaats tot de mooiste plekken in de omgeving.</p>
+        <span class="section-eyebrow" data-i18n="home.section.gids.eyebrow">Jouw gids</span>
+        <h2 data-i18n="home.section.gids.h2">Alles voor je verblijf</h2>
+        <p data-i18n="home.section.gids.intro">Van praktische info over je verblijfplaats tot de mooiste plekken in de omgeving.</p>
       </div>
 
       <div class="card-grid cols-3">
@@ -275,7 +218,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           </div>
           <h3 data-i18n="card.verblijf.title">Over je verblijf</h3>
-          <p data-i18n="card.verblijf.desc">Alles over de camping en B&amp;B: tarieven, faciliteiten en handige tips.</p>
+          <p data-i18n="card.verblijf.desc">Camping, B&amp;B en Túnmanswente: tarieven, faciliteiten, praktische tips.</p>
           <span class="card-link" data-i18n="card.verblijf.link">Bekijk details</span>
         </a>
 
@@ -284,220 +227,207 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 3v3"/><path d="M16 3v3"/><path d="M3 9h18"/><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/></svg>
           </div>
           <h3 data-i18n="card.activiteiten.title">Activiteiten</h3>
-          <p data-i18n="card.activiteiten.desc">Kies snel wat past bij je dag: dichtbij, met kinderen, bij regen of een dagtrip.</p>
+          <p data-i18n="card.activiteiten.desc">Kies snel wat past bij je dag — dichtbij, met kinderen, bij regen of een dagtrip.</p>
           <span class="card-link" data-i18n="card.activiteiten.link">Bekijk activiteiten</span>
         </a>
 
         <a href="omgeving.html" class="nav-card fade-in">
           <div class="icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1-2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1-2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z"/><circle cx="11" cy="11" r="3"/></svg>
           </div>
           <h3 data-i18n="card.omgeving.title">In de omgeving</h3>
-          <p data-i18n="card.omgeving.desc">Wandelroutes, fietsroutes, restaurants en bezienswaardigheden.</p>
+          <p data-i18n="card.omgeving.desc">Wandel- en fietsroutes, restaurants en bezienswaardigheden in de buurt.</p>
           <span class="card-link" data-i18n="card.omgeving.link">Ontdek de omgeving</span>
         </a>
 
-        <a href="kaart.html" class="nav-card fade-in">
+        <a href="omgeving.html" class="nav-card fade-in">
           <div class="icon-wrap">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
           </div>
           <h3 data-i18n="card.kaart.title">Interactieve kaart</h3>
-          <p data-i18n="card.kaart.desc">Bekijk alle tips, routes en adressen op de kaart.</p>
+          <p data-i18n="card.kaart.desc">Alle tips, routes en adressen op één kaart.</p>
           <span class="card-link" data-i18n="card.kaart.link">Open kaart</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Quote -->
+  <!-- ───────────────── Quote ─────────────────  -->
   <div class="quote-block fade-in">
-    <blockquote data-i18n="quote.text">In ieder seizoen valt er veel te zien én te beleven op Martenastate</blockquote>
-    <cite data-i18n="quote.cite">Martenastate, Koarnjum</cite>
+    <blockquote data-i18n="quote.text">Hier mag de tijd even langzamer.</blockquote>
+    <cite data-i18n="quote.cite">Martenastate · Koarnjum</cite>
   </div>
 
-  <!-- About section -->
-  <section style="background: linear-gradient(180deg, var(--color-warm-white) 0%, var(--color-cream) 100%); padding-top: 0;">
+  <!-- ───────────────── Over de buitenplaats ─────────────────  -->
+  <section>
     <div class="container">
       <div class="feature-row fade-in">
         <div class="feature-image">
-          <div class="placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          </div>
+          <img src="images/photo-kasteeltje.jpg" alt="Het kasteeltje van Martenastate">
         </div>
         <div class="feature-content">
-          <span class="section-eyebrow">Het landgoed</span>
-          <h3>Een plek met eeuwenlange geschiedenis</h3>
-          <p>Martenastate gaat terug tot circa 1400, toen Sytze Martena hier woonde. Het landgoed is vernoemd naar Duco Martena — staatsman, held en geleerde. In 1899 verrees het huidige neo-renaissance kasteel met zijn karakteristieke uienvormige toren.</p>
-          <p>Sinds 2000 beheert <strong>It Fryske Gea</strong> het landgoed ecologisch. Martenastate is erkend als één van de beste stinzenflora-locaties van Nederland en staat op de lijst als nationaal monument.</p>
+          <span class="section-eyebrow" data-i18n="home.estate.eyebrow">De buitenplaats</span>
+          <h3 data-i18n="home.estate.h3">Een plek met eeuwenlange geschiedenis</h3>
+          <p data-i18n="home.estate.p1">Martenastate gaat terug tot circa 1400, toen Sytze Martena hier woonde. Vernoemd naar Duco Martena — staatsman, held en geleerde. In 1899 verrees het huidige neo-renaissance kasteel met zijn karakteristieke uienvormige toren.</p>
+          <p data-i18n-html="home.estate.p2">Sinds 2000 beheert <strong>It Fryske Gea</strong> het landgoed ecologisch. Martenastate is erkend als één van de beste stinzenflora-locaties van Nederland en staat op de lijst als nationaal monument.</p>
           <div class="meta">
-            <span class="meta-chip">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              Vrij toegankelijk
-            </span>
-            <span class="meta-chip">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              Nationaal monument
-            </span>
-            <span class="meta-chip">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/></svg>
-              Stinzenflora-toplocatie
-            </span>
+            <span class="meta-chip" data-i18n="home.chip.free_access">Vrij toegankelijk</span>
+            <span class="meta-chip" data-i18n="home.chip.national_monument">Nationaal monument</span>
+            <span class="meta-chip" data-i18n="home.chip.toplocation">Stinzenflora-toplocatie</span>
           </div>
         </div>
       </div>
 
       <div class="feature-row fade-in">
         <div class="feature-content">
-          <span class="section-eyebrow">Stinzenflora</span>
-          <h3>De bloemen die alles bijzonder maken</h3>
-          <p>Stinzenplanten zijn verwilderde bolgewassen die al eeuwen rond historische landgoederen groeien. In het voorjaar (februari–april) bloeit Martenastate in prachtige tinten van paars, wit en geel.</p>
-          <p>Sneeuwklokjes, krokussen, wilde hyacinten, winterakoniet en veel meer — elk jaar opnieuw een betoverend schouwspel dat bezoekers van heinde en verre trekt.</p>
+          <span class="section-eyebrow" data-i18n="home.stinzen.eyebrow">Stinzenflora</span>
+          <h3 data-i18n="home.stinzen.h3">De bloemen die alles bijzonder maken</h3>
+          <p data-i18n="home.stinzen.p1">Stinzenplanten zijn verwilderde bolgewassen die al eeuwen rond historische landgoederen groeien. In het voorjaar (februari–april) bloeit Martenastate in tinten van paars, wit en geel.</p>
+          <p data-i18n="home.stinzen.p2">Sneeuwklokjes, krokussen, wilde hyacinten, winterakoniet — elk jaar opnieuw een schouwspel dat bezoekers van heinde en verre trekt.</p>
           <div class="meta">
-            <span class="meta-chip">Februari – april</span>
-            <span class="meta-chip">Sneeuwklokjes</span>
-            <span class="meta-chip">Krokussen</span>
-            <span class="meta-chip">Wilde hyacint</span>
+            <span class="meta-chip" data-i18n="home.chip.feb_apr">Februari – april</span>
+            <span class="meta-chip" data-i18n="home.chip.snowdrops">Sneeuwklokjes</span>
+            <span class="meta-chip" data-i18n="home.chip.crocus">Krokussen</span>
+            <span class="meta-chip" data-i18n="home.chip.hyacinth">Wilde hyacint</span>
           </div>
         </div>
         <div class="feature-image">
-          <div class="placeholder" style="background: linear-gradient(135deg, #c9b8d4, #e8dff0);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
-          </div>
+          <img src="images/photo-bloemen.jpg" alt="Stinzenflora in bloei">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Seizoenskalender -->
+  <!-- ───────────────── Seizoenskalender ─────────────────  -->
   <section class="section-tinted">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-eyebrow">Het jaar rond</span>
-        <h2>Wat te zien per seizoen</h2>
-        <p>Martenastate is in elk seizoen de moeite waard — van de eerste sneeuwklokjes in februari tot de gouden herfstbladeren in oktober.</p>
+        <span class="section-eyebrow" data-i18n="home.seasons.eyebrow">Het jaar rond</span>
+        <h2 data-i18n="home.seasons.h2">Wat te zien per seizoen</h2>
+        <p data-i18n="home.seasons.intro">Van de eerste sneeuwklokjes in februari tot de gouden herfstbladeren in oktober — elk seizoen heeft zijn eigen sfeer.</p>
       </div>
 
       <div class="season-grid">
         <div class="season-card fade-in">
-          <span class="season-icon">❄️</span>
-          <h4>Winter & vroeg voorjaar</h4>
-          <p style="font-size:.85rem;color:var(--color-text-muted);margin-bottom:.5rem;">Februari – maart</p>
+          <span class="season-icon" data-ms-icon="snowflake"></span>
+          <h4 data-i18n="home.season.winter.h4">Winter & vroeg voorjaar</h4>
+          <p data-i18n="home.season.winter.range" style="font-size:var(--fs-12);color:var(--fg-mute);margin-bottom:0;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;">Februari – maart</p>
           <ul>
-            <li>Eerste sneeuwklokjes en winterakoniet</li>
-            <li>Krokussen in paars, wit en geel</li>
-            <li>Stille wandelingen door het park</li>
-            <li>Vogels zoeken voedsel — ideaal voor vogelaars</li>
+            <li data-i18n="home.season.winter.li1">Eerste sneeuwklokjes en winterakoniet</li>
+            <li data-i18n="home.season.winter.li2">Krokussen in paars, wit en geel</li>
+            <li data-i18n="home.season.winter.li3">Stille wandelingen door het park</li>
+            <li data-i18n="home.season.winter.li4">Vogels zoeken voedsel — voor vogelaars</li>
           </ul>
         </div>
 
         <div class="season-card current-season fade-in">
-          <span class="current-badge">Nu</span>
-          <span class="season-icon">🌸</span>
-          <h4>Voorjaar</h4>
-          <p style="font-size:.85rem;color:var(--color-text-muted);margin-bottom:.5rem;">April – mei</p>
+          <span class="current-badge" data-i18n="home.season.current_badge">Nu</span>
+          <span class="season-icon" data-ms-icon="blossom"></span>
+          <h4 data-i18n="home.season.spring.h4">Voorjaar</h4>
+          <p data-i18n="home.season.spring.range" style="font-size:var(--fs-12);color:var(--fg-mute);margin-bottom:0;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;">April – mei</p>
           <ul>
-            <li>Hoogtepunt stinzenflora — wilde hyacint en narcissen</li>
-            <li>Geleide excursies via It Fryske Gea</li>
-            <li>Fotografie-excursies door het park</li>
-            <li>Camping open vanaf 1 april</li>
-            <li>Túnmanswente open vanaf 27 maart</li>
+            <li data-i18n="home.season.spring.li1">Hoogtepunt stinzenflora — wilde hyacint en narcissen</li>
+            <li data-i18n="home.season.spring.li2">Geleide excursies via It Fryske Gea</li>
+            <li data-i18n="home.season.spring.li3">Fotografie-excursies door het park</li>
+            <li data-i18n="home.season.spring.li4">Camping open vanaf 1 april</li>
+            <li data-i18n="home.season.spring.li5">Túnmanswente open vanaf 27 maart</li>
           </ul>
         </div>
 
         <div class="season-card fade-in">
-          <span class="season-icon">☀️</span>
-          <h4>Zomer</h4>
-          <p style="font-size:.85rem;color:var(--color-text-muted);margin-bottom:.5rem;">Juni – augustus</p>
+          <span class="season-icon" data-ms-icon="sun"></span>
+          <h4 data-i18n="home.season.summer.h4">Zomer</h4>
+          <p data-i18n="home.season.summer.range" style="font-size:var(--fs-12);color:var(--fg-mute);margin-bottom:0;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;">Juni – augustus</p>
           <ul>
-            <li>Volle theetuin bij Túnmanswente</li>
-            <li>Fietsen door het Friese landschap</li>
-            <li>Lange avonden op het kampeerterrein</li>
-            <li>Zwemmen in Friese meren</li>
-            <li>Evenementen in Leeuwarden (5 km)</li>
+            <li data-i18n="home.season.summer.li1">Volle theetuin bij Túnmanswente</li>
+            <li data-i18n="home.season.summer.li2">Fietsen door het Friese landschap</li>
+            <li data-i18n="home.season.summer.li3">Lange avonden op het kampeerterrein</li>
+            <li data-i18n="home.season.summer.li4">Zwemmen in Friese meren</li>
+            <li data-i18n="home.season.summer.li5">Evenementen in Leeuwarden (5 km)</li>
           </ul>
         </div>
 
         <div class="season-card fade-in">
-          <span class="season-icon">🍂</span>
-          <h4>Herfst</h4>
-          <p style="font-size:.85rem;color:var(--color-text-muted);margin-bottom:.5rem;">September – oktober</p>
+          <span class="season-icon" data-ms-icon="autumn_leaf"></span>
+          <h4 data-i18n="home.season.autumn.h4">Herfst</h4>
+          <p data-i18n="home.season.autumn.range" style="font-size:var(--fs-12);color:var(--fg-mute);margin-bottom:0;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;">September – oktober</p>
           <ul>
-            <li>Spectaculaire herfstbladeren in het park</li>
-            <li>Paddestoelen langs de wandelpaden</li>
-            <li>Trekvogels boven het Friese land</li>
-            <li>Camping sluit 1 oktober</li>
-            <li>Open Monumentendag (september)</li>
+            <li data-i18n="home.season.autumn.li1">Herfstbladeren in het park</li>
+            <li data-i18n="home.season.autumn.li2">Paddestoelen langs de wandelpaden</li>
+            <li data-i18n="home.season.autumn.li3">Trekvogels boven het Friese land</li>
+            <li data-i18n="home.season.autumn.li4">Camping sluit 1 oktober</li>
+            <li data-i18n="home.season.autumn.li5">Open Monumentendag (september)</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Dag-inspiratie: "Wat ga je doen vandaag?" -->
-  <section class="section-tinted">
+  <!-- ───────────────── Dag-inspiratie ─────────────────  -->
+  <section>
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-eyebrow" data-i18n="dayplan.eyebrow">Kies je dag</span>
         <h2 data-i18n="dayplan.title">Wat ga je vandaag doen?</h2>
-        <p data-i18n="dayplan.subtitle">Van rustige ochtend tot volle dag actie — voor elk humeur een perfecte combinatie.</p>
+        <p data-i18n="dayplan.subtitle">Van een rustige ochtend tot een volle dag op pad — voor elk humeur een passende combinatie.</p>
       </div>
 
       <div class="dayplan-grid">
         <div class="dayplan-card fade-in">
-          <div class="dayplan-badge dayplan-easy">🌿 Rustig</div>
+          <div class="dayplan-badge dayplan-easy"><span data-i18n="home.dayplan.b.easy">Rustig</span></div>
           <h4 data-i18n="dayplan.slow.title">Langzame dag</h4>
           <ol class="dayplan-list">
             <li data-i18n="dayplan.slow.1">Koffie bij Túnmanswente (za/zo 11u, vr 13u)</li>
             <li data-i18n="dayplan.slow.2">Wandeling door het park (~45 min)</li>
             <li data-i18n="dayplan.slow.3">Lunch op je eigen stek</li>
-            <li data-i18n="dayplan.slow.4">Middagdutje of boek lezen in het gras</li>
+            <li data-i18n="dayplan.slow.4">Boek lezen in het gras</li>
             <li data-i18n="dayplan.slow.5">Zonsondergang op het terrein</li>
           </ol>
-          <div class="dayplan-time">⏱ Halve dag of minder</div>
+          <div class="dayplan-time" data-i18n="home.dayplan.t.halfday">Halve dag of minder</div>
         </div>
 
         <div class="dayplan-card fade-in">
-          <div class="dayplan-badge dayplan-active">🚴 Actief</div>
+          <div class="dayplan-badge dayplan-active"><span data-i18n="home.dayplan.b.active">Actief</span></div>
           <h4 data-i18n="dayplan.active.title">Fietsen naar Leeuwarden</h4>
           <ol class="dayplan-list">
             <li data-i18n="dayplan.active.1">Vertrek 9:00 — knooppunt 10 → 11 → 13</li>
             <li data-i18n="dayplan.active.2">Koffie bij de Waag (bij Oldehove)</li>
             <li data-i18n="dayplan.active.3">Fries Museum of Oldehove beklimmen</li>
             <li data-i18n="dayplan.active.4">Lunch op Wilhelminaplein (markt op za)</li>
-            <li data-i18n="dayplan.active.5">Terugfietsen andere route langs kanaal</li>
+            <li data-i18n="dayplan.active.5">Terugfietsen langs het kanaal</li>
           </ol>
-          <div class="dayplan-time">⏱ Hele dag · 20–30 km totaal</div>
+          <div class="dayplan-time" data-i18n="home.dayplan.t.fullday_km">Hele dag · 20–30 km</div>
         </div>
 
         <div class="dayplan-card fade-in">
-          <div class="dayplan-badge dayplan-explore">⚓ Daguitje</div>
-          <h4 data-i18n="dayplan.explore.title">Waddenzee & Harlingen</h4>
+          <div class="dayplan-badge dayplan-explore"><span data-i18n="home.dayplan.b.explore">Daguitje</span></div>
+          <h4 data-i18n="dayplan.explore.title">Waddenzee &amp; Harlingen</h4>
           <ol class="dayplan-list">
             <li data-i18n="dayplan.explore.1">Auto: 35 km naar Harlingen (~40 min)</li>
             <li data-i18n="dayplan.explore.2">Haven verkennen, koffie bij de kade</li>
             <li data-i18n="dayplan.explore.3">Lunch in Harlingen centrum</li>
             <li data-i18n="dayplan.explore.4">Pieterspad langs de Waddendijk</li>
-            <li data-i18n="dayplan.explore.5">Terug voor zonsondergang op het terrein</li>
+            <li data-i18n="dayplan.explore.5">Terug voor zonsondergang</li>
           </ol>
-          <div class="dayplan-time">⏱ Hele dag · auto vereist</div>
+          <div class="dayplan-time" data-i18n="home.dayplan.t.fullday_car">Hele dag · auto vereist</div>
         </div>
 
         <div class="dayplan-card fade-in">
-          <div class="dayplan-badge dayplan-culture">🏛 Cultuur</div>
+          <div class="dayplan-badge dayplan-culture"><span data-i18n="home.dayplan.b.culture">Cultuur</span></div>
           <h4 data-i18n="dayplan.culture.title">Leeuwarden voor cultuurliefhebbers</h4>
           <ol class="dayplan-list">
             <li data-i18n="dayplan.culture.1">Ochtend: Fries Museum (open di–zo 11u)</li>
             <li data-i18n="dayplan.culture.2">Lunch bij Marktzijde naast het museum</li>
-            <li data-i18n="dayplan.culture.3">Museum Princessehof (keramiek & Mata Hari)</li>
+            <li data-i18n="dayplan.culture.3">Museum Princessehof (keramiek &amp; Mata Hari)</li>
             <li data-i18n="dayplan.culture.4">Wandeling langs historische grachten</li>
-            <li data-i18n="dayplan.culture.5">Diner in het centrum (reserveer op tijd!)</li>
+            <li data-i18n="dayplan.culture.5">Diner in het centrum (reserveer op tijd)</li>
           </ol>
-          <div class="dayplan-time">⏱ Hele dag · 5 km fietsen</div>
+          <div class="dayplan-time" data-i18n="home.dayplan.t.fullday_bike">Hele dag · 5 km fietsen</div>
         </div>
       </div>
 
-      <div style="text-align:center; margin-top: var(--space-lg);">
-        <a href="kaart.html" class="btn btn-outline">
+      <div style="text-align:center; margin-top: var(--space-7);">
+        <a href="omgeving.html" class="btn btn-outline">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
           <span data-i18n="dayplan.map.link">Bekijk alle routes op de kaart</span>
         </a>
@@ -505,65 +435,63 @@
     </div>
   </section>
 
-  <div class="flower-divider" aria-hidden="true">✿ ✾ ✿</div>
-
-  <!-- Sfeer op de state — photo gallery -->
-  <section class="gallery-section">
+  <!-- ───────────────── Sfeer ─────────────────  -->
+  <section class="gallery-section section-tinted">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-eyebrow" data-i18n="gallery.eyebrow">Sfeer</span>
-        <h2 data-i18n="gallery.title">Sfeer op de state</h2>
-        <p data-i18n="gallery.subtitle">Een blik op het landgoed, in elk seizoen bijzonder.</p>
+        <h2 data-i18n="gallery.title">Een blik op de buitenplaats</h2>
+        <p data-i18n="gallery.subtitle">Beelden uit het seizoen, gemaakt in de omgeving.</p>
       </div>
 
       <div class="gallery-grid" id="galleryGrid">
         <figure class="gallery-item fade-in" aria-label="Foto 1">
           <div class="gallery-img-wrap">
-            <img src="images/park-lente.jpg" alt="" loading="lazy" data-caption-key="gallery.caption.1" onerror="this.parentElement.classList.add('gallery-placeholder')">
+            <img src="images/photo-voorjaar.jpg" alt="" loading="lazy" data-caption-key="gallery.caption.1" onerror="this.parentElement.classList.add('gallery-placeholder')">
           </div>
           <figcaption class="gallery-caption" data-i18n="gallery.caption.1">Stinzenflora in het voorjaar</figcaption>
         </figure>
         <figure class="gallery-item fade-in" aria-label="Foto 2">
           <div class="gallery-img-wrap">
-            <img src="images/stinzenflora.jpg" alt="" loading="lazy" data-caption-key="gallery.caption.2" onerror="this.parentElement.classList.add('gallery-placeholder')">
+            <img src="images/photo-bloemen.jpg" alt="" loading="lazy" data-caption-key="gallery.caption.2" onerror="this.parentElement.classList.add('gallery-placeholder')">
           </div>
           <figcaption class="gallery-caption" data-i18n="gallery.caption.2">Wilde hyacint langs het pad</figcaption>
         </figure>
         <figure class="gallery-item fade-in" aria-label="Foto 3">
           <div class="gallery-img-wrap">
-            <img src="images/camping.jpg" alt="" loading="lazy" data-caption-key="gallery.caption.3" onerror="this.parentElement.classList.add('gallery-placeholder')">
+            <img src="images/photo-camping.jpg" alt="" loading="lazy" data-caption-key="gallery.caption.3" onerror="this.parentElement.classList.add('gallery-placeholder')">
           </div>
-          <figcaption class="gallery-caption" data-i18n="gallery.caption.3">Kampeerplekken achter de beuken</figcaption>
+          <figcaption class="gallery-caption" data-i18n="gallery.caption.3">Kampeerplekken in het park</figcaption>
         </figure>
         <figure class="gallery-item fade-in" aria-label="Foto 4">
           <div class="gallery-img-wrap">
-            <img src="images/bb-kamer-1.jpg" alt="" loading="lazy" data-caption-key="gallery.caption.4" onerror="this.parentElement.classList.add('gallery-placeholder')">
+            <img src="images/photo-bnb.jpg" alt="" loading="lazy" data-caption-key="gallery.caption.4" onerror="this.parentElement.classList.add('gallery-placeholder')">
           </div>
           <figcaption class="gallery-caption" data-i18n="gallery.caption.4">B&amp;B Stinzenflora</figcaption>
         </figure>
         <figure class="gallery-item fade-in" aria-label="Foto 5">
           <div class="gallery-img-wrap">
-            <img src="images/tunmanswente.jpg" alt="" loading="lazy" data-caption-key="gallery.caption.5" onerror="this.parentElement.classList.add('gallery-placeholder')">
+            <img src="images/photo-theetuin-parasol.jpg" alt="" loading="lazy" data-caption-key="gallery.caption.5" onerror="this.parentElement.classList.add('gallery-placeholder')">
           </div>
           <figcaption class="gallery-caption" data-i18n="gallery.caption.5">Túnmanswente theetuin</figcaption>
         </figure>
         <figure class="gallery-item fade-in" aria-label="Foto 6">
           <div class="gallery-img-wrap">
-            <img src="images/wandelen-park.jpg" alt="" loading="lazy" data-caption-key="gallery.caption.6" onerror="this.parentElement.classList.add('gallery-placeholder')">
+            <img src="images/photo-wandelen-1.jpg" alt="" loading="lazy" data-caption-key="gallery.caption.6" onerror="this.parentElement.classList.add('gallery-placeholder')">
           </div>
           <figcaption class="gallery-caption" data-i18n="gallery.caption.6">Wandelen door het park</figcaption>
         </figure>
         <figure class="gallery-item fade-in" aria-label="Foto 7">
           <div class="gallery-img-wrap">
-            <img src="images/leeuwarden.jpg" alt="" loading="lazy" data-caption-key="gallery.caption.7" onerror="this.parentElement.classList.add('gallery-placeholder')">
+            <img src="images/photo-singel.jpg" alt="" loading="lazy" data-caption-key="gallery.caption.7" onerror="this.parentElement.classList.add('gallery-placeholder')">
           </div>
-          <figcaption class="gallery-caption" data-i18n="gallery.caption.7">Leeuwarden — 5 km fietsen</figcaption>
+          <figcaption class="gallery-caption" data-i18n="gallery.caption.7">Singel rond het landgoed</figcaption>
         </figure>
         <figure class="gallery-item fade-in" aria-label="Foto 8">
           <div class="gallery-img-wrap">
-            <img src="images/herfst-park.jpg" alt="" loading="lazy" data-caption-key="gallery.caption.8" onerror="this.parentElement.classList.add('gallery-placeholder')">
+            <img src="images/photo-kasteeltje-aerial.jpg" alt="" loading="lazy" data-caption-key="gallery.caption.8" onerror="this.parentElement.classList.add('gallery-placeholder')">
           </div>
-          <figcaption class="gallery-caption" data-i18n="gallery.caption.8">Herfst op het landgoed</figcaption>
+          <figcaption class="gallery-caption" data-i18n="gallery.caption.8">Het landgoed vanuit de lucht</figcaption>
         </figure>
       </div>
     </div>
@@ -571,89 +499,89 @@
 
   <!-- Lightbox -->
   <div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-label="Foto" hidden>
-    <button class="lightbox-close" id="lightboxClose" aria-label="Sluiten">✕</button>
+    <button class="lightbox-close" id="lightboxClose" aria-label="Sluiten"><span data-ms-icon="close" style="display:inline-flex;width:1em;height:1em;"></span></button>
     <button class="lightbox-prev" id="lightboxPrev" aria-label="Vorige foto">&#8249;</button>
     <button class="lightbox-next" id="lightboxNext" aria-label="Volgende foto">&#8250;</button>
     <figure class="lightbox-content">
-      <img src="" alt="" id="lightboxImg">
+      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" id="lightboxImg">
       <figcaption id="lightboxCaption" class="lightbox-caption"></figcaption>
     </figure>
   </div>
 
-  <!-- Onze tips -->
+  <!-- ───────────────── Onze tips ─────────────────  -->
   <section>
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-eyebrow">Persoonlijke aanbevelingen</span>
-        <h2>Onze favoriete tips</h2>
-        <p>Wat wij zelf het liefst doen en zien in de omgeving — voor een verblijf dat je niet vergeet.</p>
+        <span class="section-eyebrow" data-i18n="home.tips.eyebrow">Onze tips</span>
+        <h2 data-i18n="home.tips.h2">Wat wij zelf doen</h2>
+        <p data-i18n="home.tips.intro">Een paar plekken en momenten die het waard zijn.</p>
       </div>
 
       <div class="tips-grid">
         <div class="tip-card fade-in">
-          <span class="tip-icon">🌅</span>
+          <span class="tip-icon" data-ms-icon="sunrise"></span>
           <div>
-            <h4>Vroeg opstaan loont</h4>
-            <p>Loop bij zonsopgang door het park. De ochtenddauw op de stinzenflora, het vogelgezang en de mist boven het gras zijn onbeschrijflijk mooi.</p>
-            <p class="tip-meta">Gratis · In het park · Hele seizoen</p>
+            <h4 data-i18n="home.tip.1.h4">Sta vroeg op</h4>
+            <p data-i18n="home.tip.1.body">Loop bij zonsopgang door het park. Dauw op de stinzenflora, vogels, mist boven het gras.</p>
+            <p data-i18n="home.tip.1.meta" class="tip-meta">Gratis · In het park</p>
           </div>
         </div>
 
         <div class="tip-card fade-in">
-          <span class="tip-icon">🚴</span>
+          <span class="tip-icon" data-ms-icon="bike"></span>
           <div>
-            <h4>Fietsen naar Leeuwarden</h4>
-            <p>Pak de fiets en rijd in 20 minuten naar het centrum van Leeuwarden. Langs de Middelzee, door de polder — een van de mooiste routes die er zijn.</p>
-            <p class="tip-meta">5 km · Fietsknooppunt 10 · Geen druk verkeer</p>
+            <h4 data-i18n="home.tip.2.h4">Pak de fiets</h4>
+            <p data-i18n="home.tip.2.body">In 20 minuten in Leeuwarden. Langs de Middelzee, door de polder.</p>
+            <p data-i18n="home.tip.2.meta" class="tip-meta">5 km · Knooppunt 10</p>
           </div>
         </div>
 
         <div class="tip-card fade-in">
-          <span class="tip-icon">☕</span>
+          <span class="tip-icon" data-ms-icon="cup"></span>
           <div>
-            <h4>Koffie bij Túnmanswente</h4>
-            <p>Begin je ochtend met koffie in de theetuin van Túnmanswente. Buiten zitten, uitzicht op het park, historische sfeer. Een van de mooiste plekjes van Friesland.</p>
-            <p class="tip-meta">Vr 13-17u · Za/zo 11-17u · Op het landgoed</p>
+            <h4 data-i18n="home.tip.3.h4">Koffie bij Túnmanswente</h4>
+            <p data-i18n="home.tip.3.body">Theetuin op het landgoed. Koffie, uitzicht op het park.</p>
+            <p data-i18n="home.tip.3.meta" class="tip-meta">Vr 13–17u · Za/zo 11–17u</p>
           </div>
         </div>
 
         <div class="tip-card fade-in">
-          <span class="tip-icon">🏛️</span>
+          <span class="tip-icon" data-ms-icon="column"></span>
           <div>
-            <h4>Fries Museum in Leeuwarden</h4>
-            <p>Absoluut een bezoek waard. Het museum vertelt het verhaal van Friesland op een moderne, indrukwekkende manier. De Mata Hari-tentoonstelling is bijzonder.</p>
-            <p class="tip-meta">5 km fietsen · Betaald · Hele jaar open</p>
+            <h4 data-i18n="home.tip.4.h4">Fries Museum</h4>
+            <p data-i18n="home.tip.4.body">Het verhaal van Friesland. De Mata Hari-tentoonstelling is een aanrader.</p>
+            <p data-i18n="home.tip.4.meta" class="tip-meta">5 km fietsen · Betaald</p>
           </div>
         </div>
 
         <div class="tip-card fade-in">
-          <span class="tip-icon">🌿</span>
+          <span class="tip-icon" data-ms-icon="leaf"></span>
           <div>
-            <h4>Geleide excursie boeken</h4>
-            <p>De geleide wandelingen van It Fryske Gea geven je een heel ander perspectief op het landgoed. De gids weet alles over de planten, de geschiedenis en de dieren.</p>
-            <p class="tip-meta">Via itfryskegea.nl · Voorjaar en zomer</p>
+            <h4 data-i18n="home.tip.5.h4">Excursie met een gids</h4>
+            <p data-i18n="home.tip.5.body">De wandelingen van It Fryske Gea openen het park op een andere manier.</p>
+            <p data-i18n="home.tip.5.meta" class="tip-meta">Via itfryskegea.nl</p>
           </div>
         </div>
 
         <div class="tip-card fade-in">
-          <span class="tip-icon">🌊</span>
+          <span class="tip-icon" data-ms-icon="wave"></span>
           <div>
-            <h4>Dagje Waddenzee</h4>
-            <p>Op 30 minuten rijden ligt de UNESCO Waddenzee. Wadlopen bij laagwater, zeehonden spotten bij Harlingen of gewoon genieten van het immense uitzicht.</p>
-            <p class="tip-meta">~30 km · Harlingen of Pieterburen</p>
+            <h4 data-i18n="home.tip.6.h4">Dagje Waddenzee</h4>
+            <p data-i18n="home.tip.6.body">30 minuten rijden. Wadlopen, zeehonden, weidse lucht.</p>
+            <p data-i18n="home.tip.6.meta" class="tip-meta">~30 km · Harlingen of Pieterburen</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Share / pocket guide -->
-  <section style="background: linear-gradient(135deg, var(--color-lavender-soft) 0%, var(--color-aconite-soft) 100%); padding: var(--space-xl) 0;">
+  <!-- ───────────────── Share / pocket guide ─────────────────  -->
+  <section class="section-tinted">
     <div class="container-narrow" style="text-align:center;">
       <span class="section-eyebrow" data-i18n="share.eyebrow">Voor onderweg</span>
       <h2 data-i18n="share.title">Neem de gids overal mee</h2>
-      <p style="max-width:580px; margin:1rem auto 1.5rem;" data-i18n="share.text">Deel de link met je reisgenoten of bewaar 'm op je telefoon. De gids werkt ook offline — handig in het park of bij slecht signaal.</p>
-      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+      <p style="max-width:580px; margin:var(--space-4) auto var(--space-5);" data-i18n="share.text">Deel de link met je reisgenoten of bewaar 'm op je telefoon. De gids werkt ook offline — handig in het park of bij slecht signaal.</p>
+      <div style="display:flex; gap:var(--space-3); justify-content:center; flex-wrap:wrap;">
         <button class="btn btn-primary" data-share data-share-title="Welkom bij Martenastate" data-share-text="Onze gids voor je verblijf op Martenastate, Koarnjum">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
           <span data-i18n="share.btn.share">Deel de gids</span>
@@ -663,7 +591,7 @@
           <span data-i18n="share.btn.print">Pocket-guide afdrukken</span>
         </a>
       </div>
-      <p style="font-size:.85rem; color:var(--color-text-muted); margin-top:1.5rem;" data-i18n="share.tip">Tip: voeg de gids toe aan je startscherm voor één-tik-toegang (browser-menu › 'Toevoegen aan startscherm').</p>
+      <p style="font-size:var(--fs-14); color:var(--fg-mute); margin-top:var(--space-5);" data-i18n="share.tip">Tip: voeg de gids toe aan je startscherm voor één-tik-toegang.</p>
     </div>
   </section>
 
@@ -673,10 +601,14 @@
       <div class="footer-grid">
         <div>
           <div class="footer-brand">
-            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16 3 C16 3 8 9 8 17 C8 21.4 11.6 25 16 25 C20.4 25 24 21.4 24 17 C24 9 16 3 16 3Z" fill="currentColor" opacity="0.3"/><path d="M16 6 C13 10 10 13 10 17 C10 20.3 12.7 23 16 23 C19.3 23 22 20.3 22 17 C22 13 19 10 16 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="16" y1="23" x2="16" y2="29" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="27" x2="20" y2="27" stroke="currentColor" stroke-width="1.5"/></svg>
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M5 26 V11 L11 7 L16 11 L21 7 L27 11 V26 Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
+              <path d="M10 26 V18 H22 V26" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+              <circle cx="16" cy="9" r="1.3" fill="currentColor"/>
+            </svg>
             Martenastate
           </div>
-          <p data-i18n="footer.tagline" style="color: var(--color-lavender); opacity:.8;">Een historisch landgoed in het hart van Friesland.</p>
+          <p data-i18n="footer.tagline" style="opacity:.8;">Jouw natuurlijke staat. Een historische buitenplaats in Koarnjum, Friesland.</p>
         </div>
         <div>
           <h4 data-i18n="footer.nav">Navigatie</h4>
@@ -684,8 +616,9 @@
             <li><a href="index.html" data-i18n="nav.home">Home</a></li>
             <li><a href="verblijf.html" data-i18n="nav.verblijf">Verblijf</a></li>
             <li><a href="activiteiten.html" data-i18n="nav.activiteiten">Activiteiten</a></li>
-        <li><a href="omgeving.html" data-i18n="nav.omgeving">Omgeving</a></li>
-            <li><a href="kaart.html" data-i18n="nav.kaart">Kaart</a></li>
+            <li><a href="omgeving.html" data-i18n="nav.omgeving">Omgeving</a></li>
+            <li><a href="gastenboek.html" data-i18n="nav.gastenboek">Gastenboek</a></li>
+        <li><a href="boeken.html" data-i18n="nav.boeken">Boeken</a></li>
           </ul>
         </div>
         <div>
@@ -693,20 +626,20 @@
           <ul>
             <li data-i18n="footer.address">Martenawei 2, 9056 PE Koarnjum</li>
             <li data-i18n="footer.camping.address">Camping: De Wier 7A</li>
-            <li><a href="tel:+31636606521" data-i18n="footer.phone">+31 6 83 60 65 21</a></li>
+            <li><a href="tel:+31683606521" data-i18n="footer.phone">+31 6 83 60 65 21</a></li>
             <li><a href="https://martenastate.nl" target="_blank" rel="noopener">martenastate.nl</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <span data-i18n="footer.copyright">Welkom bij Martenastate — Koarnjum, Friesland</span>
+        <span data-i18n="footer.copyright">Welkom bij Martenastate · Koarnjum, Friesland</span>
       </div>
     </div>
   </footer>
 
   <!-- Mobile action bar -->
   <nav class="mobile-action-bar" aria-label="Snelle acties">
-    <a href="tel:+31636606521" aria-label="Bellen">
+    <a href="tel:+31683606521" aria-label="Bellen">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       <span data-i18n="action.call">Bellen</span>
     </a>
@@ -714,17 +647,13 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
       <span data-i18n="action.route">Route</span>
     </a>
-    <a href="kaart.html" aria-label="Kaart en routes">
+    <a href="omgeving.html#routes" aria-label="Routes en omgeving">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
-      <span data-i18n="action.map">Kaart</span>
+      <span data-i18n="action.map">Routes</span>
     </a>
     <a href="verblijf.html#faq" aria-label="Veelgestelde vragen">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
       <span data-i18n="action.faq">Vragen</span>
-    </a>
-    <a href="https://wa.me/31636606521?text=Hallo%2C%20ik%20ben%20gast%20bij%20Martenastate%20en%20heb%20een%20vraag..." target="_blank" rel="noopener" aria-label="WhatsApp">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="color:#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.534 5.852L0 24l6.335-1.518A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.879 0-3.629-.491-5.148-1.348l-.37-.218-3.758.9.938-3.665-.24-.383A9.775 9.775 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182c5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
-      <span data-i18n="action.whatsapp">WhatsApp</span>
     </a>
   </nav>
 
@@ -733,9 +662,10 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
   </button>
 
-  <!-- Toast for copy feedback -->
+  <!-- Toast -->
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+  <script src="js/icons.js"></script>
   <script src="js/translations.js"></script>
   <script src="js/main.js"></script>
   <script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js").catch(()=>{})}</script>

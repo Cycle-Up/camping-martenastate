@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gastenboek — Martenastate</title>
+  <meta name="description" content="Lees verhalen van andere gasten en laat zelf een bericht achter in het gastenboek van Martenastate.">
+
+  <meta property="og:title" content="Gastenboek — Martenastate">
+  <meta property="og:description" content="Verhalen van gasten van Martenastate in Koarnjum, Friesland.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="nl_NL">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" role="navigation">
+    <div class="navbar-inner">
+      <a href="index.html" class="brand" aria-label="Martenastate home">
+        Martenastate
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="verblijf.html" data-i18n="nav.verblijf">Verblijf</a></li>
+        <li><a href="activiteiten.html" data-i18n="nav.activiteiten">Activiteiten</a></li>
+        <li><a href="omgeving.html" data-i18n="nav.omgeving">Omgeving</a></li>
+        <li><a href="gastenboek.html" data-i18n="nav.gastenboek" class="active">Gastenboek</a></li>
+        <li><a href="boeken.html" data-i18n="nav.boeken" style="color: var(--ms-martena-rood);">Boeken</a></li>
+        <li>
+          <div class="lang-toggle" role="group" aria-label="Taal kiezen">
+            <button data-lang="nl" class="active">NL</button>
+            <button data-lang="en">EN</button>
+          </div>
+        </li>
+      </ul>
+
+      <button class="menu-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="nav-links">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ───────────────── Hero ───────────────── -->
+  <header class="gb-hero">
+    <span class="section-eyebrow" data-i18n="guestbook.eyebrow">Community</span>
+    <h1 data-i18n="guestbook.title">Gastenboek</h1>
+    <span class="gb-handwritten" aria-hidden="true">— wat gasten schrijven —</span>
+    <p data-i18n="guestbook.subtitle">Een berichtje, tip of groet. Voor wie na jou komt.</p>
+    <a href="#gbForm" class="btn btn-accent" data-i18n="guestbook.write_cta">Schrijf een bericht</a>
+  </header>
+
+  <!-- ───────────────── Entries ───────────────── -->
+  <main>
+    <section style="padding-top: var(--space-8); padding-bottom: var(--space-7);">
+      <div class="container">
+        <div id="gbEntries" class="gb-grid">
+          <div class="gb-loading" data-i18n="guestbook.loading">Berichten laden…</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Form -->
+    <section class="gb-form-section">
+      <div class="container-narrow">
+        <div class="section-header" style="margin-bottom: var(--space-6);">
+          <span class="section-eyebrow" data-i18n="guestbook.form.eyebrow">Jouw bijdrage</span>
+          <h2 data-i18n="guestbook.form.title">Laat een bericht achter</h2>
+          <p data-i18n="guestbook.form.subtitle">Wat je schrijft helpt de gasten na jou.</p>
+        </div>
+        <form class="gb-form" id="gbForm" style="scroll-margin-top: 100px;">
+          <div>
+            <label for="gbNaam" data-i18n="guestbook.name.label">Je naam</label>
+            <input type="text" id="gbNaam" required maxlength="80" autocomplete="name" placeholder="Bijvoorbeeld: Anna uit Utrecht">
+          </div>
+          <div>
+            <label for="gbBericht" data-i18n="guestbook.message.label">Je berichtje</label>
+            <textarea id="gbBericht" rows="5" required maxlength="1000" placeholder="Wat heb je beleefd? Wat raad je andere gasten aan?"></textarea>
+          </div>
+          <div id="gbFormError" class="gb-error" style="display:none;"></div>
+          <button type="submit" class="btn btn-primary" id="gbSubmit">
+            <span data-i18n="guestbook.submit">Plaats bericht</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M5 26 V11 L11 7 L16 11 L21 7 L27 11 V26 Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
+              <path d="M10 26 V18 H22 V26" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+              <circle cx="16" cy="9" r="1.3" fill="currentColor"/>
+            </svg>
+            Martenastate
+          </div>
+          <p data-i18n="footer.tagline" style="opacity:.8;">Jouw natuurlijke staat. Een historische buitenplaats in Koarnjum, Friesland.</p>
+        </div>
+        <div>
+          <h4 data-i18n="footer.nav">Navigatie</h4>
+          <ul>
+            <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+            <li><a href="verblijf.html" data-i18n="nav.verblijf">Verblijf</a></li>
+            <li><a href="activiteiten.html" data-i18n="nav.activiteiten">Activiteiten</a></li>
+            <li><a href="omgeving.html" data-i18n="nav.omgeving">Omgeving</a></li>
+            <li><a href="gastenboek.html" data-i18n="nav.gastenboek">Gastenboek</a></li>
+            <li><a href="boeken.html" data-i18n="nav.boeken">Boeken</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="footer.contact">Contact</h4>
+          <ul>
+            <li data-i18n="footer.address">Martenawei 2, 9056 PE Koarnjum</li>
+            <li data-i18n="footer.camping.address">Camping: De Wier 7A</li>
+            <li><a href="tel:+31683606521" data-i18n="footer.phone">+31 6 83 60 65 21</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">Welkom bij Martenastate · Koarnjum, Friesland</span>
+      </div>
+    </div>
+  </footer>
+
+    <!-- Mobile action bar -->
+  <nav class="mobile-action-bar" aria-label="Snelle acties">
+    <a href="tel:+31683606521" aria-label="Bellen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span data-i18n="action.call">Bellen</span>
+    </a>
+    <a href="https://maps.google.com/?q=Martenawei+2,+9056+PE+Koarnjum" target="_blank" rel="noopener" aria-label="Route naar Martenastate">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+      <span data-i18n="action.route">Route</span>
+    </a>
+    <a href="omgeving.html#routes" aria-label="Routes en omgeving">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+      <span data-i18n="action.map">Routes</span>
+    </a>
+    <a href="verblijf.html#faq" aria-label="Veelgestelde vragen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <span data-i18n="action.faq">Vragen</span>
+    </a>
+  </nav>
+
+  <button class="back-to-top" aria-label="Terug naar boven" id="backToTop">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    const SB_URL = 'https://ubhqqvassnkyfsftrmyh.supabase.co/rest/v1';
+    const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InViaHFxdmFzc25reWZzZnRybXloIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkwOTQyODksImV4cCI6MjA5NDY3MDI4OX0.e5cLy8QeibuUG-5qRTAWlbXWBuPMa-gzWq4YyqAqD6U';
+
+    const likedIds = new Set(JSON.parse(localStorage.getItem('gb_liked') || '[]'));
+
+    function sbHeaders(extra) {
+      return { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Content-Type': 'application/json', ...extra };
+    }
+
+    function formatDate(iso) {
+      return new Date(iso).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
+    }
+
+    function escapeText(str) {
+      const d = document.createElement('div');
+      d.textContent = str;
+      return d.innerHTML;
+    }
+
+    // Pick avatar color slot from name (stable hash → 1..5)
+    function avatarSlot(name) {
+      let h = 0;
+      for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) | 0;
+      return ((Math.abs(h) % 5) + 1);
+    }
+
+    // Generate initials from name ("Anna van der Berg" → "AB", "Jelle" → "J")
+    function initialsOf(name) {
+      const parts = name.trim().split(/\s+/).filter(p => p && !/^(van|de|der|den|het|te|ten|ter|von|af|of)$/i.test(p));
+      if (!parts.length) return '?';
+      if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+      return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+    }
+
+    function renderEntries(entries) {
+      const container = document.getElementById('gbEntries');
+      if (!entries.length) {
+        container.innerHTML = '<div class="gb-empty">Nog geen berichten. Wees de eerste!</div>';
+        return;
+      }
+      container.innerHTML = entries.map(e => {
+        const naam = escapeText(e.naam);
+        const slot = avatarSlot(e.naam || '');
+        const initials = escapeText(initialsOf(e.naam || ''));
+        return `
+          <article class="gb-card">
+            <div class="gb-card-header">
+              <span class="gb-avatar av-${slot}" aria-hidden="true">${initials}</span>
+              <div class="gb-meta">
+                <span class="gb-naam">${naam}</span>
+                <span class="gb-datum">${formatDate(e.datum)}</span>
+              </div>
+            </div>
+            <p class="gb-bericht">${escapeText(e.bericht)}</p>
+            <button class="gb-like-btn ${likedIds.has(e.id) ? 'liked' : ''}" data-id="${escapeText(e.id)}" data-likes="${e.likes}">
+              <span>${e.likes}</span>
+            </button>
+          </article>
+        `;
+      }).join('');
+      container.querySelectorAll('.gb-like-btn').forEach(btn => {
+        btn.addEventListener('click', () => handleLike(btn));
+      });
+    }
+
+    async function loadEntries() {
+      try {
+        const res = await fetch(`${SB_URL}/gastenboek?order=datum.desc&select=*`, { headers: sbHeaders() });
+        if (!res.ok) throw new Error(await res.text());
+        renderEntries(await res.json());
+      } catch {
+        document.getElementById('gbEntries').innerHTML =
+          '<div class="gb-error">Kon berichten niet laden. Probeer de pagina te vernieuwen.</div>';
+      }
+    }
+
+    async function handleLike(btn) {
+      const id = btn.dataset.id;
+      if (likedIds.has(id)) return;
+      const newLikes = (parseInt(btn.dataset.likes) || 0) + 1;
+      likedIds.add(id);
+      localStorage.setItem('gb_liked', JSON.stringify([...likedIds]));
+      btn.classList.add('liked');
+      btn.dataset.likes = newLikes;
+      btn.querySelector('span').textContent = newLikes;
+      fetch(`${SB_URL}/gastenboek?id=eq.${encodeURIComponent(id)}`, {
+        method: 'PATCH', headers: sbHeaders(), body: JSON.stringify({ likes: newLikes })
+      }).catch(() => {});
+    }
+
+    document.getElementById('gbForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const naam = document.getElementById('gbNaam').value.trim();
+      const bericht = document.getElementById('gbBericht').value.trim();
+      const submitBtn = document.getElementById('gbSubmit');
+      const errorEl = document.getElementById('gbFormError');
+      errorEl.style.display = 'none';
+      submitBtn.disabled = true;
+      try {
+        const res = await fetch(`${SB_URL}/gastenboek`, {
+          method: 'POST', headers: sbHeaders({ 'Prefer': 'return=minimal' }),
+          body: JSON.stringify({ naam, bericht })
+        });
+        if (!res.ok) throw new Error(await res.text());
+        document.getElementById('gbNaam').value = '';
+        document.getElementById('gbBericht').value = '';
+        if (typeof showToast === 'function') showToast(t('toast.guestbook_posted') || 'Bericht geplaatst!');
+        await loadEntries();
+      } catch {
+        errorEl.textContent = 'Kon bericht niet plaatsen. Probeer het opnieuw.';
+        errorEl.style.display = 'block';
+      }
+      submitBtn.disabled = false;
+    });
+
+    loadEntries();
+  </script>
+  <script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js").catch(()=>{})}</script>
+</body>
+</html>

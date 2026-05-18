@@ -6,7 +6,7 @@ const mapPlaces = [
   {
     id: 'martenastate-home',
     category: 'home',
-    icon: '🏕️',
+    icon: 'tent',
     name_nl: 'Camping Martenastate',
     name_en: 'Camping Martenastate',
     desc_nl: 'Jouw verblijfplaats. Rustig kamperen achter de eeuwenoude beuken van het landgoed.',
@@ -20,7 +20,7 @@ const mapPlaces = [
   {
     id: 'tunmanswente',
     category: 'eat',
-    icon: '☕',
+    icon: 'cup',
     name_nl: 'Túnmanswente',
     name_en: 'Túnmanswente',
     desc_nl: 'Sfeervolle theetuin op het landgoed. Koffie, thee en lunch. Open vr 13–17u, za/zo 11–17u (27 mrt – 25 okt).',
@@ -35,7 +35,7 @@ const mapPlaces = [
   {
     id: 'martenastate-kasteel',
     category: 'sight',
-    icon: '🏰',
+    icon: 'castle',
     name_nl: 'Kasteel Martenastate',
     name_en: 'Martenastate Castle',
     desc_nl: 'Neo-renaissance kasteel uit 1899 met karakteristieke uienvormige toren. Nationaal monument — exterieur vrij te bezichtigen.',
@@ -63,7 +63,7 @@ const mapPlaces = [
   {
     id: 'ah-stiens',
     category: 'shop',
-    icon: '🛒',
+    icon: 'cart',
     name_nl: 'Albert Heijn Stiens',
     name_en: 'Albert Heijn Stiens',
     desc_nl: 'Grootste supermarkt in de buurt. Ma–za 8–21u, zo 10–19u.',
@@ -78,7 +78,7 @@ const mapPlaces = [
   {
     id: 'bakker-stiens',
     category: 'eat',
-    icon: '🥐',
+    icon: 'croissant',
     name_nl: 'Bakkerij Stiens',
     name_en: 'Bakery Stiens',
     desc_nl: 'Ambachtelijke bakkerij in het centrum van Stiens. Verse broden en Friese spezialiteiten. Gesloten ma.',
@@ -95,7 +95,7 @@ const mapPlaces = [
   {
     id: 'resto-grietenij',
     category: 'eat',
-    icon: '🍽️',
+    icon: 'fork_knife',
     name_nl: "De Grietenij",
     name_en: "De Grietenij",
     desc_nl: 'Sfeervolle eetcafé in het centrum. Goede bieren, hartelijk gerechten en een prettige sfeer. Reserveer op vrijdagavond.',
@@ -110,7 +110,7 @@ const mapPlaces = [
   {
     id: 'resto-wouters',
     category: 'eat',
-    icon: '🍕',
+    icon: 'pizza',
     name_nl: "Wouters",
     name_en: "Wouters",
     desc_nl: 'Populair restaurant in het centrum van Leeuwarden. Goed voor lunch én dinner. Terras aan de gracht in de zomer.',
@@ -125,7 +125,7 @@ const mapPlaces = [
   {
     id: 'oldehove-markt',
     category: 'eat',
-    icon: '☕',
+    icon: 'cup',
     name_nl: 'Waag (bij de Oldehove)',
     name_en: 'Waag (near the Oldehove)',
     desc_nl: 'Koffie en lunch met uitzicht op de scheve Oldehove-toren. Geweldig terras op mooie dagen.',
@@ -142,7 +142,7 @@ const mapPlaces = [
   {
     id: 'fries-museum',
     category: 'sight',
-    icon: '🏛️',
+    icon: 'column',
     name_nl: 'Fries Museum',
     name_en: 'Fries Museum',
     desc_nl: 'Topmuseum met het verhaal van Friesland. Mata Hari-tentoonstelling, archeologie, kunst. Di–zo 11–17u.',
@@ -157,7 +157,7 @@ const mapPlaces = [
   {
     id: 'oldehove',
     category: 'sight',
-    icon: '🗼',
+    icon: 'tower',
     name_nl: 'Oldehove',
     name_en: 'Oldehove',
     desc_nl: "Leeuwarden's scheve toren — scheef omdat hij te snel werd gebouwd (1529). Op te klimmen voor panorama. Zomerseizoenen open.",
@@ -172,7 +172,7 @@ const mapPlaces = [
   {
     id: 'princessehof',
     category: 'sight',
-    icon: '🏺',
+    icon: 'vase',
     name_nl: 'Museum Princessehof',
     name_en: 'Museum Princessehof',
     desc_nl: 'Nationaal keramiekmuseum in het geboortehuis van Mata Hari. Wereldcollectie keramiek, aardewerk en porselein.',
@@ -187,7 +187,7 @@ const mapPlaces = [
   {
     id: 'jelsum',
     category: 'sight',
-    icon: '🌾',
+    icon: 'wheat',
     name_nl: 'Jelsum (dorpje)',
     name_en: 'Jelsum (village)',
     desc_nl: 'Pittoresk Fries weidedorp met een historische kerk. Vanuit Martenastate te bereiken via de Middagtocht (5 km).',
@@ -204,11 +204,11 @@ const mapPlaces = [
   {
     id: 'harlingen',
     category: 'sight',
-    icon: '⚓',
+    icon: 'anchor',
     name_nl: 'Harlingen',
     name_en: 'Harlingen',
-    desc_nl: 'Authentieke Friese havenstad. Schepen, grachten, rustieke sfeer. Vertrek naar Waddeneilanden. 30 km rijden.',
-    desc_en: 'Authentic Frisian harbour town. Ships, canals, rustic atmosphere. Ferries to the Wadden Islands. 30 km drive.',
+    desc_nl: 'Friese havenstad met oude gevels. Schepen, grachten. Vertrek naar de Waddeneilanden. 30 km rijden.',
+    desc_en: 'Frisian harbour town with old gables. Ships, canals. Ferries to the Wadden Islands. 30 km drive.',
     addr_nl: 'Harlingen, Friesland',
     addr_en: 'Harlingen, Friesland',
     coord: [53.1743, 5.4214],
@@ -219,7 +219,7 @@ const mapPlaces = [
   {
     id: 'woudagemaal',
     category: 'sight',
-    icon: '⚙️',
+    icon: 'gear',
     name_nl: 'Woudagemaal (UNESCO)',
     name_en: 'Woudagemaal (UNESCO)',
     desc_nl: "Grootste nog in bedrijf zijnde stoomsgemaal ter wereld. UNESCO-werelderfgoed. Buiten seizoen ook bezienswaardig.",
