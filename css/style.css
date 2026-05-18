@@ -396,7 +396,7 @@ section {
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    padding: var(--space-5);
+    padding: var(--space-3) var(--space-4) var(--space-5);
     background: var(--ms-paper);
     border-bottom: 1px solid var(--hairline);
     transform: translateY(calc(-100% - 76px));
@@ -405,8 +405,12 @@ section {
     transition: transform var(--dur-med) var(--ease-out),
                 visibility 0s linear var(--dur-med);
     box-shadow: var(--shadow-md);
-    max-height: calc(100vh - 68px);
+    max-height: calc(100dvh - 68px);
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav-links > li {
+    list-style: none;
   }
   .nav-links.open {
     transform: translateY(0);
@@ -416,14 +420,85 @@ section {
                 visibility 0s linear 0s;
   }
   .nav-links a {
-    padding: 0.9rem 1rem;
-    border-radius: var(--radius-sm);
-    font-size: var(--fs-16);
+    display: flex;
+    align-items: center;
+    min-height: 56px;
+    padding: 0.75rem var(--space-4);
+    border-radius: var(--radius-md);
+    font-size: var(--fs-20);
+    font-weight: 600;
+    color: var(--ms-ink);
+    border-bottom: 1px solid rgba(15, 74, 79, 0.08);
+    transition: background var(--dur-fast) var(--ease-out),
+                color var(--dur-fast) var(--ease-out);
   }
-  .lang-toggle { margin: var(--space-3) auto 0; align-self: center; }
-  .menu-toggle { display: inline-flex; }
+  .nav-links > li:last-of-type a,
+  .nav-links a:last-child {
+    border-bottom: none;
+  }
+  .nav-links a:hover,
+  .nav-links a:active {
+    background: rgba(15, 74, 79, 0.06);
+    color: var(--ms-leien-blauw);
+  }
+  .nav-links a.active {
+    color: var(--ms-leien-blauw);
+    background: rgba(15, 74, 79, 0.06);
+  }
+  /* Hide the small red underline ::after on mobile — use left-edge accent instead */
+  .nav-links a.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 56%;
+    background: var(--ms-martena-rood);
+    border-radius: 0 3px 3px 0;
+  }
+  /* Lang toggle as a row of three full-width segments */
+  .lang-toggle {
+    margin: var(--space-4) 0 var(--space-2);
+    align-self: stretch;
+    width: 100%;
+    padding: 4px;
+    gap: 2px;
+    background: rgba(15, 74, 79, 0.08);
+  }
+  .lang-toggle button {
+    flex: 1 1 0;
+    min-height: 48px;
+    padding: 0.75rem 1rem;
+    font-size: var(--fs-14);
+    letter-spacing: 0.08em;
+  }
+  .menu-toggle {
+    display: inline-flex;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+  }
+  .menu-toggle svg {
+    width: 28px;
+    height: 28px;
+  }
   .navbar.on-dark:not(.scrolled) .nav-links { background: var(--ms-paper); }
-  .navbar.on-dark:not(.scrolled) .nav-links a { color: var(--ms-leien-blauw); }
+  .navbar.on-dark:not(.scrolled) .nav-links a { color: var(--ms-ink); }
+  /* Restore standard lang-toggle styling inside the open mobile menu
+     (the on-dark override was meant for the top-bar, not the dropdown). */
+  .navbar.on-dark:not(.scrolled) .lang-toggle {
+    background: rgba(15, 74, 79, 0.08);
+  }
+  .navbar.on-dark:not(.scrolled) .lang-toggle button {
+    color: var(--fg-soft);
+  }
+  .navbar.on-dark:not(.scrolled) .lang-toggle button.active {
+    background: var(--ms-leien-blauw);
+    color: var(--ms-paper);
+  }
 }
 
 /* ───────────────────────── Hero (cinematic, photo-driven) ───────────────────────── */
