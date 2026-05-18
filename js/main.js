@@ -742,7 +742,7 @@ function initTodayWidget() {
   const dateEl = document.getElementById('todayDate');
   if (dateEl) {
     try {
-      dateEl.textContent = now.toLocaleDateString(currentLang === 'nl' ? 'nl-NL' : 'en-GB', {
+      dateEl.textContent = now.toLocaleDateString(currentLang === 'nl' ? 'nl-NL' : (currentLang === 'de' ? 'de-DE' : 'en-GB'), {
         weekday: 'long', day: 'numeric', month: 'long'
       });
     } catch (e) {
