@@ -26,6 +26,8 @@
    ========================================================================== */
 
 :root {
+  --ms-mask-check: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%273.5%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M5%2017%20L13%2024%20L27%209%27%2F%3E%3C%2Fsvg%3E");
+  --ms-mask-clipboard: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%272.6%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M9%207%20L7%207%20Q%205%207%2C%205%209%20L5%2026%20Q%205%2028%2C%207%2028%20L25%2028%20Q%2027%2028%2C%2027%2026%20L27%209%20Q%2027%207%2C%2025%207%20L23%207%27%2F%3E%3Crect%20x%3D%2711%27%20y%3D%273.5%27%20width%3D%2710%27%20height%3D%276%27%20rx%3D%271.5%27%2F%3E%3C%2Fsvg%3E");
   /* Stinzenflora-geïnspireerd kleurenpalet */
   --color-crocus: #7b5d8c;
   --color-crocus-light: #a890b8;
@@ -1431,13 +1433,15 @@ section {
 }
 
 .arrival-item.copyable::after {
-  content: '📋';
+  content: '';
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  opacity: 0;
-  transition: opacity var(--transition-fast);
-  font-size: 0.9rem;
+  top: 0.5rem; right: 0.5rem;
+  width: 14px; height: 14px;
+  background-color: rgba(0,0,0,0.4);
+  -webkit-mask: var(--ms-mask-clipboard, none) center / contain no-repeat;
+          mask: var(--ms-mask-clipboard, none) center / contain no-repeat;
+  opacity: 0.3;
+  transition: opacity 200ms ease-out;
 }
 
 .arrival-item.copyable:hover::after {
@@ -1445,10 +1449,12 @@ section {
 }
 
 .arrival-item.copied::after {
-  content: '✓';
+  content: '';
   opacity: 1;
-  color: var(--color-sage);
-  font-weight: bold;
+  width: 16px; height: 16px;
+  background-color: var(--color-sage, #7A9954);
+  -webkit-mask: var(--ms-mask-check, none) center / contain no-repeat;
+          mask: var(--ms-mask-check, none) center / contain no-repeat;
 }
 
 @media (max-width: 768px) {
@@ -2099,6 +2105,7 @@ section {
 }
 
 </style>
+<script src="js/icons.js"></script>
 </head>
 <body>
 
@@ -2106,13 +2113,6 @@ section {
   <nav class="navbar" role="navigation">
     <div class="navbar-inner">
       <a href="index.html" class="brand" aria-label="Martenastate home">
-        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M16 3 C16 3 8 9 8 17 C8 21.4 11.6 25 16 25 C20.4 25 24 21.4 24 17 C24 9 16 3 16 3Z" fill="currentColor" opacity="0.2"/>
-          <path d="M16 6 C13 10 10 13 10 17 C10 20.3 12.7 23 16 23 C19.3 23 22 20.3 22 17 C22 13 19 10 16 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-          <path d="M16 10 C16 10 12 14 12 17 C12 19.2 13.8 21 16 21" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.6"/>
-          <line x1="16" y1="23" x2="16" y2="29" stroke="currentColor" stroke-width="1.5"/>
-          <line x1="12" y1="27" x2="20" y2="27" stroke="currentColor" stroke-width="1.5"/>
-        </svg>
         Martenastate
       </a>
 
@@ -2121,7 +2121,6 @@ section {
         <li><a href="verblijf.html" data-i18n="nav.verblijf">Verblijf</a></li>
         <li><a href="activiteiten.html" data-i18n="nav.activiteiten">Activiteiten</a></li>
         <li><a href="omgeving.html" data-i18n="nav.omgeving">Omgeving</a></li>
-        <li><a href="kaart.html" data-i18n="nav.kaart">Kaart</a></li>
         <li>
           <div class="lang-toggle" role="group" aria-label="Taal kiezen">
             <button data-lang="nl" class="active">NL</button>
@@ -2194,7 +2193,7 @@ section {
   <div class="container">
     <div class="arrival-panel fade-in">
       <div class="arrival-panel-header">
-        <span class="arrival-emoji" aria-hidden="true">🌿</span>
+        <span class="arrival-emoji ms-icon-host" data-ms-icon="leaf" aria-hidden="true"></span>
         <div>
           <span class="arrival-eyebrow" data-i18n="arrival.eyebrow">Fijn dat je er bent</span>
           <h2 data-i18n="arrival.title">Bij aankomst</h2>
@@ -2227,7 +2226,7 @@ section {
             <span data-i18n="arrival.contact.label">Contact</span>
           </div>
           <div class="arrival-value">
-            <a href="tel:+31636606521">+31 6 83 60 65 21</a>
+            <a href="tel:+31683606521">+31 6 83 60 65 21</a>
           </div>
           <div class="arrival-sub" data-i18n="arrival.contact.sub">Robin Alkema · WhatsApp welkom</div>
         </div>
@@ -2359,7 +2358,7 @@ section {
           <span class="card-link" data-i18n="card.omgeving.link">Ontdek de omgeving</span>
         </a>
 
-        <a href="kaart.html" class="nav-card fade-in">
+        <a href="omgeving.html" class="nav-card fade-in">
           <div class="icon-wrap">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
           </div>
@@ -2441,7 +2440,7 @@ section {
 
       <div class="season-grid">
         <div class="season-card fade-in">
-          <span class="season-icon">❄️</span>
+          <span class="season-icon" data-ms-icon="snowflake"></span>
           <h4>Winter & vroeg voorjaar</h4>
           <p style="font-size:.85rem;color:var(--color-text-muted);margin-bottom:.5rem;">Februari – maart</p>
           <ul>
@@ -2454,7 +2453,7 @@ section {
 
         <div class="season-card current-season fade-in">
           <span class="current-badge">Nu</span>
-          <span class="season-icon">🌸</span>
+          <span class="season-icon" data-ms-icon="blossom"></span>
           <h4>Voorjaar</h4>
           <p style="font-size:.85rem;color:var(--color-text-muted);margin-bottom:.5rem;">April – mei</p>
           <ul>
@@ -2467,7 +2466,7 @@ section {
         </div>
 
         <div class="season-card fade-in">
-          <span class="season-icon">☀️</span>
+          <span class="season-icon" data-ms-icon="sun"></span>
           <h4>Zomer</h4>
           <p style="font-size:.85rem;color:var(--color-text-muted);margin-bottom:.5rem;">Juni – augustus</p>
           <ul>
@@ -2480,7 +2479,7 @@ section {
         </div>
 
         <div class="season-card fade-in">
-          <span class="season-icon">🍂</span>
+          <span class="season-icon" data-ms-icon="autumn_leaf"></span>
           <h4>Herfst</h4>
           <p style="font-size:.85rem;color:var(--color-text-muted);margin-bottom:.5rem;">September – oktober</p>
           <ul>
@@ -2506,7 +2505,7 @@ section {
 
       <div class="dayplan-grid">
         <div class="dayplan-card fade-in">
-          <div class="dayplan-badge dayplan-easy">🌿 Rustig</div>
+          <div class="dayplan-badge dayplan-easy"><span class="ms-icon-host badge-icon" data-ms-icon="leaf"></span>Rustig</div>
           <h4 data-i18n="dayplan.slow.title">Langzame dag</h4>
           <ol class="dayplan-list">
             <li data-i18n="dayplan.slow.1">Koffie bij Túnmanswente (za/zo 11u, vr 13u)</li>
@@ -2519,7 +2518,7 @@ section {
         </div>
 
         <div class="dayplan-card fade-in">
-          <div class="dayplan-badge dayplan-active">🚴 Actief</div>
+          <div class="dayplan-badge dayplan-active"><span class="ms-icon-host badge-icon" data-ms-icon="bike"></span>Actief</div>
           <h4 data-i18n="dayplan.active.title">Fietsen naar Leeuwarden</h4>
           <ol class="dayplan-list">
             <li data-i18n="dayplan.active.1">Vertrek 9:00 — knooppunt 10 → 11 → 13</li>
@@ -2532,7 +2531,7 @@ section {
         </div>
 
         <div class="dayplan-card fade-in">
-          <div class="dayplan-badge dayplan-explore">⚓ Daguitje</div>
+          <div class="dayplan-badge dayplan-explore"><span class="ms-icon-host badge-icon" data-ms-icon="anchor"></span>Daguitje</div>
           <h4 data-i18n="dayplan.explore.title">Waddenzee & Harlingen</h4>
           <ol class="dayplan-list">
             <li data-i18n="dayplan.explore.1">Auto: 35 km naar Harlingen (~40 min)</li>
@@ -2545,7 +2544,7 @@ section {
         </div>
 
         <div class="dayplan-card fade-in">
-          <div class="dayplan-badge dayplan-culture">🏛 Cultuur</div>
+          <div class="dayplan-badge dayplan-culture"><span class="ms-icon-host badge-icon" data-ms-icon="column"></span>Cultuur</div>
           <h4 data-i18n="dayplan.culture.title">Leeuwarden voor cultuurliefhebbers</h4>
           <ol class="dayplan-list">
             <li data-i18n="dayplan.culture.1">Ochtend: Fries Museum (open di–zo 11u)</li>
@@ -2559,7 +2558,7 @@ section {
       </div>
 
       <div style="text-align:center; margin-top: var(--space-lg);">
-        <a href="kaart.html" class="btn btn-outline">
+        <a href="omgeving.html" class="btn btn-outline">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
           <span data-i18n="dayplan.map.link">Bekijk alle routes op de kaart</span>
         </a>
@@ -2567,7 +2566,7 @@ section {
     </div>
   </section>
 
-  <div class="flower-divider" aria-hidden="true">✿ ✾ ✿</div>
+  <div class="flower-divider" aria-hidden="true"><span class="ms-icon-host divider-arch" data-ms-icon="arch"></span><span class="ms-icon-host divider-arch divider-arch-mid" data-ms-icon="arch"></span><span class="ms-icon-host divider-arch" data-ms-icon="arch"></span></div>
 
   <!-- Onze tips -->
   <section>
@@ -2580,7 +2579,7 @@ section {
 
       <div class="tips-grid">
         <div class="tip-card fade-in">
-          <span class="tip-icon">🌅</span>
+          <span class="tip-icon" data-ms-icon="sunrise"></span>
           <div>
             <h4>Vroeg opstaan loont</h4>
             <p>Loop bij zonsopgang door het park. De ochtenddauw op de stinzenflora, het vogelgezang en de mist boven het gras zijn onbeschrijflijk mooi.</p>
@@ -2589,7 +2588,7 @@ section {
         </div>
 
         <div class="tip-card fade-in">
-          <span class="tip-icon">🚴</span>
+          <span class="tip-icon" data-ms-icon="bike"></span>
           <div>
             <h4>Fietsen naar Leeuwarden</h4>
             <p>Pak de fiets en rijd in 20 minuten naar het centrum van Leeuwarden. Langs de Middelzee, door de polder — een van de mooiste routes die er zijn.</p>
@@ -2598,7 +2597,7 @@ section {
         </div>
 
         <div class="tip-card fade-in">
-          <span class="tip-icon">☕</span>
+          <span class="tip-icon" data-ms-icon="cup"></span>
           <div>
             <h4>Koffie bij Túnmanswente</h4>
             <p>Begin je ochtend met koffie in de theetuin van Túnmanswente. Buiten zitten, uitzicht op het park, historische sfeer. Een van de mooiste plekjes van Friesland.</p>
@@ -2607,7 +2606,7 @@ section {
         </div>
 
         <div class="tip-card fade-in">
-          <span class="tip-icon">🏛️</span>
+          <span class="tip-icon" data-ms-icon="column"></span>
           <div>
             <h4>Fries Museum in Leeuwarden</h4>
             <p>Absoluut een bezoek waard. Het museum vertelt het verhaal van Friesland op een moderne, indrukwekkende manier. De Mata Hari-tentoonstelling is bijzonder.</p>
@@ -2616,7 +2615,7 @@ section {
         </div>
 
         <div class="tip-card fade-in">
-          <span class="tip-icon">🌿</span>
+          <span class="tip-icon" data-ms-icon="leaf"></span>
           <div>
             <h4>Geleide excursie boeken</h4>
             <p>De geleide wandelingen van It Fryske Gea geven je een heel ander perspectief op het landgoed. De gids weet alles over de planten, de geschiedenis en de dieren.</p>
@@ -2625,7 +2624,7 @@ section {
         </div>
 
         <div class="tip-card fade-in">
-          <span class="tip-icon">🌊</span>
+          <span class="tip-icon" data-ms-icon="wave"></span>
           <div>
             <h4>Dagje Waddenzee</h4>
             <p>Op 30 minuten rijden ligt de UNESCO Waddenzee. Wadlopen bij laagwater, zeehonden spotten bij Harlingen of gewoon genieten van het immense uitzicht.</p>
@@ -2674,7 +2673,6 @@ section {
             <li><a href="verblijf.html" data-i18n="nav.verblijf">Verblijf</a></li>
             <li><a href="activiteiten.html" data-i18n="nav.activiteiten">Activiteiten</a></li>
         <li><a href="omgeving.html" data-i18n="nav.omgeving">Omgeving</a></li>
-            <li><a href="kaart.html" data-i18n="nav.kaart">Kaart</a></li>
           </ul>
         </div>
         <div>
@@ -2682,7 +2680,7 @@ section {
           <ul>
             <li data-i18n="footer.address">Martenawei 2, 9056 PE Koarnjum</li>
             <li data-i18n="footer.camping.address">Camping: De Wier 7A</li>
-            <li><a href="tel:+31636606521" data-i18n="footer.phone">+31 6 83 60 65 21</a></li>
+            <li><a href="tel:+31683606521" data-i18n="footer.phone">+31 6 83 60 65 21</a></li>
             <li><a href="https://martenastate.nl" target="_blank" rel="noopener">martenastate.nl</a></li>
           </ul>
         </div>
@@ -2695,7 +2693,7 @@ section {
 
   <!-- Mobile action bar -->
   <nav class="mobile-action-bar" aria-label="Snelle acties">
-    <a href="tel:+31636606521" aria-label="Bellen">
+    <a href="tel:+31683606521" aria-label="Bellen">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       <span data-i18n="action.call">Bellen</span>
     </a>
@@ -2703,9 +2701,9 @@ section {
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
       <span data-i18n="action.route">Route</span>
     </a>
-    <a href="kaart.html" aria-label="Kaart en routes">
+    <a href="omgeving.html#routes" aria-label="Routes en omgeving">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
-      <span data-i18n="action.map">Kaart</span>
+      <span data-i18n="action.map">Routes</span>
     </a>
     <a href="verblijf.html#faq" aria-label="Veelgestelde vragen">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -3600,10 +3598,17 @@ function initScrollAnimations() {
 function initNavbarScroll() {
   const navbar = document.querySelector('.navbar');
   if (!navbar) return;
+  let isScrolled = false;
   window.addEventListener('scroll', () => {
-    navbar.style.boxShadow = window.scrollY > 20
-      ? '0 4px 24px rgba(58,42,64,0.10)'
-      : 'none';
+    const shouldBeScrolled = window.scrollY > 20;
+    if (isScrolled !== shouldBeScrolled) {
+      isScrolled = shouldBeScrolled;
+      window.requestAnimationFrame(() => {
+        navbar.style.boxShadow = isScrolled
+          ? '0 4px 24px rgba(58,42,64,0.10)'
+          : 'none';
+      });
+    }
   }, { passive: true });
 }
 
@@ -3628,7 +3633,7 @@ function initMap() {
   function makeIcon(color, emoji, pulse) {
     const ring = pulse ? `box-shadow:0 0 0 6px ${color}30,0 3px 10px rgba(0,0,0,0.25);` : 'box-shadow:0 3px 10px rgba(0,0,0,0.2);';
     return L.divIcon({
-      html: `<div style="background:${color};width:38px;height:38px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:3px solid white;${ring}display:flex;align-items:center;justify-content:center;"><span style="transform:rotate(45deg);font-size:16px;line-height:1;">${emoji}</span></div>`,
+      html: `<div style="background:${color};width:38px;height:38px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:3px solid white;${ring}display:flex;align-items:center;justify-content:center;"><span style="transform:rotate(45deg);display:flex;align-items:center;justify-content:center;width:20px;height:20px;color:white;">${window.msIcon ? window.msIcon(emoji, { color: 'white', strokeWidth: 2.8 }).replace('<svg ', '<svg width="20" height="20" ') : emoji}</span></div>`,
       className: '',
       iconSize: [38, 38],
       iconAnchor: [19, 38],
@@ -3637,17 +3642,17 @@ function initMap() {
   }
 
   const categoryConfig = {
-    home:      { color: '#7b5d8c', emoji: '🏕️', pulse: true },
-    eat:       { color: '#d4a843', emoji: '🍽️' },
-    shop:      { color: '#c9b8d4', emoji: '🛒' },
-    sight:     { color: '#a890b8', emoji: '⭐' },
-    transport: { color: '#8ba888', emoji: '🅿️' },
+    home:      { color: '#7b5d8c', emoji: 'tent', pulse: true },
+    eat:       { color: '#d4a843', emoji: 'fork_knife' },
+    shop:      { color: '#c9b8d4', emoji: 'cart' },
+    sight:     { color: '#a890b8', emoji: 'star' },
+    transport: { color: '#8ba888', emoji: 'parking' },
   };
 
   const iconCache = {};
   function getIcon(cat) {
     if (!iconCache[cat]) {
-      const cfg = categoryConfig[cat] || { color: '#888', emoji: '📍' };
+      const cfg = categoryConfig[cat] || { color: '#888', emoji: 'pin' };
       iconCache[cat] = makeIcon(cfg.color, cfg.emoji, cfg.pulse);
     }
     return iconCache[cat];
@@ -3844,13 +3849,13 @@ function renderRouteLists() {
     const diff = lang === 'en' ? route.difficulty_en : route.difficulty_nl;
     const btnLabel = lang === 'en' ? 'Open route' : 'Open route';
     const mapLabel = lang === 'en' ? 'Show on map' : 'Toon op kaart';
-    const icon = kind === 'walking' ? '🚶' : '🚴';
+    const icon = kind === 'walking' ? 'walk' : 'bike';
     const color = kind === 'walking' ? '#8ba888' : '#5a7055';
 
     return `
       <article class="route-card" data-route-id="${route.id}" data-route-kind="${kind}">
         <div class="route-card-header" style="border-left: 4px solid ${color};">
-          <span class="route-icon">${icon}</span>
+          <span class="route-icon ms-icon-host" data-ms-icon="${icon}"></span>
           <div>
             <h4>${name}</h4>
             <div class="route-meta">
@@ -3911,8 +3916,15 @@ function renderRouteLists() {
 function initBackToTop() {
   const btn = document.getElementById('backToTop');
   if (!btn) return;
+  let isVisible = false;
   window.addEventListener('scroll', () => {
-    btn.classList.toggle('visible', window.scrollY > 400);
+    const shouldBeVisible = window.scrollY > 400;
+    if (isVisible !== shouldBeVisible) {
+      isVisible = shouldBeVisible;
+      window.requestAnimationFrame(() => {
+        btn.classList.toggle('visible', isVisible);
+      });
+    }
   }, { passive: true });
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }

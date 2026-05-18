@@ -12,7 +12,8 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -20,12 +21,6 @@
   <nav class="navbar" role="navigation">
     <div class="navbar-inner">
       <a href="index.html" class="brand" aria-label="Martenastate home">
-        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M16 3 C16 3 8 9 8 17 C8 21.4 11.6 25 16 25 C20.4 25 24 21.4 24 17 C24 9 16 3 16 3Z" fill="currentColor" opacity="0.2"/>
-          <path d="M16 6 C13 10 10 13 10 17 C10 20.3 12.7 23 16 23 C19.3 23 22 20.3 22 17 C22 13 19 10 16 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-          <line x1="16" y1="23" x2="16" y2="29" stroke="currentColor" stroke-width="1.5"/>
-          <line x1="12" y1="27" x2="20" y2="27" stroke="currentColor" stroke-width="1.5"/>
-        </svg>
         Martenastate
       </a>
       <ul class="nav-links" id="nav-links">
@@ -33,7 +28,8 @@
         <li><a href="verblijf.html" data-i18n="nav.verblijf">Verblijf</a></li>
         <li><a href="activiteiten.html" data-i18n="nav.activiteiten">Activiteiten</a></li>
         <li><a href="omgeving.html" data-i18n="nav.omgeving">Omgeving</a></li>
-        <li><a href="kaart.html" data-i18n="nav.kaart">Kaart</a></li>
+        <li><a href="gastenboek.html" data-i18n="nav.gastenboek">Gastenboek</a></li>
+        <li><a href="boeken.html" data-i18n="nav.boeken" style="color: var(--ms-martena-rood);">Boeken</a></li>
         <li>
           <div class="lang-toggle" role="group" aria-label="Taal kiezen">
             <button data-lang="nl" class="active">NL</button>
@@ -51,32 +47,32 @@
     <div class="container">
       <div class="activities-hero-grid">
         <div class="activities-hero-copy">
-          <span class="section-eyebrow">Lokale gids</span>
-          <h1>Ontdek Martenastate en de omgeving</h1>
-          <p>Je verblijft op een historische plek aan de rand van Koarnjum, vlak boven Leeuwarden. Wandel direct het park in, fiets langs dorpen en de Dokkumer Ee, bezoek Friese states of trek eropuit richting de stad en de Waddenkust.</p>
+          <span class="section-eyebrow" data-i18n="act.hero.eyebrow">Lokale gids</span>
+          <h1 data-i18n="act.hero.h1">Ontdek Martenastate en de omgeving</h1>
+          <p data-i18n="act.hero.intro">Je verblijft op een historische plek aan de rand van Koarnjum, vlak boven Leeuwarden. Wandel direct het park in, fiets langs dorpen en de Dokkumer Ee, bezoek Friese states of trek eropuit richting de stad en de Waddenkust.</p>
           <div class="activities-hero-actions" aria-label="Snel naar activiteitenthema">
-            <a href="#dichtbij">Dichtbij</a>
-            <a href="#kinderen">Met kinderen</a>
-            <a href="#regen">Bij regen</a>
-            <a href="#routes">Routes</a>
-            <a href="#wadden">Waddenkust</a>
+            <a href="#dichtbij" data-i18n="act.tab.dichtbij">Dichtbij</a>
+            <a href="#kinderen" data-i18n="act.hero.link.kids">Met kinderen</a>
+            <a href="#regen" data-i18n="act.hero.link.rain">Bij regen</a>
+            <a href="#routes" data-i18n="act.hero.link.routes">Routes</a>
+            <a href="#wadden" data-i18n="act.hero.link.wadden">Waddenkust</a>
           </div>
         </div>
         <div class="activities-hero-panel" aria-label="Uitgelichte keuzes">
           <div class="activity-map-card">
-            <span>Direct vanaf hier</span>
-            <strong>Parkwandeling Martenastate</strong>
-            <small>30 min tot 1,5 uur</small>
+            <span data-i18n="act.map.c1.eyebrow">Direct vanaf hier</span>
+            <strong data-i18n="act.map.c1.title">Parkwandeling Martenastate</strong>
+            <small data-i18n="act.map.c1.time">30 min tot een uur - vergeet het bos niet grenzend aan het landgoed</small>
           </div>
           <div class="activity-map-card">
-            <span>Fiets of auto</span>
-            <strong>Dekema State en Dokkumer Ee</strong>
-            <small>1 tot 2 uur</small>
+            <span data-i18n="act.map.c2.eyebrow">Fiets of auto</span>
+            <strong data-i18n="act.map.c2.title">Dekema State en Dokkumer Ee</strong>
+            <small data-i18n="act.map.c2.time">1 tot 2 uur</small>
           </div>
           <div class="activity-map-card">
-            <span>Dagdeel</span>
-            <strong>Leeuwarden of Waddenkust</strong>
-            <small>halve dag tot hele dag</small>
+            <span data-i18n="act.map.c3.eyebrow">Dagdeel</span>
+            <strong data-i18n="act.map.c3.title">Leeuwarden of Waddenkust</strong>
+            <small data-i18n="act.map.c3.time">halve dag tot hele dag</small>
           </div>
         </div>
       </div>
@@ -86,34 +82,34 @@
   <section class="activities-choice">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-eyebrow">Keuzehulp</span>
-        <h2>Waar heb je zin in vandaag?</h2>
-        <p>Kies wat past bij het weer, je gezelschap en hoeveel tijd je hebt.</p>
+        <span class="section-eyebrow" data-i18n="act.choice.eyebrow">Keuzehulp</span>
+        <h2 data-i18n="act.choice.h2">Waar heb je zin in vandaag?</h2>
+        <p data-i18n="act.choice.intro">Kies wat past bij het weer, je gezelschap en hoeveel tijd je hebt.</p>
       </div>
       <div class="activity-choice-grid">
         <a href="#dichtbij" class="activity-choice-card fade-in">
-          <span>Dichtbij blijven</span>
-          <strong>Landgoedwandeling, Túnmanswente, Foodwalk en stinzenflora.</strong>
+          <span data-i18n="act.choice.c1.eyebrow">Dichtbij blijven</span>
+          <strong data-i18n="act.choice.c1.body">Landgoedwandeling, Túnmanswente, Foodwalk en stinzenflora.</strong>
         </a>
         <a href="#kinderen" class="activity-choice-card fade-in">
-          <span>Met kinderen</span>
-          <strong>Dekema State, Natuurmuseum Fryslân, AquaZoo en korte routes.</strong>
+          <span data-i18n="act.choice.c2.eyebrow">Met kinderen</span>
+          <strong data-i18n="act.choice.c2.body">Dekema State, Natuurmuseum Fryslân, AquaZoo en korte routes.</strong>
         </a>
         <a href="#actief" class="activity-choice-card fade-in">
-          <span>Wandelen of fietsen</span>
-          <strong>Parkpaden, Dokkumer Ee, Jelsum, Koarnjum en Waddenkust.</strong>
+          <span data-i18n="act.choice.c3.eyebrow">Wandelen of fietsen</span>
+          <strong data-i18n="act.choice.c3.body">Parkpaden, Dokkumer Ee, Jelsum, Koarnjum en Waddenkust.</strong>
         </a>
         <a href="#cultuur" class="activity-choice-card fade-in">
-          <span>Cultuur en historie</span>
-          <strong>Friese states, Leeuwarden, musea, Oldehove en Princessehof.</strong>
+          <span data-i18n="act.choice.c4.eyebrow">Cultuur en historie</span>
+          <strong data-i18n="act.choice.c4.body">Friese states, Leeuwarden, musea, Oldehove en Princessehof.</strong>
         </a>
         <a href="#regen" class="activity-choice-card fade-in">
-          <span>Slecht weer</span>
-          <strong>Musea, horeca, winkels en beschutte gezinsuitjes.</strong>
+          <span data-i18n="act.choice.c5.eyebrow">Slecht weer</span>
+          <strong data-i18n="act.choice.c5.body">Musea, horeca, winkels en beschutte gezinsuitjes.</strong>
         </a>
         <a href="#dagtrip" class="activity-choice-card fade-in">
-          <span>Dagdeel of dagtrip</span>
-          <strong>Leeuwarden, Waddenkust, wadlopen of states combineren.</strong>
+          <span data-i18n="act.choice.c6.eyebrow">Dagdeel of dagtrip</span>
+          <strong data-i18n="act.choice.c6.body">Leeuwarden, Waddenkust, wadlopen of states combineren.</strong>
         </a>
       </div>
     </div>
@@ -122,265 +118,265 @@
   <section class="activities-tabs-section">
     <div class="container">
       <div class="tabs" role="tablist" aria-label="Activiteiten categorieen">
-        <button class="tab-btn active" data-tab="dichtbij" role="tab" aria-selected="true" aria-controls="dichtbij">Dichtbij</button>
-        <button class="tab-btn" data-tab="actief" role="tab" aria-selected="false" aria-controls="actief">Wandelen & fietsen</button>
-        <button class="tab-btn" data-tab="cultuur" role="tab" aria-selected="false" aria-controls="cultuur">Cultuur</button>
-        <button class="tab-btn" data-tab="kinderen" role="tab" aria-selected="false" aria-controls="kinderen">Kinderen</button>
-        <button class="tab-btn" data-tab="regen" role="tab" aria-selected="false" aria-controls="regen">Bij regen</button>
-        <button class="tab-btn" data-tab="dagtrip" role="tab" aria-selected="false" aria-controls="dagtrip">Dagtrips</button>
+        <button class="tab-btn active" data-tab="dichtbij" role="tab" aria-selected="true" aria-controls="dichtbij" data-i18n="act.tab.dichtbij">Dichtbij</button>
+        <button class="tab-btn" data-tab="actief" role="tab" aria-selected="false" aria-controls="actief" data-i18n="act.tab.actief">Wandelen & fietsen</button>
+        <button class="tab-btn" data-tab="cultuur" role="tab" aria-selected="false" aria-controls="cultuur" data-i18n="act.tab.cultuur">Cultuur</button>
+        <button class="tab-btn" data-tab="kinderen" role="tab" aria-selected="false" aria-controls="kinderen" data-i18n="act.tab.kinderen">Kinderen</button>
+        <button class="tab-btn" data-tab="regen" role="tab" aria-selected="false" aria-controls="regen" data-i18n="act.tab.regen">Bij regen</button>
+        <button class="tab-btn" data-tab="dagtrip" role="tab" aria-selected="false" aria-controls="dagtrip" data-i18n="act.tab.dagtrip">Dagtrips</button>
       </div>
 
       <div id="dichtbij" class="tab-panel active" role="tabpanel">
         <div class="activity-section-intro">
-          <h2>Dichtbij Martenastate</h2>
-          <p>Begin rustig en ontdek eerst de plek waar je verblijft. Deze tips kun je lopend doen vanaf je B&B of kampeerplek.</p>
+          <h2 data-i18n="act.dichtbij.h2">Dichtbij Martenastate</h2>
+          <p data-i18n="act.dichtbij.intro">Begin rustig en ontdek eerst de plek waar je verblijft. Deze tips kun je lopend doen vanaf je B&B of kampeerplek.</p>
         </div>
         <div class="activity-card-grid">
           <article class="activity-card fade-in">
-            <div class="activity-card-top"><span class="activity-kicker">Natuur · dichtbij</span><span class="activity-time">30 min tot 1,5 uur</span></div>
-            <h3>Wandel over Landgoed Martenastate</h3>
-            <p>Loop direct vanaf je verblijf door het historische park, langs de slotgracht, oude bomen, lindelaan, stille paadjes en grafheuvel.</p>
+            <div class="activity-card-top"><span class="activity-kicker" data-i18n="act.dichtbij.c1.kicker">Natuur · dichtbij</span><span class="activity-time" data-i18n="act.time.30_1_5h">30 min tot 1,5 uur</span></div>
+            <h3 data-i18n="act.dichtbij.c1.h3">Wandel over Landgoed Martenastate</h3>
+            <p data-i18n="act.dichtbij.c1.body">Loop direct vanaf je verblijf door het historische park, langs de slotgracht, oude bomen, lindelaan, stille paadjes en grafheuvel.</p>
             <ul>
-              <li>Beste moment: ochtend of namiddag.</li>
-              <li>Honden zijn welkom, mits aangelijnd.</li>
-              <li>Het slotje zelf is bewoond en niet toegankelijk.</li>
+              <li data-i18n="act.dichtbij.c1.li1">Beste moment: ochtend of namiddag.</li>
+              <li data-i18n="act.dichtbij.c1.li2">Honden zijn welkom, mits aangelijnd.</li>
+              <li data-i18n="act.dichtbij.c1.li3">Het slotje zelf is bewoond en niet toegankelijk.</li>
             </ul>
-            <a href="kaart.html" class="activity-link">Start vanaf het landgoed</a>
+            <a href="omgeving.html" class="activity-link" data-i18n="act.dichtbij.c1.link">Start vanaf het landgoed</a>
           </article>
           <article class="activity-card fade-in">
-            <div class="activity-card-top"><span class="activity-kicker">Horeca · lokaal</span><span class="activity-time">30 min tot 1,5 uur</span></div>
-            <h3>Koffie, thee of lunch bij Túnmanswente</h3>
-            <p>De voormalige tuinmanswoning is een logische stop na een wandeling of fietstocht. Fijn voor koffie, thee, lunch of iets lekkers.</p>
+            <div class="activity-card-top"><span class="activity-kicker" data-i18n="act.dichtbij.c2.kicker">Horeca · lokaal</span><span class="activity-time" data-i18n="act.time.30_1_5h">30 min tot 1,5 uur</span></div>
+            <h3 data-i18n="act.dichtbij.c2.h3">Koffie, thee of lunch bij Túnmanswente</h3>
+            <p data-i18n="act.dichtbij.c2.body">De voormalige tuinmanswoning is een logische stop na een wandeling of fietstocht. Fijn voor koffie, thee, lunch of iets lekkers.</p>
             <ul>
-              <li>Openingstijden zijn seizoensgebonden.</li>
-              <li>Combineer met park, Foodwalk of fietsknooppunt 10.</li>
+              <li data-i18n="act.dichtbij.c2.li1">Openingstijden zijn seizoensgebonden.</li>
+              <li data-i18n="act.dichtbij.c2.li2">Combineer met park, Foodwalk of fietsknooppunt 10.</li>
             </ul>
-            <a href="https://www.tunmanswente.nl" target="_blank" rel="noopener" class="activity-link">Bekijk actuele openingstijden</a>
+            <a href="https://www.tunmanswente.nl" target="_blank" rel="noopener" class="activity-link" data-i18n="act.dichtbij.c2.link">Bekijk actuele openingstijden</a>
           </article>
           <article class="activity-card fade-in">
-            <div class="activity-card-top"><span class="activity-kicker">Voorjaar · fotografie</span><span class="activity-time">30 min tot 1 uur</span></div>
-            <h3>Bekijk de stinzenflora</h3>
-            <p>In het voorjaar verandert Martenastate in een bijzondere stinzenflora-plek met vroege bloeiers zoals sneeuwklokjes, krokussen en holwortel.</p>
+            <div class="activity-card-top"><span class="activity-kicker" data-i18n="act.dichtbij.c3.kicker">Voorjaar · fotografie</span><span class="activity-time" data-i18n="act.time.30_1h">30 min tot 1 uur</span></div>
+            <h3 data-i18n="act.dichtbij.c3.h3">Bekijk de stinzenflora</h3>
+            <p data-i18n="act.dichtbij.c3.body">In het voorjaar verandert Martenastate in een bijzondere stinzenflora-plek met vroege bloeiers zoals sneeuwklokjes, krokussen en holwortel.</p>
             <ul>
-              <li>Extra mooi van februari tot en met mei.</li>
-              <li>Niet plukken en op de paden blijven.</li>
+              <li data-i18n="act.dichtbij.c3.li1">Extra mooi van februari tot en met mei.</li>
+              <li data-i18n="act.dichtbij.c3.li2">Niet plukken en op de paden blijven.</li>
             </ul>
-            <a href="omgeving.html" class="activity-link">Bekijk de bloeiperiode</a>
+            <a href="omgeving.html" class="activity-link" data-i18n="act.dichtbij.c3.link">Bekijk de bloeiperiode</a>
           </article>
           <article class="activity-card fade-in">
-            <div class="activity-card-top"><span class="activity-kicker">Wandelen · lokaal proeven</span><span class="activity-time">5,6 km</span></div>
-            <h3>Foodwalk rond Martenastate</h3>
-            <p>Een toegankelijke route tussen Koarnjum en Jelsum, langs landschap, dorpen, lokale adressen en boerderijwinkels.</p>
+            <div class="activity-card-top"><span class="activity-kicker" data-i18n="act.dichtbij.c4.kicker">Wandelen · lokaal proeven</span><span class="activity-time" data-i18n="act.time.5_6km">5,6 km</span></div>
+            <h3 data-i18n="act.dichtbij.c4.h3">Foodwalk rond Martenastate</h3>
+            <p data-i18n="act.dichtbij.c4.body">Een toegankelijke route tussen Koarnjum en Jelsum, langs landschap, dorpen, lokale adressen en boerderijwinkels.</p>
             <ul>
-              <li>Reken op 1,5 tot 2 uur, exclusief stops.</li>
-              <li>Check vooraf of stops geopend zijn.</li>
+              <li data-i18n="act.dichtbij.c4.li1">Reken op 1,5 tot 2 uur, exclusief stops.</li>
+              <li data-i18n="act.dichtbij.c4.li2">Check vooraf of stops geopend zijn.</li>
             </ul>
-            <a href="kaart.html" class="activity-link">Bekijk wandelroute</a>
+            <a href="omgeving.html" class="activity-link" data-i18n="act.dichtbij.c4.link">Bekijk wandelroute</a>
           </article>
         </div>
       </div>
 
       <div id="actief" class="tab-panel" role="tabpanel">
         <div class="activity-section-intro">
-          <h2>Wandelen en fietsen</h2>
-          <p>De omgeving van Koarnjum en Jelsum is ideaal voor korte wandelingen en ontspannen fietsroutes langs dorpen, states, kerken, weilanden en water.</p>
+          <h2 data-i18n="act.actief.h2">Wandelen en fietsen</h2>
+          <p data-i18n="act.actief.intro">Koarnjum en Jelsum zijn goed voor korte wandelingen en rustige fietsroutes. Langs dorpen, states, kerken, weilanden en water.</p>
         </div>
         <div class="activity-card-grid">
           <article class="activity-card fade-in">
-            <div class="activity-card-top"><span class="activity-kicker">Fietsen · water</span><span class="activity-time">circa 15 km</span></div>
-            <h3>Fietsroute Jelsum, Koarnjum en Dokkumer Ee</h3>
-            <p>Een korte fietsroute langs Dekema State, Martenastate, Túnmanswente en de Dokkumer Ee. Veel Friesland in weinig kilometers.</p>
+            <div class="activity-card-top"><span class="activity-kicker" data-i18n="act.actief.c1.kicker">Fietsen · water</span><span class="activity-time" data-i18n="act.time.15km">circa 15 km</span></div>
+            <h3 data-i18n="act.actief.c1.h3">Fietsroute Jelsum, Koarnjum en Dokkumer Ee</h3>
+            <p data-i18n="act.actief.c1.body">Een korte fietsroute langs Dekema State, Martenastate, Túnmanswente en de Dokkumer Ee. Veel Friesland in weinig kilometers.</p>
             <ul>
-              <li>Geschikt voor fietsers, e-bikers en actieve gezinnen.</li>
-              <li>Combineer met Túnmanswente of Dekema State.</li>
+              <li data-i18n="act.actief.c1.li1">Geschikt voor fietsers, e-bikers en actieve gezinnen.</li>
+              <li data-i18n="act.actief.c1.li2">Combineer met Túnmanswente of Dekema State.</li>
             </ul>
-            <a href="kaart.html" class="activity-link">Bekijk fietsroute</a>
+            <a href="omgeving.html" class="activity-link" data-i18n="act.actief.c1.link">Bekijk fietsroute</a>
           </article>
           <article class="activity-card fade-in">
-            <div class="activity-card-top"><span class="activity-kicker">Fietsen · dorpen</span><span class="activity-time">halve dag</span></div>
-            <h3>Fietsroute langs de Dokkumer Ee</h3>
-            <p>Fiets langs oude dorpen, smalle paden, weilanden en het water. In de zomer varen er vaak bootjes voorbij.</p>
+            <div class="activity-card-top"><span class="activity-kicker" data-i18n="act.actief.c2.kicker">Fietsen · dorpen</span><span class="activity-time" data-i18n="act.time.halfday">halve dag</span></div>
+            <h3 data-i18n="act.actief.c2.h3">Fietsroute langs de Dokkumer Ee</h3>
+            <p data-i18n="act.actief.c2.body">Fiets langs oude dorpen, smalle paden, weilanden en het water. In de zomer varen er vaak bootjes voorbij.</p>
             <ul>
-              <li>Gebruik een route-app of knooppuntenroute.</li>
-              <li>Let op smalle paden en lokale verkeerssituaties.</li>
+              <li data-i18n="act.actief.c2.li1">Gebruik een route-app of knooppuntenroute.</li>
+              <li data-i18n="act.actief.c2.li2">Let op smalle paden en lokale verkeerssituaties.</li>
             </ul>
-            <a href="kaart.html" class="activity-link">Plan je fietsroute</a>
+            <a href="omgeving.html" class="activity-link" data-i18n="act.actief.c2.link">Plan je fietsroute</a>
           </article>
           <article class="activity-card fade-in" id="wadden">
-            <div class="activity-card-top"><span class="activity-kicker">Natuur · landschap</span><span class="activity-time">halve dag tot hele dag</span></div>
-            <h3>Waddenkust en Sense of Place route</h3>
-            <p>Rijd of fiets richting de Friese Waddenkust voor dijken, terpen, weidse uitzichten en landschapskunst.</p>
+            <div class="activity-card-top"><span class="activity-kicker" data-i18n="act.actief.c3.kicker">Natuur · landschap</span><span class="activity-time" data-i18n="act.time.halfday_fullday">halve dag tot hele dag</span></div>
+            <h3 data-i18n="act.actief.c3.h3">Waddenkust en Sense of Place route</h3>
+            <p data-i18n="act.actief.c3.body">Rijd of fiets richting de Friese Waddenkust voor dijken, terpen, weidse uitzichten en landschapskunst.</p>
             <ul>
-              <li>Mooi bij helder weer of zonsondergang.</li>
-              <li>Neem warme kleding mee, ook in voorjaar en najaar.</li>
+              <li data-i18n="act.actief.c3.li1">Mooi bij helder weer of zonsondergang.</li>
+              <li data-i18n="act.actief.c3.li2">Neem warme kleding mee, ook in voorjaar en najaar.</li>
             </ul>
-            <a href="https://www.google.com/maps/search/Friese+Waddenkust+Sense+of+Place" target="_blank" rel="noopener" class="activity-link">Richting Waddenkust</a>
+            <a href="https://www.google.com/maps/search/Friese+Waddenkust+Sense+of+Place" target="_blank" rel="noopener" class="activity-link" data-i18n="act.actief.c3.link">Richting Waddenkust</a>
           </article>
         </div>
       </div>
 
       <div id="cultuur" class="tab-panel" role="tabpanel">
         <div class="activity-section-intro">
-          <h2>Cultuur en historie</h2>
-          <p>Je verblijft midden in een gebied met oude states, stinzen en verhalen. Combineer Martenastate met historische plekken in de buurt.</p>
+          <h2 data-i18n="act.cultuur.h2">Cultuur en historie</h2>
+          <p data-i18n="act.cultuur.intro">Je verblijft midden in een gebied met oude states, stinzen en verhalen. Combineer Martenastate met historische plekken in de buurt.</p>
         </div>
         <div class="activity-card-grid">
           <article class="activity-card fade-in">
-            <div class="activity-card-top"><span class="activity-kicker">State · dichtbij</span><span class="activity-time">1 tot 2 uur</span></div>
-            <h3>Dekema State in Jelsum</h3>
-            <p>Een prachtige Friese state in Jelsum, leuk voor liefhebbers van historie, tuinen en gezinnen met kinderen.</p>
+            <div class="activity-card-top"><span class="activity-kicker" data-i18n="act.cultuur.c1.kicker">State · dichtbij</span><span class="activity-time" data-i18n="act.time.1_2h">1 tot 2 uur</span></div>
+            <h3 data-i18n="act.cultuur.c1.h3">Dekema State in Jelsum</h3>
+            <p data-i18n="act.cultuur.c1.body">Friese state in Jelsum. Voor liefhebbers van historie, tuinen en voor gezinnen met kinderen.</p>
             <ul>
-              <li>Controleer vooraf openingstijden en activiteiten.</li>
-              <li>Goed te combineren met de fietsroute door Jelsum.</li>
+              <li data-i18n="act.cultuur.c1.li1">Controleer vooraf openingstijden en activiteiten.</li>
+              <li data-i18n="act.cultuur.c1.li2">Goed te combineren met de fietsroute door Jelsum.</li>
             </ul>
-            <a href="https://www.dekemastate.nl" target="_blank" rel="noopener" class="activity-link">Ontdek Dekema State</a>
+            <a href="https://www.dekemastate.nl" target="_blank" rel="noopener" class="activity-link" data-i18n="act.cultuur.c1.link">Ontdek Dekema State</a>
           </article>
           <article class="activity-card fade-in">
-            <div class="activity-card-top"><span class="activity-kicker">State · dagdeel</span><span class="activity-time">1 tot 2 uur</span></div>
-            <h3>Poptaslot in Marsum</h3>
-            <p>Een van de best bewaarde Friese stinzen. In de zomer kun je vaak mee met een rondleiding door slot en tuin.</p>
+            <div class="activity-card-top"><span class="activity-kicker" data-i18n="act.cultuur.c2.kicker">State · dagdeel</span><span class="activity-time" data-i18n="act.time.1_2h">1 tot 2 uur</span></div>
+            <h3 data-i18n="act.cultuur.c2.h3">Poptaslot in Marsum</h3>
+            <p data-i18n="act.cultuur.c2.body">Een van de best bewaarde Friese stinzen. In de zomer kun je vaak mee met een rondleiding door slot en tuin.</p>
             <ul>
-              <li>Reguliere rondleidingen vooral in juli en augustus.</li>
-              <li>Buiten die periode vaak op afspraak.</li>
+              <li data-i18n="act.cultuur.c2.li1">Reguliere rondleidingen vooral in juli en augustus.</li>
+              <li data-i18n="act.cultuur.c2.li2">Buiten die periode vaak op afspraak.</li>
             </ul>
-            <a href="https://www.google.com/maps/search/Poptaslot+Marsum" target="_blank" rel="noopener" class="activity-link">Bekijk rondleidingen</a>
+            <a href="https://www.google.com/maps/search/Poptaslot+Marsum" target="_blank" rel="noopener" class="activity-link" data-i18n="act.cultuur.c2.link">Bekijk rondleidingen</a>
           </article>
           <article class="activity-card fade-in">
-            <div class="activity-card-top"><span class="activity-kicker">Leeuwarden · stad</span><span class="activity-time">halve dag</span></div>
-            <h3>Historische binnenstad van Leeuwarden</h3>
-            <p>Grachten, steegjes, hofjes, winkels, terrassen, restaurants en musea op korte afstand van Martenastate.</p>
+            <div class="activity-card-top"><span class="activity-kicker" data-i18n="act.cultuur.c3.kicker">Leeuwarden · stad</span><span class="activity-time" data-i18n="act.time.halfday">halve dag</span></div>
+            <h3 data-i18n="act.cultuur.c3.h3">Historische binnenstad van Leeuwarden</h3>
+            <p data-i18n="act.cultuur.c3.body">Grachten, steegjes, hofjes, winkels, terrassen, restaurants en musea op korte afstand van Martenastate.</p>
             <ul>
-              <li>Combineer stadswandeling met lunch of borrel.</li>
-              <li>Highlights: Oldehove, Kleine Kerkstraat en binnenstadsgrachten.</li>
+              <li data-i18n="act.cultuur.c3.li1">Combineer stadswandeling met lunch of borrel.</li>
+              <li data-i18n="act.cultuur.c3.li2">Highlights: Oldehove, Kleine Kerkstraat en binnenstadsgrachten.</li>
             </ul>
-            <a href="https://www.google.com/maps/search/Leeuwarden+centrum" target="_blank" rel="noopener" class="activity-link">Ontdek Leeuwarden</a>
+            <a href="https://www.google.com/maps/search/Leeuwarden+centrum" target="_blank" rel="noopener" class="activity-link" data-i18n="act.cultuur.c3.link">Ontdek Leeuwarden</a>
           </article>
           <article class="activity-card fade-in">
-            <div class="activity-card-top"><span class="activity-kicker">Museum · cultuur</span><span class="activity-time">1,5 tot 3 uur</span></div>
-            <h3>Fries Museum</h3>
-            <p>Een fijne keuze bij minder weer. Het museum vertelt verhalen over Fryslân, kunst, geschiedenis, identiteit en cultuur.</p>
+            <div class="activity-card-top"><span class="activity-kicker" data-i18n="act.cultuur.c4.kicker">Museum · cultuur</span><span class="activity-time" data-i18n="act.time.1_5_3h">1,5 tot 3 uur</span></div>
+            <h3 data-i18n="act.cultuur.c4.h3">Fries Museum</h3>
+            <p data-i18n="act.cultuur.c4.body">Een fijne keuze bij minder weer. Het museum vertelt verhalen over Fryslân, kunst, geschiedenis, identiteit en cultuur.</p>
             <ul>
-              <li>Meestal geopend van dinsdag tot en met zondag.</li>
-              <li>Goed te combineren met Princessehof.</li>
+              <li data-i18n="act.cultuur.c4.li1">Meestal geopend van dinsdag tot en met zondag.</li>
+              <li data-i18n="act.cultuur.c4.li2">Goed te combineren met Princessehof.</li>
             </ul>
-            <a href="https://www.friesmuseum.nl" target="_blank" rel="noopener" class="activity-link">Bekijk Fries Museum</a>
+            <a href="https://www.friesmuseum.nl" target="_blank" rel="noopener" class="activity-link" data-i18n="act.cultuur.c4.link">Bekijk Fries Museum</a>
           </article>
           <article class="activity-card fade-in">
-            <div class="activity-card-top"><span class="activity-kicker">Museum · design</span><span class="activity-time">1 tot 2 uur</span></div>
-            <h3>Keramiekmuseum Princessehof</h3>
-            <p>Een bijzonder museum in een historisch stadspaleis. Mooi voor wie houdt van keramiek, design, historie en rustige musea.</p>
+            <div class="activity-card-top"><span class="activity-kicker" data-i18n="act.cultuur.c5.kicker">Museum · design</span><span class="activity-time" data-i18n="act.time.1_2h">1 tot 2 uur</span></div>
+            <h3 data-i18n="act.cultuur.c5.h3">Keramiekmuseum Princessehof</h3>
+            <p data-i18n="act.cultuur.c5.body">Een bijzonder museum in een historisch stadspaleis. Mooi voor wie houdt van keramiek, design, historie en rustige musea.</p>
             <ul>
-              <li>Centraal gelegen in Leeuwarden.</li>
-              <li>Controleer actuele tentoonstellingen vooraf.</li>
+              <li data-i18n="act.cultuur.c5.li1">Centraal gelegen in Leeuwarden.</li>
+              <li data-i18n="act.cultuur.c5.li2">Controleer actuele tentoonstellingen vooraf.</li>
             </ul>
-            <a href="https://www.princessehof.nl" target="_blank" rel="noopener" class="activity-link">Bekijk Princessehof</a>
+            <a href="https://www.princessehof.nl" target="_blank" rel="noopener" class="activity-link" data-i18n="act.cultuur.c5.link">Bekijk Princessehof</a>
           </article>
           <article class="activity-card fade-in">
-            <div class="activity-card-top"><span class="activity-kicker">Uitzicht · kort uitje</span><span class="activity-time">30 tot 60 min</span></div>
-            <h3>Oldehove beklimmen</h3>
-            <p>Beklim de scheve toren van Leeuwarden en kijk uit over de stad. Een korte, leuke stop tijdens een dagje centrum.</p>
+            <div class="activity-card-top"><span class="activity-kicker" data-i18n="act.cultuur.c6.kicker">Uitzicht · kort uitje</span><span class="activity-time" data-i18n="act.time.30_60min">30 tot 60 min</span></div>
+            <h3 data-i18n="act.cultuur.c6.h3">Oldehove beklimmen</h3>
+            <p data-i18n="act.cultuur.c6.body">Beklim de scheve toren van Leeuwarden en kijk uit over de stad. Een korte, leuke stop tijdens een dagje centrum.</p>
             <ul>
-              <li>Seizoensgebonden toegankelijk.</li>
-              <li>Controleer openingstijden bij werkzaamheden of evenementen.</li>
+              <li data-i18n="act.cultuur.c6.li1">Seizoensgebonden toegankelijk.</li>
+              <li data-i18n="act.cultuur.c6.li2">Controleer openingstijden bij werkzaamheden of evenementen.</li>
             </ul>
-            <a href="https://www.google.com/maps/search/Oldehove+Leeuwarden" target="_blank" rel="noopener" class="activity-link">Bekijk Oldehove</a>
+            <a href="https://www.google.com/maps/search/Oldehove+Leeuwarden" target="_blank" rel="noopener" class="activity-link" data-i18n="act.cultuur.c6.link">Bekijk Oldehove</a>
           </article>
         </div>
       </div>
 
       <div id="kinderen" class="tab-panel" role="tabpanel">
         <div class="activity-section-intro">
-          <h2>Met kinderen</h2>
-          <p>Kies voor een korte wandeling, een speurtocht, een interactief museum of een dagje dieren kijken.</p>
+          <h2 data-i18n="act.kinderen.h2">Met kinderen</h2>
+          <p data-i18n="act.kinderen.intro">Kies voor een korte wandeling, een speurtocht, een interactief museum of een dagje dieren kijken.</p>
         </div>
         <div class="activity-card-grid">
           <article class="activity-card fade-in">
-            <div class="activity-card-top"><span class="activity-kicker">Kinderen · cultuur</span><span class="activity-time">1 tot 2 uur</span></div>
-            <h3>Dekema State</h3>
-            <p>Vaak zijn er speurtochten, verkleden, kinderactiviteiten en interactieve wandelingen. Een logische culturele stop dichtbij.</p>
-            <a href="https://www.dekemastate.nl" target="_blank" rel="noopener" class="activity-link">Ontdek Dekema State</a>
+            <div class="activity-card-top"><span class="activity-kicker" data-i18n="act.kinderen.c1.kicker">Kinderen · cultuur</span><span class="activity-time" data-i18n="act.time.1_2h">1 tot 2 uur</span></div>
+            <h3 data-i18n="act.kinderen.c1.h3">Dekema State</h3>
+            <p data-i18n="act.kinderen.c1.body">Vaak zijn er speurtochten, verkleden, kinderactiviteiten en interactieve wandelingen. Een logische culturele stop dichtbij.</p>
+            <a href="https://www.dekemastate.nl" target="_blank" rel="noopener" class="activity-link" data-i18n="act.cultuur.c1.link">Ontdek Dekema State</a>
           </article>
           <article class="activity-card fade-in">
-            <div class="activity-card-top"><span class="activity-kicker">Museum · slecht weer</span><span class="activity-time">1,5 tot 3 uur</span></div>
-            <h3>Natuurmuseum Fryslân</h3>
-            <p>Een laagdrempelig en interactief museum waar kinderen veel zelf kunnen ontdekken. Ideaal bij regen of als rustig gezinsuitje.</p>
-            <a href="https://www.natuurmuseumfryslan.nl" target="_blank" rel="noopener" class="activity-link">Bekijk Natuurmuseum Fryslân</a>
+            <div class="activity-card-top"><span class="activity-kicker" data-i18n="act.kinderen.c2.kicker">Museum · slecht weer</span><span class="activity-time" data-i18n="act.time.1_5_3h">1,5 tot 3 uur</span></div>
+            <h3 data-i18n="act.kinderen.c2.h3">Natuurmuseum Fryslân</h3>
+            <p data-i18n="act.kinderen.c2.body">Een laagdrempelig en interactief museum waar kinderen veel zelf kunnen ontdekken. Ideaal bij regen of als rustig gezinsuitje.</p>
+            <a href="https://www.natuurmuseumfryslan.nl" target="_blank" rel="noopener" class="activity-link" data-i18n="act.kinderen.c2.link">Bekijk Natuurmuseum Fryslân</a>
           </article>
           <article class="activity-card fade-in">
-            <div class="activity-card-top"><span class="activity-kicker">Dieren · actief</span><span class="activity-time">halve dag tot hele dag</span></div>
-            <h3>AquaZoo Leeuwarden</h3>
-            <p>Een familievriendelijk dagje uit met dieren, avonturenroutes, speeltuinen, educatieve presentaties en beschutte plekken.</p>
-            <a href="https://www.aquazoo.nl" target="_blank" rel="noopener" class="activity-link">Bekijk AquaZoo</a>
+            <div class="activity-card-top"><span class="activity-kicker" data-i18n="act.kinderen.c3.kicker">Dieren · actief</span><span class="activity-time" data-i18n="act.time.halfday_fullday">halve dag tot hele dag</span></div>
+            <h3 data-i18n="act.kinderen.c3.h3">AquaZoo Leeuwarden</h3>
+            <p data-i18n="act.kinderen.c3.body">Een familievriendelijk dagje uit met dieren, avonturenroutes, speeltuinen, educatieve presentaties en beschutte plekken.</p>
+            <a href="https://www.aquazoo.nl" target="_blank" rel="noopener" class="activity-link" data-i18n="act.kinderen.c3.link">Bekijk AquaZoo</a>
           </article>
           <article class="activity-card fade-in">
-            <div class="activity-card-top"><span class="activity-kicker">Dichtbij · kort</span><span class="activity-time">30 tot 45 min</span></div>
-            <h3>Korte wandeling over het landgoed</h3>
-            <p>Loop een klein rondje door het park en sluit af met iets lekkers bij Túnmanswente wanneer deze geopend is.</p>
-            <a href="kaart.html" class="activity-link">Open de kaart</a>
+            <div class="activity-card-top"><span class="activity-kicker" data-i18n="act.kinderen.c4.kicker">Dichtbij · kort</span><span class="activity-time" data-i18n="act.time.30_45min">30 tot 45 min</span></div>
+            <h3 data-i18n="act.kinderen.c4.h3">Korte wandeling over het landgoed</h3>
+            <p data-i18n="act.kinderen.c4.body">Loop een klein rondje door het park en sluit af met iets lekkers bij Túnmanswente wanneer deze geopend is.</p>
+            <a href="omgeving.html" class="activity-link" data-i18n="act.kinderen.c4.link">Open de kaart</a>
           </article>
         </div>
       </div>
 
       <div id="regen" class="tab-panel" role="tabpanel">
         <div class="activity-section-intro">
-          <h2>Bij slecht weer</h2>
-          <p>Regent het of waait het hard? Dan zijn Leeuwarden en de musea in de buurt fijne alternatieven.</p>
+          <h2 data-i18n="act.regen.h2">Bij slecht weer</h2>
+          <p data-i18n="act.regen.intro">Regent het of waait het hard? Dan zijn Leeuwarden en de musea in de buurt fijne alternatieven.</p>
         </div>
         <div class="activity-card-grid">
           <article class="activity-card fade-in">
-            <div class="activity-card-top"><span class="activity-kicker">Museum</span><span class="activity-time">1,5 tot 3 uur</span></div>
-            <h3>Fries Museum</h3>
-            <p>Kunst, geschiedenis en Friese verhalen midden in Leeuwarden. Combineer met koffie, lunch of een korte stadswandeling.</p>
-            <a href="https://www.friesmuseum.nl" target="_blank" rel="noopener" class="activity-link">Bekijk Fries Museum</a>
+            <div class="activity-card-top"><span class="activity-kicker" data-i18n="act.regen.c1.kicker">Museum</span><span class="activity-time" data-i18n="act.time.1_5_3h">1,5 tot 3 uur</span></div>
+            <h3 data-i18n="act.cultuur.c4.h3">Fries Museum</h3>
+            <p data-i18n="act.regen.c1.body">Kunst, geschiedenis en Friese verhalen midden in Leeuwarden. Combineer met koffie, lunch of een korte stadswandeling.</p>
+            <a href="https://www.friesmuseum.nl" target="_blank" rel="noopener" class="activity-link" data-i18n="act.cultuur.c4.link">Bekijk Fries Museum</a>
           </article>
           <article class="activity-card fade-in">
-            <div class="activity-card-top"><span class="activity-kicker">Museum</span><span class="activity-time">1 tot 2 uur</span></div>
-            <h3>Keramiekmuseum Princessehof</h3>
-            <p>Rustig, centraal en goed te combineren met horeca in de binnenstad.</p>
-            <a href="https://www.princessehof.nl" target="_blank" rel="noopener" class="activity-link">Bekijk Princessehof</a>
+            <div class="activity-card-top"><span class="activity-kicker" data-i18n="act.regen.c1.kicker">Museum</span><span class="activity-time" data-i18n="act.time.1_2h">1 tot 2 uur</span></div>
+            <h3 data-i18n="act.cultuur.c5.h3">Keramiekmuseum Princessehof</h3>
+            <p data-i18n="act.regen.c2.body">Rustig, centraal en goed te combineren met horeca in de binnenstad.</p>
+            <a href="https://www.princessehof.nl" target="_blank" rel="noopener" class="activity-link" data-i18n="act.cultuur.c5.link">Bekijk Princessehof</a>
           </article>
           <article class="activity-card fade-in">
-            <div class="activity-card-top"><span class="activity-kicker">Gezin</span><span class="activity-time">1,5 tot 3 uur</span></div>
-            <h3>Natuurmuseum Fryslân</h3>
-            <p>Interactief, overzichtelijk en sterk bij regenachtige dagen met kinderen.</p>
-            <a href="https://www.natuurmuseumfryslan.nl" target="_blank" rel="noopener" class="activity-link">Bekijk Natuurmuseum Fryslân</a>
+            <div class="activity-card-top"><span class="activity-kicker" data-i18n="act.regen.c3.kicker">Gezin</span><span class="activity-time" data-i18n="act.time.1_5_3h">1,5 tot 3 uur</span></div>
+            <h3 data-i18n="act.kinderen.c2.h3">Natuurmuseum Fryslân</h3>
+            <p data-i18n="act.regen.c3.body">Interactief, overzichtelijk en sterk bij regenachtige dagen met kinderen.</p>
+            <a href="https://www.natuurmuseumfryslan.nl" target="_blank" rel="noopener" class="activity-link" data-i18n="act.kinderen.c2.link">Bekijk Natuurmuseum Fryslân</a>
           </article>
           <article class="activity-card fade-in">
-            <div class="activity-card-top"><span class="activity-kicker">Stad</span><span class="activity-time">dagdeel</span></div>
-            <h3>Horeca en winkels in Leeuwarden</h3>
-            <p>Blijf flexibel: koffie, winkels, lunch, museum of borrel liggen in Leeuwarden dicht bij elkaar.</p>
-            <a href="https://www.google.com/maps/search/horeca+Leeuwarden+centrum" target="_blank" rel="noopener" class="activity-link">Naar Leeuwarden</a>
+            <div class="activity-card-top"><span class="activity-kicker" data-i18n="act.regen.c4.kicker">Stad</span><span class="activity-time" data-i18n="act.time.daypart">dagdeel</span></div>
+            <h3 data-i18n="act.regen.c4.h3">Horeca en winkels in Leeuwarden</h3>
+            <p data-i18n="act.regen.c4.body">Blijf flexibel: koffie, winkels, lunch, museum of borrel liggen in Leeuwarden dicht bij elkaar.</p>
+            <a href="https://www.google.com/maps/search/horeca+Leeuwarden+centrum" target="_blank" rel="noopener" class="activity-link" data-i18n="act.regen.c4.link">Naar Leeuwarden</a>
           </article>
         </div>
       </div>
 
       <div id="dagtrip" class="tab-panel" role="tabpanel">
         <div class="activity-section-intro">
-          <h2>Dagdeel of dagtrip</h2>
-          <p>Wil je langer op pad? Dan zijn Leeuwarden, de Waddenkust en de Friese states mooie keuzes.</p>
+          <h2 data-i18n="act.dagtrip.h2">Dagdeel of dagtrip</h2>
+          <p data-i18n="act.dagtrip.intro">Wil je langer op pad? Dan zijn Leeuwarden, de Waddenkust en de Friese states mooie keuzes.</p>
         </div>
         <div class="activity-card-grid">
           <article class="activity-card fade-in">
-            <div class="activity-card-top"><span class="activity-kicker">Stad</span><span class="activity-time">halve dag tot hele dag</span></div>
-            <h3>Dagje Leeuwarden</h3>
-            <p>Historische straten, musea, winkels, horeca en mooie stadswandelingen op korte afstand.</p>
-            <a href="https://www.google.com/maps/search/Leeuwarden+centrum" target="_blank" rel="noopener" class="activity-link">Ontdek Leeuwarden</a>
+            <div class="activity-card-top"><span class="activity-kicker" data-i18n="act.regen.c4.kicker">Stad</span><span class="activity-time" data-i18n="act.time.halfday_fullday">halve dag tot hele dag</span></div>
+            <h3 data-i18n="act.dagtrip.c1.h3">Dagje Leeuwarden</h3>
+            <p data-i18n="act.dagtrip.c1.body">Historische straten, musea, winkels, horeca en mooie stadswandelingen op korte afstand.</p>
+            <a href="https://www.google.com/maps/search/Leeuwarden+centrum" target="_blank" rel="noopener" class="activity-link" data-i18n="act.cultuur.c3.link">Ontdek Leeuwarden</a>
           </article>
           <article class="activity-card fade-in">
-            <div class="activity-card-top"><span class="activity-kicker">Wadden</span><span class="activity-time">halve dag tot hele dag</span></div>
-            <h3>Waddenkust</h3>
-            <p>Dijken, kwelders, dorpen, lucht en ruimte. Een mooie tegenhanger van het groene landgoed.</p>
-            <a href="https://www.google.com/maps/search/Friese+Waddenkust" target="_blank" rel="noopener" class="activity-link">Richting Waddenkust</a>
+            <div class="activity-card-top"><span class="activity-kicker" data-i18n="act.dagtrip.c2.kicker">Wadden</span><span class="activity-time" data-i18n="act.time.halfday_fullday">halve dag tot hele dag</span></div>
+            <h3 data-i18n="act.dagtrip.c2.h3">Waddenkust</h3>
+            <p data-i18n="act.dagtrip.c2.body">Dijken, kwelders, dorpen, lucht en ruimte. Een mooie tegenhanger van het groene landgoed.</p>
+            <a href="https://www.google.com/maps/search/Friese+Waddenkust" target="_blank" rel="noopener" class="activity-link" data-i18n="act.actief.c3.link">Richting Waddenkust</a>
           </article>
           <article class="activity-card fade-in">
-            <div class="activity-card-top"><span class="activity-kicker">Avontuur</span><span class="activity-time">afhankelijk van getij</span></div>
-            <h3>Wadlopen vanaf Holwerd</h3>
-            <p>Een unieke ervaring met een gids over de bodem van de Waddenzee. Afhankelijk van getij, weer, conditie en aanbieder.</p>
+            <div class="activity-card-top"><span class="activity-kicker" data-i18n="act.dagtrip.c3.kicker">Avontuur</span><span class="activity-time" data-i18n="act.time.tide">afhankelijk van getij</span></div>
+            <h3 data-i18n="act.dagtrip.c3.h3">Wadlopen vanaf Holwerd</h3>
+            <p data-i18n="act.dagtrip.c3.body">Met een gids over de bodem van de Waddenzee. Afhankelijk van getij, weer, conditie en aanbieder.</p>
             <ul>
-              <li>Alleen doen met een professionele gids.</li>
-              <li>Reserveer op tijd en check minimumleeftijd.</li>
+              <li data-i18n="act.dagtrip.c3.li1">Alleen doen met een professionele gids.</li>
+              <li data-i18n="act.dagtrip.c3.li2">Reserveer op tijd en check minimumleeftijd.</li>
             </ul>
-            <a href="https://www.google.com/maps/search/wadlopen+Holwerd" target="_blank" rel="noopener" class="activity-link">Bekijk wadlooptochten</a>
+            <a href="https://www.google.com/maps/search/wadlopen+Holwerd" target="_blank" rel="noopener" class="activity-link" data-i18n="act.dagtrip.c3.link">Bekijk wadlooptochten</a>
           </article>
         </div>
       </div>
@@ -390,58 +386,58 @@
   <section class="activity-routes" id="routes">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-eyebrow">Maak er een dag van</span>
-        <h2>Onze routevoorstellen</h2>
-        <p>Vijf eenvoudige combinaties voor gasten die snel willen kiezen.</p>
+        <span class="section-eyebrow" data-i18n="act.routes.eyebrow">Maak er een dag van</span>
+        <h2 data-i18n="act.routes.h2">Onze routevoorstellen</h2>
+        <p data-i18n="act.routes.intro">Vijf eenvoudige combinaties voor gasten die snel willen kiezen.</p>
       </div>
       <div class="activity-route-grid">
         <article class="activity-route-card fade-in">
-          <span>1,5 tot 2,5 uur · lopend</span>
-          <h3>Rustige ochtend op Martenastate</h3>
+          <span data-i18n="act.routes.r1.duration">1,5 tot 2,5 uur · lopend</span>
+          <h3 data-i18n="act.routes.r1.h3">Rustige ochtend op Martenastate</h3>
           <ol>
-            <li>Wandel door Park Martenastate.</li>
-            <li>Loop langs slotgracht, oude bomen en grafheuvel.</li>
-            <li>Bekijk in het voorjaar de stinzenflora.</li>
-            <li>Sluit af bij Túnmanswente wanneer geopend.</li>
+            <li data-i18n="act.routes.r1.li1">Wandel door Park Martenastate.</li>
+            <li data-i18n="act.routes.r1.li2">Loop langs slotgracht, oude bomen en grafheuvel.</li>
+            <li data-i18n="act.routes.r1.li3">Bekijk in het voorjaar de stinzenflora.</li>
+            <li data-i18n="act.routes.r1.li4">Sluit af bij Túnmanswente wanneer geopend.</li>
           </ol>
         </article>
         <article class="activity-route-card fade-in">
-          <span>Halve dag · fiets of auto</span>
-          <h3>Stinzen en states</h3>
+          <span data-i18n="act.routes.r2.duration">Halve dag · fiets of auto</span>
+          <h3 data-i18n="act.routes.r2.h3">Stinzen en states</h3>
           <ol>
-            <li>Begin met Martenastate.</li>
-            <li>Ga naar Dekema State in Jelsum.</li>
-            <li>Neem tijd voor tuin of rondleiding.</li>
-            <li>Sluit af langs de Dokkumer Ee.</li>
+            <li data-i18n="act.routes.r2.li1">Begin met Martenastate.</li>
+            <li data-i18n="act.routes.r2.li2">Ga naar Dekema State in Jelsum.</li>
+            <li data-i18n="act.routes.r2.li3">Neem tijd voor tuin of rondleiding.</li>
+            <li data-i18n="act.routes.r2.li4">Sluit af langs de Dokkumer Ee.</li>
           </ol>
         </article>
         <article class="activity-route-card fade-in">
-          <span>Halve dag tot hele dag · fiets, auto of taxi</span>
-          <h3>Dagje Leeuwarden</h3>
+          <span data-i18n="act.routes.r3.duration">Halve dag tot hele dag · fiets, auto of taxi</span>
+          <h3 data-i18n="act.dagtrip.c1.h3">Dagje Leeuwarden</h3>
           <ol>
-            <li>Wandel door de historische binnenstad.</li>
-            <li>Bezoek Fries Museum of Princessehof.</li>
-            <li>Loop langs de Oldehove.</li>
-            <li>Eindig met lunch, diner of borrel.</li>
+            <li data-i18n="act.routes.r3.li1">Wandel door de historische binnenstad.</li>
+            <li data-i18n="act.routes.r3.li2">Bezoek Fries Museum of Princessehof.</li>
+            <li data-i18n="act.routes.r3.li3">Loop langs de Oldehove.</li>
+            <li data-i18n="act.routes.r3.li4">Eindig met lunch, diner of borrel.</li>
           </ol>
         </article>
         <article class="activity-route-card fade-in">
-          <span>Halve dag tot hele dag · auto</span>
-          <h3>Gezinsdag bij minder weer</h3>
+          <span data-i18n="act.routes.r4.duration">Halve dag tot hele dag · auto</span>
+          <h3 data-i18n="act.routes.r4.h3">Gezinsdag bij minder weer</h3>
           <ol>
-            <li>Kies Natuurmuseum Fryslân als het echt regent.</li>
-            <li>Kies AquaZoo bij wisselvallig weer.</li>
-            <li>Combineer met lunch of ijsje in Leeuwarden.</li>
+            <li data-i18n="act.routes.r4.li1">Kies Natuurmuseum Fryslân als het echt regent.</li>
+            <li data-i18n="act.routes.r4.li2">Kies AquaZoo bij wisselvallig weer.</li>
+            <li data-i18n="act.routes.r4.li3">Combineer met lunch of ijsje in Leeuwarden.</li>
           </ol>
         </article>
         <article class="activity-route-card fade-in">
-          <span>Halve dag tot hele dag · auto of fiets</span>
-          <h3>Friese Waddendag</h3>
+          <span data-i18n="act.routes.r5.duration">Halve dag tot hele dag · auto of fiets</span>
+          <h3 data-i18n="act.routes.r5.h3">Friese Waddendag</h3>
           <ol>
-            <li>Rijd richting de Waddenkust.</li>
-            <li>Stop bij dorpen, dijken en uitzichtpunten.</li>
-            <li>Volg een deel van de Sense of Place route.</li>
-            <li>Boek eventueel een wadlooptocht.</li>
+            <li data-i18n="act.routes.r5.li1">Rijd richting de Waddenkust.</li>
+            <li data-i18n="act.routes.r5.li2">Stop bij dorpen, dijken en uitzichtpunten.</li>
+            <li data-i18n="act.routes.r5.li3">Volg een deel van de Sense of Place route.</li>
+            <li data-i18n="act.routes.r5.li4">Boek eventueel een wadlooptocht.</li>
           </ol>
         </article>
       </div>
@@ -451,25 +447,25 @@
   <section class="activity-seasons">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-eyebrow">Seizoen</span>
-        <h2>Wat past bij deze tijd van het jaar?</h2>
+        <span class="section-eyebrow" data-i18n="act.seasons.eyebrow">Seizoen</span>
+        <h2 data-i18n="act.seasons.h2">Wat past bij deze tijd van het jaar?</h2>
       </div>
       <div class="activity-season-grid">
         <div class="info-section fade-in">
-          <h3>Voorjaar</h3>
-          <p>Stinzenflora, landgoedwandeling, Foodwalk en Dekema State.</p>
+          <h3 data-i18n="act.seasons.spring.h3">Voorjaar</h3>
+          <p data-i18n="act.seasons.spring.body">Stinzenflora, landgoedwandeling, Foodwalk en Dekema State.</p>
         </div>
         <div class="info-section fade-in">
-          <h3>Zomer</h3>
-          <p>Fietsroute Dokkumer Ee, Túnmanswente, AquaZoo en Sense of Place.</p>
+          <h3 data-i18n="act.seasons.summer.h3">Zomer</h3>
+          <p data-i18n="act.seasons.summer.body">Fietsroute Dokkumer Ee, Túnmanswente, AquaZoo en Sense of Place.</p>
         </div>
         <div class="info-section fade-in">
-          <h3>Herfst</h3>
-          <p>Parkwandeling, Fries Museum, Princessehof en stadswandeling Leeuwarden.</p>
+          <h3 data-i18n="act.seasons.autumn.h3">Herfst</h3>
+          <p data-i18n="act.seasons.autumn.body">Parkwandeling, Fries Museum, Princessehof en stadswandeling Leeuwarden.</p>
         </div>
         <div class="info-section fade-in">
-          <h3>Winter</h3>
-          <p>Korte landgoedwandeling, Fries Museum, Natuurmuseum Fryslân en horeca in Leeuwarden.</p>
+          <h3 data-i18n="act.seasons.winter.h3">Winter</h3>
+          <p data-i18n="act.seasons.winter.body">Korte landgoedwandeling, Fries Museum, Natuurmuseum Fryslân en horeca in Leeuwarden.</p>
         </div>
       </div>
     </div>
@@ -482,8 +478,8 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2v20"/><path d="M5 8c4 0 7 3 7 7"/><path d="M19 8c-4 0-7 3-7 7"/></svg>
         </div>
         <div>
-          <h4>Onze tip</h4>
-          <p>Begin klein: wandel eerst over het landgoed en ontdek daarna pas de omgeving. Martenastate zelf vertelt al veel over de sfeer van deze plek: groen, rustig, historisch en typisch Fries.</p>
+          <h4 data-i18n="act.note.h4">Onze tip</h4>
+          <p data-i18n="act.note.body">Begin klein: wandel eerst over het landgoed en ontdek daarna pas de omgeving. Martenastate zelf vertelt al veel over de sfeer van deze plek: groen, rustig, historisch en typisch Fries.</p>
         </div>
       </div>
     </div>
@@ -494,7 +490,7 @@
       <div class="footer-grid">
         <div>
           <div class="footer-brand">
-            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16 3 C16 3 8 9 8 17 C8 21.4 11.6 25 16 25 C20.4 25 24 21.4 24 17 C24 9 16 3 16 3Z" fill="currentColor" opacity="0.3"/><path d="M16 6 C13 10 10 13 10 17 C10 20.3 12.7 23 16 23 C19.3 23 22 20.3 22 17 C22 13 19 10 16 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="16" y1="23" x2="16" y2="29" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="27" x2="20" y2="27" stroke="currentColor" stroke-width="1.5"/></svg>
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 26 V11 L11 7 L16 11 L21 7 L27 11 V26 Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/><path d="M10 26 V18 H22 V26" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/><circle cx="16" cy="9" r="1.3" fill="currentColor"/></svg>
             Martenastate
           </div>
           <p data-i18n="footer.tagline" style="color: var(--color-lavender); opacity:.8;">Een historisch landgoed in het hart van Friesland.</p>
@@ -506,7 +502,8 @@
             <li><a href="verblijf.html" data-i18n="nav.verblijf">Verblijf</a></li>
             <li><a href="activiteiten.html" data-i18n="nav.activiteiten">Activiteiten</a></li>
             <li><a href="omgeving.html" data-i18n="nav.omgeving">Omgeving</a></li>
-            <li><a href="kaart.html" data-i18n="nav.kaart">Kaart</a></li>
+        <li><a href="gastenboek.html" data-i18n="nav.gastenboek">Gastenboek</a></li>
+        <li><a href="boeken.html" data-i18n="nav.boeken">Boeken</a></li>
           </ul>
         </div>
         <div>
@@ -514,7 +511,7 @@
           <ul>
             <li data-i18n="footer.address">Martenawei 2, 9056 PE Koarnjum</li>
             <li data-i18n="footer.camping.address">Camping: De Wier 7A</li>
-            <li><a href="tel:+31636606521" data-i18n="footer.phone">+31 6 83 60 65 21</a></li>
+            <li><a href="tel:+31683606521" data-i18n="footer.phone">+31 6 83 60 65 21</a></li>
             <li><a href="https://martenastate.nl" target="_blank" rel="noopener">martenastate.nl</a></li>
           </ul>
         </div>
@@ -526,7 +523,7 @@
   </footer>
 
   <nav class="mobile-action-bar" aria-label="Snelle acties">
-    <a href="tel:+31636606521" aria-label="Bellen">
+    <a href="tel:+31683606521" aria-label="Bellen">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       <span data-i18n="action.call">Bellen</span>
     </a>
@@ -534,17 +531,13 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
       <span data-i18n="action.route">Route</span>
     </a>
-    <a href="kaart.html" aria-label="Kaart en routes">
+    <a href="omgeving.html#routes" aria-label="Routes en omgeving">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
-      <span data-i18n="action.map">Kaart</span>
+      <span data-i18n="action.map">Routes</span>
     </a>
     <a href="verblijf.html#faq" aria-label="Veelgestelde vragen">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
       <span data-i18n="action.faq">Vragen</span>
-    </a>
-    <a href="https://wa.me/31636606521?text=Hallo%2C%20ik%20ben%20gast%20bij%20Martenastate%20en%20heb%20een%20vraag..." target="_blank" rel="noopener" aria-label="WhatsApp">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="color:#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.534 5.852L0 24l6.335-1.518A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.879 0-3.629-.491-5.148-1.348l-.37-.218-3.758.9.938-3.665-.24-.383A9.775 9.775 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182c5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
-      <span data-i18n="action.whatsapp">WhatsApp</span>
     </a>
   </nav>
 
@@ -554,6 +547,7 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+  <script src="js/icons.js"></script>
   <script src="js/translations.js"></script>
   <script src="js/main.js"></script>
   <script>

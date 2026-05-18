@@ -16,7 +16,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -24,12 +25,6 @@
   <nav class="navbar" role="navigation">
     <div class="navbar-inner">
       <a href="index.html" class="brand" aria-label="Martenastate home">
-        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M16 3 C16 3 8 9 8 17 C8 21.4 11.6 25 16 25 C20.4 25 24 21.4 24 17 C24 9 16 3 16 3Z" fill="currentColor" opacity="0.2"/>
-          <path d="M16 6 C13 10 10 13 10 17 C10 20.3 12.7 23 16 23 C19.3 23 22 20.3 22 17 C22 13 19 10 16 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-          <line x1="16" y1="23" x2="16" y2="29" stroke="currentColor" stroke-width="1.5"/>
-          <line x1="12" y1="27" x2="20" y2="27" stroke="currentColor" stroke-width="1.5"/>
-        </svg>
         Martenastate
       </a>
       <ul class="nav-links" id="nav-links">
@@ -37,7 +32,8 @@
         <li><a href="verblijf.html" data-i18n="nav.verblijf">Verblijf</a></li>
         <li><a href="activiteiten.html" data-i18n="nav.activiteiten">Activiteiten</a></li>
         <li><a href="omgeving.html" data-i18n="nav.omgeving">Omgeving</a></li>
-        <li><a href="kaart.html" data-i18n="nav.kaart">Kaart</a></li>
+        <li><a href="gastenboek.html" data-i18n="nav.gastenboek">Gastenboek</a></li>
+        <li><a href="boeken.html" data-i18n="nav.boeken" style="color: var(--ms-martena-rood);">Boeken</a></li>
         <li>
           <div class="lang-toggle" role="group" aria-label="Taal kiezen">
             <button data-lang="nl" class="active">NL</button>
@@ -52,13 +48,13 @@
   </nav>
 
   <!-- Page hero -->
-  <div style="padding: 8rem 0 4rem; text-align: center; background: linear-gradient(180deg, var(--color-lavender-soft) 0%, var(--color-warm-white) 100%);">
+  <header class="page-hero hero-bnb">
     <div class="container-narrow">
-      <span class="section-eyebrow" style="font-size:2rem;">Jouw thuis</span>
+      <span class="section-eyebrow" data-i18n="vb.hero.eyebrow">Jouw thuis</span>
       <h1 data-i18n="verblijf.title">Over je verblijf</h1>
-      <p style="font-size:1.1rem; max-width:560px; margin: 1rem auto 0;" data-i18n="verblijf.subtitle">Of je nu op de camping staat of geniet van de B&B — we hopen dat je je helemaal thuis voelt.</p>
+      <p style="font-size:1.1rem; max-width:560px; margin: 1rem auto 0;" data-i18n="verblijf.subtitle">Op de camping of in de B&B. Wat je hier komt doen? Dat bepaal je zelf.</p>
     </div>
-  </div>
+  </header>
 
   <!-- Tabs -->
   <section>
@@ -80,9 +76,7 @@
         <div class="two-col">
           <div>
             <div class="feature-image" style="aspect-ratio:16/9;">
-              <div class="placeholder" style="background: linear-gradient(135deg, var(--color-sage-light), var(--color-aconite-soft));">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="width:80px;height:80px;" aria-hidden="true"><path d="M3 12 L12 3 L21 12"/><path d="M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg>
-              </div>
+              <img src="images/photo-camping.jpg" alt="Het natuurkampeerterrein op Martenastate: tenten en caravans tussen eeuwenoude beuken, met een bloemrijke weide ervoor." loading="lazy">
             </div>
           </div>
           <div>
@@ -116,7 +110,7 @@
               </div>
               <div>
                 <h4 data-i18n="camping.contact.label">Beheerder</h4>
-                <p><a href="tel:+31636606521" data-i18n="camping.contact.value">Robin Alkema — +31 6 83 60 65 21</a></p>
+                <p><a href="tel:+31683606521" data-i18n="camping.contact.value">Robin Alkema — +31 6 83 60 65 21</a></p>
               </div>
             </div>
           </div>
@@ -131,13 +125,14 @@
             <span data-i18n="camping.prices">Tarieven per nacht</span>
           </h3>
           <ul class="info-list">
-            <li><span class="label" data-i18n="price.adult">Volwassene</span><span class="value">€ 12,50</span></li>
-            <li><span class="label" data-i18n="price.child.5">Kind (5–12 jaar)</span><span class="value">€ 6,00</span></li>
-            <li><span class="label" data-i18n="price.child.0">Kind (0–4 jaar)</span><span class="value">€ 4,00</span></li>
-            <li><span class="label" data-i18n="price.pitch">Kampeerplaats</span><span class="value">€ 7,00</span></li>
-            <li><span class="label" data-i18n="price.trekker">Trekkers tent</span><span class="value">€ 4,00</span></li>
-            <li><span class="label" data-i18n="price.electric">Elektriciteit</span><span class="value">€ 3,00</span></li>
+            <li><span class="label" data-i18n="price.adult">Volwassene</span><span class="value" data-i18n="vb.price.adult.v">€ 12,50</span></li>
+            <li><span class="label" data-i18n="price.child.5">Kind (5–12 jaar)</span><span class="value" data-i18n="vb.price.child5.v">€ 6,00</span></li>
+            <li><span class="label" data-i18n="price.child.0">Kind (0–4 jaar)</span><span class="value" data-i18n="vb.price.child0.v">€ 4,00</span></li>
+            <li><span class="label" data-i18n="price.pitch">Kampeerplaats</span><span class="value" data-i18n="vb.price.pitch.v">€ 7,00</span></li>
+            <li><span class="label" data-i18n="price.trekker">Trekkers tent</span><span class="value" data-i18n="vb.price.child0.v">€ 4,00</span></li>
+            <li><span class="label" data-i18n="price.electric">Elektriciteit</span><span class="value" data-i18n="vb.price.electric.v">€ 3,00</span></li>
           </ul>
+          <p class="info-list-note" data-i18n-html="vb.price.note">Tarieven kunnen afwijken — bekijk de actuele prijzen via <a href="boeken.html">de boekingsknop</a>.</p>
         </div>
 
         <div class="callout" style="margin-top:1rem;">
@@ -156,17 +151,17 @@
             <div class="icon-small">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
             </div>
-            <span>Op het kampeerterrein aanwezig</span>
+            <span data-i18n="vb.camping.fac.h">Op het kampeerterrein aanwezig</span>
           </h3>
           <ul class="info-list">
-            <li><span class="label">Toiletten en douches</span><span class="value">✓ Centraal sanitair</span></li>
-            <li><span class="label">Drinkwater</span><span class="value">✓ Watertappunten</span></li>
-            <li><span class="label">Afwasplaats</span><span class="value">✓</span></li>
-            <li><span class="label">Elektriciteit op plaats</span><span class="value">€ 3,00 / dag</span></li>
-            <li><span class="label">Afvalscheiding</span><span class="value">GFT + restafval</span></li>
-            <li><span class="label">WiFi</span><span class="value">Niet beschikbaar (bewust)</span></li>
-            <li><span class="label">Honden</span><span class="value">Toegestaan, aan de lijn</span></li>
-            <li><span class="label">Kampvuur</span><span class="value">Alleen in eigen vuurkorf</span></li>
+            <li><span class="label" data-i18n="vb.fac.toilet.l">Toiletten en douches</span><span class="value"><span class="ms-icon-host value-check" data-ms-icon="check"></span><span data-i18n="vb.fac.toilet.v">Centraal sanitair</span></span></li>
+            <li><span class="label" data-i18n="vb.fac.water.l">Drinkwater</span><span class="value"><span class="ms-icon-host value-check" data-ms-icon="check"></span><span data-i18n="vb.fac.water.v">Watertappunten</span></span></li>
+            <li><span class="label" data-i18n="vb.fac.dishes.l">Afwasplaats</span><span class="value"><span class="ms-icon-host value-check" data-ms-icon="check"></span></span></li>
+            <li><span class="label" data-i18n="vb.fac.electric.l">Elektriciteit op plaats</span><span class="value" data-i18n="vb.fac.electric.v">€ 3,00 / dag</span></li>
+            <li><span class="label" data-i18n="vb.fac.waste.l">Afvalscheiding</span><span class="value" data-i18n="vb.fac.waste.v">GFT + restafval</span></li>
+            <li><span class="label" data-i18n="vb.fac.wifi.l">WiFi</span><span class="value" data-i18n="vb.fac.wifi.v">Niet beschikbaar (bewust)</span></li>
+            <li><span class="label" data-i18n="vb.fac.dogs.l">Honden</span><span class="value" data-i18n="vb.fac.dogs.v">Toegestaan, aan de lijn</span></li>
+            <li><span class="label" data-i18n="vb.fac.fire.l">Kampvuur</span><span class="value" data-i18n="vb.fac.fire.v">Alleen in eigen vuurkorf</span></li>
           </ul>
         </div>
 
@@ -177,15 +172,15 @@
               <div class="icon-small">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 7h-3V5a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg>
               </div>
-              <span>Wat neem je mee?</span>
+              <span data-i18n="vb.camping.bring.h">Wat neem je mee?</span>
             </h3>
             <ul class="info-list">
-              <li><span class="label">Natuurkampeerkaart</span><span class="value">verplicht</span></li>
-              <li><span class="label">Tent/caravan/camper</span><span class="value">eigen</span></li>
-              <li><span class="label">Haringen (lange, voor zacht gras)</span><span class="value">aanbevolen</span></li>
-              <li><span class="label">Zaklamp</span><span class="value">aanbevolen</span></li>
-              <li><span class="label">Verrekijker (voor vogels)</span><span class="value">leuk</span></li>
-              <li><span class="label">Regenkleding</span><span class="value">altijd</span></li>
+              <li><span class="label" data-i18n="vb.bring.card.l">Natuurkampeerkaart</span><span class="value" data-i18n="vb.bring.required">verplicht</span></li>
+              <li><span class="label" data-i18n="vb.bring.tent.l">Tent/caravan/camper</span><span class="value" data-i18n="vb.bring.own">eigen</span></li>
+              <li><span class="label" data-i18n="vb.bring.pegs.l">Haringen (lange, voor zacht gras)</span><span class="value" data-i18n="vb.bring.recommended">aanbevolen</span></li>
+              <li><span class="label" data-i18n="vb.bring.torch.l">Zaklamp</span><span class="value" data-i18n="vb.bring.recommended">aanbevolen</span></li>
+              <li><span class="label" data-i18n="vb.bring.binoc.l">Verrekijker (voor vogels)</span><span class="value" data-i18n="vb.bring.nice">leuk</span></li>
+              <li><span class="label" data-i18n="vb.bring.rain.l">Regenkleding</span><span class="value" data-i18n="vb.bring.always">altijd</span></li>
             </ul>
           </div>
 
@@ -194,25 +189,25 @@
               <div class="icon-small">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1-2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
               </div>
-              <span>Hoe bereik je ons?</span>
+              <span data-i18n="vb.camping.reach.h">Hoe bereik je ons?</span>
             </h3>
             <ul class="steps-list">
               <li>
                 <div class="step-content">
-                  <h4>Met de auto</h4>
-                  <p>Navigatie op <strong>De Wier 7A, Koarnjum</strong>. Vanaf Leeuwarden ~5 minuten via de Brédyk.</p>
+                  <h4 data-i18n="vb.reach.car.h">Met de auto</h4>
+                  <p data-i18n-html="vb.camping.reach.car">Navigatie op <strong>De Wier 7A, Koarnjum</strong>. Vanaf Leeuwarden ~5 minuten via de Brédyk.</p>
                 </div>
               </li>
               <li>
                 <div class="step-content">
-                  <h4>Met het openbaar vervoer</h4>
-                  <p>Trein naar Leeuwarden, dan bus 71 richting Stiens — uitstappen halte Koarnjum. ~10 min lopen vanaf halte.</p>
+                  <h4 data-i18n="vb.reach.pt.h">Met het openbaar vervoer</h4>
+                  <p data-i18n="vb.camping.reach.pt">Trein naar Leeuwarden, dan bus 71 richting Stiens — uitstappen halte Koarnjum. ~10 min lopen vanaf halte.</p>
                 </div>
               </li>
               <li>
                 <div class="step-content">
-                  <h4>Met de fiets</h4>
-                  <p>Via het knooppuntennetwerk — knooppunt 10 bij Túnmanswente. Uit Leeuwarden: ~5 km langs het Dokkumer Ee.</p>
+                  <h4 data-i18n="vb.reach.bike.h">Met de fiets</h4>
+                  <p data-i18n="vb.camping.reach.bike">Via het knooppuntennetwerk — knooppunt 10 bij Túnmanswente. Uit Leeuwarden: ~5 km langs het Dokkumer Ee.</p>
                 </div>
               </li>
             </ul>
@@ -225,9 +220,7 @@
         <div class="two-col">
           <div>
             <div class="feature-image" style="aspect-ratio:16/9;">
-              <div class="placeholder" style="background: linear-gradient(135deg, var(--color-lavender-soft), var(--color-aconite-soft));">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="width:80px;height:80px;" aria-hidden="true"><path d="M2 4a2 2 0 012-2h16a2 2 0 012 2v11a2 2 0 01-2 2H4a2 2 0 01-2-2V4z"/><path d="M2 11h20"/></svg>
-              </div>
+              <img src="images/photo-bnb.jpg" alt="De voorzijde van B&amp;B Stinzenflora op Martenastate, met de poort van het landgoed daarnaast." loading="lazy">
             </div>
           </div>
           <div>
@@ -239,7 +232,7 @@
                 <div class="icon-small">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                 </div>
-                <span>Check-in / Check-out</span>
+                <span data-i18n="vb.bb.checkin.h">Check-in / Check-out</span>
               </h3>
               <ul class="info-list">
                 <li><span class="label" data-i18n="bb.checkin.label">Check-in</span><span class="value" data-i18n="bb.checkin.value">Vanaf 15:00</span></li>
@@ -257,28 +250,24 @@
           <div class="card-grid cols-2">
             <div class="nav-card fade-in">
               <div class="feature-image" style="aspect-ratio:4/3; margin-bottom: 1.5rem;">
-                <div class="placeholder" style="background: linear-gradient(135deg, #c9b8d4, #e8dff0);">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="width:60px;height:60px;" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                </div>
+                <img src="images/photo-bloemen.jpg" alt="Een bloeiende stinzenflora-weide vol gele en rode wilde bloemen onder hoge bomen — het landschap dat Kamer Stinzenflora omarmt." loading="lazy">
               </div>
               <h3 data-i18n="bb.room1.title">Kamer Stinzenflora</h3>
               <p data-i18n="bb.room1.desc">Sfeervol ingericht, maximaal 2 personen, eigen badkamer en buitenzithoek.</p>
               <div class="meta" style="margin-top:.5rem;">
-                <span class="meta-chip">Max. 2 personen</span>
-                <span class="meta-chip">Eigen badkamer</span>
+                <span class="meta-chip" data-i18n="vb.room.max2">Max. 2 personen</span>
+                <span class="meta-chip" data-i18n="vb.room.bath">Eigen badkamer</span>
               </div>
             </div>
             <div class="nav-card fade-in">
               <div class="feature-image" style="aspect-ratio:4/3; margin-bottom: 1.5rem;">
-                <div class="placeholder" style="background: linear-gradient(135deg, #b8ccb5, #e8dff0);">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="width:60px;height:60px;" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-                </div>
+                <img src="images/photo-kasteeltje.jpg" alt="Het kasteeltje van Martenastate met trapgevel, gezien vanaf het weiland — het hart van het landgoed waar Kamer Martenastate naar vernoemd is." loading="lazy">
               </div>
               <h3 data-i18n="bb.room2.title">Kamer Martenastate</h3>
               <p data-i18n="bb.room2.desc">Sfeervol ingericht, maximaal 2 personen, eigen badkamer en buitenzithoek.</p>
               <div class="meta" style="margin-top:.5rem;">
-                <span class="meta-chip">Max. 2 personen</span>
-                <span class="meta-chip">Eigen badkamer</span>
+                <span class="meta-chip" data-i18n="vb.room.max2">Max. 2 personen</span>
+                <span class="meta-chip" data-i18n="vb.room.bath">Eigen badkamer</span>
               </div>
             </div>
           </div>
@@ -293,11 +282,11 @@
             <span data-i18n="bb.features">Faciliteiten</span>
           </h3>
           <ul class="info-list">
-            <li><span class="label" data-i18n="bb.feature.wifi">WiFi</span><span class="value">✓</span></li>
-            <li><span class="label" data-i18n="bb.feature.bathroom">Privé badkamer met toilet</span><span class="value">✓</span></li>
-            <li><span class="label" data-i18n="bb.feature.kitchen">Kleine kitchenette (koffie &amp; thee)</span><span class="value">✓</span></li>
-            <li><span class="label" data-i18n="bb.feature.outside">Buitenzithoek met uitzicht op park</span><span class="value">✓</span></li>
-            <li><span class="label" data-i18n="bb.feature.parking">Gratis parkeren</span><span class="value">✓</span></li>
+            <li><span class="label" data-i18n="bb.feature.wifi">WiFi</span><span class="value"><span class="ms-icon-host value-check" data-ms-icon="check"></span></span></li>
+            <li><span class="label" data-i18n="bb.feature.bathroom">Privé badkamer met toilet</span><span class="value"><span class="ms-icon-host value-check" data-ms-icon="check"></span></span></li>
+            <li><span class="label" data-i18n="bb.feature.kitchen">Kleine kitchenette (koffie &amp; thee)</span><span class="value"><span class="ms-icon-host value-check" data-ms-icon="check"></span></span></li>
+            <li><span class="label" data-i18n="bb.feature.outside">Buitenzithoek met uitzicht op park</span><span class="value"><span class="ms-icon-host value-check" data-ms-icon="check"></span></span></li>
+            <li><span class="label" data-i18n="bb.feature.parking">Gratis parkeren</span><span class="value"><span class="ms-icon-host value-check" data-ms-icon="check"></span></span></li>
           </ul>
         </div>
 
@@ -307,25 +296,25 @@
             <div class="icon-small">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1-2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
             </div>
-            <span>Hoe te bereiken</span>
+            <span data-i18n="vb.bb.reach.h">Hoe te bereiken</span>
           </h3>
           <ul class="steps-list">
             <li>
               <div class="step-content">
-                <h4>Met de auto</h4>
-                <p>Navigatie op <strong>Martenawei 2, Koarnjum</strong>. Gratis parkeren bij de accommodatie.</p>
+                <h4 data-i18n="vb.reach.car.h">Met de auto</h4>
+                <p data-i18n-html="vb.bb.reach.car">Navigatie op <strong>Martenawei 2, Koarnjum</strong>. Gratis parkeren bij de accommodatie.</p>
               </div>
             </li>
             <li>
               <div class="step-content">
-                <h4>Met het openbaar vervoer</h4>
-                <p>Trein naar Leeuwarden (intercity), daarna bus 71 richting Stiens. Uitstappen halte Koarnjum, ~5 min lopen.</p>
+                <h4 data-i18n="vb.reach.pt.h">Met het openbaar vervoer</h4>
+                <p data-i18n="vb.bb.reach.pt">Trein naar Leeuwarden (intercity), daarna bus 71 richting Stiens. Uitstappen halte Koarnjum, ~5 min lopen.</p>
               </div>
             </li>
             <li>
               <div class="step-content">
-                <h4>Vanaf Schiphol</h4>
-                <p>Trein direct naar Leeuwarden (~2 uur), dan bus of taxi. Geen overstap nodig.</p>
+                <h4 data-i18n="vb.reach.schiphol.h">Vanaf Schiphol</h4>
+                <p data-i18n="vb.bb.reach.schiphol">Trein direct naar Leeuwarden (~2 uur), dan bus of taxi. Geen overstap nodig.</p>
               </div>
             </li>
           </ul>
@@ -336,8 +325,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/></svg>
           </div>
           <div>
-            <h4>Extra tip voor gasten</h4>
-            <p>In de lente (feb–april) bloeit de stinzenflora. Stap vroeg op — de mist boven het park en de ochtendzon op de bloemen zijn magisch.</p>
+            <h4 data-i18n="vb.bb.tip.h">Extra tip voor gasten</h4>
+            <p data-i18n="vb.bb.tip.body">In de lente (feb–april) bloeit de stinzenflora. Sta vroeg op — de mist boven het park en de ochtendzon op de bloemen, dat is niet te missen.</p>
           </div>
         </div>
 
@@ -351,9 +340,7 @@
         <div class="two-col">
           <div>
             <div class="feature-image" style="aspect-ratio:16/9;">
-              <div class="placeholder" style="background: linear-gradient(135deg, var(--color-aconite-soft), var(--color-lavender-soft));">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="width:80px;height:80px;" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-              </div>
+              <img src="images/photo-tunmanswente.jpg" alt="De theetuin van Túnmanswente met houten stoelen en parasols, en het oude tuinmanshuis op de achtergrond." loading="lazy">
             </div>
           </div>
           <div>
@@ -371,7 +358,7 @@
                 <li><span class="label" data-i18n="tunman.fri">Vrijdag</span><span class="value" data-i18n="tunman.fri.hours">13:00 – 17:00</span></li>
                 <li><span class="label" data-i18n="tunman.sat">Zaterdag</span><span class="value" data-i18n="tunman.sat.hours">11:00 – 17:00</span></li>
                 <li><span class="label" data-i18n="tunman.sun">Zondag</span><span class="value" data-i18n="tunman.sun.hours">11:00 – 17:00</span></li>
-                <li><span class="label">Adres</span><span class="value" data-i18n="tunman.address">Martenawei 2, Koarnjum</span></li>
+                <li><span class="label" data-i18n="vb.bb.addr.label">Adres</span><span class="value" data-i18n="tunman.address">Martenawei 2, Koarnjum</span></li>
               </ul>
             </div>
           </div>
@@ -383,21 +370,21 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
             </div>
             <h3 data-i18n="tunman.knooppunt">Fietsknooppunt 10</h3>
-            <p>Vertrekpunt voor fietsroutes door het Friese landschap via het knooppuntennetwerk.</p>
+            <p data-i18n="vb.tunman.knoop.body">Vertrekpunt voor fietsroutes door het Friese landschap via het knooppuntennetwerk.</p>
           </div>
           <div class="nav-card fade-in">
             <div class="icon-wrap">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
             </div>
             <h3 data-i18n="tunman.jabikspaad">Jabikspaad stempelpunt</h3>
-            <p>Laat je pelgrimspaspoort stempelen op weg naar Santiago de Compostella.</p>
+            <p data-i18n="vb.tunman.jabik.body">Laat je pelgrimspaspoort stempelen op weg naar Santiago de Compostella.</p>
           </div>
           <div class="nav-card fade-in">
             <div class="icon-wrap">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             </div>
             <h3 data-i18n="tunman.trouw">Officiële trouwlocatie</h3>
-            <p>Gemeente Leeuwarden — trouwen op een historische, romantische plek.</p>
+            <p data-i18n="vb.tunman.trouw.body">Gemeente Leeuwarden — trouwen op een historische, romantische plek.</p>
           </div>
         </div>
 
@@ -407,15 +394,15 @@
             <div class="icon-small">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
             </div>
-            <span>Wat kun je verwachten?</span>
+            <span data-i18n="vb.tunman.expect.h">Wat kun je verwachten?</span>
           </h3>
           <ul class="info-list">
-            <li><span class="label">Koffie & specialty thee</span><span class="value">Lokale bonen, losse thee</span></li>
-            <li><span class="label">Lunch</span><span class="value">Soep, broodjes, taart</span></li>
-            <li><span class="label">Terras</span><span class="value">In de historische theetuin</span></li>
-            <li><span class="label">Vergaderruimte</span><span class="value">Voor groepen tot 20 personen</span></li>
-            <li><span class="label">Familiefeestjes</span><span class="value">Op reservering</span></li>
-            <li><span class="label">Rouwbijeenkomsten</span><span class="value">Op reservering</span></li>
+            <li><span class="label" data-i18n="vb.tunman.coffee.l">Koffie & specialty thee</span><span class="value" data-i18n="vb.tunman.coffee.v">Lokale bonen, losse thee</span></li>
+            <li><span class="label" data-i18n="vb.tunman.lunch.l">Lunch</span><span class="value" data-i18n="vb.tunman.lunch.v">Soep, broodjes, taart</span></li>
+            <li><span class="label" data-i18n="vb.tunman.terras.l">Terras</span><span class="value" data-i18n="vb.tunman.terras.v">In de historische theetuin</span></li>
+            <li><span class="label" data-i18n="vb.tunman.meeting.l">Vergaderruimte</span><span class="value" data-i18n="vb.tunman.meeting.v">Voor groepen tot 20 personen</span></li>
+            <li><span class="label" data-i18n="vb.tunman.family.l">Familiefeestjes</span><span class="value" data-i18n="vb.tunman.byres">Op reservering</span></li>
+            <li><span class="label" data-i18n="vb.tunman.mourn.l">Rouwbijeenkomsten</span><span class="value" data-i18n="vb.tunman.byres">Op reservering</span></li>
           </ul>
         </div>
 
@@ -424,8 +411,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
           <div>
-            <h4>Handige tip</h4>
-            <p>Túnmanswente ligt direct naast de B&B en op loopafstand van de camping. Ideaal voor een rustige ochtendkoffie of middagthee tijdens je verblijf.</p>
+            <h4 data-i18n="vb.tunman.tip.h">Handige tip</h4>
+            <p data-i18n="vb.tunman.tip.body">Túnmanswente ligt direct naast de B&B en op loopafstand van de camping. Ideaal voor een rustige ochtendkoffie of middagthee tijdens je verblijf.</p>
           </div>
         </div>
       </div>
@@ -438,7 +425,7 @@
       <div class="section-header fade-in">
         <span class="section-eyebrow" data-i18n="faq.eyebrow">Praktisch</span>
         <h2 data-i18n="faq.title">Veelgestelde vragen</h2>
-        <p data-i18n="faq.subtitle">Antwoorden op de vragen die we het vaakst krijgen — zodat je je geen zorgen hoeft te maken en gewoon kunt genieten.</p>
+        <p data-i18n="faq.subtitle">Antwoorden op de vragen die we het vaakst krijgen. Zodat je je geen zorgen hoeft te maken.</p>
       </div>
 
       <div class="faq-list fade-in">
@@ -461,14 +448,14 @@
         <details class="faq-item">
           <summary data-i18n="faq.q.wifi">Wat is het WiFi-wachtwoord?</summary>
           <div class="faq-answer">
-            <p data-i18n="faq.a.wifi">Netwerk: <strong>Martenastate-Gast</strong>. Wachtwoord: <strong>MartenastateGast2024</strong>. Het signaal bereikt zowel de B&B als de meeste plekken op de camping. Mocht het haperen, een herstart van je apparaat helpt vaak.</p>
+            <p data-i18n="faq.a.wifi">Netwerk: <strong>Martenastate-Gast</strong>. Wachtwoord: <strong>MartenastateGast2024</strong>. Het signaal bereikt Túnmanswente en de B&B.</p>
           </div>
         </details>
 
         <details class="faq-item">
           <summary data-i18n="faq.q.keys">Hoe werkt de check-in van de B&B?</summary>
           <div class="faq-answer">
-            <p data-i18n="faq.a.keys">Robin ontvangt je persoonlijk bij aankomst, geeft een korte rondleiding en overhandigt de sleutel. Kun je niet op tijd komen? Geen probleem — bel of app ons en we maken een afspraak.</p>
+            <p data-i18n="faq.a.keys">Je krijgt de instructies automatisch toegestuurd via het boekingsplatform of via de mail.</p>
           </div>
         </details>
 
@@ -498,7 +485,7 @@
         <details class="faq-item">
           <summary data-i18n="faq.q.trash">Waar laat ik mijn afval?</summary>
           <div class="faq-answer">
-            <p data-i18n="faq.a.trash">Bij het sanitairgebouw staan containers voor restafval, papier, glas en plastic/blik. We waarderen het zeer als je gescheiden afval scheidt — in lijn met het ecologische beheer van het landgoed.</p>
+            <p data-i18n="faq.a.trash">Bij het sanitairgebouw staan containers voor restafval, papier, glas en plastic/blik. We waarderen het als je afval scheidt — in lijn met het ecologische beheer van het landgoed. De containers voor de B&B vind je achter het gebouw (om de hoek).</p>
           </div>
         </details>
 
@@ -512,7 +499,7 @@
         <details class="faq-item">
           <summary data-i18n="faq.q.pets">Zijn honden welkom?</summary>
           <div class="faq-answer">
-            <p data-i18n="faq.a.pets">Op de camping zijn honden welkom, mits aangelijnd — dit beschermt de stinzenflora en de weidevogels. In de B&B is in overleg een hond toegestaan; geef het bij boeking aan. In het park is loslopen niet toegestaan.</p>
+            <p data-i18n="faq.a.pets">Op de camping zijn honden welkom, mits aangelijnd — dit beschermt de stinzenflora en de weidevogels. In de B&B niet. In het park is loslopen niet toegestaan.</p>
           </div>
         </details>
 
@@ -549,9 +536,50 @@
         <details class="faq-item">
           <summary data-i18n="faq.q.help">Wat doe ik bij problemen of nood?</summary>
           <div class="faq-answer">
-            <p data-i18n="faq.a.help">Bel of app Robin op <a href="tel:+31636606521">+31 6 83 60 65 21</a> — bij voorkeur vóór 22:00, maar in noodgevallen altijd. Bij medische nood: alarmnummer 112. Huisartsenpost Stiens: 058-257 1969.</p>
+            <p data-i18n="faq.a.help">Bel of app Robin op <a href="tel:+31683606521">+31 6 83 60 65 21</a> — bij voorkeur vóór 22:00, maar in noodgevallen altijd. Bij medische nood: alarmnummer 112. Huisartsenpost Stiens: 058-257 1969.</p>
           </div>
         </details>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Gastenboek verwijst naar aparte pagina -->
+  <section class="section-tinted" style="background: linear-gradient(180deg, var(--color-warm-white) 0%, var(--color-cream) 100%); text-align: center; padding: 3rem 1.5rem;">
+    <div class="container-narrow">
+      <span class="section-eyebrow" data-i18n="guestbook.eyebrow">Community</span>
+      <h2 class="section-title" data-i18n="guestbook.title">Digitaal Gastenboek</h2>
+      <p class="section-subtitle" data-i18n="guestbook.subtitle">Laat een berichtje, tip of groet achter voor toekomstige gasten van Martenastate.</p>
+      <a href="gastenboek.html" class="btn btn-primary" style="margin-top: 1.5rem;" data-i18n="guestbook.cta">Bekijk het gastenboek</a>
+    </div>
+  </section>
+
+
+  <!-- Feedback sectie -->
+  <section class="section-tinted">
+    <div class="container-narrow">
+      <div class="section-header fade-in">
+        <span class="section-eyebrow" data-i18n="feedback.eyebrow">Jouw mening</span>
+        <h2 data-i18n="feedback.title">Hoe was je verblijf?</h2>
+        <p data-i18n="feedback.subtitle">We horen graag wat je van Martenastate vond en of we dingen kunnen verbeteren.</p>
+      </div>
+      <div class="card-grid" style="grid-template-columns: 1fr;">
+        <div class="nav-card fade-in" style="padding: 2rem; cursor: default;">
+          <form id="feedbackForm" action="mailto:jouwadres@example.com?subject=Feedback Martenastate" method="post" enctype="text/plain" style="display: flex; flex-direction: column; gap: 1rem;">
+            <div>
+              <label for="feedbackName" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--color-text);" data-i18n="feedback.name.label">Naam (optioneel)</label>
+              <input type="text" id="feedbackName" name="Naam" style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-stone); border-radius: 8px; font-family: var(--font-body); font-size: 1rem;">
+            </div>
+            <div>
+              <label for="feedbackMessage" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--color-text);" data-i18n="feedback.message.label">Je feedback</label>
+              <textarea id="feedbackMessage" name="Feedback" rows="5" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-stone); border-radius: 8px; font-family: var(--font-body); font-size: 1rem; resize: vertical;"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="align-self: flex-start;">
+              <span data-i18n="feedback.submit">Verstuur feedback</span>
+            </button>
+          </form>
+          <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 1rem;" data-i18n="feedback.mailto_note">* Dit opent je e-mailprogramma om het bericht te versturen.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -561,7 +589,7 @@
       <div class="footer-grid">
         <div>
           <div class="footer-brand">
-            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16 3 C16 3 8 9 8 17 C8 21.4 11.6 25 16 25 C20.4 25 24 21.4 24 17 C24 9 16 3 16 3Z" fill="currentColor" opacity="0.3"/><path d="M16 6 C13 10 10 13 10 17 C10 20.3 12.7 23 16 23 C19.3 23 22 20.3 22 17 C22 13 19 10 16 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="16" y1="23" x2="16" y2="29" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="27" x2="20" y2="27" stroke="currentColor" stroke-width="1.5"/></svg>
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 26 V11 L11 7 L16 11 L21 7 L27 11 V26 Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/><path d="M10 26 V18 H22 V26" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/><circle cx="16" cy="9" r="1.3" fill="currentColor"/></svg>
             Martenastate
           </div>
           <p style="color: var(--color-lavender); opacity:.8;" data-i18n="footer.tagline">Een historisch landgoed in het hart van Friesland.</p>
@@ -573,7 +601,8 @@
             <li><a href="verblijf.html" data-i18n="nav.verblijf">Verblijf</a></li>
             <li><a href="activiteiten.html" data-i18n="nav.activiteiten">Activiteiten</a></li>
         <li><a href="omgeving.html" data-i18n="nav.omgeving">Omgeving</a></li>
-            <li><a href="kaart.html" data-i18n="nav.kaart">Kaart</a></li>
+        <li><a href="gastenboek.html" data-i18n="nav.gastenboek">Gastenboek</a></li>
+        <li><a href="boeken.html" data-i18n="nav.boeken">Boeken</a></li>
           </ul>
         </div>
         <div>
@@ -581,7 +610,7 @@
           <ul>
             <li data-i18n="footer.address">Martenawei 2, 9056 PE Koarnjum</li>
             <li data-i18n="footer.camping.address">Camping: De Wier 7A</li>
-            <li><a href="tel:+31636606521" data-i18n="footer.phone">+31 6 83 60 65 21</a></li>
+            <li><a href="tel:+31683606521" data-i18n="footer.phone">+31 6 83 60 65 21</a></li>
           </ul>
         </div>
       </div>
@@ -594,7 +623,7 @@
 
   <!-- Mobile action bar -->
   <nav class="mobile-action-bar" aria-label="Snelle acties">
-    <a href="tel:+31636606521" aria-label="Bellen">
+    <a href="tel:+31683606521" aria-label="Bellen">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       <span data-i18n="action.call">Bellen</span>
     </a>
@@ -602,9 +631,9 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
       <span data-i18n="action.route">Route</span>
     </a>
-    <a href="kaart.html" aria-label="Kaart en routes">
+    <a href="omgeving.html#routes" aria-label="Routes en omgeving">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
-      <span data-i18n="action.map">Kaart</span>
+      <span data-i18n="action.map">Routes</span>
     </a>
     <a href="verblijf.html#faq" aria-label="Veelgestelde vragen">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -620,6 +649,7 @@
   <!-- Toast for copy feedback -->
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+  <script src="js/icons.js"></script>
   <script src="js/translations.js"></script>
   <script src="js/main.js"></script>
   <script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js").catch(()=>{})}</script>

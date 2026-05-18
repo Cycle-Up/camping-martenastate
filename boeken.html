@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boeken — Martenastate</title>
+  <meta name="description" content="Boek je verblijf op Martenastate — B&B Stinzenflora of het natuurkampeerterrein in Koarnjum, Friesland.">
+
+  <meta property="og:title" content="Boeken — Martenastate">
+  <meta property="og:description" content="Boek je verblijf op Martenastate — B&B of camping in Koarnjum, Friesland.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="nl_NL">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* Booking page — local */
+    .boeken-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+      margin-top: var(--space-7);
+    }
+    @media (min-width: 880px) {
+      .boeken-grid { grid-template-columns: 1fr 1fr; gap: var(--space-7); }
+    }
+
+    .boeken-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: var(--ms-paper-soft);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--dur-med) var(--ease-out),
+                  box-shadow var(--dur-med) var(--ease-out);
+    }
+    .boeken-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .boeken-card-media {
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: var(--ms-paper-warm);
+    }
+    .boeken-card-media img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform var(--dur-slow) var(--ease-out);
+    }
+    .boeken-card:hover .boeken-card-media img { transform: scale(1.04); }
+
+    /* Arch-shape label that sits over the photo */
+    .boeken-arch {
+      position: absolute;
+      top: var(--space-4);
+      left: var(--space-4);
+      background: var(--ms-paper-soft);
+      border-radius: var(--shape-arch);
+      padding: var(--space-3) var(--space-5) var(--space-2);
+      min-width: 130px;
+      text-align: center;
+    }
+    .boeken-arch-label {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      font-size: 1.05rem;
+      line-height: 1;
+      font-weight: 600;
+      color: var(--ms-martena-rood);
+    }
+    .boeken-card[data-kind="bb"] .boeken-arch-label { color: var(--ms-leien-blauw); }
+    .boeken-card[data-kind="camping"] .boeken-arch-label { color: var(--ms-haarlems-groen-deep); }
+
+    .boeken-card-body {
+      padding: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      gap: var(--space-4);
+    }
+    .boeken-eyebrow {
+      font-size: var(--fs-12);
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ms-martena-rood);
+    }
+    .boeken-card[data-kind="bb"] .boeken-eyebrow { color: var(--ms-leien-blauw); }
+    .boeken-card[data-kind="camping"] .boeken-eyebrow { color: var(--ms-haarlems-groen-deep); }
+    .boeken-card h3 {
+      margin: 0;
+      font-size: var(--fs-32);
+      color: var(--ms-leien-blauw);
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+    }
+    .boeken-card .lead {
+      margin: 0;
+      font-family: var(--font-serif);
+      font-size: var(--fs-18);
+      line-height: var(--lh-loose);
+      color: var(--fg-soft);
+    }
+
+    .boeken-facts {
+      list-style: none;
+      padding: var(--space-4) 0;
+      margin: 0;
+      border-top: 1px dashed var(--hairline);
+      border-bottom: 1px dashed var(--hairline);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3) var(--space-5);
+    }
+    .boeken-facts li {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .boeken-facts .label {
+      font-size: var(--fs-12);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--fg-mute);
+    }
+    .boeken-facts .value {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--fs-16);
+      color: var(--ms-leien-blauw);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .boeken-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+    .boeken-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      background: var(--ms-paper-warm);
+      color: var(--ms-leien-blauw);
+      padding: 0.3rem 0.75rem;
+      border-radius: var(--radius-pill);
+      font-size: var(--fs-12);
+      font-weight: 600;
+    }
+
+    .boeken-cta {
+      margin-top: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      align-items: center;
+    }
+    .boeken-card[data-kind="bb"] .boeken-cta .btn-primary {
+      background: var(--ms-leien-blauw);
+      border-color: var(--ms-leien-blauw);
+    }
+    .boeken-card[data-kind="bb"] .boeken-cta .btn-primary:hover {
+      background: var(--ms-leien-blauw-deep);
+      border-color: var(--ms-leien-blauw-deep);
+    }
+    .boeken-card[data-kind="camping"] .boeken-cta .btn-primary {
+      background: var(--ms-haarlems-groen-deep);
+      border-color: var(--ms-haarlems-groen-deep);
+    }
+    .boeken-card[data-kind="camping"] .boeken-cta .btn-primary:hover {
+      background: #5d7a3d;
+      border-color: #5d7a3d;
+    }
+
+    /* Help section */
+    .boeken-help {
+      margin-top: var(--space-9);
+      padding: var(--space-7);
+      background: var(--ms-leien-blauw-deep);
+      color: var(--ms-paper);
+      border-radius: var(--radius-xl);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+      align-items: center;
+    }
+    @media (min-width: 720px) {
+      .boeken-help { grid-template-columns: 1.2fr 1fr; gap: var(--space-7); }
+    }
+    .boeken-help h3 { color: var(--ms-paper); margin: 0 0 var(--space-3); font-size: var(--fs-32); }
+    .boeken-help p { color: var(--fg-on-dark-soft); margin: 0; font-size: var(--fs-18); line-height: var(--lh-loose); }
+    .boeken-help-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+    }
+    .boeken-help-actions .btn {
+      background: var(--ms-paper);
+      color: var(--ms-leien-blauw);
+      border-color: var(--ms-paper);
+    }
+    .boeken-help-actions .btn:hover {
+      background: var(--ms-bostulp-goud);
+      border-color: var(--ms-bostulp-goud);
+      color: var(--ms-leien-blauw-deep);
+    }
+    .boeken-help-actions .btn.btn-outline {
+      background: transparent;
+      color: var(--ms-paper);
+      border-color: rgba(244, 239, 230, 0.5);
+    }
+    .boeken-help-actions .btn.btn-outline:hover {
+      background: var(--ms-paper);
+      color: var(--ms-leien-blauw);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" role="navigation">
+    <div class="navbar-inner">
+      <a href="index.html" class="brand" aria-label="Martenastate home">
+        Martenastate
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="verblijf.html" data-i18n="nav.verblijf">Verblijf</a></li>
+        <li><a href="activiteiten.html" data-i18n="nav.activiteiten">Activiteiten</a></li>
+        <li><a href="omgeving.html" data-i18n="nav.omgeving">Omgeving</a></li>
+        <li><a href="gastenboek.html" data-i18n="nav.gastenboek">Gastenboek</a></li>
+        <li><a href="boeken.html" data-i18n="nav.boeken" class="active">Boeken</a></li>
+        <li>
+          <div class="lang-toggle" role="group" aria-label="Taal kiezen">
+            <button data-lang="nl" class="active">NL</button>
+            <button data-lang="en">EN</button>
+          </div>
+        </li>
+      </ul>
+
+      <button class="menu-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="nav-links">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ───────────────── Page hero ───────────────── -->
+  <header class="page-hero hero-bnb">
+    <div class="container-narrow">
+      <span class="section-eyebrow" data-i18n="boeken.eyebrow">Voor je volgende verblijf</span>
+      <h1 data-i18n="boeken.title">Boek je plek</h1>
+      <p data-i18n="boeken.subtitle">B&amp;B Stinzenflora of het natuurkampeerterrein. Kies waar je wil verblijven. De rest doe je rechtstreeks bij ons.</p>
+    </div>
+  </header>
+
+  <!-- ───────────────── Boek cards ───────────────── -->
+  <section style="padding-top: var(--space-7);">
+    <div class="container">
+
+      <div class="boeken-grid">
+
+        <!-- B&B Stinzenflora -->
+        <article class="boeken-card" data-kind="bb">
+          <div class="boeken-card-media">
+            <img src="images/photo-bnb.jpg" alt="B&B Stinzenflora kamer">
+            <div class="boeken-arch">
+              <span class="boeken-arch-label">B&amp;B</span>
+            </div>
+          </div>
+          <div class="boeken-card-body">
+            <span class="boeken-eyebrow" data-i18n="boeken.bb.eyebrow">In het kasteeltje</span>
+            <h3 data-i18n="boeken.bb.title">B&amp;B Stinzenflora</h3>
+            <p class="lead" data-i18n="boeken.bb.lead">Twee sfeervolle kamers op het landgoed. Een plek die je laat vertragen, met het park aan je deur.</p>
+
+            <ul class="boeken-facts">
+              <li>
+                <span class="label" data-i18n="boeken.bb.fact1.label">Kamers</span>
+                <span class="value" data-i18n="boeken.bb.fact1.value">Stinzenflora · Martenastate</span>
+              </li>
+              <li>
+                <span class="label" data-i18n="boeken.bb.fact2.label">Capaciteit</span>
+                <span class="value" data-i18n="boeken.bb.fact2.value">Max. 2 personen per kamer</span>
+              </li>
+              <li>
+                <span class="label" data-i18n="boeken.bb.fact3.label">Check-in</span>
+                <span class="value" data-i18n="boeken.bb.fact3.value">Vanaf 15:00</span>
+              </li>
+              <li>
+                <span class="label" data-i18n="boeken.bb.fact4.label">Open</span>
+                <span class="value" data-i18n="boeken.bb.fact4.value">Het hele jaar</span>
+              </li>
+            </ul>
+
+            <div class="boeken-tags">
+              <span class="boeken-tag" data-i18n="boeken.bb.tag1">Privé badkamer</span>
+              <span class="boeken-tag" data-i18n="boeken.bb.tag2">Buitenzithoek</span>
+              <span class="boeken-tag" data-i18n="boeken.bb.tag3">WiFi</span>
+              <span class="boeken-tag" data-i18n="boeken.bb.tag4">Gratis parkeren</span>
+            </div>
+
+            <div class="boeken-cta">
+              <a href="https://bedandbreakfaststinzenflora.nl/" target="_blank" rel="noopener" class="btn btn-primary">
+                <span data-i18n="boeken.bb.cta">Bekijk beschikbaarheid</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+              </a>
+              <a href="verblijf.html" class="btn btn-outline" data-i18n="boeken.more">Meer over de kamers</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Natuurkampeerterrein -->
+        <article class="boeken-card" data-kind="camping">
+          <div class="boeken-card-media">
+            <img src="images/photo-camping.jpg" alt="Natuurkampeerterrein in het park">
+            <div class="boeken-arch">
+              <span class="boeken-arch-label">Camping</span>
+            </div>
+          </div>
+          <div class="boeken-card-body">
+            <span class="boeken-eyebrow" data-i18n="boeken.camping.eyebrow">Achter de beuken</span>
+            <h3 data-i18n="boeken.camping.title">Natuurkampeerterrein</h3>
+            <p class="lead" data-i18n="boeken.camping.lead">Rustig kamperen tussen oude beuken en stinzenflora. Geen overbodige luxe, wel rust en ruimte.</p>
+
+            <ul class="boeken-facts">
+              <li>
+                <span class="label" data-i18n="boeken.camping.fact1.label">Seizoen</span>
+                <span class="value" data-i18n="boeken.camping.fact1.value">1 apr – 1 okt</span>
+              </li>
+              <li>
+                <span class="label" data-i18n="boeken.camping.fact2.label">Kaart</span>
+                <span class="value" data-i18n="boeken.camping.fact2.value">Natuurkampeerkaart vereist</span>
+              </li>
+              <li>
+                <span class="label" data-i18n="boeken.camping.fact3.label">Vanaf</span>
+                <span class="value" data-i18n="boeken.camping.fact3.value">€ 12,50 / volwassene</span>
+              </li>
+              <li>
+                <span class="label" data-i18n="boeken.camping.fact4.label">Adres</span>
+                <span class="value" data-i18n="boeken.camping.fact4.value">De Wier 7A</span>
+              </li>
+            </ul>
+
+            <div class="boeken-tags">
+              <span class="boeken-tag" data-i18n="boeken.camping.tag1">Tent · caravan · camper</span>
+              <span class="boeken-tag" data-i18n="boeken.camping.tag2">Sanitair</span>
+              <span class="boeken-tag" data-i18n="boeken.camping.tag3">Stroom (optie)</span>
+              <span class="boeken-tag" data-i18n="boeken.camping.tag4">Hond aan de lijn</span>
+            </div>
+
+            <div class="boeken-cta">
+              <a href="https://martenastate.nl/natuurkampeerterrein/boekingsformulier/" target="_blank" rel="noopener" class="btn btn-primary">
+                <span data-i18n="boeken.camping.cta">Open boekingsformulier</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+              </a>
+              <a href="verblijf.html" class="btn btn-outline" data-i18n="boeken.more">Meer over de camping</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- ───────────────── Help / contact ───────────────── -->
+      <div class="boeken-help">
+        <div>
+          <span class="section-eyebrow" style="color: var(--ms-bostulp-goud); margin-bottom: var(--space-3); display: inline-block;" data-i18n="boeken.help.eyebrow">Vragen vooraf?</span>
+          <h3 data-i18n="boeken.help.title">Liever even bellen of appen?</h3>
+          <p data-i18n="boeken.help.text">Robin Alkema beantwoordt je vragen graag. Over beschikbaarheid, een specifieke kamer, kamperen met meerdere, of iets anders dat je wil weten voor je boekt.</p>
+        </div>
+        <div class="boeken-help-actions">
+          <a href="https://wa.me/31683606521?text=Hallo%20Robin%2C%20ik%20heb%20een%20vraag%20over%20een%20verblijf%20op%20Martenastate..." target="_blank" rel="noopener" class="btn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.534 5.852L0 24l6.335-1.518A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.879 0-3.629-.491-5.148-1.348l-.37-.218-3.758.9.938-3.665-.24-.383A9.775 9.775 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182c5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+            <span data-i18n="boeken.help.whatsapp">App Robin</span>
+          </a>
+          <a href="tel:+31683606521" class="btn btn-outline">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>+31 6 83 60 65 21</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">Martenastate</div>
+          <p data-i18n="footer.tagline" style="opacity:.8;">Jouw natuurlijke staat. Een buitenplaats in Koarnjum, Friesland.</p>
+        </div>
+        <div>
+          <h4 data-i18n="footer.nav">Navigatie</h4>
+          <ul>
+            <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+            <li><a href="verblijf.html" data-i18n="nav.verblijf">Verblijf</a></li>
+            <li><a href="activiteiten.html" data-i18n="nav.activiteiten">Activiteiten</a></li>
+            <li><a href="omgeving.html" data-i18n="nav.omgeving">Omgeving</a></li>
+            <li><a href="gastenboek.html" data-i18n="nav.gastenboek">Gastenboek</a></li>
+            <li><a href="boeken.html" data-i18n="nav.boeken">Boeken</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="footer.contact">Contact</h4>
+          <ul>
+            <li data-i18n="footer.address">Martenawei 2, 9056 PE Koarnjum</li>
+            <li data-i18n="footer.camping.address">Camping: De Wier 7A</li>
+            <li><a href="tel:+31683606521" data-i18n="footer.phone">+31 6 83 60 65 21</a></li>
+            <li><a href="https://martenastate.nl" target="_blank" rel="noopener">martenastate.nl</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">Welkom bij Martenastate · Koarnjum, Friesland</span>
+      </div>
+    </div>
+  </footer>
+
+    <!-- Mobile action bar -->
+  <nav class="mobile-action-bar" aria-label="Snelle acties">
+    <a href="tel:+31683606521" aria-label="Bellen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span data-i18n="action.call">Bellen</span>
+    </a>
+    <a href="https://maps.google.com/?q=Martenawei+2,+9056+PE+Koarnjum" target="_blank" rel="noopener" aria-label="Route naar Martenastate">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+      <span data-i18n="action.route">Route</span>
+    </a>
+    <a href="omgeving.html#routes" aria-label="Routes en omgeving">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+      <span data-i18n="action.map">Routes</span>
+    </a>
+    <a href="verblijf.html#faq" aria-label="Veelgestelde vragen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <span data-i18n="action.faq">Vragen</span>
+    </a>
+  </nav>
+
+  <button class="back-to-top" aria-label="Terug naar boven" id="backToTop">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/main.js"></script>
+  <script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js").catch(()=>{})}</script>
+</body>
+</html>
