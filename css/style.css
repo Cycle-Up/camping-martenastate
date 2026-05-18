@@ -1660,7 +1660,19 @@ section {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: var(--space-5);
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-4);
+}
+.restaurant-source {
+  margin: 0 0 var(--space-8);
+  font-size: var(--fs-14);
+  color: var(--fg-mute);
+  font-style: italic;
+  text-align: center;
+}
+.restaurant-source a {
+  color: var(--ms-leien-blauw);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 .restaurant-card {
   padding: var(--space-5);
