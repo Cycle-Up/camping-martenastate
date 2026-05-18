@@ -399,13 +399,22 @@ section {
     padding: var(--space-5);
     background: var(--ms-paper);
     border-bottom: 1px solid var(--hairline);
-    transform: translateY(-110%);
-    transition: transform var(--dur-med) var(--ease-out);
+    transform: translateY(calc(-100% - 76px));
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform var(--dur-med) var(--ease-out),
+                visibility 0s linear var(--dur-med);
     box-shadow: var(--shadow-md);
     max-height: calc(100vh - 68px);
     overflow-y: auto;
   }
-  .nav-links.open { transform: translateY(0); }
+  .nav-links.open {
+    transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
+    transition: transform var(--dur-med) var(--ease-out),
+                visibility 0s linear 0s;
+  }
   .nav-links a {
     padding: 0.9rem 1rem;
     border-radius: var(--radius-sm);
@@ -3110,31 +3119,44 @@ input, textarea, select {
   .hero { min-height: 88vh; }
   .hero-subtitle { font-size: var(--fs-16); line-height: 1.45; }
 
-  /* Tabs: horizontal scroll instead of wrapping to 2+ lines */
+  /* Tabs: horizontal scroll instead of wrapping to 2+ lines.
+     Negative margin = container side padding so tabs bleed exactly to viewport edge.
+     Mask-image fades the edge(s) where more content is available (JS toggles classes). */
   .tabs {
-    width: 100%;
-    max-width: 100%;
+    width: auto;
+    max-width: none;
     flex-wrap: nowrap;
     justify-content: flex-start;
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    border-radius: var(--radius-lg);
-    padding: 4px;
+    border-radius: 0;
+    padding: 4px var(--space-5);
     margin-left: calc(var(--space-5) * -1);
     margin-right: calc(var(--space-5) * -1);
-    padding-left: var(--space-5);
-    padding-right: var(--space-5);
     background: transparent;
     border: none;
     scroll-snap-type: x proximity;
+    scroll-padding-inline: var(--space-5);
+    -webkit-mask-image: linear-gradient(to right, #000 0, #000 100%);
+            mask-image: linear-gradient(to right, #000 0, #000 100%);
+    transition: -webkit-mask-image var(--dur-fast) var(--ease-out),
+                        mask-image var(--dur-fast) var(--ease-out);
+  }
+  .tabs.can-scroll-right {
+    -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 36px), transparent 100%);
+            mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 36px), transparent 100%);
+  }
+  .tabs.can-scroll-left {
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 36px, #000 100%);
+            mask-image: linear-gradient(to right, transparent 0, #000 36px, #000 100%);
+  }
+  .tabs.can-scroll-left.can-scroll-right {
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 36px, #000 calc(100% - 36px), transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0, #000 36px, #000 calc(100% - 36px), transparent 100%);
   }
   .tabs::-webkit-scrollbar { display: none; }
-  .tabs::before, .tabs::after {
-    content: '';
-    flex: 0 0 1px;
-  }
   .tab-btn {
     flex: 0 0 auto;
     min-height: 44px;
@@ -3146,6 +3168,16 @@ input, textarea, select {
   }
   .tab-btn.active {
     border-color: var(--ms-leien-blauw);
+  }
+  /* Phones at <=480px use --space-4 (16px) container padding, so match here */
+  @media (max-width: 480px) {
+    .tabs {
+      padding-left: var(--space-4);
+      padding-right: var(--space-4);
+      margin-left: calc(var(--space-4) * -1);
+      margin-right: calc(var(--space-4) * -1);
+      scroll-padding-inline: var(--space-4);
+    }
   }
 
   /* card-grid.cols-2: at small screens collapse to single column */

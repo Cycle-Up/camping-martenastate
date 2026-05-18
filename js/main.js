@@ -104,8 +104,28 @@ function initTabs() {
         if (panels[index]) {
           panels[index].classList.add('active');
         }
+        // Scroll the activated tab into view inside the horizontal scroller
+        if (tabGroup.scrollWidth > tabGroup.clientWidth) {
+          btn.scrollIntoView({inline: 'center', block: 'nearest', behavior: 'smooth'});
+        }
       });
     });
+
+    // Scroll-affordance: toggle classes so CSS can fade the appropriate edge.
+    // Run after layout settles (rAF + load) so scrollWidth is accurate.
+    const update = () => {
+      const max = tabGroup.scrollWidth - tabGroup.clientWidth;
+      tabGroup.classList.toggle('can-scroll-left', tabGroup.scrollLeft > 2);
+      tabGroup.classList.toggle('can-scroll-right', tabGroup.scrollLeft < max - 2);
+    };
+    requestAnimationFrame(update);
+    window.addEventListener('load', update);
+    tabGroup.addEventListener('scroll', update, {passive: true});
+    if ('ResizeObserver' in window) {
+      new ResizeObserver(update).observe(tabGroup);
+    } else {
+      window.addEventListener('resize', update);
+    }
   });
 }
 
