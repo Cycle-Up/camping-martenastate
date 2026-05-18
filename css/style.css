@@ -1662,14 +1662,16 @@ section {
   gap: var(--space-5);
   margin-bottom: var(--space-4);
 }
-.restaurant-source {
+.restaurant-source,
+.source-credit {
   margin: 0 0 var(--space-8);
   font-size: var(--fs-14);
   color: var(--fg-mute);
   font-style: italic;
   text-align: center;
 }
-.restaurant-source a {
+.restaurant-source a,
+.source-credit a {
   color: var(--ms-leien-blauw);
   text-decoration: underline;
   text-underline-offset: 2px;
