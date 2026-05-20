@@ -457,7 +457,9 @@ const translations = {
     "boeken.subtitle": "B&B Stinzenflora of het natuurkampeerterrein. Kies waar je wil verblijven. De rest doe je rechtstreeks bij ons.",
     "boeken.more": "Meer over de plek",
 
-    "boeken.bb.eyebrow": "Op het landgoed",
+    "boeken.bb.eyebrow": "In het kasteeltje · B&B",
+    "boeken.bb.widget.title": "Beschikbaarheid & direct boeken",
+    "boeken.bb.widget.hint": "Selecteer je data — we tonen meteen of het kan",
     "boeken.bb.title": "B&B Stinzenflora",
     "boeken.bb.lead": "Twee sfeervolle kamers op het landgoed. Een plek die je laat vertragen, met het park aan je deur.",
     "boeken.bb.fact1.label": "Kamers",
@@ -474,7 +476,7 @@ const translations = {
     "boeken.bb.tag4": "Gratis parkeren",
     "boeken.bb.cta": "Bekijk beschikbaarheid",
 
-    "boeken.camping.eyebrow": "Achter de beuken",
+    "boeken.camping.eyebrow": "Achter de beuken · Camping",
     "boeken.camping.title": "Natuurkampeerterrein",
     "boeken.camping.lead": "Rustig kamperen tussen oude beuken en stinzenflora. Geen overbodige luxe, wel rust en ruimte.",
     "boeken.camping.fact1.label": "Seizoen",
@@ -1610,7 +1612,9 @@ const translations = {
     "boeken.subtitle": "B&B Stinzenflora or the nature campsite. Choose where you want to stay. Bookings go directly through us.",
     "boeken.more": "More about the place",
 
-    "boeken.bb.eyebrow": "On the estate",
+    "boeken.bb.eyebrow": "Inside the castle · B&B",
+    "boeken.bb.widget.title": "Availability & instant booking",
+    "boeken.bb.widget.hint": "Pick your dates — we'll show you right away",
     "boeken.bb.title": "B&B Stinzenflora",
     "boeken.bb.lead": "Two welcoming rooms on the estate. A place that lets you slow down, with the park at your door.",
     "boeken.bb.fact1.label": "Rooms",
@@ -1627,7 +1631,7 @@ const translations = {
     "boeken.bb.tag4": "Free parking",
     "boeken.bb.cta": "Check availability",
 
-    "boeken.camping.eyebrow": "Behind the beeches",
+    "boeken.camping.eyebrow": "Behind the beeches · Camping",
     "boeken.camping.title": "Nature campsite",
     "boeken.camping.lead": "Quiet camping among old beeches and stinzenflora. No luxury, just rest and space.",
     "boeken.camping.fact1.label": "Season",
@@ -2763,7 +2767,9 @@ const translations = {
     "boeken.subtitle": "B&B Stinzenflora oder der Naturcampingplatz. Wähle, wo du übernachten willst. Den Rest erledigst du direkt bei uns.",
     "boeken.more": "Mehr über den Ort",
 
-    "boeken.bb.eyebrow": "Auf dem Landgut",
+    "boeken.bb.eyebrow": "Im Schlösschen · B&B",
+    "boeken.bb.widget.title": "Verfügbarkeit & direkt buchen",
+    "boeken.bb.widget.hint": "Wähl deine Daten — wir zeigen dir direkt, ob es passt",
     "boeken.bb.title": "B&B Stinzenflora",
     "boeken.bb.lead": "Zwei stimmungsvolle Zimmer auf dem Landgut. Ein Ort, der dich entschleunigt, mit dem Park direkt vor der Tür.",
     "boeken.bb.fact1.label": "Zimmer",
@@ -2780,7 +2786,7 @@ const translations = {
     "boeken.bb.tag4": "Kostenlose Parkplätze",
     "boeken.bb.cta": "Verfügbarkeit ansehen",
 
-    "boeken.camping.eyebrow": "Hinter den Buchen",
+    "boeken.camping.eyebrow": "Hinter den Buchen · Camping",
     "boeken.camping.title": "Naturcampingplatz",
     "boeken.camping.lead": "Ruhiges Camping zwischen alten Buchen und Stinzenflora. Kein überflüssiger Luxus, dafür Ruhe und Platz.",
     "boeken.camping.fact1.label": "Saison",

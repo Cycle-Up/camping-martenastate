@@ -28,48 +28,76 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    /* Booking page — local */
-    .boeken-grid {
+    /* Booking page — two clearly distinct sections (B&B vs Camping) */
+    .boeken-section {
+      padding: var(--space-8) 0 var(--space-7);
+      position: relative;
+    }
+    .boeken-section + .boeken-section { padding-top: var(--space-7); }
+    .boeken-bb {
+      background: linear-gradient(180deg, var(--ms-paper) 0%, var(--ms-paper-soft) 100%);
+    }
+    .boeken-camping {
+      background: var(--ms-paper-warm);
+    }
+
+    .boeken-section-head {
+      max-width: 720px;
+      margin: 0 0 var(--space-6);
+    }
+    .boeken-section-head h2 {
+      margin: var(--space-2) 0 var(--space-3);
+      font-size: clamp(2rem, 5vw, var(--fs-48));
+      color: var(--ms-leien-blauw);
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+    }
+    .boeken-section-head .lead {
+      font-family: var(--font-serif);
+      font-size: var(--fs-18);
+      line-height: var(--lh-loose);
+      color: var(--fg-soft);
+      margin: 0;
+    }
+
+    .boeken-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--fs-12);
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .boeken-eyebrow.blue { color: var(--ms-leien-blauw); }
+    .boeken-eyebrow.green { color: var(--ms-haarlems-groen-deep); }
+    .boeken-eyebrow .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: currentColor;
+    }
+
+    .boeken-section-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--space-6);
-      margin-top: var(--space-7);
+      align-items: start;
     }
     @media (min-width: 880px) {
-      .boeken-grid { grid-template-columns: 1fr 1fr; gap: var(--space-7); }
+      .boeken-section-grid { grid-template-columns: 1.2fr 1fr; gap: var(--space-7); }
     }
 
-    .boeken-card {
+    .boeken-media {
       position: relative;
-      display: flex;
-      flex-direction: column;
-      background: var(--ms-paper-soft);
-      border: 1px solid var(--hairline);
-      border-radius: var(--radius-xl);
+      border-radius: var(--radius-lg);
       overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      transition: transform var(--dur-med) var(--ease-out),
-                  box-shadow var(--dur-med) var(--ease-out);
-    }
-    .boeken-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .boeken-card-media {
-      position: relative;
       aspect-ratio: 4/3;
-      overflow: hidden;
       background: var(--ms-paper-warm);
+      box-shadow: var(--shadow-sm);
     }
-    .boeken-card-media img {
+    .boeken-media img {
       width: 100%; height: 100%;
       object-fit: cover;
-      transition: transform var(--dur-slow) var(--ease-out);
     }
-    .boeken-card:hover .boeken-card-media img { transform: scale(1.04); }
-
-    /* Arch-shape label that sits over the photo */
     .boeken-arch {
       position: absolute;
       top: var(--space-4);
@@ -79,6 +107,7 @@
       padding: var(--space-3) var(--space-5) var(--space-2);
       min-width: 130px;
       text-align: center;
+      box-shadow: var(--shadow-sm);
     }
     .boeken-arch-label {
       display: block;
@@ -87,42 +116,9 @@
       letter-spacing: 0.02em;
       font-size: 1.05rem;
       line-height: 1;
-      font-weight: 600;
-      color: var(--ms-martena-rood);
     }
-    .boeken-card[data-kind="bb"] .boeken-arch-label { color: var(--ms-leien-blauw); }
-    .boeken-card[data-kind="camping"] .boeken-arch-label { color: var(--ms-haarlems-groen-deep); }
-
-    .boeken-card-body {
-      padding: var(--space-6);
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      gap: var(--space-4);
-    }
-    .boeken-eyebrow {
-      font-size: var(--fs-12);
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--ms-martena-rood);
-    }
-    .boeken-card[data-kind="bb"] .boeken-eyebrow { color: var(--ms-leien-blauw); }
-    .boeken-card[data-kind="camping"] .boeken-eyebrow { color: var(--ms-haarlems-groen-deep); }
-    .boeken-card h3 {
-      margin: 0;
-      font-size: var(--fs-32);
-      color: var(--ms-leien-blauw);
-      line-height: 1.1;
-      letter-spacing: -0.015em;
-    }
-    .boeken-card .lead {
-      margin: 0;
-      font-family: var(--font-serif);
-      font-size: var(--fs-18);
-      line-height: var(--lh-loose);
-      color: var(--fg-soft);
-    }
+    .boeken-bb .boeken-arch-label { color: var(--ms-leien-blauw); }
+    .boeken-camping .boeken-arch-label { color: var(--ms-haarlems-groen-deep); }
 
     .boeken-facts {
       list-style: none;
@@ -134,11 +130,7 @@
       grid-template-columns: 1fr 1fr;
       gap: var(--space-3) var(--space-5);
     }
-    .boeken-facts li {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
+    .boeken-facts li { display: flex; flex-direction: column; gap: 2px; }
     .boeken-facts .label {
       font-size: var(--fs-12);
       font-weight: 700;
@@ -163,7 +155,8 @@
       display: inline-flex;
       align-items: center;
       gap: var(--space-2);
-      background: var(--ms-paper-warm);
+      background: var(--ms-paper);
+      border: 1px solid var(--hairline);
       color: var(--ms-leien-blauw);
       padding: 0.3rem 0.75rem;
       border-radius: var(--radius-pill);
@@ -171,29 +164,84 @@
       font-weight: 600;
     }
 
-    .boeken-cta {
-      margin-top: auto;
+    .boeken-section-details {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+    .boeken-section-cta {
       display: flex;
       flex-wrap: wrap;
       gap: var(--space-3);
       align-items: center;
+      margin-top: var(--space-3);
     }
-    .boeken-card[data-kind="bb"] .boeken-cta .btn-primary {
+    .boeken-bb .boeken-section-cta .btn-primary {
       background: var(--ms-leien-blauw);
       border-color: var(--ms-leien-blauw);
     }
-    .boeken-card[data-kind="bb"] .boeken-cta .btn-primary:hover {
+    .boeken-bb .boeken-section-cta .btn-primary:hover {
       background: var(--ms-leien-blauw-deep);
       border-color: var(--ms-leien-blauw-deep);
     }
-    .boeken-card[data-kind="camping"] .boeken-cta .btn-primary {
+    .boeken-camping .boeken-section-cta .btn-primary {
       background: var(--ms-haarlems-groen-deep);
       border-color: var(--ms-haarlems-groen-deep);
     }
-    .boeken-card[data-kind="camping"] .boeken-cta .btn-primary:hover {
+    .boeken-camping .boeken-section-cta .btn-primary:hover {
       background: #5d7a3d;
       border-color: #5d7a3d;
     }
+
+    /* ──── Lodgify booking widget — themed to Martenastate (B&B subbrand) ──── */
+    .lodgify-wrap {
+      background: var(--ms-paper-soft);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      margin-bottom: var(--space-6);
+      box-shadow: var(--shadow-md);
+    }
+    .lodgify-wrap-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+    .lodgify-wrap-head h3 {
+      margin: 0;
+      font-size: var(--fs-24);
+      color: var(--ms-leien-blauw);
+      letter-spacing: -0.01em;
+    }
+    .lodgify-wrap-head .hint {
+      font-size: var(--fs-14);
+      color: var(--fg-mute);
+    }
+    /* Override Lodgify CSS variables to use Martenastate Leien blauw + Bostulp goud accents */
+    .lodgify-wrap #lodgify-search-bar,
+    .lodgify-wrap {
+      --ldg-psb-background: var(--ms-paper-soft);
+      --ldg-psb-border-radius: var(--radius-md);
+      --ldg-psb-box-shadow: none;
+      --ldg-psb-padding: 0;
+      --ldg-psb-input-background: var(--ms-paper);
+      --ldg-psb-button-border-radius: 999px;
+      --ldg-psb-color-primary: #0F4A4F;
+      --ldg-psb-color-primary-lighter: #2A6F75;
+      --ldg-psb-color-primary-darker: #093438;
+      --ldg-psb-color-primary-contrast: #F4EFE6;
+      --ldg-semantic-color-primary: #0F4A4F;
+      --ldg-semantic-color-primary-lighter: #2A6F75;
+      --ldg-semantic-color-primary-darker: #093438;
+      --ldg-semantic-color-primary-contrast: #F4EFE6;
+      --ldg-component-modal-z-index: 999;
+    }
+    #lodgify-search-bar { width: 100%; }
+
+    /* ──── Help block (unchanged styling) ──── */
 
     /* Help section */
     .boeken-help {
@@ -282,113 +330,154 @@
     </div>
   </header>
 
-  <!-- ───────────────── Boek cards ───────────────── -->
-  <section style="padding-top: var(--space-7);">
+  <!-- ───────────────── B&B Stinzenflora — met Lodgify zoek-widget ───────────────── -->
+  <section class="boeken-section boeken-bb">
     <div class="container">
 
-      <div class="boeken-grid">
+      <header class="boeken-section-head">
+        <span class="boeken-eyebrow blue"><span class="dot"></span><span data-i18n="boeken.bb.eyebrow">In het kasteeltje · B&amp;B</span></span>
+        <h2 data-i18n="boeken.bb.title">B&amp;B Stinzenflora</h2>
+        <p class="lead" data-i18n="boeken.bb.lead">Twee sfeervolle kamers op het landgoed. Een plek die je laat vertragen, met het park aan je deur.</p>
+      </header>
 
-        <!-- B&B Stinzenflora -->
-        <article class="boeken-card" data-kind="bb">
-          <div class="boeken-card-media">
-            <img src="images/photo-bnb.jpg" alt="B&B Stinzenflora kamer">
-            <div class="boeken-arch">
-              <span class="boeken-arch-label">B&amp;B</span>
-            </div>
-          </div>
-          <div class="boeken-card-body">
-            <span class="boeken-eyebrow" data-i18n="boeken.bb.eyebrow">In het kasteeltje</span>
-            <h3 data-i18n="boeken.bb.title">B&amp;B Stinzenflora</h3>
-            <p class="lead" data-i18n="boeken.bb.lead">Twee sfeervolle kamers op het landgoed. Een plek die je laat vertragen, met het park aan je deur.</p>
-
-            <ul class="boeken-facts">
-              <li>
-                <span class="label" data-i18n="boeken.bb.fact1.label">Kamers</span>
-                <span class="value" data-i18n="boeken.bb.fact1.value">Stinzenflora · Martenastate</span>
-              </li>
-              <li>
-                <span class="label" data-i18n="boeken.bb.fact2.label">Capaciteit</span>
-                <span class="value" data-i18n="boeken.bb.fact2.value">Max. 2 personen per kamer</span>
-              </li>
-              <li>
-                <span class="label" data-i18n="boeken.bb.fact3.label">Check-in</span>
-                <span class="value" data-i18n="boeken.bb.fact3.value">Vanaf 15:00</span>
-              </li>
-              <li>
-                <span class="label" data-i18n="boeken.bb.fact4.label">Open</span>
-                <span class="value" data-i18n="boeken.bb.fact4.value">Het hele jaar</span>
-              </li>
-            </ul>
-
-            <div class="boeken-tags">
-              <span class="boeken-tag" data-i18n="boeken.bb.tag1">Privé badkamer</span>
-              <span class="boeken-tag" data-i18n="boeken.bb.tag2">Buitenzithoek</span>
-              <span class="boeken-tag" data-i18n="boeken.bb.tag3">WiFi</span>
-              <span class="boeken-tag" data-i18n="boeken.bb.tag4">Gratis parkeren</span>
-            </div>
-
-            <div class="boeken-cta">
-              <a href="https://bedandbreakfaststinzenflora.nl/" target="_blank" rel="noopener" class="btn btn-primary">
-                <span data-i18n="boeken.bb.cta">Bekijk beschikbaarheid</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-              </a>
-              <a href="verblijf.html" class="btn btn-outline" data-i18n="boeken.more">Meer over de kamers</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Natuurkampeerterrein -->
-        <article class="boeken-card" data-kind="camping">
-          <div class="boeken-card-media">
-            <img src="images/photo-camping.jpg" alt="Natuurkampeerterrein in het park">
-            <div class="boeken-arch">
-              <span class="boeken-arch-label">Camping</span>
-            </div>
-          </div>
-          <div class="boeken-card-body">
-            <span class="boeken-eyebrow" data-i18n="boeken.camping.eyebrow">Achter de beuken</span>
-            <h3 data-i18n="boeken.camping.title">Natuurkampeerterrein</h3>
-            <p class="lead" data-i18n="boeken.camping.lead">Rustig kamperen tussen oude beuken en stinzenflora. Geen overbodige luxe, wel rust en ruimte.</p>
-
-            <ul class="boeken-facts">
-              <li>
-                <span class="label" data-i18n="boeken.camping.fact1.label">Seizoen</span>
-                <span class="value" data-i18n="boeken.camping.fact1.value">1 apr – 1 okt</span>
-              </li>
-              <li>
-                <span class="label" data-i18n="boeken.camping.fact2.label">Kaart</span>
-                <span class="value" data-i18n="boeken.camping.fact2.value">Natuurkampeerkaart vereist</span>
-              </li>
-              <li>
-                <span class="label" data-i18n="boeken.camping.fact3.label">Vanaf</span>
-                <span class="value" data-i18n="boeken.camping.fact3.value">€ 12,50 / volwassene</span>
-              </li>
-              <li>
-                <span class="label" data-i18n="boeken.camping.fact4.label">Adres</span>
-                <span class="value" data-i18n="boeken.camping.fact4.value">De Wier 7A</span>
-              </li>
-            </ul>
-
-            <div class="boeken-tags">
-              <span class="boeken-tag" data-i18n="boeken.camping.tag1">Tent · caravan · camper</span>
-              <span class="boeken-tag" data-i18n="boeken.camping.tag2">Sanitair</span>
-              <span class="boeken-tag" data-i18n="boeken.camping.tag3">Stroom (optie)</span>
-              <span class="boeken-tag" data-i18n="boeken.camping.tag4">Hond aan de lijn</span>
-            </div>
-
-            <div class="boeken-cta">
-              <a href="https://martenastate.nl/natuurkampeerterrein/boekingsformulier/" target="_blank" rel="noopener" class="btn btn-primary">
-                <span data-i18n="boeken.camping.cta">Open boekingsformulier</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-              </a>
-              <a href="verblijf.html" class="btn btn-outline" data-i18n="boeken.more">Meer over de camping</a>
-            </div>
-          </div>
-        </article>
-
+      <!-- Lodgify search widget: live beschikbaarheid + boeken -->
+      <div class="lodgify-wrap">
+        <div class="lodgify-wrap-head">
+          <h3 data-i18n="boeken.bb.widget.title">Beschikbaarheid &amp; direct boeken</h3>
+          <span class="hint" data-i18n="boeken.bb.widget.hint">Selecteer je data — we tonen meteen of het kan</span>
+        </div>
+        <div
+          id="lodgify-search-bar"
+          data-website-id="605019"
+          data-language-code="nl"
+          data-search-page-url='https://bedandbreakfaststinzenflora.nl/nl/direct-boeken'
+          data-dates-check-in-label='Aankomst'
+          data-dates-check-out-label='Vertrek'
+          data-guests-counter-label='Gasten'
+          data-guests-input-singular-label='{{NumberOfGuests}} gast'
+          data-guests-input-plural-label='{{NumberOfGuests}} gasten'
+          data-location-input-label='Locatie'
+          data-search-button-label='Zoeken'
+          data-dates-input-min-stay-tooltip-text='{"one":"Minimaal {minStay} nacht","other":"Minimaal {minStay} nachten"}'
+          data-guests-breakdown-label='Gasten'
+          data-adults-label='{"one":"volwassene","other":"volwassenen"}'
+          data-adults-description='Leeftijd {minAge} of ouder'
+          data-children-label='{"one":"kind","other":"kinderen"}'
+          data-children-description='Leeftijden {minAge} - {maxAge}'
+          data-children-not-allowed-label='Niet geschikt voor kinderen'
+          data-infants-label='{"one":"zuigeling","other":"zuigelingen"}'
+          data-infants-description='Minder dan {maxAge}'
+          data-infants-not-allowed-label="Niet geschikt voor baby's"
+          data-pets-label='{"one":"huisdier","other":"huisdieren"}'
+          data-pets-not-allowed-label='Niet toegestaan'
+          data-done-label='Klaar'
+          data-new-tab="true"
+          data-version="stable"
+          data-hide-location
+        ></div>
       </div>
 
-      <!-- ───────────────── Help / contact ───────────────── -->
+      <div class="boeken-section-grid">
+        <div class="boeken-section-details">
+          <ul class="boeken-facts">
+            <li>
+              <span class="label" data-i18n="boeken.bb.fact1.label">Kamers</span>
+              <span class="value" data-i18n="boeken.bb.fact1.value">Stinzenflora · Martenastate</span>
+            </li>
+            <li>
+              <span class="label" data-i18n="boeken.bb.fact2.label">Capaciteit</span>
+              <span class="value" data-i18n="boeken.bb.fact2.value">Max. 2 personen per kamer</span>
+            </li>
+            <li>
+              <span class="label" data-i18n="boeken.bb.fact3.label">Check-in</span>
+              <span class="value" data-i18n="boeken.bb.fact3.value">Vanaf 15:00</span>
+            </li>
+            <li>
+              <span class="label" data-i18n="boeken.bb.fact4.label">Open</span>
+              <span class="value" data-i18n="boeken.bb.fact4.value">Het hele jaar</span>
+            </li>
+          </ul>
+
+          <div class="boeken-tags">
+            <span class="boeken-tag" data-i18n="boeken.bb.tag1">Privé badkamer</span>
+            <span class="boeken-tag" data-i18n="boeken.bb.tag2">Buitenzithoek</span>
+            <span class="boeken-tag" data-i18n="boeken.bb.tag3">WiFi</span>
+            <span class="boeken-tag" data-i18n="boeken.bb.tag4">Gratis parkeren</span>
+          </div>
+
+          <div class="boeken-section-cta">
+            <a href="verblijf.html" class="btn btn-outline" data-i18n="boeken.more">Meer over de kamers</a>
+          </div>
+        </div>
+
+        <div class="boeken-media">
+          <img src="images/photo-bnb.jpg" alt="B&B Stinzenflora kamer" loading="lazy">
+          <div class="boeken-arch"><span class="boeken-arch-label">B&amp;B</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ───────────────── Natuurkampeerterrein — externe boeking ───────────────── -->
+  <section class="boeken-section boeken-camping">
+    <div class="container">
+
+      <header class="boeken-section-head">
+        <span class="boeken-eyebrow green"><span class="dot"></span><span data-i18n="boeken.camping.eyebrow">Achter de beuken · Camping</span></span>
+        <h2 data-i18n="boeken.camping.title">Natuurkampeerterrein</h2>
+        <p class="lead" data-i18n="boeken.camping.lead">Rustig kamperen tussen oude beuken en stinzenflora. Geen overbodige luxe, wel rust en ruimte.</p>
+      </header>
+
+      <div class="boeken-section-grid">
+        <div class="boeken-section-details">
+          <ul class="boeken-facts">
+            <li>
+              <span class="label" data-i18n="boeken.camping.fact1.label">Seizoen</span>
+              <span class="value" data-i18n="boeken.camping.fact1.value">1 apr – 1 okt</span>
+            </li>
+            <li>
+              <span class="label" data-i18n="boeken.camping.fact2.label">Kaart</span>
+              <span class="value" data-i18n="boeken.camping.fact2.value">Natuurkampeerkaart vereist</span>
+            </li>
+            <li>
+              <span class="label" data-i18n="boeken.camping.fact3.label">Vanaf</span>
+              <span class="value" data-i18n="boeken.camping.fact3.value">€ 12,50 / volwassene</span>
+            </li>
+            <li>
+              <span class="label" data-i18n="boeken.camping.fact4.label">Adres</span>
+              <span class="value" data-i18n="boeken.camping.fact4.value">De Wier 7A</span>
+            </li>
+          </ul>
+
+          <div class="boeken-tags">
+            <span class="boeken-tag" data-i18n="boeken.camping.tag1">Tent · caravan · camper</span>
+            <span class="boeken-tag" data-i18n="boeken.camping.tag2">Sanitair</span>
+            <span class="boeken-tag" data-i18n="boeken.camping.tag3">Stroom (optie)</span>
+            <span class="boeken-tag" data-i18n="boeken.camping.tag4">Hond aan de lijn</span>
+          </div>
+
+          <div class="boeken-section-cta">
+            <a href="https://martenastate.nl/natuurkampeerterrein/boekingsformulier/" target="_blank" rel="noopener" class="btn btn-primary">
+              <span data-i18n="boeken.camping.cta">Open boekingsformulier</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            </a>
+            <a href="verblijf.html" class="btn btn-outline" data-i18n="boeken.more">Meer over de camping</a>
+          </div>
+        </div>
+
+        <div class="boeken-media">
+          <img src="images/photo-camping.jpg" alt="Natuurkampeerterrein in het park" loading="lazy">
+          <div class="boeken-arch"><span class="boeken-arch-label">Camping</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ───────────────── Help / contact ───────────────── -->
+  <section style="padding: var(--space-7) 0 var(--space-8);">
+    <div class="container">
       <div class="boeken-help">
         <div>
           <span class="section-eyebrow" style="color: var(--ms-bostulp-goud); margin-bottom: var(--space-3); display: inline-block;" data-i18n="boeken.help.eyebrow">Vragen vooraf?</span>
@@ -474,6 +563,8 @@
   <script src="js/icons.js"></script>
   <script src="js/translations.js"></script>
   <script src="js/main.js"></script>
+  <!-- Lodgify booking widget — renders availability search for B&B Stinzenflora -->
+  <script src="https://app.lodgify.com/portable-search-bar/stable/renderPortableSearchBar.js" defer></script>
   <script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js").catch(()=>{})}</script>
 </body>
 </html>
