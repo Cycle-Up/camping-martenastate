@@ -2,7 +2,7 @@
 // Caches core pages for offline access. Gasten kunnen de gids lezen
 // ook zonder internetverbinding (in het park of met slecht signaal).
 
-const CACHE_NAME = 'martenastate-v13';
+const CACHE_NAME = 'martenastate-v14';
 
 const CORE_ASSETS = [
   '/',
@@ -10,14 +10,20 @@ const CORE_ASSETS = [
   '/verblijf.html',
   '/activiteiten.html',
   '/omgeving.html',
+  '/boeken.html',
+  '/gastenboek.html',
   '/pocket.html',
+  '/privacy.html',
   '/404.html',
   '/css/style.css',
+  '/css/tokens.css',
   '/js/main.js',
   '/js/icons.js',
   '/js/translations.js',
   '/js/routes.js',
+  '/js/places.js',
   '/favicon.svg',
+  '/manifest.webmanifest',
 ];
 
 // Cache fonts from Google Fonts (cross-origin, cache separately)

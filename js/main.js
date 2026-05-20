@@ -33,6 +33,12 @@ function applyTranslations() {
   document.querySelectorAll('.lang-toggle button').forEach(btn => {
     btn.classList.toggle('active', btn.getAttribute('data-lang') === currentLang);
   });
+  // Keep og:locale in sync with the active language for accurate link previews
+  const localeMap = {nl: 'nl_NL', en: 'en_GB', de: 'de_DE'};
+  const ogLocale = document.querySelector('meta[property="og:locale"]');
+  if (ogLocale && localeMap[currentLang]) {
+    ogLocale.setAttribute('content', localeMap[currentLang]);
+  }
 }
 
 function setLang(lang) {
@@ -211,10 +217,10 @@ function initMap() {
   const chip = (txt) => `<span style="background:#ECE5D6;color:#0F4A4F;padding:.15rem .5rem;border-radius:999px;font-size:.7rem;font-weight:600;">${txt}</span>`;
 
   function buildRoutePopup(route, kind) {
-    const name = currentLang === 'en' ? route.name_en : route.name_nl;
-    const desc = currentLang === 'en' ? route.desc_en : route.desc_nl;
-    const dur = currentLang === 'en' ? route.duration_en : route.duration_nl;
-    const diff = currentLang === 'en' ? route.difficulty_en : route.difficulty_nl;
+    const name = route['name_' + currentLang] || route.name_nl;
+    const desc = route['desc_' + currentLang] || route.desc_nl;
+    const dur = route['duration_' + currentLang] || route.duration_nl;
+    const diff = route['difficulty_' + currentLang] || route.difficulty_nl;
     const catLabel = kind === 'walking' ? t('kaart.filter.wandelen') : t('kaart.filter.fietsen');
     const linkLabel = currentLang === 'en' ? 'Open route →' : 'Open route →';
     return `
@@ -227,10 +233,10 @@ function initMap() {
   }
 
   function buildPlacePopup(place) {
-    const name = currentLang === 'en' ? place.name_en : place.name_nl;
-    const desc = currentLang === 'en' ? place.desc_en : place.desc_nl;
-    const addr = currentLang === 'en' ? (place.addr_en || '') : (place.addr_nl || '');
-    const badge = place.badge_nl ? (currentLang === 'en' ? place.badge_en : place.badge_nl) : '';
+    const name = place['name_' + currentLang] || place.name_nl;
+    const desc = place['desc_' + currentLang] || place.desc_nl;
+    const addr = place['addr_' + currentLang] || place.addr_nl || '';
+    const badge = place.badge_nl ? (place['badge_' + currentLang] || place.badge_nl) : '';
     const badgeHtml = badge ? `<span style="background:#ECE5D6;color:#0F4A4F;padding:.15rem .5rem;border-radius:999px;font-size:.7rem;font-weight:600;margin-bottom:.4rem;display:inline-block;">${badge}</span> ` : '';
     const addrHtml = addr ? `<div style="font-size:.78rem;color:#8a7d8f;margin-top:.3rem;">${addr}</div>` : '';
     const linkLabel = currentLang === 'en' ? 'Open in Maps →' : 'Open in Maps →';

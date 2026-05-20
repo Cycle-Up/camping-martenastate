@@ -1,0 +1,27 @@
+{
+  "name": "Martenastate — Welkomstgids",
+  "short_name": "Martenastate",
+  "description": "Welkomstgids voor gasten van camping en B&B Martenastate in Koarnjum, Friesland.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F4EFE6",
+  "theme_color": "#0F4A4F",
+  "lang": "nl",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["travel", "lifestyle"]
+}
