@@ -20,7 +20,6 @@ Legenda: 🔒 = vereist actie van Jeroen (kan ik niet alleen) · 📈 = leunt op
 
 ## ── Fase 3 · Conversie & boekingen ────────────────────────────
 
-- [ ] Lodgify-widget EN/DE-labels — klaar wanneer: bij taalkeuze EN/DE tonen de widget-labels de juiste taal via JS, getest in preview
 - [ ] Boeking-CTA consistent over pagina's — klaar wanneer: homepage-hero, verblijf en omgeving leiden met een herkenbare, identieke "Boek/Beschikbaarheid"-CTA naar boeken.html
 - [ ] 📈 Funnel-/heatmap-review via Clarity — klaar wanneer: minstens 3 concrete observaties uit Clarity vertaald naar verbetertaken onderaan deze backlog
 - [ ] "Vandaag/seizoen"-widget koppelen aan boeken — klaar wanneer: het seizoens-/vandaag-blok op de homepage heeft een subtiele doorverwijzing naar boeken zonder de rust te breken
@@ -56,3 +55,4 @@ Legenda: 🔒 = vereist actie van Jeroen (kan ik niet alleen) · 📈 = leunt op
 - [x] JSON-LD structured data — 2026-05-19 (index: LodgingBusiness · boeken: BedAndBreakfast + Campground)
 - [x] Self-canonical per pagina — 2026-05-19 (8 indexeerbare pagina's, 404 uitgesloten)
 - [x] Meta-description-audit — 2026-05-19 (8 pagina's, alle 143–159 tekens, uniek)
+- [x] Lodgify-widget EN/DE-labels — 2026-05-19 (NL/EN/DE labelsets; load-time juiste taal + reload bij toggle; getest 3 talen)

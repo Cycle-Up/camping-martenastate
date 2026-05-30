@@ -635,7 +635,95 @@
   <script src="js/icons.js"></script>
   <script src="js/translations.js"></script>
   <script src="js/main.js"></script>
-  <!-- Lodgify booking widget — renders availability search for B&B Stinzenflora -->
+  <!-- Lodgify booking widget — taal-bewuste loader (NL/EN/DE) -->
+  <script>
+  (function () {
+    var LBL = {
+      nl: {
+        'language-code': 'nl',
+        'dates-check-in-label': 'Aankomst', 'dates-check-out-label': 'Vertrek',
+        'guests-counter-label': 'Gasten',
+        'guests-input-singular-label': '{{NumberOfGuests}} gast',
+        'guests-input-plural-label': '{{NumberOfGuests}} gasten',
+        'location-input-label': 'Locatie', 'search-button-label': 'Zoeken',
+        'dates-input-min-stay-tooltip-text': '{"one":"Minimaal {minStay} nacht","other":"Minimaal {minStay} nachten"}',
+        'guests-breakdown-label': 'Gasten',
+        'adults-label': '{"one":"volwassene","other":"volwassenen"}',
+        'adults-description': 'Leeftijd {minAge} of ouder',
+        'children-label': '{"one":"kind","other":"kinderen"}',
+        'children-description': 'Leeftijden {minAge} - {maxAge}',
+        'children-not-allowed-label': 'Niet geschikt voor kinderen',
+        'infants-label': '{"one":"zuigeling","other":"zuigelingen"}',
+        'infants-description': 'Minder dan {maxAge}',
+        'infants-not-allowed-label': "Niet geschikt voor baby's",
+        'pets-label': '{"one":"huisdier","other":"huisdieren"}',
+        'pets-not-allowed-label': 'Niet toegestaan', 'done-label': 'Klaar'
+      },
+      en: {
+        'language-code': 'en',
+        'dates-check-in-label': 'Arrival', 'dates-check-out-label': 'Departure',
+        'guests-counter-label': 'Guests',
+        'guests-input-singular-label': '{{NumberOfGuests}} guest',
+        'guests-input-plural-label': '{{NumberOfGuests}} guests',
+        'location-input-label': 'Location', 'search-button-label': 'Search',
+        'dates-input-min-stay-tooltip-text': '{"one":"Minimum {minStay} night","other":"Minimum {minStay} nights"}',
+        'guests-breakdown-label': 'Guests',
+        'adults-label': '{"one":"adult","other":"adults"}',
+        'adults-description': 'Age {minAge} or older',
+        'children-label': '{"one":"child","other":"children"}',
+        'children-description': 'Ages {minAge} - {maxAge}',
+        'children-not-allowed-label': 'Not suitable for children',
+        'infants-label': '{"one":"infant","other":"infants"}',
+        'infants-description': 'Under {maxAge}',
+        'infants-not-allowed-label': 'Not suitable for infants',
+        'pets-label': '{"one":"pet","other":"pets"}',
+        'pets-not-allowed-label': 'Not allowed', 'done-label': 'Done'
+      },
+      de: {
+        'language-code': 'de',
+        'dates-check-in-label': 'Anreise', 'dates-check-out-label': 'Abreise',
+        'guests-counter-label': 'Gäste',
+        'guests-input-singular-label': '{{NumberOfGuests}} Gast',
+        'guests-input-plural-label': '{{NumberOfGuests}} Gäste',
+        'location-input-label': 'Ort', 'search-button-label': 'Suchen',
+        'dates-input-min-stay-tooltip-text': '{"one":"Mindestens {minStay} Nacht","other":"Mindestens {minStay} Nächte"}',
+        'guests-breakdown-label': 'Gäste',
+        'adults-label': '{"one":"Erwachsener","other":"Erwachsene"}',
+        'adults-description': 'Alter {minAge} oder älter',
+        'children-label': '{"one":"Kind","other":"Kinder"}',
+        'children-description': 'Alter {minAge} - {maxAge}',
+        'children-not-allowed-label': 'Nicht für Kinder geeignet',
+        'infants-label': '{"one":"Kleinkind","other":"Kleinkinder"}',
+        'infants-description': 'Unter {maxAge}',
+        'infants-not-allowed-label': 'Nicht für Kleinkinder geeignet',
+        'pets-label': '{"one":"Haustier","other":"Haustiere"}',
+        'pets-not-allowed-label': 'Nicht erlaubt', 'done-label': 'Fertig'
+      }
+    };
+    function setAttrs(lang) {
+      var bar = document.getElementById('lodgify-search-bar');
+      if (!bar) return;
+      var set = LBL[lang] || LBL.nl;
+      Object.keys(set).forEach(function (k) { bar.setAttribute('data-' + k, set[k]); });
+      bar.setAttribute('data-rendered-lang', lang);
+    }
+    // Zet de labels in de opgeslagen taal VÓÓR de (deferred) Lodgify-render,
+    // zodat de eerste render meteen in de juiste taal is — inclusief de
+    // gast-labels, die bij dynamische her-injectie niet correct laden.
+    var saved = 'nl';
+    try { saved = localStorage.getItem('lang') || 'nl'; } catch (e) {}
+    setAttrs(saved);
+    // Taalwissel terwijl je op deze pagina bent: schone reload → de statische
+    // render-tag rendert opnieuw volledig in de nieuwe taal.
+    window.applyLodgifyLang = function (lang) {
+      var bar = document.getElementById('lodgify-search-bar');
+      if (!bar || bar.getAttribute('data-rendered-lang') === lang) return;
+      try { localStorage.setItem('lang', lang); } catch (e) {}
+      location.reload();
+    };
+  })();
+  </script>
+  <!-- Statische render-tag: eerste render werkt volledig (ook gast-labels) -->
   <script src="https://app.lodgify.com/portable-search-bar/stable/renderPortableSearchBar.js" defer></script>
   <script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js").catch(()=>{})}</script>
 </body>

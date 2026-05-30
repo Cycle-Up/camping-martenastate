@@ -4,6 +4,14 @@ Kort logboek, nieuwste bovenaan. Per turn: datum · taak · wat gedaan · result
 
 ---
 
+## 2026-05-19 — Fase 3 (Lodgify-widget meertalig)
+**Lodgify EN/DE-labels** ✅
+- Loader herschreven: NL/EN/DE labelsets in boeken.html. Inline script zet de labels in de opgeslagen taal VÓÓR de (statische, deferred) Lodgify-render → eerste render meteen correct. `window.applyLodgifyLang(lang)` herlaadt bij taalwissel (schone render). main.js setLang() roept dit aan.
+- Getest in preview: load-time NL/EN/DE renderen correct (Aankomst/Arrival/Anreise · Vertrek/Departure/Abreise · Zoeken/Search/Suchen); toggle van DE→NL herlaadt en rendert NL. Widget visueel correct: "1 gast"-teller + teal Zoeken-knop.
+- Onderzocht: dynamische her-injectie van het Lodgify-script brak het (verborgen) gast-counter-label ("G_People"); daarom de reload-aanpak. "G_People" is een verborgen, ongebruikte label die ook op de live (originele embed) voorkomt en niet zichtbaar is voor bezoekers — buiten scope, genoteerd.
+
+---
+
 ## 2026-05-19 — Fase 2 SEO (canonical + meta + JSON-LD)
 **Self-canonical** ✅ — `<link rel="canonical">` op 8 indexeerbare pagina's (eigen absolute URL); 404.html bewust uitgesloten.
 **Meta-description-audit** ✅ — 8 unieke descriptions herschreven naar 143–159 tekens (binnen 120–160).
