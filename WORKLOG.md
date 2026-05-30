@@ -4,6 +4,18 @@ Kort logboek, nieuwste bovenaan. Per turn: datum · taak · wat gedaan · result
 
 ---
 
+## 2026-05-19 — Fase 1 vervolg (PWA-icoon + hero)
+**Taak: apple-touch-icon (180×180 PNG)** ✅
+- favicon.svg met sips gerasterd; effen vierkant-achtergrond toegevoegd (#faf7f2) zodat iOS geen zwarte hoeken toont. Gegenereerd: apple-touch-icon.png (180), icon-192.png, icon-512.png. `<link rel="apple-touch-icon">` op alle 9 pagina's; manifest icons-array uitgebreid met 192/512 PNG (purpose "any maskable"). Iconen in SW-cache (v17). Manifest valideert als JSON.
+- Observatie genoteerd: favicon gebruikt nog het oude paars/sage-palet (niet de nieuwe huisstijl). Bloem-mark zelf is prima; brand-mark wijzigen is een aparte beslissing voor Jeroen.
+
+**Taak: hero/feature responsive** ✅ (pragmatisch)
+- Hero-achtergrond photo-poort.webp is 154 KB — prima voor mobiel, geen srcset nodig. Alle feature-<img> staan na compressie op ≤1280px en <500 KB. photo-fietsen.webp (1900px, 472 KB) niet verder verkleind: sips kan webp niet schrijven en er is geen webp-encoder (cwebp/magick) geïnstalleerd; 472 KB zit onder de 500 KB-grens dus acceptabel. Eventueel later met cwebp naar ~1280px.
+
+**Nog open in Fase 1:** Lighthouse mobiel-pass (meten op live na deploy).
+
+---
+
 ## 2026-05-19 — Fase 1 deels (beeld-optimalisatie)
 **Taak: photo-luchtfoto-1.png + overige zware beelden** ✅
 - Ref-analyse: 6 afbeeldingen 0× gebruikt (incl. luchtfoto 6 MB, kunstbrug 1 MB, kasteeltje-2 928 KB) → verwijderd (~8,5 MB). Geen dynamische image-paden in JS (geverifieerd).

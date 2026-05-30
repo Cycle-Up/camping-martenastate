@@ -2,7 +2,7 @@
 // Caches core pages for offline access. Gasten kunnen de gids lezen
 // ook zonder internetverbinding (in het park of met slecht signaal).
 
-const CACHE_NAME = 'martenastate-v16';
+const CACHE_NAME = 'martenastate-v17';
 
 const CORE_ASSETS = [
   '/',
@@ -21,6 +21,9 @@ const CORE_ASSETS = [
   '/js/icons.js',
   '/js/translations.js',
   '/favicon.svg',
+  '/apple-touch-icon.png',
+  '/icon-192.png',
+  '/icon-512.png',
   '/manifest.webmanifest',
 ];
 // Opmerking: js/routes.js en js/places.js zitten bewust NIET in de cache —

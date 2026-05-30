@@ -10,8 +10,6 @@ Legenda: 🔒 = vereist actie van Jeroen (kan ik niet alleen) · 📈 = leunt op
 
 ## ── Fase 1 · Performance & techniek ───────────────────────────
 
-- [ ] Hero-afbeeldingen responsive maken — klaar wanneer: de grote hero/feature-beelden gebruiken srcset of een kleinere mobiele variant, getest op 375px
-- [ ] apple-touch-icon (180×180 PNG) — klaar wanneer: PNG aanwezig, gelinkt in <head> van alle pagina's én in manifest, iOS toont een net icoon bij "op beginscherm"
 - [ ] 📈 Lighthouse mobiel-pass — klaar wanneer: Lighthouse mobiel ≥90 Performance en ≥95 Accessibility/Best-Practices/SEO; afwijkingen in WORKLOG.md
 
 ## ── Fase 2 · Vindbaarheid (SEO + data) ────────────────────────
@@ -54,3 +52,5 @@ Legenda: 🔒 = vereist actie van Jeroen (kan ik niet alleen) · 📈 = leunt op
 - [x] photo-luchtfoto-1.png + 5 ongebruikte beelden — 2026-05-19 (ongebruikt → verwijderd, 8,5 MB weg)
 - [x] Overige zware afbeeldingen comprimeren — 2026-05-19 (images/ 12 MB → 2,7 MB, alles < 500 KB)
 - [x] width/height + lazy op alle content-<img> — 2026-05-19 (19 tags, geen CLS)
+- [x] Hero/feature responsive — 2026-05-19 (hero-bg 154 KB; alle feature-beelden ≤1280px/<500 KB; fietsen.webp 472 KB blijft, geen webp-encoder beschikbaar)
+- [x] apple-touch-icon (180×180 PNG) — 2026-05-19 (+ 192/512 voor manifest, effen achtergrond, alle 9 pagina's)
