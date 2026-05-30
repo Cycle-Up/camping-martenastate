@@ -2,7 +2,7 @@
 // Caches core pages for offline access. Gasten kunnen de gids lezen
 // ook zonder internetverbinding (in het park of met slecht signaal).
 
-const CACHE_NAME = 'martenastate-v15';
+const CACHE_NAME = 'martenastate-v16';
 
 const CORE_ASSETS = [
   '/',
@@ -20,11 +20,11 @@ const CORE_ASSETS = [
   '/js/main.js',
   '/js/icons.js',
   '/js/translations.js',
-  '/js/routes.js',
-  '/js/places.js',
   '/favicon.svg',
   '/manifest.webmanifest',
 ];
+// Opmerking: js/routes.js en js/places.js zitten bewust NIET in de cache —
+// ze worden door geen enkele live pagina geladen (dormant kaart-laag).
 
 // Cache fonts from Google Fonts (cross-origin, cache separately)
 const FONT_CACHE = 'martenastate-fonts-v1';

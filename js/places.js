@@ -58,7 +58,7 @@ const mapPlaces = [
   {
     id: 'parking-landgoed',
     category: 'transport',
-    icon: '🅿️',
+    icon: 'parking',
     name_nl: 'Parkeerplaats landgoed',
     name_en: 'Estate car park',
     name_de: "Parkplatz Landgut",

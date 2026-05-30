@@ -49,8 +49,7 @@ function setLang(lang) {
   if (typeof initTodayWidget === 'function') initTodayWidget();
   if (typeof initGuestPersonalization === 'function') initGuestPersonalization();
   if (typeof initWeatherWidget === 'function') initWeatherWidget();
-  if (typeof renderRouteLists === 'function') renderRouteLists();
-  if (typeof window._martenaRefreshMapLang === 'function') window._martenaRefreshMapLang();
+  // renderRouteLists()/_martenaRefreshMapLang dormant — geen kaartpagina actief.
 }
 
 // Mobile nav toggle
@@ -166,6 +165,17 @@ function initNavbarScroll() {
   }, { passive: true });
 }
 
+// ─────────────────────────────────────────────────────────────────────────
+// DORMANT — Kaart-laag (Leaflet)
+// Bewust bewaard, maar nergens actief: er is momenteel geen kaart.html en
+// Leaflet wordt op geen enkele live pagina geladen. Alle functies hieronder
+// (initMap, getIcon, buildRoutePopup, buildPlacePopup, renderRouteLists,
+// _martenaRefreshMapLang) zijn guarded en worden NIET aangeroepen vanuit
+// bootMartenastate(). De data leeft in js/routes.js + js/places.js (volledig
+// NL/EN/DE vertaald). Wil je de interactieve kaart terug: maak kaart.html met
+// een #map-element, laad Leaflet + routes.js + places.js, en roep initMap()
+// en renderRouteLists() weer aan.
+// ─────────────────────────────────────────────────────────────────────────
 // Map initialisation (only on kaart.html)
 function initMap() {
   const mapEl = document.getElementById('map');
@@ -586,8 +596,9 @@ function bootMartenastate() {
   initTabs();
   initScrollAnimations();
   initNavbarScroll();
-  initMap();
-  renderRouteLists();
+  // initMap() en renderRouteLists() bewust niet aangeroepen: de kaartpagina
+  // bestaat niet meer. De functies blijven (dormant) staan voor een toekomstige
+  // kaart.html — zie de DORMANT-markering verderop in dit bestand.
   initBackToTop();
   initCopyable();
   initTodayWidget();
