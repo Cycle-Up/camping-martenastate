@@ -4,6 +4,14 @@ Kort logboek, nieuwste bovenaan. Per turn: datum · taak · wat gedaan · result
 
 ---
 
+## 2026-05-19 — Fase 2 SEO (canonical + meta + JSON-LD)
+**Self-canonical** ✅ — `<link rel="canonical">` op 8 indexeerbare pagina's (eigen absolute URL); 404.html bewust uitgesloten.
+**Meta-description-audit** ✅ — 8 unieke descriptions herschreven naar 143–159 tekens (binnen 120–160).
+**JSON-LD structured data** ✅ — index.html: LodgingBusiness (naam, adres, geo, telefoon, image, priceRange). boeken.html: @graph met BedAndBreakfast (Martenawei 2, 2 kamers, amenities) + Campground (De Wier 7A, seizoen, petsAllowed). Beide blokken parsen als geldig JSON; te dubbelchecken in Google Rich Results Test na deploy.
+**Open in Fase 2:** Vercel Analytics activeren (🔒 dashboard).
+
+---
+
 ## 2026-05-19 — Deploy v17 + Lighthouse-meting geblokkeerd
 - Git-push deployt niet automatisch op dit project (commit-author ≠ Vercel-teamlid) → productie-deploy via `vercel deploy --prod --archive=tgz`. v17 live geverifieerd: apple-touch-icon 200, verwijderde luchtfoto 404 (correct).
 - **Lighthouse mobiel-pass (Fase 1) kan nu niet gemeten worden:** PSI-API anonieme dagquota uitgeput, geen API-key, lighthouse-CLI niet geïnstalleerd. Taak blijft expliciet OPEN — niet afgevinkt zonder echte meting. Perf-fundament (beeld 12→2,7 MB, width/height, lazy) staat wel klaar; verwachte scores hoog. Te meten via DevTools-Lighthouse of npx lighthouse in een latere turn.

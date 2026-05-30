@@ -15,9 +15,7 @@ Legenda: 🔒 = vereist actie van Jeroen (kan ik niet alleen) · 📈 = leunt op
 
 ## ── Fase 2 · Vindbaarheid (SEO + data) ────────────────────────
 
-- [ ] JSON-LD structured data — klaar wanneer: index.html heeft LodgingBusiness, boeken.html heeft BedAndBreakfast + Campground, valideert foutloos in Google Rich Results Test
-- [ ] Self-canonical per pagina — klaar wanneer: elke pagina heeft <link rel="canonical"> naar zijn eigen absolute URL
-- [ ] Meta-description-audit — klaar wanneer: elke pagina heeft een unieke description van 120–160 tekens
+### ⏸ Geblokkeerd — wacht op Jeroen
 - [ ] 🔒📈 Vercel Analytics activeren + Clarity-baseline — klaar wanneer: Analytics toont data, Clarity-sessies binnen, eerste observaties in WORKLOG.md
 
 ## ── Fase 3 · Conversie & boekingen ────────────────────────────
@@ -55,3 +53,6 @@ Legenda: 🔒 = vereist actie van Jeroen (kan ik niet alleen) · 📈 = leunt op
 - [x] width/height + lazy op alle content-<img> — 2026-05-19 (19 tags, geen CLS)
 - [x] Hero/feature responsive — 2026-05-19 (hero-bg 154 KB; alle feature-beelden ≤1280px/<500 KB; fietsen.webp 472 KB blijft, geen webp-encoder beschikbaar)
 - [x] apple-touch-icon (180×180 PNG) — 2026-05-19 (+ 192/512 voor manifest, effen achtergrond, alle 9 pagina's)
+- [x] JSON-LD structured data — 2026-05-19 (index: LodgingBusiness · boeken: BedAndBreakfast + Campground)
+- [x] Self-canonical per pagina — 2026-05-19 (8 indexeerbare pagina's, 404 uitgesloten)
+- [x] Meta-description-audit — 2026-05-19 (8 pagina's, alle 143–159 tekens, uniek)
