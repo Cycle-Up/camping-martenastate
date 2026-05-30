@@ -10,9 +10,6 @@ Legenda: 🔒 = vereist actie van Jeroen (kan ik niet alleen) · 📈 = leunt op
 
 ## ── Fase 1 · Performance & techniek ───────────────────────────
 
-- [ ] photo-luchtfoto-1.png comprimeren — klaar wanneer: < 400 KB (of omgezet naar .webp), referenties bijgewerkt, geen zichtbaar kwaliteitsverlies
-- [ ] Overige zware afbeeldingen comprimeren — klaar wanneer: totale images/ < 4 MB (nu 12 MB), elke afbeelding < 500 KB, visueel onveranderd
-- [ ] width/height + lazy op alle content-<img> — klaar wanneer: elke content-afbeelding heeft expliciete width+height (geen CLS) en loading="lazy" waar passend
 - [ ] Hero-afbeeldingen responsive maken — klaar wanneer: de grote hero/feature-beelden gebruiken srcset of een kleinere mobiele variant, getest op 375px
 - [ ] apple-touch-icon (180×180 PNG) — klaar wanneer: PNG aanwezig, gelinkt in <head> van alle pagina's én in manifest, iOS toont een net icoon bij "op beginscherm"
 - [ ] 📈 Lighthouse mobiel-pass — klaar wanneer: Lighthouse mobiel ≥90 Performance en ≥95 Accessibility/Best-Practices/SEO; afwijkingen in WORKLOG.md
@@ -54,3 +51,6 @@ Legenda: 🔒 = vereist actie van Jeroen (kan ik niet alleen) · 📈 = leunt op
 - [x] preview.html uit productie halen — 2026-05-19 (verwijderd, robots opgeschoond)
 - [x] places.js parking-emoji vervangen — 2026-05-19 ('🅿️' → 'parking')
 - [x] Dode kaart-code besluit — 2026-05-19 (dormant bewaard, runtime-aanroepen + SW-cache opgeschoond)
+- [x] photo-luchtfoto-1.png + 5 ongebruikte beelden — 2026-05-19 (ongebruikt → verwijderd, 8,5 MB weg)
+- [x] Overige zware afbeeldingen comprimeren — 2026-05-19 (images/ 12 MB → 2,7 MB, alles < 500 KB)
+- [x] width/height + lazy op alle content-<img> — 2026-05-19 (19 tags, geen CLS)

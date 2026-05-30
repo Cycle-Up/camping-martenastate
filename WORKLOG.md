@@ -4,6 +4,16 @@ Kort logboek, nieuwste bovenaan. Per turn: datum · taak · wat gedaan · result
 
 ---
 
+## 2026-05-19 — Fase 1 deels (beeld-optimalisatie)
+**Taak: photo-luchtfoto-1.png + overige zware beelden** ✅
+- Ref-analyse: 6 afbeeldingen 0× gebruikt (incl. luchtfoto 6 MB, kunstbrug 1 MB, kasteeltje-2 928 KB) → verwijderd (~8,5 MB). Geen dynamische image-paden in JS (geverifieerd).
+- photo-bloemen.jpg (959 KB) + photo-singel.jpg (922 KB) waren 1600px: verkleind naar 1280px @ q55 → 419 KB / 354 KB. images/ totaal **12 MB → 2,7 MB**, elke afbeelding < 500 KB.
+
+**Taak: width/height + lazy op alle content-<img>** ✅
+- 19 img-tags voorzien van intrinsieke width/height (aspect-ratio → geen CLS) + loading="lazy" waar het ontbrak. 1×1 base64-placeholder bewust overgeslagen. Geverifieerd: 0 content-images zonder w/h/lazy.
+
+---
+
 ## 2026-05-19 — Fase 0 (code-zijde) afgerond
 **Taak: preview.html uit productie halen** ✅
 - Geverifieerd: 0 verwijzingen in HTML/JS/CSS, niet in sitemap. `git rm preview.html` (4096 regels legacy prototype; herstelbaar via historie). `Disallow: /preview.html` uit robots.txt.
