@@ -11,6 +11,7 @@ Legenda: 🔒 = vereist actie van Jeroen (kan ik niet alleen) · 📈 = leunt op
 ## ── Fase 1 · Performance & techniek ───────────────────────────
 
 - [ ] 📈 Lighthouse mobiel-pass — klaar wanneer: Lighthouse mobiel ≥90 Performance en ≥95 Accessibility/Best-Practices/SEO; afwijkingen in WORKLOG.md
+      ⏳ WACHT OP METING: PSI-dagquota op (geen API-key), lighthouse-CLI niet geïnstalleerd. Onderliggende perf-werk is af (beeld 12→2,7 MB, CLS-fix, lazy). Meten via: Chrome DevTools → Lighthouse, óf `npx lighthouse <url> --preset=mobile`, óf PSI met API-key.
 
 ## ── Fase 2 · Vindbaarheid (SEO + data) ────────────────────────
 

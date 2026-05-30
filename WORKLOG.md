@@ -4,6 +4,12 @@ Kort logboek, nieuwste bovenaan. Per turn: datum · taak · wat gedaan · result
 
 ---
 
+## 2026-05-19 — Deploy v17 + Lighthouse-meting geblokkeerd
+- Git-push deployt niet automatisch op dit project (commit-author ≠ Vercel-teamlid) → productie-deploy via `vercel deploy --prod --archive=tgz`. v17 live geverifieerd: apple-touch-icon 200, verwijderde luchtfoto 404 (correct).
+- **Lighthouse mobiel-pass (Fase 1) kan nu niet gemeten worden:** PSI-API anonieme dagquota uitgeput, geen API-key, lighthouse-CLI niet geïnstalleerd. Taak blijft expliciet OPEN — niet afgevinkt zonder echte meting. Perf-fundament (beeld 12→2,7 MB, width/height, lazy) staat wel klaar; verwachte scores hoog. Te meten via DevTools-Lighthouse of npx lighthouse in een latere turn.
+
+---
+
 ## 2026-05-19 — Fase 1 vervolg (PWA-icoon + hero)
 **Taak: apple-touch-icon (180×180 PNG)** ✅
 - favicon.svg met sips gerasterd; effen vierkant-achtergrond toegevoegd (#faf7f2) zodat iOS geen zwarte hoeken toont. Gegenereerd: apple-touch-icon.png (180), icon-192.png, icon-512.png. `<link rel="apple-touch-icon">` op alle 9 pagina's; manifest icons-array uitgebreid met 192/512 PNG (purpose "any maskable"). Iconen in SW-cache (v17). Manifest valideert als JSON.
