@@ -7,7 +7,6 @@ ongewijzigd · Clarity niet installeren · favicon recolor naar huisstijl.
 
 ## ── Fase 5 · Robuustheid & testsuite ──────────────────────────
 
-- [ ] i18n-/HTML-validatiescript — klaar wanneer: `node tests/check-i18n.mjs` bevestigt NL=EN=DE-pariteit, meldt data-i18n-keys zonder vertaling, checkt _de-velden in places.js/routes.js, + HTML-sanity (canonical, één h1, alt, lang-attr); exit 0 bij groen
 - [ ] Linkchecker-script — klaar wanneer: `node tests/check-links.mjs` controleert álle externe links op echte 200 (incl. redirect-/content-check), exit 0 bij groen
 - [ ] Offline-/404-test — klaar wanneer: check bevestigt dat de gids offline laadt met SW actief en 404.html bij onbekende paden verschijnt
 - [ ] Lighthouse mobiel-meting — klaar wanneer: `npx lighthouse` mobiel ≥90 Perf / ≥95 A11y-BP-SEO; lukt headless Chrome niet, dan proxy-verificatie groen + vlag voor 1 handmatige DevTools-check
@@ -47,3 +46,4 @@ ongewijzigd · Clarity niet installeren · favicon recolor naar huisstijl.
 - [x] Taalknoppen a11y — 2026-05-19 (aria-pressed schakelt mee met actieve taal)
 - [x] Tekst-/stijlpass per taal — 2026-05-19 (scan schoon; 2 EN-stijlfixes; pariteit 1078)
 - [x] Galerij robuust + uitbreidbaar — 2026-05-19 (onerror-fallback aanwezig; LEES_MIJ.txt geactualiseerd)
+- [x] i18n-/HTML-validatiescript — 2026-05-19 (tests/check-i18n.mjs; ving + fixte ontbrekende key vb.price.note; exit 0)

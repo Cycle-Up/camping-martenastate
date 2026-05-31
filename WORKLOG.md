@@ -4,6 +4,13 @@ Kort logboek, nieuwste bovenaan. Per turn: datum · taak · wat gedaan · result
 
 ---
 
+## 2026-05-19 — Fase 5 start: i18n/HTML-validatiescript
+**tests/check-i18n.mjs** ✅ — controleert: NL=EN=DE-pariteit, alle HTML data-i18n-keys bestaan, places.js/routes.js _nl→_en/_de compleet, HTML-sanity (1× h1, lang-attr, canonical behalve 404, img-alt). Exit 0 groen / 1 bij fouten.
+- **Ving een echte bug**: `vb.price.note` werd in verblijf.html gebruikt (data-i18n-html) maar ontbrak in translations → EN/DE zagen NL-tekst. Key toegevoegd in 3 talen (nu 1079 elk). Script daarna groen.
+- SW → v22 (translation-fix live).
+
+---
+
 ## 2026-05-19 — Fase 4 compleet: tekstpass + galerij
 **Tekst-/stijlpass** ✅ — automatische scan: geen onvertaalde lekkage (NL==EN/DE matches zijn eigennamen/internationale termen), geen dubbele spaties/leestekens. Gerichte EN-stijlfixes: verblijf.subtitle ("Whatever you came to do?" → "What you do here is up to you."); faq.a.kids afgestemd op de speelse NL/DE-toon (gnomes). Pariteit blijft 1078/1078/1078.
 **Galerij robuust** ✅ — alle 10 gallery-srcs bestaan; onerror-fallback op alle 8 tegels (gekleurde placeholder bij ontbrekend beeld); CSS-placeholder aanwezig. images/LEES_MIJ.txt herschreven: was verouderd (oude placeholdernamen, "gebruikt placeholders"=onwaar) → nu accuraat pad om (seizoens)foto's te vervangen/toevoegen incl. SW-bump + testsuite-check.

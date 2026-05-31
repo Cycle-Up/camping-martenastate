@@ -2,7 +2,7 @@
 // Caches core pages for offline access. Gasten kunnen de gids lezen
 // ook zonder internetverbinding (in het park of met slecht signaal).
 
-const CACHE_NAME = 'martenastate-v21';
+const CACHE_NAME = 'martenastate-v22';
 
 const CORE_ASSETS = [
   '/',
