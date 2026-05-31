@@ -51,6 +51,8 @@ function setLang(lang) {
   if (typeof initWeatherWidget === 'function') initWeatherWidget();
   // Lodgify-boekingswidget (boeken.html) mee laten schakelen met de taal
   if (typeof window.applyLodgifyLang === 'function') window.applyLodgifyLang(currentLang);
+  // Gastenboek (gastenboek.html) opnieuw renderen zodat datums/lege-staat de taal volgen
+  if (typeof window.refreshGuestbook === 'function') window.refreshGuestbook();
   // renderRouteLists()/_martenaRefreshMapLang dormant — geen kaartpagina actief.
 }
 

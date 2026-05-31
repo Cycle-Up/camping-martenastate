@@ -191,8 +191,12 @@
       return { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Content-Type': 'application/json', ...extra };
     }
 
+    function currentLocale() {
+      const map = { nl: 'nl-NL', en: 'en-GB', de: 'de-DE' };
+      return map[document.documentElement.lang] || 'nl-NL';
+    }
     function formatDate(iso) {
-      return new Date(iso).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
+      return new Date(iso).toLocaleDateString(currentLocale(), { day: 'numeric', month: 'long', year: 'numeric' });
     }
 
     function escapeText(str) {
@@ -219,7 +223,7 @@
     function renderEntries(entries) {
       const container = document.getElementById('gbEntries');
       if (!entries.length) {
-        container.innerHTML = '<div class="gb-empty">Nog geen berichten. Wees de eerste!</div>';
+        container.innerHTML = '<div class="gb-empty">' + escapeText(t('guestbook.empty')) + '</div>';
         return;
       }
       container.innerHTML = entries.map(e => {
@@ -254,7 +258,7 @@
         renderEntries(await res.json());
       } catch {
         document.getElementById('gbEntries').innerHTML =
-          '<div class="gb-error">Kon berichten niet laden. Probeer de pagina te vernieuwen.</div>';
+          '<div class="gb-error">' + escapeText(t('guestbook.error.load')) + '</div>';
       }
     }
 
@@ -291,11 +295,14 @@
         if (typeof showToast === 'function') showToast(t('toast.guestbook_posted') || 'Bericht geplaatst!');
         await loadEntries();
       } catch {
-        errorEl.textContent = 'Kon bericht niet plaatsen. Probeer het opnieuw.';
+        errorEl.textContent = t('guestbook.error.post');
         errorEl.style.display = 'block';
       }
       submitBtn.disabled = false;
     });
+
+    // Her-render bij taalwissel zodat datums + lege-staat de nieuwe taal volgen
+    window.refreshGuestbook = loadEntries;
 
     loadEntries();
   </script>

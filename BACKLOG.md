@@ -5,7 +5,6 @@ ongewijzigd · Clarity niet installeren · favicon recolor naar huisstijl.
 
 ## ── Fase 4 · Content & meertaligheid ──────────────────────────
 
-- [ ] Gastenboek-systeemteksten i18n — klaar wanneer: lege-staat, foutmeldingen én datumnotatie volgen currentLang (NL/EN/DE); geen hardcoded NL meer in de inline JS; getest in 3 talen
 - [ ] Favicon + iconen recolor naar huisstijl — klaar wanneer: bloem-mark in Leien blauw + Martena Rood/Bostulp goud; favicon.svg + apple-touch-icon/192/512 opnieuw gegenereerd; zichtbaar in tab
 - [ ] Mobile actiebar ROUTE/ROUTES verduidelijken — klaar wanneer: onderscheid helder (aanname: "Hierheen" voor navigatie, "Routes" voor wandel/fiets); getest 320–481px
 - [ ] places.js/routes.js i18n-consistentie — klaar wanneer: alle name/desc/badge-velden hebben _nl/_en/_de en de render-laag valt nergens terug op NL; geverifieerd met scriptje
@@ -48,3 +47,4 @@ ongewijzigd · Clarity niet installeren · favicon recolor naar huisstijl.
 - [x] Feedbackformulier-bestemming fixen — 2026-05-19 (mailto jeroen@cycle-up.nl)
 - [x] Boeking-CTA consistent over pagina's — 2026-05-19 (rode "Boek je plek" op index/verblijf/omgeving)
 - [x] "Vandaag/seizoen"-blok → boeken — 2026-05-19 (subtiele link in vandaag-widget)
+- [x] Gastenboek-systeemteksten i18n — 2026-05-19 (lege-staat/errors/datum volgen taal; +refreshGuestbook bij toggle)

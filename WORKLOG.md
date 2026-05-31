@@ -4,6 +4,14 @@ Kort logboek, nieuwste bovenaan. Per turn: datum · taak · wat gedaan · result
 
 ---
 
+## 2026-05-19 — Fase 4 start: gastenboek i18n
+**Gastenboek-systeemteksten i18n** ✅
+- Hardcoded NL uit de inline JS gehaald: lege-staat → `t('guestbook.empty')`, laadfout → `t('guestbook.error.load')`, postfout → `t('guestbook.error.post')` (2 nieuwe keys × 3 talen, 1078 keys elk). Datum via `currentLocale()` (document.documentElement.lang → nl-NL/en-GB/de-DE).
+- `window.refreshGuestbook = loadEntries` + aanroep in main.js setLang → bij taalwissel re-render met juiste datums/teksten.
+- Verificatie: error-string rendert correct in EN ("Couldn't load messages…"); datum-locale klopt (en-GB "18 May 2026", de-DE "18. Mai 2026"). Supabase-load faalt in preview ("Offline" via SW) = omgeving, niet mijn code (fetch ongewijzigd; live laadde eerder 11 entries).
+
+---
+
 ## 2026-05-19 — Fase 3 afgerond (conversie) + backlog herzien
 - Backlog herschreven na planstap + 4 keuzes (feedback→mailto jeroen; gastenboek ongewijzigd; geen Clarity; favicon recolor). Geschrapt: spamfilter, RLS-taak, Clarity-funnel. Toegevoegd: feedback-fix, gastenboek-i18n, favicon-recolor, galerij-robuust, testrunner.
 **Feedbackformulier-fix** ✅ — `action` van placeholder `jouwadres@example.com` → `mailto:jeroen@cycle-up.nl`; 0× example.com in codebase.
