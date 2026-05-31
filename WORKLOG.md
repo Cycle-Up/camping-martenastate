@@ -4,6 +4,15 @@ Kort logboek, nieuwste bovenaan. Per turn: datum · taak · wat gedaan · result
 
 ---
 
+## 2026-05-19 — Fase 3 afgerond (conversie) + backlog herzien
+- Backlog herschreven na planstap + 4 keuzes (feedback→mailto jeroen; gastenboek ongewijzigd; geen Clarity; favicon recolor). Geschrapt: spamfilter, RLS-taak, Clarity-funnel. Toegevoegd: feedback-fix, gastenboek-i18n, favicon-recolor, galerij-robuust, testrunner.
+**Feedbackformulier-fix** ✅ — `action` van placeholder `jouwadres@example.com` → `mailto:jeroen@cycle-up.nl`; 0× example.com in codebase.
+**Boeking-CTA consistent** ✅ — gedeelde `.btn.btn-book` (Martena Rood) + i18n `cta.book` (NL/EN/DE). Op index (primaire hero-knop), verblijf en omgeving (na hero-subtitle). Getest 375px: rgb(227,100,71), href boeken.html, navigeert.
+**Vandaag/seizoen → boeken** ✅ — subtiele link `today.book.link` ("Kom je ook? Boek je plek") in de vandaag-widget; rood, klein, breekt de rust niet.
+- Debug-noot: preview toonde lang de oude CSS doordat de **service worker (v18) style.css cache-first serveert**; pas na SW-unregister + caches wissen verscheen de nieuwe stijl. Relevant voor toekomstige previews: SW eerst legen. `!important` op .btn-book gehouden als veiligheidsmarge tegen de `.hero .btn-primary`-override.
+
+---
+
 ## 2026-05-19 — Fase 3 (Lodgify-widget meertalig)
 **Lodgify EN/DE-labels** ✅
 - Loader herschreven: NL/EN/DE labelsets in boeken.html. Inline script zet de labels in de opgeslagen taal VÓÓR de (statische, deferred) Lodgify-render → eerste render meteen correct. `window.applyLodgifyLang(lang)` herlaadt bij taalwissel (schone render). main.js setLang() roept dit aan.

@@ -3446,3 +3446,11 @@ input, textarea, select {
   font-style: normal;
 }
 .info-list-note a:hover { color: var(--ms-martena-rood); }
+
+/* ───────────── Boeking-CTA — consistente knop naar boeken.html ─────────────
+   .btn.btn-book = specificiteit 0,2,0 zodat het de ".hero .btn-primary"-override wint. */
+.btn.btn-book { background: var(--ms-martena-rood) !important; border-color: var(--ms-martena-rood) !important; color: #fff !important; }
+.btn.btn-book:hover { background: var(--ms-martena-rood-deep) !important; border-color: var(--ms-martena-rood-deep) !important; color: #fff !important; }
+.hero-book-cta { margin-top: var(--space-5); }
+.today-book-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: var(--space-4); font-size: var(--fs-14); font-weight: 700; color: var(--ms-martena-rood); letter-spacing: 0.01em; transition: gap var(--dur-fast) var(--ease-out); }
+.today-book-link:hover { gap: 0.7rem; color: var(--ms-martena-rood-deep); }

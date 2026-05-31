@@ -1,58 +1,50 @@
 # Backlog — Martenastate Welkomstgids
 Werk van boven naar beneden. Elke taak is zelfstandig afrondbaar en controleerbaar.
-Legenda: 🔒 = vereist actie van Jeroen (kan ik niet alleen) · 📈 = leunt op analytics-data
+Keuzes verwerkt (2026-05-19): feedback → mailto jeroen@cycle-up.nl · gastenboek-beveiliging
+ongewijzigd · Clarity niet installeren · favicon recolor naar huisstijl.
 
-## ── Fase 0 · Hygiëne & fundament ──────────────────────────────
+## ── Fase 4 · Content & meertaligheid ──────────────────────────
 
-### ⏸ Geblokkeerd — wacht op Jeroen (rest gaat door)
-- [ ] 🔒 Supabase RLS verifiëren — klaar wanneer: bevestigd dat de anon-key alleen SELECT + INSERT op de gastenboek-tabel toestaat (geen UPDATE/DELETE), bevinding in WORKLOG.md
-- [ ] 🔒 Productie-branch hernoemen naar main — klaar wanneer: branch heet main, Vercel volgt de nieuwe branch, oude auto-naam opgeruimd
+- [ ] Gastenboek-systeemteksten i18n — klaar wanneer: lege-staat, foutmeldingen én datumnotatie volgen currentLang (NL/EN/DE); geen hardcoded NL meer in de inline JS; getest in 3 talen
+- [ ] Favicon + iconen recolor naar huisstijl — klaar wanneer: bloem-mark in Leien blauw + Martena Rood/Bostulp goud; favicon.svg + apple-touch-icon/192/512 opnieuw gegenereerd; zichtbaar in tab
+- [ ] Mobile actiebar ROUTE/ROUTES verduidelijken — klaar wanneer: onderscheid helder (aanname: "Hierheen" voor navigatie, "Routes" voor wandel/fiets); getest 320–481px
+- [ ] places.js/routes.js i18n-consistentie — klaar wanneer: alle name/desc/badge-velden hebben _nl/_en/_de en de render-laag valt nergens terug op NL; geverifieerd met scriptje
+- [ ] Tekstuele correctie-pass per taal — klaar wanneer: spelling/typos NL/EN/DE op zichtbare teksten gecontroleerd, correcties doorgevoerd, lijst in WORKLOG
+- [ ] Galerij robuust + uitbreidbaar — klaar wanneer: gallery werkt met huidige beelden, ontbrekende beelden tonen nette fallback, gedocumenteerd pad om later seizoensfoto's toe te voegen
 
-## ── Fase 1 · Performance & techniek ───────────────────────────
+## ── Fase 5 · Robuustheid & testsuite ──────────────────────────
 
-- [ ] 📈 Lighthouse mobiel-pass — klaar wanneer: Lighthouse mobiel ≥90 Performance en ≥95 Accessibility/Best-Practices/SEO; afwijkingen in WORKLOG.md
-      ⏳ WACHT OP METING: PSI-dagquota op (geen API-key), lighthouse-CLI niet geïnstalleerd. Onderliggende perf-werk is af (beeld 12→2,7 MB, CLS-fix, lazy). Meten via: Chrome DevTools → Lighthouse, óf `npx lighthouse <url> --preset=mobile`, óf PSI met API-key.
-
-## ── Fase 2 · Vindbaarheid (SEO + data) ────────────────────────
-
-### ⏸ Geblokkeerd — wacht op Jeroen
-- [ ] 🔒📈 Vercel Analytics activeren + Clarity-baseline — klaar wanneer: Analytics toont data, Clarity-sessies binnen, eerste observaties in WORKLOG.md
-
-## ── Fase 3 · Conversie & boekingen ────────────────────────────
-
-- [ ] Boeking-CTA consistent over pagina's — klaar wanneer: homepage-hero, verblijf en omgeving leiden met een herkenbare, identieke "Boek/Beschikbaarheid"-CTA naar boeken.html
-- [ ] 📈 Funnel-/heatmap-review via Clarity — klaar wanneer: minstens 3 concrete observaties uit Clarity vertaald naar verbetertaken onderaan deze backlog
-- [ ] "Vandaag/seizoen"-widget koppelen aan boeken — klaar wanneer: het seizoens-/vandaag-blok op de homepage heeft een subtiele doorverwijzing naar boeken zonder de rust te breken
-
-## ── Fase 4 · Content & meertaligheid afmaken ──────────────────
-
-- [ ] Mobile actiebar ROUTE/ROUTES verduidelijken — klaar wanneer: het onderscheid tussen "rij naar hier" en "wandel-/fietsroutes" is helder (hernoemd/geherstructureerd), getest op 320–481px
-- [ ] i18n-volledigheidscheck (script) — klaar wanneer: een lokaal script bevestigt NL=EN=DE keypariteit én signaleert losse data-i18n-keys zonder vertaling; 0 fouten
-- [ ] places.js/routes.js i18n-consistentie — klaar wanneer: alle name/desc/badge-velden hebben _nl/_en/_de en de render-laag valt nergens onbedoeld terug op NL
-- [ ] Tekstuele puntjes op de i — klaar wanneer: spelling/typos-pass per taal op de zichtbare teksten (NL/EN/DE), correcties doorgevoerd
-- [ ] 🔒 Seizoensgebonden galerij/content — klaar wanneer: galerij toont actuele seizoensbeelden óf een plan + plek waar foto's later aangeleverd worden is voorbereid
-
-## ── Fase 5 · Robuustheid & onderhoud ──────────────────────────
-
-- [ ] Externe-linkchecker-script — klaar wanneer: een script controleert álle externe links op een echte 200 (incl. redirect-/content-check), draait lokaal en rapporteert kapotte links
-- [ ] i18n-/HTML-validatiescript — klaar wanneer: één commando valideert HTML-structuur + i18n-pariteit, bruikbaar als pre-deploy-check
+- [ ] Linkchecker-script — klaar wanneer: `node tests/check-links.mjs` controleert álle externe links op echte 200 (incl. redirect-/content-check), exit 0 bij groen
+- [ ] i18n-/HTML-validatiescript — klaar wanneer: `node tests/check-i18n.mjs` bevestigt NL=EN=DE-pariteit + signaleert data-i18n-keys zonder vertaling; HTML-sanity (canonical, één h1, alt) groen
+- [ ] Testrunner — klaar wanneer: `node tests/run.mjs` draait alle checks achter elkaar met één groen/rood-resultaat
+- [ ] Offline-/404-test — klaar wanneer: check bevestigt dat de gids offline laadt met SW actief en 404.html bij onbekende paden verschijnt
+- [ ] Lighthouse mobiel-meting — klaar wanneer: `npx lighthouse` mobiel ≥90 Perf / ≥95 A11y-BP-SEO; lukt headless Chrome niet, dan proxy-verificatie groen + vlag voor 1 handmatige DevTools-check
 - [ ] SW-versiebeleid documenteren — klaar wanneer: in CLAUDE.md staat wanneer/hoe CACHE_NAME bumpt
-- [ ] CLAUDE.md / projectdocumentatie — klaar wanneer: doc beschrijft structuur, i18n-systeem, deploy-flow, SW-beleid en de "vereist jouw actie"-punten
-- [ ] Offline-/404-test — klaar wanneer: met service worker actief is de gids offline leesbaar en 404.html verschijnt bij onbekende paden; getest
+- [ ] CLAUDE.md / projectdoc — klaar wanneer: doc beschrijft structuur, i18n-systeem, deploy-flow (Vercel CLI), SW-beleid, testsuite en de "jouw actie"-punten
+
+---
+## 🙋 Voor Jeroen — jouw actie nodig (NIET autonoom; los op te pakken)
+- [ ] Productie-branch hernoemen naar `main` (GitHub + Vercel settings)
+- [ ] Vercel Analytics aanzetten in dashboard (snippet staat al op de site)
+- [ ] Optioneel: 1 Lighthouse-meting in Chrome DevTools als mijn npx-run geen headless Chrome vindt
+- [ ] Info/risico: gastenboek blijft ongewijzigd — anon-key kan INSERT + UPDATE; bij spam/misbruik later RLS hardenen
 
 ---
 ## ✅ Afgerond
-(verplaatst vanuit de lijst hierboven zodra klaar — zie WORKLOG.md voor details)
+(zie WORKLOG.md voor details)
 
-- [x] preview.html uit productie halen — 2026-05-19 (verwijderd, robots opgeschoond)
-- [x] places.js parking-emoji vervangen — 2026-05-19 ('🅿️' → 'parking')
-- [x] Dode kaart-code besluit — 2026-05-19 (dormant bewaard, runtime-aanroepen + SW-cache opgeschoond)
-- [x] photo-luchtfoto-1.png + 5 ongebruikte beelden — 2026-05-19 (ongebruikt → verwijderd, 8,5 MB weg)
-- [x] Overige zware afbeeldingen comprimeren — 2026-05-19 (images/ 12 MB → 2,7 MB, alles < 500 KB)
-- [x] width/height + lazy op alle content-<img> — 2026-05-19 (19 tags, geen CLS)
-- [x] Hero/feature responsive — 2026-05-19 (hero-bg 154 KB; alle feature-beelden ≤1280px/<500 KB; fietsen.webp 472 KB blijft, geen webp-encoder beschikbaar)
-- [x] apple-touch-icon (180×180 PNG) — 2026-05-19 (+ 192/512 voor manifest, effen achtergrond, alle 9 pagina's)
-- [x] JSON-LD structured data — 2026-05-19 (index: LodgingBusiness · boeken: BedAndBreakfast + Campground)
-- [x] Self-canonical per pagina — 2026-05-19 (8 indexeerbare pagina's, 404 uitgesloten)
-- [x] Meta-description-audit — 2026-05-19 (8 pagina's, alle 143–159 tekens, uniek)
-- [x] Lodgify-widget EN/DE-labels — 2026-05-19 (NL/EN/DE labelsets; load-time juiste taal + reload bij toggle; getest 3 talen)
+- [x] preview.html uit productie halen — 2026-05-19
+- [x] places.js parking-emoji vervangen — 2026-05-19
+- [x] Dode kaart-code besluit (dormant) — 2026-05-19
+- [x] photo-luchtfoto-1.png + 5 ongebruikte beelden verwijderd — 2026-05-19
+- [x] Overige zware afbeeldingen comprimeren (12 MB → 2,7 MB) — 2026-05-19
+- [x] width/height + lazy op alle content-<img> — 2026-05-19
+- [x] Hero/feature responsive — 2026-05-19
+- [x] apple-touch-icon (180/192/512) — 2026-05-19
+- [x] JSON-LD structured data — 2026-05-19
+- [x] Self-canonical per pagina — 2026-05-19
+- [x] Meta-description-audit — 2026-05-19
+- [x] Lodgify-widget EN/DE-labels — 2026-05-19
+- [x] Feedbackformulier-bestemming fixen — 2026-05-19 (mailto jeroen@cycle-up.nl)
+- [x] Boeking-CTA consistent over pagina's — 2026-05-19 (rode "Boek je plek" op index/verblijf/omgeving)
+- [x] "Vandaag/seizoen"-blok → boeken — 2026-05-19 (subtiele link in vandaag-widget)

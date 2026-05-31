@@ -8,6 +8,8 @@ const translations = {
     "nav.kaart": "Kaart",
     "nav.gastenboek": "Gastenboek",
     "nav.boeken": "Boeken",
+    "cta.book": "Boek je plek",
+    "today.book.link": "Kom je ook? Boek je plek",
 
     // Homepage hero
     "home.eyebrow": "Koarnjum · Friesland",
@@ -1163,6 +1165,8 @@ const translations = {
     "nav.kaart": "Map",
     "nav.gastenboek": "Guestbook",
     "nav.boeken": "Book",
+    "cta.book": "Book your stay",
+    "today.book.link": "Coming too? Book your stay",
 
     // Homepage hero
     "home.eyebrow": "Koarnjum · Friesland",
@@ -2318,6 +2322,8 @@ const translations = {
     "nav.kaart": "Karte",
     "nav.gastenboek": "Gästebuch",
     "nav.boeken": "Buchen",
+    "cta.book": "Buche deinen Platz",
+    "today.book.link": "Auch dabei? Buche deinen Platz",
 
     // Homepage hero
     "home.eyebrow": "Koarnjum · Friesland",
