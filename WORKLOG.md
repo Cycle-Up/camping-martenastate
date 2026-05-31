@@ -4,6 +4,14 @@ Kort logboek, nieuwste bovenaan. Per turn: datum · taak · wat gedaan · result
 
 ---
 
+## 2026-05-19 — Fase 5 compleet: testsuite + Lighthouse + docs
+**Testsuite** ✅ — tests/check-links.mjs (ving + fixte 2 dode links: natuurmuseum `www.`→geen www; statenstinzen jelsum `dokkummer`→`dokkumer`), check-offline.mjs (CORE_ASSETS/fallback/404 groen), check-perf.mjs (beeldgewicht 2,6 MB, w/h/lazy, meta, canonical, iconen groen), run.mjs (orkestreert alles). `node tests/run.mjs` = volledig groen.
+**Lighthouse mobiel (live)** — gemeten: BP 100, SEO 100 ✅; Perf 74→77, A11y 93. Veilige fixes: Google Fonts niet-blokkerend (media=print onload) op 9 pagina's; action-bar aria-labels weg (label-in-name → fixte label-mismatch); --fg-mute #6F6A60→#5E594F (contrast). Restpunten halen ≥90/≥95 niet en vereisen ONTWERPKEUZES (fonts self-hosten; brand-eyebrow-kleur; heading-volgorde; <main>-landmark) → eerlijk niet afgevinkt, verschoven naar 'Voor Jeroen'. SW → v23.
+**CLAUDE.md** ✅ — volledige projectdoc (structuur, i18n, deploy via Vercel CLI, SW-versiebeleid, testsuite, jouw-actie-punten).
+**Status:** autonome backlog leeg; ROADMAP Fase 0–5 geïmplementeerd; testsuite groen. Resterend = jouw-actie/ontwerpkeuzes.
+
+---
+
 ## 2026-05-19 — Fase 5 start: i18n/HTML-validatiescript
 **tests/check-i18n.mjs** ✅ — controleert: NL=EN=DE-pariteit, alle HTML data-i18n-keys bestaan, places.js/routes.js _nl→_en/_de compleet, HTML-sanity (1× h1, lang-attr, canonical behalve 404, img-alt). Exit 0 groen / 1 bij fouten.
 - **Ving een echte bug**: `vb.price.note` werd in verblijf.html gebruikt (data-i18n-html) maar ontbrak in translations → EN/DE zagen NL-tekst. Key toegevoegd in 3 talen (nu 1079 elk). Script daarna groen.

@@ -3,22 +3,20 @@ Werk van boven naar beneden. Elke taak is zelfstandig afrondbaar en controleerba
 Keuzes verwerkt (2026-05-19): feedback → mailto jeroen@cycle-up.nl · gastenboek-beveiliging
 ongewijzigd · Clarity niet installeren · favicon recolor naar huisstijl.
 
-## ── Fase 4 · Content & meertaligheid ──────────────────────────
-
-## ── Fase 5 · Robuustheid & testsuite ──────────────────────────
-
-- [ ] Linkchecker-script — klaar wanneer: `node tests/check-links.mjs` controleert álle externe links op echte 200 (incl. redirect-/content-check), exit 0 bij groen
-- [ ] Offline-/404-test — klaar wanneer: check bevestigt dat de gids offline laadt met SW actief en 404.html bij onbekende paden verschijnt
-- [ ] Lighthouse mobiel-meting — klaar wanneer: `npx lighthouse` mobiel ≥90 Perf / ≥95 A11y-BP-SEO; lukt headless Chrome niet, dan proxy-verificatie groen + vlag voor 1 handmatige DevTools-check
-- [ ] Testrunner — klaar wanneer: `node tests/run.mjs` draait alle checks achter elkaar met één groen/rood-resultaat (= "de testsuite slaagt")
-- [ ] CLAUDE.md / projectdoc (incl. SW-versiebeleid) — klaar wanneer: doc beschrijft structuur, i18n-systeem, deploy-flow (Vercel CLI), wanneer/hoe CACHE_NAME bumpt, de testsuite en de "jouw actie"-punten
+Alle autonome taken zijn afgerond. De volledige testsuite is groen
+(`node tests/run.mjs`). Resterende punten vereisen jouw actie of een
+ontwerpbeslissing — zie hieronder.
 
 ---
 ## 🙋 Voor Jeroen — jouw actie nodig (NIET autonoom; los op te pakken)
 - [ ] Productie-branch hernoemen naar `main` (GitHub + Vercel settings)
 - [ ] Vercel Analytics aanzetten in dashboard (snippet staat al op de site)
-- [ ] Optioneel: 1 Lighthouse-meting in Chrome DevTools als mijn npx-run geen headless Chrome vindt
 - [ ] Info/risico: gastenboek blijft ongewijzigd — anon-key kan INSERT + UPDATE; bij spam/misbruik later RLS hardenen
+- [ ] Lighthouse mobiel ≥90 perf / ≥95 a11y (gemeten: Perf 77 · A11y 93 · BP 100 · SEO 100).
+      Veilige fixes zijn gedaan (fonts niet-blokkerend, aria label-in-name, muted-contrast).
+      De rest vereist KEUZES: perf → Google Fonts self-hosten + critical CSS;
+      a11y → brand-eyebrow-kleur haalt 4.5:1 niet, heading-volgorde, <main>-landmark.
+      Zeg het als je wil dat ik deze ontwerpkeuzes uitvoer.
 
 ---
 ## ✅ Afgerond
@@ -47,3 +45,8 @@ ongewijzigd · Clarity niet installeren · favicon recolor naar huisstijl.
 - [x] Tekst-/stijlpass per taal — 2026-05-19 (scan schoon; 2 EN-stijlfixes; pariteit 1078)
 - [x] Galerij robuust + uitbreidbaar — 2026-05-19 (onerror-fallback aanwezig; LEES_MIJ.txt geactualiseerd)
 - [x] i18n-/HTML-validatiescript — 2026-05-19 (tests/check-i18n.mjs; ving + fixte ontbrekende key vb.price.note; exit 0)
+- [x] Linkchecker-script — 2026-05-19 (tests/check-links.mjs; ving + fixte 2 dode links; exit 0)
+- [x] Offline-/404-test — 2026-05-19 (tests/check-offline.mjs; CORE_ASSETS + fallback + 404 groen)
+- [x] Performance-proxy + Lighthouse-meting — 2026-05-19 (tests/check-perf.mjs groen; live Lighthouse BP 100/SEO 100, perf 77/a11y 93 — restpunten = ontwerpkeuzes, naar 'Voor Jeroen')
+- [x] Testrunner — 2026-05-19 (tests/run.mjs; hele suite groen)
+- [x] CLAUDE.md / projectdoc — 2026-05-19 (structuur, i18n, deploy, SW-beleid, testsuite, jouw-actie)
