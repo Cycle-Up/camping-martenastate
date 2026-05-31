@@ -1208,7 +1208,7 @@ const translations = {
 
     // Verblijf page
     "verblijf.title": "About your stay",
-    "verblijf.subtitle": "Camping or B&B. Whatever you came to do? That's up to you.",
+    "verblijf.subtitle": "Camping or B&B. What you do here is up to you.",
     "tab.camping": "Nature Campsite",
     "tab.bb": "B&B Stinzenflora",
     "tab.tunman": "Túnmanswente",
@@ -1500,7 +1500,7 @@ const translations = {
     "faq.q.pets": "Are dogs welcome?",
     "faq.a.pets": "Dogs are welcome on the campsite, on a lead — to protect the stinzenflora and meadow birds. Not in the B&B. Off-lead is not allowed in the park.",
     "faq.q.kids": "Is it suitable for children?",
-    "faq.a.kids": "Absolutely. Children love the nature, the castle and the space. The site is quiet and traffic-free. No playground equipment, but plenty of room to play and explore.",
+    "faq.a.kids": "Absolutely. Lots of space, traffic-free, no playground — but plenty of gnomes among the trees, if you look closely.",
     "faq.q.shop": "Where do I get groceries?",
     "faq.a.shop": "In Stiens (4 km) you'll find AH, Lidl, Jumbo and a bakery. For specialty shops and an extensive market: Leeuwarden (5 km).",
     "faq.q.weather": "What if it rains?",

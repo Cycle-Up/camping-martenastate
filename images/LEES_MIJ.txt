@@ -1,32 +1,57 @@
-FOTO'S TOEVOEGEN
-================
+FOTO'S TOEVOEGEN OF VERVANGEN
+=============================
 
-Zet hier je eigen foto's neer. De website gebruikt op dit moment gekleurde placeholders.
+De site gebruikt ECHTE foto's (geen placeholders meer). Hieronder staat welke
+foto's waar gebruikt worden en hoe je er een toevoegt of vervangt.
 
-Vervang de placeholders door echte foto's via de volgende bestandsnamen:
+HUIDIGE FOTO'S EN WAAR ZE GEBRUIKT WORDEN
+-----------------------------------------
+  photo-poort.webp           Homepage hero-achtergrond + deel-preview (og:image)
+  photo-kasteeltje.jpg       Homepage "Het landgoed" + verblijf
+  photo-bloemen.jpg          Homepage stinzenflora + galerij + verblijf
+  photo-camping.jpg          Boeken (camping) + galerij + verblijf
+  photo-bnb.jpg              Boeken (B&B) + galerij + verblijf
+  photo-voorjaar.jpg         Galerij (voorjaar)
+  photo-theetuin-parasol.jpg Galerij (theetuin)
+  photo-wandelen-1.jpg       Galerij + omgeving (wandelen)
+  photo-singel.jpg           Galerij
+  photo-kasteeltje-aerial.jpg Galerij
+  photo-tunmanswente.jpg     Verblijf (Túnmanswente)
+  photo-fietsen.webp         Omgeving (fietsen)
 
-HOMEPAGE (index.html)
-  hero-bg.jpg          — Sfeervolle luchtfoto of parkfoto voor de achtergrond
-  park-lente.jpg       — Stinzenflora in het voorjaar (feature-sectie "Het landgoed")
-  stinzenflora.jpg     — Close-up van stinzenflora bloemen
+EEN GALERIJFOTO VERVANGEN (makkelijkst)
+---------------------------------------
+1. Comprimeer de nieuwe foto: max 1280px breed, < 500 KB, JPG of WebP.
+   macOS:  sips --resampleWidth 1280 -s format jpeg -s formatOptions 60 bron.jpg --out images/photo-XXX.jpg
+2. Zet 'm in images/ onder een van de bestaande bestandsnamen hierboven
+   (zelfde naam = verder niks wijzigen).
+3. Bump de service-worker-cache in sw.js (CACHE_NAME 'martenastate-vNN' → NN+1),
+   anders zien terugkerende bezoekers de oude foto uit hun offline-cache.
 
-VERBLIJF (verblijf.html)
-  camping.jpg          — Camping met tenten achter de beuken
-  bb-kamer-1.jpg       — Kamer "Stinzenflora" van de B&B
-  bb-kamer-2.jpg       — Kamer "Martenastate" van de B&B
-  tunmanswente.jpg     — Túnmanswente van buiten of de theetuin
-
-OMGEVING (omgeving.html)
-  wandelen-park.jpg    — Wandelpad door het park
-  jabikspaad.jpg       — Pelgrimsroute / stempelpunt
-  elfstedenpad.jpg     — Landschapsfoto Friese route
-  fietsen.jpg          — Fietser in het Friese landschap
-  tunman-eten.jpg      — Koffie/thee bij Túnmanswente
-  leeuwarden.jpg       — Leeuwarden binnenstad
+EEN NIEUWE (SEIZOENS)FOTO TOEVOEGEN AAN DE GALERIJ
+-------------------------------------------------
+De galerij staat in index.html, in de sectie met class "gallery-grid".
+1. Comprimeer + plaats de foto (zie hierboven), bv. images/photo-herfst.jpg.
+2. Voeg een <figure> toe naar voorbeeld van de bestaande items:
+     <figure class="gallery-item fade-in" aria-label="Foto 9">
+       <div class="gallery-img-wrap">
+         <img src="images/photo-herfst.jpg" width="1280" height="853" alt=""
+              loading="lazy" data-caption-key="gallery.caption.9"
+              onerror="this.parentElement.classList.add('gallery-placeholder')">
+       </div>
+     </figure>
+   - width/height = de echte pixelmaten (voorkomt layout shift).
+   - onerror = als de foto ontbreekt, toont de tegel netjes een placeholder.
+3. Voeg het bijschrift toe in js/translations.js onder gallery.caption.9, in
+   ALLE DRIE de talen (nl, en, de) — anders meldt de testsuite ontbrekende keys.
+4. Bump de service-worker-cache in sw.js.
+5. Controleer met de testsuite:  node tests/run.mjs
 
 AANBEVOLEN FORMAAT
-  - Breedte: minimaal 1200px
-  - Formaat: JPG of WebP
-  - Bestandsgrootte: max. 500 KB per foto (gebruik tinypng.com om te comprimeren)
+  - Breedte: 1280px (galerij/feature). Hero mag 1600px.
+  - Formaat: JPG (foto's) of WebP.
+  - Bestandsgrootte: < 500 KB per foto. Totale images/-map liefst < 4 MB.
 
-Na het toevoegen van foto's, laat het weten zodat de img-tags in de HTML bijgewerkt kunnen worden.
+ONTBREKENDE FOTO
+  Mist een bestand? De galerij valt automatisch terug op een nette placeholder
+  (gekleurd vlak) dankzij de onerror-handler. De site breekt dus niet.

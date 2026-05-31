@@ -4,6 +4,13 @@ Kort logboek, nieuwste bovenaan. Per turn: datum · taak · wat gedaan · result
 
 ---
 
+## 2026-05-19 — Fase 4 compleet: tekstpass + galerij
+**Tekst-/stijlpass** ✅ — automatische scan: geen onvertaalde lekkage (NL==EN/DE matches zijn eigennamen/internationale termen), geen dubbele spaties/leestekens. Gerichte EN-stijlfixes: verblijf.subtitle ("Whatever you came to do?" → "What you do here is up to you."); faq.a.kids afgestemd op de speelse NL/DE-toon (gnomes). Pariteit blijft 1078/1078/1078.
+**Galerij robuust** ✅ — alle 10 gallery-srcs bestaan; onerror-fallback op alle 8 tegels (gekleurde placeholder bij ontbrekend beeld); CSS-placeholder aanwezig. images/LEES_MIJ.txt herschreven: was verouderd (oude placeholdernamen, "gebruikt placeholders"=onwaar) → nu accuraat pad om (seizoens)foto's te vervangen/toevoegen incl. SW-bump + testsuite-check.
+SW → v21.
+
+---
+
 ## 2026-05-19 — Fase 4: actiebar + 404-label + a11y
 **Mobile actiebar** ✅ — `action.route` "Route" → "Adres"/"Address"/"Adresse"; routes-knop blijft "Routes". Getest 320px: Bellen·Adres·Routes·Vragen, geen overflow. Onderscheid nu duidelijk.
 **404-label** ✅ — `error.btn.map` "Open de kaart" → "Naar de omgeving"/"To the area"/"Zur Umgebung"; knop linkt naar omgeving.html; statische fallback in 404.html ook bijgewerkt.

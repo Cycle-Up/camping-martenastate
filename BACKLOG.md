@@ -5,9 +5,6 @@ ongewijzigd · Clarity niet installeren · favicon recolor naar huisstijl.
 
 ## ── Fase 4 · Content & meertaligheid ──────────────────────────
 
-- [ ] Tekst-/stijlpass per taal — klaar wanneer: zichtbare NL/EN/DE-teksten gecontroleerd + verbeterd (objectieve fouten + lichte stijl binnen de stem); i18n-pariteit 1:1; wijzigingen in WORKLOG
-- [ ] Galerij robuust + uitbreidbaar — klaar wanneer: gallery werkt met huidige beelden, ontbrekende beelden tonen nette fallback, gedocumenteerd pad om later seizoensfoto's toe te voegen
-
 ## ── Fase 5 · Robuustheid & testsuite ──────────────────────────
 
 - [ ] i18n-/HTML-validatiescript — klaar wanneer: `node tests/check-i18n.mjs` bevestigt NL=EN=DE-pariteit, meldt data-i18n-keys zonder vertaling, checkt _de-velden in places.js/routes.js, + HTML-sanity (canonical, één h1, alt, lang-attr); exit 0 bij groen
@@ -48,3 +45,5 @@ ongewijzigd · Clarity niet installeren · favicon recolor naar huisstijl.
 - [x] Mobile actiebar verduidelijken — 2026-05-19 (action.route → Adres/Address/Adresse; geen overflow 320px)
 - [x] 404-label fixen — 2026-05-19 (Open de kaart → Naar de omgeving, 3 talen)
 - [x] Taalknoppen a11y — 2026-05-19 (aria-pressed schakelt mee met actieve taal)
+- [x] Tekst-/stijlpass per taal — 2026-05-19 (scan schoon; 2 EN-stijlfixes; pariteit 1078)
+- [x] Galerij robuust + uitbreidbaar — 2026-05-19 (onerror-fallback aanwezig; LEES_MIJ.txt geactualiseerd)
