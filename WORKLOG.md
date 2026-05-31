@@ -4,6 +4,13 @@ Kort logboek, nieuwste bovenaan. Per turn: datum · taak · wat gedaan · result
 
 ---
 
+## 2026-05-19 — Fase 4: actiebar + 404-label + a11y
+**Mobile actiebar** ✅ — `action.route` "Route" → "Adres"/"Address"/"Adresse"; routes-knop blijft "Routes". Getest 320px: Bellen·Adres·Routes·Vragen, geen overflow. Onderscheid nu duidelijk.
+**404-label** ✅ — `error.btn.map` "Open de kaart" → "Naar de omgeving"/"To the area"/"Zur Umgebung"; knop linkt naar omgeving.html; statische fallback in 404.html ook bijgewerkt.
+**Taalknoppen a11y** ✅ — `aria-pressed` op lang-toggle in applyTranslations (main.js); getest: nl→de schakelt aria-pressed correct mee.
+
+---
+
 ## 2026-05-19 — Fase 4: favicon recolor + backlog definitief
 - Backlog herzien na 2e planstap: actiebar-navigatieknop → "Adres", géén vercel.json, tekstpass mag lichte stijl. 404-label + a11y aria-pressed toegevoegd; places/routes-i18ncheck gevouwen in het validatiescript.
 **Favicon + iconen recolor** ✅

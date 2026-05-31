@@ -5,10 +5,6 @@ ongewijzigd · Clarity niet installeren · favicon recolor naar huisstijl.
 
 ## ── Fase 4 · Content & meertaligheid ──────────────────────────
 
-- [ ] Favicon + iconen recolor naar huisstijl — klaar wanneer: bloem-mark in Leien blauw + Martena Rood/Bostulp goud; favicon.svg + apple-touch-icon/192/512 opnieuw gegenereerd; zichtbaar in tab
-- [ ] Mobile actiebar verduidelijken — klaar wanneer: navigatieknop-label = "Adres"/"Address"/"Adresse" (key action.route), routes-knop blijft "Routes"; getest 320–481px
-- [ ] 404-label fixen — klaar wanneer: error.btn.map "Open de kaart" → "Naar de omgeving" (NL/EN/DE); knop linkt naar omgeving.html
-- [ ] Taalknoppen a11y — klaar wanneer: lang-toggle-knoppen hebben aria-pressed dat met de actieve taal meeschakelt; geverifieerd in DOM
 - [ ] Tekst-/stijlpass per taal — klaar wanneer: zichtbare NL/EN/DE-teksten gecontroleerd + verbeterd (objectieve fouten + lichte stijl binnen de stem); i18n-pariteit 1:1; wijzigingen in WORKLOG
 - [ ] Galerij robuust + uitbreidbaar — klaar wanneer: gallery werkt met huidige beelden, ontbrekende beelden tonen nette fallback, gedocumenteerd pad om later seizoensfoto's toe te voegen
 
@@ -48,3 +44,7 @@ ongewijzigd · Clarity niet installeren · favicon recolor naar huisstijl.
 - [x] Boeking-CTA consistent over pagina's — 2026-05-19 (rode "Boek je plek" op index/verblijf/omgeving)
 - [x] "Vandaag/seizoen"-blok → boeken — 2026-05-19 (subtiele link in vandaag-widget)
 - [x] Gastenboek-systeemteksten i18n — 2026-05-19 (lege-staat/errors/datum volgen taal; +refreshGuestbook bij toggle)
+- [x] Favicon + iconen recolor — 2026-05-19 (huisstijl-mark, live v20)
+- [x] Mobile actiebar verduidelijken — 2026-05-19 (action.route → Adres/Address/Adresse; geen overflow 320px)
+- [x] 404-label fixen — 2026-05-19 (Open de kaart → Naar de omgeving, 3 talen)
+- [x] Taalknoppen a11y — 2026-05-19 (aria-pressed schakelt mee met actieve taal)

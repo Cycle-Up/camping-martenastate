@@ -31,7 +31,9 @@ function applyTranslations() {
   });
   document.documentElement.lang = currentLang;
   document.querySelectorAll('.lang-toggle button').forEach(btn => {
-    btn.classList.toggle('active', btn.getAttribute('data-lang') === currentLang);
+    const isActive = btn.getAttribute('data-lang') === currentLang;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-pressed', String(isActive));
   });
   // Keep og:locale in sync with the active language for accurate link previews
   const localeMap = {nl: 'nl_NL', en: 'en_GB', de: 'de_DE'};

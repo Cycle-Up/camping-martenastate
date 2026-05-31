@@ -281,7 +281,7 @@ const translations = {
 
     // Mobile action bar
     "action.call": "Bellen",
-    "action.route": "Route",
+    "action.route": "Adres",
     "action.map": "Routes",
     "action.faq": "Vragen",
 
@@ -356,7 +356,7 @@ const translations = {
     "error.title": "Deze pagina is een paadje minder bekend",
     "error.text": "Misschien is hij verplaatst, of bestaat hij niet meer. Geen zorgen — ga terug naar de welkomstgids en je vindt zo weer je weg.",
     "error.btn.home": "Terug naar home",
-    "error.btn.map": "Open de kaart",
+    "error.btn.map": "Naar de omgeving",
 
     // Toast
     "toast.copied": "Gekopieerd naar klembord",
@@ -1440,7 +1440,7 @@ const translations = {
 
     // Mobile action bar
     "action.call": "Call",
-    "action.route": "Route",
+    "action.route": "Address",
     "action.map": "Routes",
     "action.faq": "FAQ",
 
@@ -1515,7 +1515,7 @@ const translations = {
     "error.title": "This path is a little less travelled",
     "error.text": "Maybe it's been moved, or it doesn't exist anymore. Don't worry — head back to the welcome guide and you'll find your way again.",
     "error.btn.home": "Back to home",
-    "error.btn.map": "Open the map",
+    "error.btn.map": "To the area",
 
     // Toast
     "toast.copied": "Copied to clipboard",
@@ -2599,7 +2599,7 @@ const translations = {
 
     // Mobile action bar
     "action.call": "Anrufen",
-    "action.route": "Route",
+    "action.route": "Adresse",
     "action.map": "Routen",
     "action.faq": "Fragen",
 
@@ -2674,7 +2674,7 @@ const translations = {
     "error.title": "Diese Seite ist ein eher unbekannter Pfad",
     "error.text": "Vielleicht wurde sie verschoben oder existiert nicht mehr. Keine Sorge — geh zurück zum Willkommensführer und du findest schnell wieder hin.",
     "error.btn.home": "Zurück zur Startseite",
-    "error.btn.map": "Karte öffnen",
+    "error.btn.map": "Zur Umgebung",
 
     // Toast
     "toast.copied": "In Zwischenablage kopiert",
