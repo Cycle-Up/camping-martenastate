@@ -4,6 +4,14 @@ Kort logboek, nieuwste bovenaan. Per turn: datum · taak · wat gedaan · result
 
 ---
 
+## 2026-05-19 — Fase 4: favicon recolor + backlog definitief
+- Backlog herzien na 2e planstap: actiebar-navigatieknop → "Adres", géén vercel.json, tekstpass mag lichte stijl. 404-label + a11y aria-pressed toegevoegd; places/routes-i18ncheck gevouwen in het validatiescript.
+**Favicon + iconen recolor** ✅
+- favicon.svg herteekend in huisstijl: Leien blauw (#0F4A4F) schijf, Bostulp goud (#F2C12E/#F8DE7A) bloemblaadjes, Martena Rood (#E36447/#C84A2E) hart, Haarlems groen (#BBD590) blad/steel. apple-touch-icon (180) + icon-192/512 opnieuw gegenereerd met effen Leien blauw vierkant. SW → v20.
+- Visueel geverifieerd in preview: teal tegel met goud/rood/groen bloem-mark, on-brand.
+
+---
+
 ## 2026-05-19 — Fase 4 start: gastenboek i18n
 **Gastenboek-systeemteksten i18n** ✅
 - Hardcoded NL uit de inline JS gehaald: lege-staat → `t('guestbook.empty')`, laadfout → `t('guestbook.error.load')`, postfout → `t('guestbook.error.post')` (2 nieuwe keys × 3 talen, 1078 keys elk). Datum via `currentLocale()` (document.documentElement.lang → nl-NL/en-GB/de-DE).
