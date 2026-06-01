@@ -254,6 +254,19 @@
       });
     }
 
+    const GB_CACHE_KEY = 'gb_cache_v1';
+
+    function cacheEntries(entries) {
+      try { localStorage.setItem(GB_CACHE_KEY, JSON.stringify(entries)); } catch (e) { /* storage vol */ }
+    }
+    function readCachedEntries() {
+      try {
+        const raw = localStorage.getItem(GB_CACHE_KEY);
+        const arr = raw ? JSON.parse(raw) : null;
+        return Array.isArray(arr) && arr.length ? arr : null;
+      } catch (e) { return null; }
+    }
+
     async function loadEntries() {
       const container = document.getElementById('gbEntries');
       // Time-out zodat de "laden…"-staat nooit blijft hangen als de host niet reageert.
@@ -266,11 +279,24 @@
         });
         if (timer) clearTimeout(timer);
         if (!res.ok) throw new Error(await res.text());
-        renderEntries(await res.json());
+        const entries = await res.json();
+        cacheEntries(entries);          // bewaar laatste succesvolle lading
+        renderEntries(entries);
       } catch {
         if (timer) clearTimeout(timer);
-        container.innerHTML =
-          '<div class="gb-error">' + escapeText(t('guestbook.error.load')) + '</div>';
+        // Backend onbereikbaar (bv. gepauzeerd project): val terug op eerder geladen berichten.
+        const cached = readCachedEntries();
+        if (cached) {
+          renderEntries(cached);
+          const note = document.createElement('div');
+          note.className = 'gb-error';
+          note.style.marginBottom = '1rem';
+          note.textContent = t('guestbook.error.cached');
+          container.insertBefore(note, container.firstChild);
+        } else {
+          container.innerHTML =
+            '<div class="gb-error">' + escapeText(t('guestbook.error.load')) + '</div>';
+        }
       }
     }
 
