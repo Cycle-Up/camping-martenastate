@@ -241,7 +241,7 @@ const translations = {
     "arrival.wifi.label": "WiFi",
     "arrival.wifi.sub": "Wachtwoord: MartenastateGast2024<br><br>Let op: bij de B&amp;B's en Túnmanswente is goede WiFi.",
     "arrival.contact.label": "Contact",
-    "arrival.contact.sub": "Robin Alkema · WhatsApp welkom",
+    "arrival.contact.sub": "Camping: Robin Alkema · B&B: Jeroen Dijkstra",
     "arrival.checkin.label": "Check-in",
     "arrival.checkin.value": "Vanaf 15:00",
     "arrival.checkin.sub": "Check-out vóór 11:00",
@@ -280,6 +280,7 @@ const translations = {
     "today.camping.closed": "Gesloten · open van 1 apr tot 1 okt",
 
     // Mobile action bar
+    "maps.open": "Open in Google Maps",
     "action.call": "Bellen",
     "action.route": "Adres",
     "action.map": "Routes",
@@ -303,7 +304,7 @@ const translations = {
     "guestbook.message.label": "Je berichtje",
     "guestbook.submit": "Plaats bericht",
     "guestbook.empty": "Nog geen berichten. Wees de eerste!",
-    "guestbook.error.load": "Kon berichten niet laden. Probeer de pagina te vernieuwen.",
+    "guestbook.error.load": "De berichten zijn nu even niet beschikbaar. Probeer de pagina later te vernieuwen.",
     "guestbook.error.post": "Kon bericht niet plaatsen. Probeer het opnieuw.",
     "guestbook.cta": "Bekijk het gastenboek",
     "guestbook.write_cta": "Schrijf een bericht",
@@ -358,7 +359,7 @@ const translations = {
     "faq.q.luggage": "Kan ik bagage achterlaten na check-out?",
     "faq.a.luggage": "In overleg kunnen we bagage een paar uur voor je bewaren als je nog wat in de buurt wilt doen. Vraag het Robin even.",
     "faq.q.help": "Wat doe ik bij problemen of nood?",
-    "faq.a.help": "Bel of app Robin op +31 6 83 60 65 21 — bij voorkeur vóór 22:00, maar in noodgevallen altijd. Bij medische nood: 112. Huisartsenpost Stiens: 058-257 1969.",
+    "faq.a.help": "Bel of app de camping bij Robin (+31 6 83 60 65 21) of de B&B bij Jeroen (+31 85 080 5048) — bij voorkeur vóór 22:00, maar in noodgevallen altijd. Bij medische nood: 112. Huisartsenpost Stiens: 058-257 1969.",
 
     // 404
     "error.eyebrow": "Verdwaald in het park",
@@ -508,8 +509,8 @@ const translations = {
 
     "boeken.help.eyebrow": "Vragen vooraf?",
     "boeken.help.title": "Liever even bellen of appen?",
-    "boeken.help.text": "Robin Alkema beantwoordt je vragen graag. Over beschikbaarheid, een specifieke kamer, kamperen met meerdere, of iets anders dat je wil weten voor je boekt.",
-    "boeken.help.whatsapp": "App Robin",
+    "boeken.help.text": "We beantwoorden je vragen graag — over beschikbaarheid, een specifieke kamer, kamperen met meerdere, of iets anders dat je wil weten voor je boekt. Kies hieronder de camping (Robin) of de B&B (Jeroen).",
+    "boeken.help.whatsapp": "App ons",
 
     // === omgeving.html (added in i18n sweep) ===
     "omg.hero.eyebrow": "Ontdek",
@@ -1081,8 +1082,8 @@ const translations = {
     "pocket.h2.emergency": "Bij nood",
     "pocket.lbl.address": "Adres",
     "pocket.lbl.camping": "Camping",
-    "pocket.lbl.host": "Beheerder",
-    "pocket.val.host": "Robin Alkema · +31 6 83 60 65 21 (WhatsApp welkom)",
+    "pocket.lbl.host": "Contact",
+    "pocket.val.host": "Camping: Robin Alkema · +31 6 83 60 65 21 — B&B: Jeroen Dijkstra · +31 85 080 5048 (bellen of WhatsApp)",
     "pocket.lbl.web": "Website",
     "pocket.lbl.emerg": "Noodnummer",
     "pocket.val.emerg": "112 (algemeen) · 058-257 1969 (huisarts Stiens)",
@@ -1137,7 +1138,7 @@ const translations = {
     "pocket.h3.bike": "<span class=\"ms-icon-host pocket-h3-icon\" data-ms-icon=\"bike\"></span>Fietsen",
     "pocket.h3.eat": "<span class=\"ms-icon-host pocket-h3-icon\" data-ms-icon=\"fork_knife\"></span>Eten in Leeuwarden (5 km)",
     "pocket.h3.sights": "<span class=\"ms-icon-host pocket-h3-icon\" data-ms-icon=\"column\"></span>Bezienswaardigheden",
-    "pocket.emergency.body": "<strong>Algemeen alarmnummer:</strong> 112<br><strong>Huisartsenpost Stiens:</strong> 058-257 1969<br><strong>Robin Alkema (beheerder):</strong> +31 6 83 60 65 21<br><br>Bij minder dringende zaken: bel of app Robin (bij voorkeur vóór 22:00).",
+    "pocket.emergency.body": "<strong>Algemeen alarmnummer:</strong> 112<br><strong>Huisartsenpost Stiens:</strong> 058-257 1969<br><strong>Camping — Robin Alkema:</strong> +31 6 83 60 65 21<br><strong>B&B — Jeroen Dijkstra:</strong> +31 85 080 5048<br><br>Bij minder dringende zaken: bel of app de camping (Robin) of de B&B (Jeroen), bij voorkeur vóór 22:00.",
     "pocket.eyebrow": "Pocket-guide",
 
     // === final i18n sweep additions ===
@@ -1164,7 +1165,7 @@ const translations = {
     "privacy.h2.externe": "Externe sites",
     "privacy.body.externe": "Veel knoppen op deze gids verwijzen naar externe sites (Google Maps, restaurants, fietsroutes, jabikspaad.nl, et cetera). Wat die sites met je doen, is hun verhaal. We hebben er geen invloed op.",
     "privacy.h2.contact": "Vragen of verzoek?",
-    "privacy.body.contact": "Mail of WhatsApp Robin op <a href=\"tel:+31683606521\">+31 6 83 60 65 21</a>. We helpen je graag.",
+    "privacy.body.contact": "Bel of app de camping (Robin, <a href=\"tel:+31683606521\">+31 6 83 60 65 21</a>) of de B&B (Jeroen, <a href=\"tel:+31850805048\">+31 85 080 5048</a>). We helpen je graag.",
     "footer.privacy": "Privacy",
   },
 
@@ -1410,7 +1411,7 @@ const translations = {
     "arrival.wifi.label": "WiFi",
     "arrival.wifi.sub": "Password: MartenastateGast2024<br><br>Note: the B&amp;Bs and Túnmanswente have proper WiFi.",
     "arrival.contact.label": "Contact",
-    "arrival.contact.sub": "Robin Alkema · WhatsApp welcome",
+    "arrival.contact.sub": "Camping: Robin Alkema · B&B: Jeroen Dijkstra",
     "arrival.checkin.label": "Check-in",
     "arrival.checkin.value": "From 15:00",
     "arrival.checkin.sub": "Check-out before 11:00",
@@ -1449,6 +1450,7 @@ const translations = {
     "today.camping.closed": "Closed · open 1 Apr to 1 Oct",
 
     // Mobile action bar
+    "maps.open": "Open in Google Maps",
     "action.call": "Call",
     "action.route": "Address",
     "action.map": "Routes",
@@ -1472,7 +1474,7 @@ const translations = {
     "guestbook.message.label": "Your message",
     "guestbook.submit": "Post message",
     "guestbook.empty": "No messages yet. Be the first!",
-    "guestbook.error.load": "Couldn't load messages. Try refreshing the page.",
+    "guestbook.error.load": "Messages aren't available right now. Please try refreshing the page later.",
     "guestbook.error.post": "Couldn't post your message. Please try again.",
     "guestbook.cta": "View the guestbook",
     "guestbook.write_cta": "Write a message",
@@ -1527,7 +1529,7 @@ const translations = {
     "faq.q.luggage": "Can I leave luggage after check-out?",
     "faq.a.luggage": "By arrangement we can store luggage for a few hours if you want to do something nearby. Just ask Robin.",
     "faq.q.help": "What do I do in case of problems?",
-    "faq.a.help": "Call or message Robin on +31 6 83 60 65 21 — preferably before 22:00, but always in emergencies. Medical emergency: 112. GP out-of-hours Stiens: 058-257 1969.",
+    "faq.a.help": "Call or message the campsite via Robin (+31 6 83 60 65 21) or the B&B via Jeroen (+31 85 080 5048) — preferably before 22:00, but always in emergencies. Medical emergency: 112. GP out-of-hours Stiens: 058-257 1969.",
 
     // 404
     "error.eyebrow": "Lost in the park",
@@ -1677,8 +1679,8 @@ const translations = {
 
     "boeken.help.eyebrow": "Questions first?",
     "boeken.help.title": "Prefer to call or message?",
-    "boeken.help.text": "Robin Alkema is happy to answer your questions. About availability, a specific room, camping in a group, or anything else you want to know before you book.",
-    "boeken.help.whatsapp": "Message Robin",
+    "boeken.help.text": "We are happy to answer your questions — about availability, a specific room, camping in a group, or anything else you want to know before you book. Choose the campsite (Robin) or the B&B (Jeroen) below.",
+    "boeken.help.whatsapp": "Message us",
 
 
     // === omgeving.html (added in i18n sweep) ===
@@ -2251,8 +2253,8 @@ const translations = {
     "pocket.h2.emergency": "In an emergency",
     "pocket.lbl.address": "Address",
     "pocket.lbl.camping": "Camping",
-    "pocket.lbl.host": "Host",
-    "pocket.val.host": "Robin Alkema · +31 6 83 60 65 21 (WhatsApp welcome)",
+    "pocket.lbl.host": "Contact",
+    "pocket.val.host": "Campsite: Robin Alkema · +31 6 83 60 65 21 — B&B: Jeroen Dijkstra · +31 85 080 5048 (call or WhatsApp)",
     "pocket.lbl.web": "Website",
     "pocket.lbl.emerg": "Emergency number",
     "pocket.val.emerg": "112 (general) · 058-257 1969 (GP Stiens)",
@@ -2307,7 +2309,7 @@ const translations = {
     "pocket.h3.bike": "<span class=\"ms-icon-host pocket-h3-icon\" data-ms-icon=\"bike\"></span>Cycling",
     "pocket.h3.eat": "<span class=\"ms-icon-host pocket-h3-icon\" data-ms-icon=\"fork_knife\"></span>Eating in Leeuwarden (5 km)",
     "pocket.h3.sights": "<span class=\"ms-icon-host pocket-h3-icon\" data-ms-icon=\"column\"></span>Sights",
-    "pocket.emergency.body": "<strong>General emergency:</strong> 112<br><strong>GP post Stiens:</strong> 058-257 1969<br><strong>Robin Alkema (host):</strong> +31 6 83 60 65 21<br><br>For less urgent matters: call or message Robin (preferably before 22:00).",
+    "pocket.emergency.body": "<strong>General emergency:</strong> 112<br><strong>GP post Stiens:</strong> 058-257 1969<br><strong>Campsite — Robin Alkema:</strong> +31 6 83 60 65 21<br><strong>B&B — Jeroen Dijkstra:</strong> +31 85 080 5048<br><br>For less urgent matters: call or message the campsite (Robin) or the B&B (Jeroen), preferably before 22:00.",
     "pocket.eyebrow": "Pocket guide",
 
     // === final i18n sweep additions ===
@@ -2334,7 +2336,7 @@ const translations = {
     "privacy.h2.externe": "External sites",
     "privacy.body.externe": "Many buttons in this guide link to external sites (Google Maps, restaurants, cycling routes, jabikspaad.nl, etc.). What those sites do with you is their story. We have no control over that.",
     "privacy.h2.contact": "Questions or requests?",
-    "privacy.body.contact": "Email or WhatsApp Robin on <a href=\"tel:+31683606521\">+31 6 83 60 65 21</a>. We are happy to help.",
+    "privacy.body.contact": "Call or message the campsite (Robin, <a href=\"tel:+31683606521\">+31 6 83 60 65 21</a>) or the B&B (Jeroen, <a href=\"tel:+31850805048\">+31 85 080 5048</a>). We are happy to help.",
     "footer.privacy": "Privacy",
   },
   de: {
@@ -2579,7 +2581,7 @@ const translations = {
     "arrival.wifi.label": "WLAN",
     "arrival.wifi.sub": "Passwort: MartenastateGast2024<br><br>Hinweis: Beim B&amp;B und in der Túnmanswente gibt es gutes WLAN.",
     "arrival.contact.label": "Kontakt",
-    "arrival.contact.sub": "Robin Alkema · WhatsApp willkommen",
+    "arrival.contact.sub": "Camping: Robin Alkema · B&B: Jeroen Dijkstra",
     "arrival.checkin.label": "Check-in",
     "arrival.checkin.value": "Ab 15:00",
     "arrival.checkin.sub": "Check-out vor 11:00",
@@ -2618,6 +2620,7 @@ const translations = {
     "today.camping.closed": "Geschlossen · geöffnet vom 1. Apr bis 1. Okt",
 
     // Mobile action bar
+    "maps.open": "In Google Maps öffnen",
     "action.call": "Anrufen",
     "action.route": "Adresse",
     "action.map": "Routen",
@@ -2641,7 +2644,7 @@ const translations = {
     "guestbook.message.label": "Deine Nachricht",
     "guestbook.submit": "Nachricht senden",
     "guestbook.empty": "Noch keine Nachrichten. Sei der Erste!",
-    "guestbook.error.load": "Nachrichten konnten nicht geladen werden. Bitte lade die Seite neu.",
+    "guestbook.error.load": "Die Nachrichten sind gerade nicht verfügbar. Bitte lade die Seite später neu.",
     "guestbook.error.post": "Nachricht konnte nicht gesendet werden. Bitte versuche es erneut.",
     "guestbook.cta": "Gästebuch ansehen",
     "guestbook.write_cta": "Nachricht schreiben",
@@ -2696,7 +2699,7 @@ const translations = {
     "faq.q.luggage": "Kann ich nach dem Check-out mein Gepäck abstellen?",
     "faq.a.luggage": "Nach Absprache können wir dein Gepäck ein paar Stunden für dich verwahren, wenn du noch etwas in der Umgebung machen willst. Frag einfach Robin.",
     "faq.q.help": "Was tue ich bei Problemen oder Notfällen?",
-    "faq.a.help": "Ruf oder schreib Robin an unter +31 6 83 60 65 21 — am besten vor 22:00, in Notfällen aber immer. Bei medizinischem Notfall: 112. Notfallpraxis Stiens: 058-257 1969.",
+    "faq.a.help": "Ruf oder schreib den Campingplatz bei Robin (+31 6 83 60 65 21) oder das B&B bei Jeroen (+31 85 080 5048) — am besten vor 22:00, in Notfällen aber immer. Bei medizinischem Notfall: 112. Notfallpraxis Stiens: 058-257 1969.",
 
     // 404
     "error.eyebrow": "Im Park verlaufen",
@@ -2846,8 +2849,8 @@ const translations = {
 
     "boeken.help.eyebrow": "Fragen vorab?",
     "boeken.help.title": "Lieber kurz anrufen oder schreiben?",
-    "boeken.help.text": "Robin Alkema beantwortet gern deine Fragen. Zu Verfügbarkeit, einem bestimmten Zimmer, Camping mit mehreren Personen oder anderem, das du vor der Buchung wissen willst.",
-    "boeken.help.whatsapp": "Robin anschreiben",
+    "boeken.help.text": "Wir beantworten gern deine Fragen — zu Verfügbarkeit, einem bestimmten Zimmer, Camping mit mehreren Personen oder anderem, das du vor der Buchung wissen willst. Wähle unten den Campingplatz (Robin) oder das B&B (Jeroen).",
+    "boeken.help.whatsapp": "Schreib uns",
 
     // === omgeving.html (added in i18n sweep) ===
     "omg.hero.eyebrow": "Entdecken",
@@ -3419,8 +3422,8 @@ const translations = {
     "pocket.h2.emergency": "Im Notfall",
     "pocket.lbl.address": "Adresse",
     "pocket.lbl.camping": "Camping",
-    "pocket.lbl.host": "Verwalter",
-    "pocket.val.host": "Robin Alkema · +31 6 83 60 65 21 (WhatsApp willkommen)",
+    "pocket.lbl.host": "Kontakt",
+    "pocket.val.host": "Camping: Robin Alkema · +31 6 83 60 65 21 — B&B: Jeroen Dijkstra · +31 85 080 5048 (Anruf oder WhatsApp)",
     "pocket.lbl.web": "Website",
     "pocket.lbl.emerg": "Notruf",
     "pocket.val.emerg": "112 (allgemein) · 058-257 1969 (Hausarzt Stiens)",
@@ -3475,7 +3478,7 @@ const translations = {
     "pocket.h3.bike": "<span class=\"ms-icon-host pocket-h3-icon\" data-ms-icon=\"bike\"></span>Radfahren",
     "pocket.h3.eat": "<span class=\"ms-icon-host pocket-h3-icon\" data-ms-icon=\"fork_knife\"></span>Essen in Leeuwarden (5 km)",
     "pocket.h3.sights": "<span class=\"ms-icon-host pocket-h3-icon\" data-ms-icon=\"column\"></span>Sehenswürdigkeiten",
-    "pocket.emergency.body": "<strong>Allgemeiner Notruf:</strong> 112<br><strong>Notfallpraxis Stiens:</strong> 058-257 1969<br><strong>Robin Alkema (Verwalter):</strong> +31 6 83 60 65 21<br><br>Bei weniger dringenden Sachen: ruf oder schreib Robin (am besten vor 22:00).",
+    "pocket.emergency.body": "<strong>Allgemeiner Notruf:</strong> 112<br><strong>Notfallpraxis Stiens:</strong> 058-257 1969<br><strong>Camping — Robin Alkema:</strong> +31 6 83 60 65 21<br><strong>B&B — Jeroen Dijkstra:</strong> +31 85 080 5048<br><br>Bei weniger dringenden Sachen: ruf oder schreib den Campingplatz (Robin) oder das B&B (Jeroen), am besten vor 22:00.",
     "pocket.eyebrow": "Pocket-Guide",
 
     // === final i18n sweep additions ===
@@ -3502,7 +3505,7 @@ const translations = {
     "privacy.h2.externe": "Externe Seiten",
     "privacy.body.externe": "Viele Buttons in diesem Guide verweisen auf externe Seiten (Google Maps, Restaurants, Radrouten, jabikspaad.nl, usw.). Was diese Seiten mit dir machen, ist ihre Sache. Darauf haben wir keinen Einfluss.",
     "privacy.h2.contact": "Fragen oder Wünsche?",
-    "privacy.body.contact": "Mail oder schreib Robin per WhatsApp auf <a href=\"tel:+31683606521\">+31 6 83 60 65 21</a>. Wir helfen dir gern.",
+    "privacy.body.contact": "Ruf oder schreib den Campingplatz (Robin, <a href=\"tel:+31683606521\">+31 6 83 60 65 21</a>) oder das B&B (Jeroen, <a href=\"tel:+31850805048\">+31 85 080 5048</a>). Wir helfen dir gern.",
     "footer.privacy": "Datenschutz",
   }
 };

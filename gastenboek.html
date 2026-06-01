@@ -255,12 +255,21 @@
     }
 
     async function loadEntries() {
+      const container = document.getElementById('gbEntries');
+      // Time-out zodat de "laden…"-staat nooit blijft hangen als de host niet reageert.
+      const ctrl = ('AbortController' in window) ? new AbortController() : null;
+      const timer = ctrl ? setTimeout(() => ctrl.abort(), 8000) : null;
       try {
-        const res = await fetch(`${SB_URL}/gastenboek?order=datum.desc&select=*`, { headers: sbHeaders() });
+        const res = await fetch(`${SB_URL}/gastenboek?order=datum.desc&select=*`, {
+          headers: sbHeaders(),
+          signal: ctrl ? ctrl.signal : undefined,
+        });
+        if (timer) clearTimeout(timer);
         if (!res.ok) throw new Error(await res.text());
         renderEntries(await res.json());
       } catch {
-        document.getElementById('gbEntries').innerHTML =
+        if (timer) clearTimeout(timer);
+        container.innerHTML =
           '<div class="gb-error">' + escapeText(t('guestbook.error.load')) + '</div>';
       }
     }
