@@ -4,6 +4,17 @@ Kort logboek, nieuwste bovenaan. Per turn: datum · taak · wat gedaan · result
 
 ---
 
+## 2026-06-01 — Gastenboek volledig hersteld ✅
+Na de project-restore door Jeroen leefde de host weer, maar de API gaf `PGRST205`
+(tabel `gastenboek` weg na lange pauze). SQL aangeleverd in `supabase/gastenboek.sql`
+(tabel + RLS lezen/plaatsen/liken). Jeroen heeft 'm gerund → **REST geeft nu HTTP 200
+met alle 11 berichten** (data bleek tóch behouden/teruggezet). End-to-end geverifieerd
+in preview: gastenboekpagina rendert 11 kaarten, geen foutmelding, juiste inhoud.
+Frontend ongewijzigd nodig (time-out + cache-fallback uit vorige turn blijven als vangnet).
+**Alle vier opdrachtdelen nu compleet en live.**
+
+---
+
 ## 2026-06-01 — Twee contactpersonen + twee adressen + gastenboek-fix
 **Twee contactpersonen logisch overal** ✅ — geen algemeen nummer meer. Camping = Robin Alkema (+31 6 83 60 65 21), B&B = Jeroen Dijkstra (+31 85 080 5048), beide telefonisch én WhatsApp.
 - **Keuzevenster** gebouwd: klik op "Bellen"/WhatsApp → modaal "Bel/App je voor de B&B of de camping?" met twee opties (`tel:` resp. `wa.me`). `CONTACTS` + `initContactChooser()` in main.js; CSS `.contact-modal/.contact-sheet/.contact-opt`; i18n-keys in 3 talen. Sluit op backdrop/Esc/knop.

@@ -9,17 +9,6 @@ ontwerpbeslissing — zie hieronder.
 
 ---
 ## 🙋 Voor Jeroen — jouw actie nodig (NIET autonoom; los op te pakken)
-- [ ] **Gastenboek — tabel opnieuw aanmaken (laatste stap, jouw actie):**
-      Project-restore is gelukt (2026-06-01: host leeft weer, `104.18.38.10`).
-      MAAR de API geeft nu `PGRST205 "Could not find the table 'public.gastenboek'"`
-      en toont 0 tabellen → Supabase heeft bij de lange pauze de data/tabellen gewist.
-      De 11 oude berichten zijn daarmee helaas weg (tenzij je een backup hebt).
-      **Stap:** Supabase-dashboard → **SQL Editor** → plak de inhoud van
-      `supabase/gastenboek.sql` (in deze repo) → **Run**. Dat maakt de tabel + RLS-policies
-      (lezen/plaatsen/liken) opnieuw aan. Daarna laadt het gastenboek (eerst leeg) en
-      werkt berichten plaatsen weer. Géén codewijziging nodig; DDL kan ik niet met de
-      anon-key uitvoeren.
-      Frontend is al robuust: 8s time-out, vriendelijke melding, cache-fallback.
 - [ ] Productie-branch hernoemen naar `main` (GitHub + Vercel settings)
 - [ ] Vercel Analytics aanzetten in dashboard (snippet staat al op de site)
 - [ ] Info/risico: gastenboek blijft ongewijzigd — anon-key kan INSERT + UPDATE; bij spam/misbruik later RLS hardenen
