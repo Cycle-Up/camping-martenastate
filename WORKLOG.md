@@ -4,6 +4,19 @@ Kort logboek, nieuwste bovenaan. Per turn: datum · taak · wat gedaan · result
 
 ---
 
+## 2026-06-01 — Twee contactpersonen + twee adressen + gastenboek-fix
+**Twee contactpersonen logisch overal** ✅ — geen algemeen nummer meer. Camping = Robin Alkema (+31 6 83 60 65 21), B&B = Jeroen Dijkstra (+31 85 080 5048), beide telefonisch én WhatsApp.
+- **Keuzevenster** gebouwd: klik op "Bellen"/WhatsApp → modaal "Bel/App je voor de B&B of de camping?" met twee opties (`tel:` resp. `wa.me`). `CONTACTS` + `initContactChooser()` in main.js; CSS `.contact-modal/.contact-sheet/.contact-opt`; i18n-keys in 3 talen. Sluit op backdrop/Esc/knop.
+- **Bekabeld**: mobiele action-bar "Bellen" op 8 pagina's → keuzevenster; homepage arrival-contact (tel+WhatsApp) → keuzevenster + sub toont beide personen; boeken-helpblok (WhatsApp+bellen) → keuzevenster.
+- **Footer (7 pagina's)**: één nummer → twee gelabelde regels (Camping — Robin / B&B — Jeroen).
+- **Bodyteksten (i18n, 3 talen)**: faq.a.help, boeken.help.text/whatsapp, privacy.body.contact, pocket (Contact-rij + noodnummers) → beide contacten. Camping-specifieke plekken (verblijf camping-sectie) blijven Robin.
+**Twee adressen** ✅ — footer toonde al beide (Martenawei 2 = B&B/landgoed; De Wier 7A = camping). Camping-Google-Maps-link toegevoegd in verblijf "Hoe bereik je ons / Met de auto" (nieuwe key `maps.open`, 3 talen).
+**Grote Wielen-fietsroute verwijderd** ✅ — niet-werkende route uit omgeving.html; routetelling "Acht"→"Zeven" (3 talen).
+**Gastenboek** ⚠️ — frontend robuuster: `loadEntries()` met 8s time-out (AbortController) zodat "laden…" niet blijft hangen; vriendelijker, niet-verwijtende foutmelding (3 talen). **Rootcause = gepauzeerd Supabase-project** (host `ubhqqvassnkyfsftrmyh.supabase.co` resolvet niet, curl http_code 000). Dit kan ik NIET autonoom herstellen → jouw actie in het Supabase-dashboard (project hervatten). Zie BACKLOG "Voor Jeroen".
+**Verificatie** — `node tests/run.mjs`-onderdelen groen (i18n-pariteit 1089/1089/1089, offline SW v24, perf). Keuzevenster live getest in preview (camping→Robin, B&B→Jeroen; tel én wa.me; Esc sluit). SW → v24. Gedeployed naar productie + geverifieerd (data-contact, dubbele footer, initContactChooser, v24 live).
+
+---
+
 ## 2026-05-19 — Fase 5 compleet: testsuite + Lighthouse + docs
 **Testsuite** ✅ — tests/check-links.mjs (ving + fixte 2 dode links: natuurmuseum `www.`→geen www; statenstinzen jelsum `dokkummer`→`dokkumer`), check-offline.mjs (CORE_ASSETS/fallback/404 groen), check-perf.mjs (beeldgewicht 2,6 MB, w/h/lazy, meta, canonical, iconen groen), run.mjs (orkestreert alles). `node tests/run.mjs` = volledig groen.
 **Lighthouse mobiel (live)** — gemeten: BP 100, SEO 100 ✅; Perf 74→77, A11y 93. Veilige fixes: Google Fonts niet-blokkerend (media=print onload) op 9 pagina's; action-bar aria-labels weg (label-in-name → fixte label-mismatch); --fg-mute #6F6A60→#5E594F (contrast). Restpunten halen ≥90/≥95 niet en vereisen ONTWERPKEUZES (fonts self-hosten; brand-eyebrow-kleur; heading-volgorde; <main>-landmark) → eerlijk niet afgevinkt, verschoven naar 'Voor Jeroen'. SW → v23.

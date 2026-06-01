@@ -9,6 +9,12 @@ ontwerpbeslissing — zie hieronder.
 
 ---
 ## 🙋 Voor Jeroen — jouw actie nodig (NIET autonoom; los op te pakken)
+- [ ] **Gastenboek herstellen (urgent):** het Supabase-project is gepauzeerd
+      (host `ubhqqvassnkyfsftrmyh.supabase.co` resolvet niet → berichten laden niet).
+      Gratis Supabase-projecten pauzeren na inactiviteit. **Hervat het project in het
+      Supabase-dashboard** (Project → Resume/Restore). Daarna laadt het gastenboek
+      weer vanzelf; de frontend heeft nu een time-out + nette foutmelding zolang het stil ligt.
+      Ik kan dit niet zelf doen (geen dashboard-toegang / inloggen valt buiten mijn mandaat).
 - [ ] Productie-branch hernoemen naar `main` (GitHub + Vercel settings)
 - [ ] Vercel Analytics aanzetten in dashboard (snippet staat al op de site)
 - [ ] Info/risico: gastenboek blijft ongewijzigd — anon-key kan INSERT + UPDATE; bij spam/misbruik later RLS hardenen
