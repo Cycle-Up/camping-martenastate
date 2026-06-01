@@ -594,6 +594,54 @@ if (typeof window !== 'undefined') {
   window.applyTranslations = applyTranslations;
 }
 
+// Contactkeuze: er is geen algemeen nummer. Camping = Robin Alkema,
+// B&B = Jeroen Dijkstra. Generieke knoppen (data-contact="call"/"whatsapp")
+// openen een keuzevenster dat naar het juiste nummer leidt.
+const CONTACTS = {
+  camping: { tel: '+31683606521', wa: '31683606521', personKey: 'contact.camping.person', labelKey: 'contact.camping.label' },
+  bb:      { tel: '+31850805048', wa: '31850805048', personKey: 'contact.bb.person',      labelKey: 'contact.bb.label' },
+};
+function initContactChooser() {
+  const triggers = document.querySelectorAll('[data-contact="call"], [data-contact="whatsapp"]');
+  if (!triggers.length) return;
+
+  let modal = document.getElementById('contactModal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'contactModal';
+    modal.className = 'contact-modal';
+    modal.hidden = true;
+    modal.innerHTML =
+      '<div class="contact-modal-backdrop" data-close></div>' +
+      '<div class="contact-sheet" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">' +
+        '<h3 id="contactModalTitle"></h3>' +
+        '<a class="contact-opt" data-for="camping"></a>' +
+        '<a class="contact-opt" data-for="bb"></a>' +
+        '<button type="button" class="contact-close" data-close></button>' +
+      '</div>';
+    document.body.appendChild(modal);
+    modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeModal));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  }
+  function closeModal() { modal.hidden = true; }
+  function openModal(mode) {
+    modal.querySelector('#contactModalTitle').textContent =
+      t(mode === 'whatsapp' ? 'contact.choose.wa' : 'contact.choose.call');
+    for (const key of ['camping', 'bb']) {
+      const c = CONTACTS[key];
+      const a = modal.querySelector(`.contact-opt[data-for="${key}"]`);
+      a.href = mode === 'whatsapp' ? `https://wa.me/${c.wa}` : `tel:${c.tel}`;
+      if (mode === 'whatsapp') { a.target = '_blank'; a.rel = 'noopener'; } else { a.removeAttribute('target'); }
+      a.innerHTML = `<strong>${t(c.labelKey)}</strong><span>${t(c.personKey)} · ${c.tel}</span>`;
+    }
+    modal.hidden = false;
+  }
+  triggers.forEach(tr => tr.addEventListener('click', e => {
+    e.preventDefault();
+    openModal(tr.getAttribute('data-contact'));
+  }));
+}
+
 // Init everything
 function bootMartenastate() {
   applyTranslations();
@@ -602,6 +650,7 @@ function bootMartenastate() {
   initTabs();
   initScrollAnimations();
   initNavbarScroll();
+  initContactChooser();
   // initMap() en renderRouteLists() bewust niet aangeroepen: de kaartpagina
   // bestaat niet meer. De functies blijven (dormant) staan voor een toekomstige
   // kaart.html — zie de DORMANT-markering verderop in dit bestand.

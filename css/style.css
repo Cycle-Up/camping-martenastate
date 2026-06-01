@@ -3454,3 +3454,17 @@ input, textarea, select {
 .hero-book-cta { margin-top: var(--space-5); }
 .today-book-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: var(--space-4); font-size: var(--fs-14); font-weight: 700; color: var(--ms-martena-rood); letter-spacing: 0.01em; transition: gap var(--dur-fast) var(--ease-out); }
 .today-book-link:hover { gap: 0.7rem; color: var(--ms-martena-rood-deep); }
+
+/* ───────────── Contactkeuze-modal (B&B vs camping) ───────────── */
+.contact-modal { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: var(--space-5); }
+.contact-modal[hidden] { display: none; }
+.contact-modal-backdrop { position: absolute; inset: 0; background: rgba(9,52,56,0.55); backdrop-filter: blur(2px); }
+.contact-sheet { position: relative; background: var(--ms-paper-soft); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); padding: var(--space-6); width: 100%; max-width: 380px; display: flex; flex-direction: column; gap: var(--space-3); }
+.contact-sheet h3 { margin: 0 0 var(--space-2); font-size: var(--fs-20); color: var(--ms-leien-blauw); }
+.contact-opt { display: flex; flex-direction: column; gap: 2px; padding: var(--space-4); border: 1px solid var(--hairline); border-radius: var(--radius-md); background: var(--ms-paper); transition: background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out); min-height: 56px; justify-content: center; }
+.contact-opt strong { color: var(--ms-leien-blauw); font-size: var(--fs-16); }
+.contact-opt span { color: var(--fg-mute); font-size: var(--fs-14); }
+.contact-opt:hover { background: var(--ms-paper-warm); border-color: var(--ms-leien-blauw); }
+.contact-opt[data-for="camping"]:hover { border-color: var(--ms-haarlems-groen-deep); }
+.contact-close { margin-top: var(--space-2); background: none; border: none; color: var(--fg-mute); font: inherit; font-size: var(--fs-14); cursor: pointer; padding: var(--space-2); }
+.contact-close:hover { color: var(--ms-ink); }

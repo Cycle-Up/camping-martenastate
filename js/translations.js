@@ -284,6 +284,15 @@ const translations = {
     "action.route": "Adres",
     "action.map": "Routes",
     "action.faq": "Vragen",
+    "contact.choose.call": "Bel je voor de B&B of de camping?",
+    "contact.choose.wa": "App je voor de B&B of de camping?",
+    "contact.bb.label": "B&B Stinzenflora",
+    "contact.bb.person": "Jeroen Dijkstra",
+    "contact.camping.label": "Natuurkampeerterrein",
+    "contact.camping.person": "Robin Alkema",
+    "contact.close": "Sluiten",
+    "footer.contact.bb": "B&B — Jeroen Dijkstra",
+    "footer.contact.camping": "Camping — Robin Alkema",
 
 
     // Guestbook
@@ -545,7 +554,7 @@ const translations = {
     "omg.bike.h2": "Fietsen in fietsprovincie #1",
     "omg.bike.intro": "Friesland scoort vijf sterren — de hoogste beoordeling in Nederland voor fietsen. Het vlakke landschap maakt elk niveau mogelijk, van een uurtje voor de boodschappen tot een meerdaagse tocht langs alle elf steden. Martenastate ligt bij fietsknooppunt 10.",
     "omg.bike.photo.alt": "Een fietspad door het Friese landschap met bomen aan weerszijden.",
-    "omg.bike.routes.eyebrow": "Acht fietsroutes",
+    "omg.bike.routes.eyebrow": "Zeven fietsroutes",
     "omg.bike.routes.h3": "Van een rondje door het dorp tot meerdaags",
     "omg.bike.route_link": "Bekijk routebeschrijving",
     "omg.bike.r1.title": "Jelsum – Koarnjum – Dokkumer Ee",
@@ -1444,6 +1453,15 @@ const translations = {
     "action.route": "Address",
     "action.map": "Routes",
     "action.faq": "FAQ",
+    "contact.choose.call": "Calling about the B&B or the camping?",
+    "contact.choose.wa": "Messaging about the B&B or the camping?",
+    "contact.bb.label": "B&B Stinzenflora",
+    "contact.bb.person": "Jeroen Dijkstra",
+    "contact.camping.label": "Nature campsite",
+    "contact.camping.person": "Robin Alkema",
+    "contact.close": "Close",
+    "footer.contact.bb": "B&B — Jeroen Dijkstra",
+    "footer.contact.camping": "Camping — Robin Alkema",
 
 
     // Guestbook
@@ -1706,7 +1724,7 @@ const translations = {
     "omg.bike.h2": "Cycling in cycle-province #1",
     "omg.bike.intro": "Friesland scores five stars — the highest cycling rating in the Netherlands. The flat landscape suits every level, from a quick grocery run to a multi-day trip along all eleven cities. Martenastate sits at cycling node 10.",
     "omg.bike.photo.alt": "A cycle path through the Frisian landscape with trees on both sides.",
-    "omg.bike.routes.eyebrow": "Eight cycling routes",
+    "omg.bike.routes.eyebrow": "Seven cycling routes",
     "omg.bike.routes.h3": "From a village loop to multi-day touring",
     "omg.bike.route_link": "View route details",
     "omg.bike.r1.title": "Jelsum – Koarnjum – Dokkumer Ee",
@@ -2604,6 +2622,15 @@ const translations = {
     "action.route": "Adresse",
     "action.map": "Routen",
     "action.faq": "Fragen",
+    "contact.choose.call": "Rufst du wegen dem B&B oder dem Camping an?",
+    "contact.choose.wa": "Schreibst du wegen dem B&B oder dem Camping?",
+    "contact.bb.label": "B&B Stinzenflora",
+    "contact.bb.person": "Jeroen Dijkstra",
+    "contact.camping.label": "Naturcampingplatz",
+    "contact.camping.person": "Robin Alkema",
+    "contact.close": "Schließen",
+    "footer.contact.bb": "B&B — Jeroen Dijkstra",
+    "footer.contact.camping": "Camping — Robin Alkema",
 
 
     // Guestbook
@@ -2865,7 +2892,7 @@ const translations = {
     "omg.bike.h2": "Radfahren in der Radprovinz Nr. 1",
     "omg.bike.intro": "Friesland bekommt fünf Sterne — die höchste Bewertung in den Niederlanden für Radfahren. Die flache Landschaft passt zu jedem Niveau, von einer Stunde fürs Einkaufen bis zur Mehrtagestour entlang aller elf Städte. Martenastate liegt am Radknotenpunkt 10.",
     "omg.bike.photo.alt": "Ein Radweg durch die friesische Landschaft mit Bäumen an beiden Seiten.",
-    "omg.bike.routes.eyebrow": "Acht Radrouten",
+    "omg.bike.routes.eyebrow": "Sieben Radrouten",
     "omg.bike.routes.h3": "Von der Dorfrunde bis zur Mehrtagestour",
     "omg.bike.route_link": "Routenbeschreibung ansehen",
     "omg.bike.r1.title": "Jelsum – Koarnjum – Dokkumer Ee",
