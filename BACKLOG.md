@@ -9,17 +9,17 @@ ontwerpbeslissing — zie hieronder.
 
 ---
 ## 🙋 Voor Jeroen — jouw actie nodig (NIET autonoom; los op te pakken)
-- [ ] **Gastenboek herstellen (urgent — jij pakt dit op, akkoord 2026-06-01):**
-      het Supabase-project is gepauzeerd. Bevestigd: `ubhqqvassnkyfsftrmyh.supabase.co`
-      geeft NXDOMAIN terwijl `supabase.co` + overig netwerk werken → gepauzeerd/verwijderd
-      project (Supabase haalt bij pauze de DNS weg). De code/URL/anon-key kloppen (werkte
-      eerder met 11 berichten) — er is dus géén codewijziging nodig.
-      **Stappen:** log in op https://supabase.com/dashboard → kies het project
-      (ref `ubhqqvassnkyfsftrmyh`) → klik **"Restore project" / "Resume"**. Na ~1–2 min
-      laadt het gastenboek weer vanzelf.
-      Frontend is intussen robuust gemaakt: 8s time-out (geen oneindig "laden…"),
-      vriendelijke foutmelding, en cache-fallback die eerder geladen berichten toont
-      tijdens een storing. (Ik kan het project niet zelf hervatten — vereist jouw login.)
+- [ ] **Gastenboek — tabel opnieuw aanmaken (laatste stap, jouw actie):**
+      Project-restore is gelukt (2026-06-01: host leeft weer, `104.18.38.10`).
+      MAAR de API geeft nu `PGRST205 "Could not find the table 'public.gastenboek'"`
+      en toont 0 tabellen → Supabase heeft bij de lange pauze de data/tabellen gewist.
+      De 11 oude berichten zijn daarmee helaas weg (tenzij je een backup hebt).
+      **Stap:** Supabase-dashboard → **SQL Editor** → plak de inhoud van
+      `supabase/gastenboek.sql` (in deze repo) → **Run**. Dat maakt de tabel + RLS-policies
+      (lezen/plaatsen/liken) opnieuw aan. Daarna laadt het gastenboek (eerst leeg) en
+      werkt berichten plaatsen weer. Géén codewijziging nodig; DDL kan ik niet met de
+      anon-key uitvoeren.
+      Frontend is al robuust: 8s time-out, vriendelijke melding, cache-fallback.
 - [ ] Productie-branch hernoemen naar `main` (GitHub + Vercel settings)
 - [ ] Vercel Analytics aanzetten in dashboard (snippet staat al op de site)
 - [ ] Info/risico: gastenboek blijft ongewijzigd — anon-key kan INSERT + UPDATE; bij spam/misbruik later RLS hardenen
