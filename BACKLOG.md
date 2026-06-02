@@ -3,12 +3,49 @@ Werk van boven naar beneden. Elke taak is zelfstandig afrondbaar en controleerba
 Keuzes verwerkt (2026-05-19): feedback → mailto jeroen@cycle-up.nl · gastenboek-beveiliging
 ongewijzigd · Clarity niet installeren · favicon recolor naar huisstijl.
 
-Alle autonome taken zijn afgerond. De volledige testsuite is groen
-(`node tests/run.mjs`). Resterende punten vereisen jouw actie of een
-ontwerpbeslissing — zie hieronder.
+Status: contact-/adres-/gastenboek-ronde afgerond en live. Nieuwe feedback-ronde
+(2026-06-02) staat hieronder bovenaan — uit te voeren.
+
+---
+## 📋 Feedback-ronde 2026-06-02 — uit te voeren
+
+### Autonoom (ik kan dit doen; wachten op jouw go)
+- [ ] **Natuurkampeerkaart + "Stichting De Groene Koepel" overal verwijderen.**
+      De eis wordt niet gebruikt. Concrete plekken (de náám "natuurkampeer**terrein**" blijft staan,
+      alleen de **kaart**-eis gaat weg):
+      - `verblijf.html` (~r119-120): het blokje **Kampeerkaart → "Natuurkampeerkaart verplicht
+        (Stichting De Groene Koepel)"** (keys `camping.card.label` + `camping.card.value`) weghalen.
+      - `verblijf.html` (~r196): paklijst-regel **"Natuurkampeerkaart — verplicht"**
+        (keys `vb.bring.card.l` + `vb.bring.required`) weghalen.
+      - `boeken.html` (~r513): camping-feit **"Natuurkampeerkaart vereist"**
+        (key `boeken.camping.fact2.value`) weghalen of vervangen door een ander feit.
+      - Bijbehorende i18n-keys in alle 3 talen opschonen; SW-bump + testsuite.
+- [ ] **Vuurkorf-tekst toevoegen.** Leuke, gastvrije tekst: op de camping kun je een **vuurkorf lenen**
+      en een **kistje hout kopen voor € 7,50**. Logische plek: camping-faciliteiten op `verblijf.html`
+      (+ evt. in de pocket-guide). Nieuwe i18n-keys in 3 talen. (toon/plek even afstemmen — zie 'Voor Jeroen')
+- [ ] **Onscherpe wandelfoto vervangen.** `images/photo-wandelen-1.jpg` is maar **300×200 px** → wordt
+      opgerekt en oogt onscherp (op `omgeving.html`, sectie "Wandelen vanaf Martenastate", ~r171).
+      Interim: vervangen door een bestaande scherpe natuurfoto (bv. `photo-singel.jpg` of `photo-voorjaar.jpg`)
+      tot je een echte, scherpe wandelfoto levert.
+- [ ] **Misleidende kasteelfoto bij B&B-kamer vervangen.** `verblijf.html` (~r283) gebruikt
+      `images/photo-kasteeltje.jpg` voor de B&B-kamer → wekt indruk dat je in het kasteel verblijft.
+      Interim: vervangen door `images/photo-bnb.jpg` tot de nieuwe B&B-foto's er zijn.
+      Ook checken: eyebrow **"In het kasteeltje · B&B"** (`boeken.html` ~r410, key `boeken.bb.eyebrow`) —
+      mogelijk óók misleidend; afstemmen of die tekst aangepast moet.
+
+### Eerlijk gecheckt (2026-06-02)
+- [x] **Wandelroute-links gecontroleerd** — `node tests/check-links.mjs`: alle 44 externe links geven
+      HTTP 200, inclusief de 5 wandelroutes (Maps-links r1/r2/r3/r5, jabikspaad.nl r4, itfryskegea.nl).
+      **Nuance:** getest = link *bereikbaar*/pagina laadt. NIET getest = of elke Google-Maps-route
+      geografisch de mooiste/correcte wandelroute teruggeeft (vergt handmatige inspectie ter plekke).
 
 ---
 ## 🙋 Voor Jeroen — jouw actie nodig (NIET autonoom; los op te pakken)
+- [ ] **Aanleveren: nieuwe B&B-foto's** (je gaf aan dat die binnenkort komen) → vervangt de interim `photo-bnb.jpg`.
+- [ ] **Aanleveren: scherpe wandelfoto** (min. ~1200 px breed, landschap) → vervangt de interim natuurfoto.
+- [ ] **Beslissen: vuurkorf-tekst** — akkoord met plek (camping-faciliteiten op verblijf.html) en toon? Andere wens?
+- [ ] **Beslissen: eyebrow "In het kasteeltje · B&B"** — laten staan of herformuleren (i.v.m. misleiding)?
+- [ ] Productie-branch hernoemen naar `main` (GitHub + Vercel settings)
 - [ ] Productie-branch hernoemen naar `main` (GitHub + Vercel settings)
 - [ ] Vercel Analytics aanzetten in dashboard (snippet staat al op de site)
 - [ ] Info/risico: gastenboek blijft ongewijzigd — anon-key kan INSERT + UPDATE; bij spam/misbruik later RLS hardenen
