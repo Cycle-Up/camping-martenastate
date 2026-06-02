@@ -4,6 +4,18 @@ Kort logboek, nieuwste bovenaan. Per turn: datum · taak · wat gedaan · result
 
 ---
 
+## 2026-06-02 — Wandelroutes opschonen + officiële regio-sites ✅ live (SW v29)
+- **Niet-werkende "Open route in Maps"-knoppen verwijderd** bij de wandelroutes (omgeving.html, r1/r2/r3/r5
+  — de Google-Maps-route klopte niet). Jabikspaad-knop ("Bekijk officiële site") blijft.
+- **Officiële wandelroute-pagina's toegevoegd** in de wandeltab (source-credit): Visit Leeuwarden
+  (`/blogs/wandelen-in-leeuwarden`) + Friesland.nl (`/1000-routes/wandelen`). Tracking-params gestript.
+- **Algemene regio-callout** net onder de hero: verwijst naar de officiële sites van gemeente
+  (visitleeuwarden.com/nl) en provincie (friesland.nl/nl) — "actuele evenementenkalender". Keys
+  `omg.region.h/body` + `omg.walk.source` in 3 talen.
+- Linkcheck groen (nieuwe URL's 200); volledige suite groen; gedeployed + prod geverifieerd.
+
+---
+
 ## 2026-06-02 — Lighthouse perf+a11y (na /goal "voltooi backlog") ✅ live
 - **Perf — Google Fonts self-hosted (SW v27):** 24 woff2 (latin+latin-ext) lokaal, font-display swap,
   externe `fonts.googleapis`-link + preconnects weg op alle 9 pagina's; `css/fonts.css` in SW-cache.
