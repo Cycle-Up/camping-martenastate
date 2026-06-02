@@ -4,6 +4,22 @@ Kort logboek, nieuwste bovenaan. Per turn: datum · taak · wat gedaan · result
 
 ---
 
+## 2026-06-02 — Feedback-ronde (camping/B&B/foto's) ✅ live (SW v26)
+- **Natuurkampeerkaart + Stichting De Groene Koepel overal weg** — Kampeerkaart-callout + paklijst-regel
+  (`verblijf.html`), camping-feit (`boeken.html`); 7 i18n-keys opgeruimd (3 talen). Náám
+  "natuurkampeerterrein" bleef. Prod-check: 0 treffers.
+- **Vuurkorf-tekst** — gastvrij callout in camping-sectie: vuurkorf te leen + kistje hout € 7,50;
+  faciliteit "Kampvuur" → "in een vuurkorf (eigen of te leen)". Keys `vb.camping.fire.h/body` (3 talen).
+- **Onscherpe wandelfoto vervangen** — was 300×200 (blurry in 21/9-kader); nu Jeroens foto 1440×480.
+- **Misleidende kasteelfoto bij B&B-kamer weg** — `verblijf.html` toont nu `photo-bnb.jpg` (interim
+  tot Jeroens nieuwe B&B-foto als bestand binnen is). Eyebrow `boeken.bb.eyebrow` → "B&B Stinzenflora".
+- **Wandelroute-links eerlijk gecheckt** — `check-links.mjs`: alle 44 externe links HTTP 200 (incl. 5
+  wandelroutes). Nuance: bereikbaarheid getest, niet of elke Maps-route geografisch optimaal is.
+- i18n-pariteit 1085/1085/1085; testsuite groen; gedeployed + prod geverifieerd.
+- **Open (jouw actie):** nieuwe B&B-kamerfoto als BESTAND aanleveren → dan swap ik de interim.
+
+---
+
 ## 2026-06-01 — Gastenboek volledig hersteld ✅
 Na de project-restore door Jeroen leefde de host weer, maar de API gaf `PGRST205`
 (tabel `gastenboek` weg na lange pauze). SQL aangeleverd in `supabase/gastenboek.sql`

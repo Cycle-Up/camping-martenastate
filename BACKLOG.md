@@ -9,31 +9,18 @@ Status: contact-/adres-/gastenboek-ronde afgerond en live. Nieuwe feedback-ronde
 ---
 ## 📋 Feedback-ronde 2026-06-02 — uit te voeren
 
-### Autonoom (ik kan dit doen; wachten op jouw go)
-- [ ] **Natuurkampeerkaart + "Stichting De Groene Koepel" overal verwijderen.**
-      De eis wordt niet gebruikt. Concrete plekken (de náám "natuurkampeer**terrein**" blijft staan,
-      alleen de **kaart**-eis gaat weg):
-      - `verblijf.html` (~r119-120): het blokje **Kampeerkaart → "Natuurkampeerkaart verplicht
-        (Stichting De Groene Koepel)"** (keys `camping.card.label` + `camping.card.value`) weghalen.
-      - `verblijf.html` (~r196): paklijst-regel **"Natuurkampeerkaart — verplicht"**
-        (keys `vb.bring.card.l` + `vb.bring.required`) weghalen.
-      - `boeken.html` (~r513): camping-feit **"Natuurkampeerkaart vereist"**
-        (key `boeken.camping.fact2.value`) weghalen of vervangen door een ander feit.
-      - Bijbehorende i18n-keys in alle 3 talen opschonen; SW-bump + testsuite.
-- [ ] **Vuurkorf-tekst toevoegen.** Leuke, gastvrije tekst: op de camping kun je een **vuurkorf lenen**
-      en een **kistje hout kopen voor € 7,50**. Logische plek: camping-faciliteiten op `verblijf.html`
-      (+ evt. in de pocket-guide). Nieuwe i18n-keys in 3 talen. (toon/plek even afstemmen — zie 'Voor Jeroen')
-- [ ] **Onscherpe wandelfoto vervangen.** `images/photo-wandelen-1.jpg` is maar **300×200 px** → wordt
-      opgerekt en oogt onscherp (op `omgeving.html`, sectie "Wandelen vanaf Martenastate", ~r171).
-      Interim: vervangen door een bestaande scherpe natuurfoto (bv. `photo-singel.jpg` of `photo-voorjaar.jpg`)
-      tot je een echte, scherpe wandelfoto levert.
-- [ ] **Misleidende kasteelfoto bij B&B-kamer vervangen.** `verblijf.html` (~r283) gebruikt
-      `images/photo-kasteeltje.jpg` voor de B&B-kamer → wekt indruk dat je in het kasteel verblijft.
-      Interim: vervangen door `images/photo-bnb.jpg` tot de nieuwe B&B-foto's er zijn.
-- [ ] **Eyebrow "In het kasteeltje · B&B" herformuleren** (besluit Jeroen 2026-06-02).
-      `boeken.html` (~r410, key `boeken.bb.eyebrow`, 3 talen) → niet meer suggereren dat je in het
-      kasteel slaapt, bv. **"B&B Stinzenflora"** of **"B&B op het landgoed"**. Definitieve formulering
-      even afstemmen bij uitvoering.
+### Uitgevoerd 2026-06-02 ✅ (live, SW v26)
+- [x] **Natuurkampeerkaart + "Stichting De Groene Koepel" overal verwijderd** — Kampeerkaart-callout
+      en paklijst-regel uit `verblijf.html`, camping-feit uit `boeken.html`; 7 i18n-keys opgeruimd
+      (3 talen). De camping-náám "natuurkampeerterrein" bleef staan. Geverifieerd: 0 treffers op prod.
+- [x] **Vuurkorf-tekst toegevoegd** — gastvrij callout in de camping-sectie (`verblijf.html`):
+      vuurkorf te leen + kistje hout € 7,50. Faciliteit "Kampvuur" bijgewerkt naar "in een vuurkorf
+      (eigen of te leen)". Nieuwe keys `vb.camping.fire.h/body` (3 talen).
+- [x] **Onscherpe wandelfoto vervangen** — was 300×200 (opgerekt → blurry); nu Jeroens foto
+      1440×480 (`photo-wandelen-1.jpg`), past in het 21/9-kader. Alt-tekst bijgewerkt (3 talen).
+- [x] **Misleidende kasteelfoto bij B&B-kamer weg** — `verblijf.html` toont nu `photo-bnb.jpg`
+      i.p.v. `photo-kasteeltje.jpg`. ⏳ INTERIM tot Jeroens nieuwe B&B-foto als bestand binnen is.
+- [x] **Eyebrow herformuleerd** — `boeken.bb.eyebrow`: "In het kasteeltje · B&B" → **"B&B Stinzenflora"** (3 talen).
 
 ### Eerlijk gecheckt (2026-06-02)
 - [x] **Wandelroute-links gecontroleerd** — `node tests/check-links.mjs`: alle 44 externe links geven
@@ -43,10 +30,10 @@ Status: contact-/adres-/gastenboek-ronde afgerond en live. Nieuwe feedback-ronde
 
 ---
 ## 🙋 Voor Jeroen — jouw actie nodig (NIET autonoom; los op te pakken)
-- [ ] **Aanleveren: nieuwe B&B-foto's** (je gaf aan dat die binnenkort komen) → vervangt de interim `photo-bnb.jpg`.
-- [ ] **Aanleveren: scherpe wandelfoto** (min. ~1200 px breed, landschap) → vervangt de interim natuurfoto.
-- [ ] **Beslissen: vuurkorf-tekst** — akkoord met plek (camping-faciliteiten op verblijf.html) en toon? Andere wens?
-- [ ] Productie-branch hernoemen naar `main` (GitHub + Vercel settings)
+- [ ] **Aanleveren: nieuwe B&B-kamerfoto als BESTAND** — je foto staat nu in de chat, maar ik heb het
+      bestand nodig. Zet 'm in je Downloads-map (zoals je de wandelfoto deed) en geef een seintje;
+      dan swap ik de interim `photo-bnb.jpg` op `verblijf.html` voor jouw echte foto.
+      (De wandelfoto is al verwerkt ✅.)
 - [ ] Productie-branch hernoemen naar `main` (GitHub + Vercel settings)
 - [ ] Vercel Analytics aanzetten in dashboard (snippet staat al op de site)
 - [ ] Info/risico: gastenboek blijft ongewijzigd — anon-key kan INSERT + UPDATE; bij spam/misbruik later RLS hardenen
