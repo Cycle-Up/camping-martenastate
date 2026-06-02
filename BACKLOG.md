@@ -30,8 +30,10 @@ Status: contact-/adres-/gastenboek-ronde afgerond en live. Nieuwe feedback-ronde
 - [ ] **Misleidende kasteelfoto bij B&B-kamer vervangen.** `verblijf.html` (~r283) gebruikt
       `images/photo-kasteeltje.jpg` voor de B&B-kamer → wekt indruk dat je in het kasteel verblijft.
       Interim: vervangen door `images/photo-bnb.jpg` tot de nieuwe B&B-foto's er zijn.
-      Ook checken: eyebrow **"In het kasteeltje · B&B"** (`boeken.html` ~r410, key `boeken.bb.eyebrow`) —
-      mogelijk óók misleidend; afstemmen of die tekst aangepast moet.
+- [ ] **Eyebrow "In het kasteeltje · B&B" herformuleren** (besluit Jeroen 2026-06-02).
+      `boeken.html` (~r410, key `boeken.bb.eyebrow`, 3 talen) → niet meer suggereren dat je in het
+      kasteel slaapt, bv. **"B&B Stinzenflora"** of **"B&B op het landgoed"**. Definitieve formulering
+      even afstemmen bij uitvoering.
 
 ### Eerlijk gecheckt (2026-06-02)
 - [x] **Wandelroute-links gecontroleerd** — `node tests/check-links.mjs`: alle 44 externe links geven
@@ -44,7 +46,6 @@ Status: contact-/adres-/gastenboek-ronde afgerond en live. Nieuwe feedback-ronde
 - [ ] **Aanleveren: nieuwe B&B-foto's** (je gaf aan dat die binnenkort komen) → vervangt de interim `photo-bnb.jpg`.
 - [ ] **Aanleveren: scherpe wandelfoto** (min. ~1200 px breed, landschap) → vervangt de interim natuurfoto.
 - [ ] **Beslissen: vuurkorf-tekst** — akkoord met plek (camping-faciliteiten op verblijf.html) en toon? Andere wens?
-- [ ] **Beslissen: eyebrow "In het kasteeltje · B&B"** — laten staan of herformuleren (i.v.m. misleiding)?
 - [ ] Productie-branch hernoemen naar `main` (GitHub + Vercel settings)
 - [ ] Productie-branch hernoemen naar `main` (GitHub + Vercel settings)
 - [ ] Vercel Analytics aanzetten in dashboard (snippet staat al op de site)
