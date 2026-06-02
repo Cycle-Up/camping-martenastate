@@ -37,11 +37,13 @@ Status: contact-/adres-/gastenboek-ronde afgerond en live. Nieuwe feedback-ronde
 - [ ] Productie-branch hernoemen naar `main` (GitHub + Vercel settings)
 - [ ] Vercel Analytics aanzetten in dashboard (snippet staat al op de site)
 - [ ] Info/risico: gastenboek blijft ongewijzigd — anon-key kan INSERT + UPDATE; bij spam/misbruik later RLS hardenen
-- [ ] Lighthouse mobiel ≥90 perf / ≥95 a11y (gemeten: Perf 77 · A11y 93 · BP 100 · SEO 100).
-      Veilige fixes zijn gedaan (fonts niet-blokkerend, aria label-in-name, muted-contrast).
-      De rest vereist KEUZES: perf → Google Fonts self-hosten + critical CSS;
-      a11y → brand-eyebrow-kleur haalt 4.5:1 niet, heading-volgorde, <main>-landmark.
-      Zeg het als je wil dat ik deze ontwerpkeuzes uitvoer.
+- [x] **Lighthouse-verbeteringen uitgevoerd 2026-06-02** (na jouw go via /goal):
+      - perf → **Google Fonts self-hosted** (24 woff2 latin/latin-ext, font-display swap);
+        externe render-blokkerende fontrequest weg.
+      - a11y → **<main>-landmark** op alle pagina's · **eyebrow-contrast** naar toegankelijk
+        donkerrood (#B53D20, ~5:1) · **heading-volgorde** gecorrigeerd (h4→h3.lbl, visueel identiek).
+      ⏳ **Jij kunt de score opnieuw meten** (ik kan Lighthouse niet lokaal draaien). Resterende
+      optionele perf-microopts indien nog nodig: critical-CSS inline + hero-LCP fijnafstemmen — zeg maar.
 
 ---
 ## ✅ Afgerond

@@ -4,6 +4,21 @@ Kort logboek, nieuwste bovenaan. Per turn: datum · taak · wat gedaan · result
 
 ---
 
+## 2026-06-02 — Lighthouse perf+a11y (na /goal "voltooi backlog") ✅ live
+- **Perf — Google Fonts self-hosted (SW v27):** 24 woff2 (latin+latin-ext) lokaal, font-display swap,
+  externe `fonts.googleapis`-link + preconnects weg op alle 9 pagina's; `css/fonts.css` in SW-cache.
+  Drie families (Jakarta/Lora/Caveat) renderen identiek geverifieerd in preview.
+- **A11y — <main>-landmark** op de 6 pagina's die het misten (geen `body>`-selectors → veilig).
+- **A11y — eyebrow-contrast:** `.section-eyebrow`/`.arrival-eyebrow` van Martena Rood (#E36447, 2,95:1)
+  naar nieuw token `--eyebrow-ink #B53D20` (~5:1). gb-hero (op foto) + hero-eyebrow (op donker) ongemoeid.
+- **A11y — heading-volgorde:** alle `<h4>` → `<h3 class="lbl">`; h4-CSS-selectors → `.lbl`
+  (specificiteit behoudt exacte grootte). 0 sprongen meer; visueel pixel-identiek geverifieerd
+  (callout 18px, footer 12px, restaurantnaam 18px, routetitel 16px). SW v28.
+- Volledige testsuite groen na elke stap; 4× gedeployed + prod geverifieerd.
+- **Open (jouw kant):** Lighthouse opnieuw meten; B&B-fotobestand aanleveren; branch→main; Vercel Analytics.
+
+---
+
 ## 2026-06-02 — Feedback-ronde (camping/B&B/foto's) ✅ live (SW v26)
 - **Natuurkampeerkaart + Stichting De Groene Koepel overal weg** — Kampeerkaart-callout + paklijst-regel
   (`verblijf.html`), camping-feit (`boeken.html`); 7 i18n-keys opgeruimd (3 talen). Náám
