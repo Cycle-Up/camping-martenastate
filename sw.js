@@ -17,6 +17,7 @@ const CORE_ASSETS = [
   '/404.html',
   '/css/style.css',
   '/css/tokens.css',
+  '/css/fonts.css',
   '/js/main.js',
   '/js/icons.js',
   '/js/translations.js',
