@@ -2536,6 +2536,11 @@ section {
 .footer-brand svg { display: none; }
 .footer ul { list-style: none; padding: 0; }
 .footer ul li { margin-bottom: var(--space-2); font-size: var(--fs-14); }
+/* Mobiel: ruimere tap-targets voor footer-links (≥44px) */
+@media (max-width: 768px) {
+  .footer ul li { margin-bottom: 0; }
+  .footer ul li a { display: inline-flex; align-items: center; min-height: 44px; }
+}
 .footer-bottom {
   text-align: center;
   padding-top: var(--space-5);
@@ -3346,7 +3351,7 @@ input, textarea, select {
   /* Lang toggle */
   .lang-toggle button {
     padding: 0.5rem 0.95rem;
-    min-height: 38px;
+    min-height: 44px;
     min-width: 44px;
   }
 
