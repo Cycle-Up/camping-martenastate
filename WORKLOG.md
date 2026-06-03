@@ -4,6 +4,21 @@ Kort logboek, nieuwste bovenaan. Per turn: datum · taak · wat gedaan · result
 
 ---
 
+## 2026-06-02 — Mobiel-optimalisatie (audit 320 + 390px) ✅ live (SW v30)
+Brede mobiele audit via preview-eval (overflow, tap-targets, font-sizes, modal, menu) op iPhone-SE (320)
+en standaard (390) breedte. Bevindingen + fixes:
+- **Pocket-pagina overflowde ~10px op 320px** — lange `<dd>`-waarden (contact/wifi) in `.pocket-grid`
+  krompen niet. Fix: `min-width:0` + `overflow-wrap:anywhere` op dd, `minmax(0,130px)`-kolom, en
+  smallere kolommen <380px. Nu 0 overflow.
+- **Tap-targets:** footer-navigatielinks waren 17px → mobiele regel naar **44px**; taalknoppen op
+  kleine schermen (≤480px) van 38px → **44px**.
+- **Geverifieerd OK (geen wijziging nodig):** geen horizontale overflow op overige 8 pagina's (320/390);
+  form-inputs 16px (geen iOS-zoom); action-bar 56px; hamburgermenu opent correct (links 56px);
+  contact-keuzevenster rendert netjes (272px breed, 104px-opties); afbeeldingen al w/h+lazy.
+- Volledige testsuite groen; gedeployed + prod geverifieerd.
+
+---
+
 ## 2026-06-02 — Wandelroutes opschonen + officiële regio-sites ✅ live (SW v29)
 - **Niet-werkende "Open route in Maps"-knoppen verwijderd** bij de wandelroutes (omgeving.html, r1/r2/r3/r5
   — de Google-Maps-route klopte niet). Jabikspaad-knop ("Bekijk officiële site") blijft.
