@@ -642,6 +642,120 @@ function initContactChooser() {
   }));
 }
 
+// Kopieer tekst naar klembord (met fallback), toont een toast.
+async function copyText(value) {
+  if (!value) return;
+  try {
+    await navigator.clipboard.writeText(value);
+    showToast(t('toast.copied'));
+  } catch (err) {
+    const ta = document.createElement('textarea');
+    ta.value = value; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); showToast(t('toast.copied')); } catch (e2) {}
+    document.body.removeChild(ta);
+  }
+}
+
+// WiFi-gegevens voor de B&B's + Túnmanswente (camping heeft bewust geen wifi).
+const WIFI = { ssid: 'Ziggo 5795367', pass: 'stk43MhvzhLhtzjs' };
+// Escape voor het WIFI:-QR-formaat (\ ; , : " moeten ontsnapt worden).
+function wifiEscape(s) { return String(s).replace(/([\\;,:"])/g, '\\$1'); }
+
+function initWifiModal() {
+  const triggers = document.querySelectorAll('[data-wifi]');
+  if (!triggers.length) return;
+
+  let pwRevealed = false;
+  let modal = document.getElementById('wifiModal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'wifiModal';
+    modal.className = 'contact-modal wifi-modal';
+    modal.hidden = true;
+    modal.innerHTML =
+      '<div class="contact-modal-backdrop" data-close></div>' +
+      '<div class="contact-sheet wifi-sheet" role="dialog" aria-modal="true" aria-labelledby="wifiModalTitle">' +
+        '<h3 id="wifiModalTitle"></h3>' +
+        '<button type="button" class="wifi-row" data-copy-net>' +
+          '<span class="wifi-row-label" data-i18n="wifi.network">Netwerk</span>' +
+          '<span class="wifi-row-val" data-net></span>' +
+        '</button>' +
+        '<button type="button" class="wifi-row" data-reveal>' +
+          '<span class="wifi-row-label" data-i18n="wifi.password">Wachtwoord</span>' +
+          '<span class="wifi-row-val"><span data-pw>••••••••</span> <span class="wifi-row-hint" data-pwhint></span></span>' +
+        '</button>' +
+        '<div class="wifi-actions">' +
+          '<button type="button" class="btn btn-outline" data-share-wifi><span data-i18n="wifi.share">Deel wifi</span></button>' +
+          '<button type="button" class="btn btn-outline" data-qr><span data-i18n="wifi.qr">Toon QR-code</span></button>' +
+        '</div>' +
+        '<div class="wifi-qr" id="wifiQr" hidden></div>' +
+        '<p class="wifi-hint" data-i18n="wifi.hint">Scan de QR-code met je telefooncamera om te verbinden.</p>' +
+        '<button type="button" class="contact-close" data-close data-i18n="contact.close">Sluiten</button>' +
+      '</div>';
+    document.body.appendChild(modal);
+
+    modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeWifi));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeWifi(); });
+
+    modal.querySelector('[data-copy-net]').addEventListener('click', () => copyText(WIFI.ssid));
+
+    modal.querySelector('[data-reveal]').addEventListener('click', () => {
+      const pw = modal.querySelector('[data-pw]');
+      if (!pwRevealed) {
+        pw.textContent = WIFI.pass; pwRevealed = true;
+        modal.querySelector('[data-pwhint]').textContent = '· ' + t('wifi.copy');
+      } else {
+        copyText(WIFI.pass);
+      }
+    });
+
+    modal.querySelector('[data-share-wifi]').addEventListener('click', async () => {
+      const text = t('wifi.network') + ': ' + WIFI.ssid + '\n' + t('wifi.password') + ': ' + WIFI.pass;
+      if (navigator.share) {
+        try { await navigator.share({ title: 'WiFi — Martenastate', text }); } catch (e) { /* geannuleerd */ }
+      } else {
+        copyText(text);
+      }
+    });
+
+    const qrBtn = modal.querySelector('[data-qr]');
+    const qrBox = modal.querySelector('#wifiQr');
+    if (typeof qrcode === 'undefined') {
+      qrBtn.hidden = true;
+      modal.querySelector('.wifi-hint').hidden = true;
+    } else {
+      qrBtn.addEventListener('click', () => {
+        if (!qrBox.hidden) { qrBox.hidden = true; return; }
+        if (!qrBox.dataset.rendered) {
+          const payload = 'WIFI:T:WPA;S:' + wifiEscape(WIFI.ssid) + ';P:' + wifiEscape(WIFI.pass) + ';;';
+          const qr = qrcode(0, 'M');
+          qr.addData(payload); qr.make();
+          qrBox.innerHTML = qr.createSvgTag({ cellSize: 6, margin: 2, scalable: true });
+          qrBox.dataset.rendered = '1';
+        }
+        qrBox.hidden = false;
+      });
+    }
+    applyTranslations();
+  }
+
+  function closeWifi() {
+    modal.hidden = true;
+    const q = modal.querySelector('#wifiQr'); if (q) q.hidden = true;
+  }
+  function openWifi() {
+    pwRevealed = false;
+    modal.querySelector('#wifiModalTitle').textContent = t('wifi.modal.title');
+    modal.querySelector('[data-net]').textContent = WIFI.ssid;
+    modal.querySelector('[data-pw]').textContent = '••••••••';
+    modal.querySelector('[data-pwhint]').textContent = '· ' + t('wifi.reveal');
+    const q = modal.querySelector('#wifiQr'); if (q) q.hidden = true;
+    modal.hidden = false;
+  }
+  triggers.forEach(tr => tr.addEventListener('click', e => { e.preventDefault(); openWifi(); }));
+}
+
 // Init everything
 function bootMartenastate() {
   applyTranslations();
@@ -651,6 +765,7 @@ function bootMartenastate() {
   initScrollAnimations();
   initNavbarScroll();
   initContactChooser();
+  initWifiModal();
   // initMap() en renderRouteLists() bewust niet aangeroepen: de kaartpagina
   // bestaat niet meer. De functies blijven (dormant) staan voor een toekomstige
   // kaart.html — zie de DORMANT-markering verderop in dit bestand.

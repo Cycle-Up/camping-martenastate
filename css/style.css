@@ -3473,3 +3473,20 @@ input, textarea, select {
 .contact-opt[data-for="camping"]:hover { border-color: var(--ms-haarlems-groen-deep); }
 .contact-close { margin-top: var(--space-2); background: none; border: none; color: var(--fg-mute); font: inherit; font-size: var(--fs-14); cursor: pointer; padding: var(--space-2); }
 .contact-close:hover { color: var(--ms-ink); }
+
+/* ── WiFi-venster ── */
+.wifi-row { display: flex; flex-direction: column; gap: 2px; align-items: flex-start; text-align: left; width: 100%; padding: var(--space-3) var(--space-4); border: 1px solid var(--hairline); border-radius: var(--radius-md); background: var(--ms-paper); cursor: pointer; font: inherit; transition: background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out); min-height: 56px; justify-content: center; }
+.wifi-row:hover { background: var(--ms-paper-warm); border-color: var(--ms-leien-blauw); }
+.wifi-row-label { font-size: var(--fs-12); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-mute); }
+.wifi-row-val { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-18); color: var(--ms-leien-blauw); word-break: break-all; }
+.wifi-row-hint { font-family: var(--font-sans); font-weight: 600; font-size: var(--fs-12); color: var(--ms-martena-rood-deep); letter-spacing: 0; text-transform: none; white-space: nowrap; }
+.wifi-actions { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+.wifi-actions .btn { flex: 1 1 0; justify-content: center; min-height: 44px; }
+.wifi-qr { display: flex; justify-content: center; padding: var(--space-4) 0 var(--space-2); }
+.wifi-qr[hidden] { display: none; }
+.wifi-qr svg { width: 200px; height: 200px; background: #fff; padding: 10px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+.wifi-hint { margin: 0; font-size: var(--fs-12); color: var(--fg-mute); text-align: center; }
+/* Trigger-knopje in het aankomstpaneel */
+.arrival-wifi-btn { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: var(--space-2); padding: 0.5rem 0.9rem; min-height: 40px; border: 1px solid var(--hairline); border-radius: var(--radius-pill); background: var(--ms-paper); color: var(--ms-leien-blauw); font-size: var(--fs-14); font-weight: 600; cursor: pointer; transition: background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out); }
+.arrival-wifi-btn:hover { background: var(--ms-paper-warm); border-color: var(--ms-leien-blauw); }
+.arrival-wifi-btn svg { width: 16px; height: 16px; }

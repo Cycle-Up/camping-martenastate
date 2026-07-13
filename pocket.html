@@ -78,7 +78,7 @@
       margin-top: 1rem;
     }
     @media print {
-      .pocket-actions, nav.navbar, .mobile-action-bar, .back-to-top, footer.footer { display: none !important; }
+      .pocket-actions, nav.navbar, .mobile-action-bar, .back-to-top, footer.footer, .no-print { display: none !important; }
       body { background: white; }
       .pocket-page { padding: 1rem; max-width: 100%; }
       .pocket-section { page-break-inside: avoid; margin-bottom: 1.5rem; }
@@ -151,8 +151,8 @@
     <section class="pocket-section">
       <h2 data-i18n="pocket.h2.practical">Praktisch tijdens je verblijf</h2>
       <dl class="pocket-grid">
-        <dt data-i18n="pocket.lbl.wifi_net">WiFi-netwerk</dt><dd>Martenastate-Gast</dd>
-        <dt data-i18n="pocket.lbl.wifi_pw">WiFi-wachtwoord</dt><dd>MartenastateGast2024</dd>
+        <dt data-i18n="pocket.lbl.wifi_net">WiFi-netwerk</dt><dd>Ziggo 5795367</dd>
+        <dt data-i18n="pocket.lbl.wifi_pw">WiFi-wachtwoord</dt><dd>stk43MhvzhLhtzjs<br><button type="button" class="arrival-wifi-btn no-print" data-wifi style="margin-top:.45rem;"><span data-i18n="wifi.cta">Wachtwoord &amp; QR</span></button></dd>
         <dt data-i18n="pocket.lbl.checkin">Check-in</dt><dd data-i18n="pocket.val.checkin">Vanaf 15:00 (eerder in overleg)</dd>
         <dt data-i18n="pocket.lbl.checkout">Check-out</dt><dd data-i18n="pocket.val.checkout">Vóór 11:00</dd>
         <dt data-i18n="pocket.lbl.parking">Parkeren</dt><dd data-i18n="pocket.val.parking">Bij hoofdingang landgoed (gratis)</dd>
@@ -253,6 +253,7 @@
 
   <script src="js/icons.js"></script>
   <script src="js/translations.js"></script>
+  <script src="js/qrcode.js"></script>
   <script src="js/main.js"></script>
   <script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js").catch(()=>{})}</script>
 </body>
