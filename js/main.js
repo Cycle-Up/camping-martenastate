@@ -658,7 +658,7 @@ async function copyText(value) {
 }
 
 // WiFi-gegevens voor de B&B's + Túnmanswente (camping heeft bewust geen wifi).
-const WIFI = { ssid: 'Ziggo 5795367', pass: 'stk43MhvzhLhtzjs' };
+const WIFI = { ssid: 'Ziggo5795367', pass: 'stk43MhvzhLhtzjs' };
 // Escape voor het WIFI:-QR-formaat (\ ; , : " moeten ontsnapt worden).
 function wifiEscape(s) { return String(s).replace(/([\\;,:"])/g, '\\$1'); }
 
