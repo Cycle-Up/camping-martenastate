@@ -4,6 +4,23 @@ Kort logboek, nieuwste bovenaan. Per turn: datum · taak · wat gedaan · result
 
 ---
 
+## 2026-07-13 — Juiste WiFi + interactief wifi-venster ✅ live (SW v31)
+- **Verkeerde wifi vervangen** — was "Martenastate-Gast/MartenastateGast2024"; nu **Ziggo 5795367 /
+  stk43MhvzhLhtzjs** voor B&B's + Túnmanswente (camping bewust géén wifi). Aangepast op: index-
+  aankomstpaneel, pocket, FAQ (verblijf) + i18n (3 talen).
+- **Interactief wifi-venster** (`initWifiModal`, patroon van contact-venster): netwerknaam (tik=kopieer),
+  wachtwoord "tik om te tonen" → tik=kopieer, **Deel wifi** (Web Share API, fallback kopieer),
+  **Toon QR-code** (WiFi-QR, scan = direct verbinden). Trigger `[data-wifi]` op aankomstpaneel + pocket.
+- **QR offline & privacy-veilig**: gevendorde `js/qrcode.js` (Kazuhiko Arase, MIT) — QR wordt lokaal
+  gegenereerd, wachtwoord gaat nooit naar een externe dienst. In SW-cache. 9 nieuwe `wifi.*`-keys (3 talen).
+- End-to-end getest in browser (desktop + mobiel 375px): venster opent, wachtwoord toont, QR rendert,
+  past op mobiel zonder overflow. Testsuite groen; gedeployed + prod geverifieerd.
+- ⚠️ **Te bevestigen:** SSID staat als "Ziggo 5795367" (mét spatie, zoals aangeleverd). Ziggo-netwerknamen
+  zijn vaak zónder spatie — als de QR niet verbindt, moet de exacte SSID (spatie/geen spatie) worden gecheckt.
+- Gastenboek: Supabase nog offline t.t.v. deze wijziging (restore door Jeroen liep nog).
+
+---
+
 ## 2026-06-02 — Mobiel-optimalisatie (audit 320 + 390px) ✅ live (SW v30)
 Brede mobiele audit via preview-eval (overflow, tap-targets, font-sizes, modal, menu) op iPhone-SE (320)
 en standaard (390) breedte. Bevindingen + fixes:
