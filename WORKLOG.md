@@ -19,6 +19,14 @@ Kort logboek, nieuwste bovenaan. Per turn: datum · taak · wat gedaan · result
   zijn vaak zónder spatie — als de QR niet verbindt, moet de exacte SSID (spatie/geen spatie) worden gecheckt.
 - Gastenboek: Supabase nog offline t.t.v. deze wijziging (restore door Jeroen liep nog).
 
+## 2026-07-13 — Gastenboek keep-alive (Vercel Cron) ✅ live
+Op verzoek: gratis Supabase pauzeert na ~7 dagen inactiviteit → gastenboek valt uit. Opgelost met een
+Vercel Cron (`vercel.json`: `0 6 * * *`) die `api/keepalive.js` 1×/dag aanroept; die doet een lichte
+leesquery op de gastenboek-tabel zodat het project actief blijft. Endpoint live getest: reageert 200
+(nu `ok:false` omdat Supabase nog gepauzeerd is — zodra Jeroen het project herstelt, houdt de cron het
+wakker). Anon-key stond al publiek; geen geheimen blootgesteld. Frontend-resilience (time-out + cache)
+blijft als vangnet.
+
 ---
 
 ## 2026-06-02 — Mobiel-optimalisatie (audit 320 + 390px) ✅ live (SW v30)
