@@ -1076,7 +1076,7 @@ const translations = {
     "home.season.spring.range": "April – mei",
     "home.season.summer.range": "Juni – augustus",
     "home.season.autumn.range": "September – oktober",
-    "home.estate.p2": "Sinds 2000 beheert <strong>It Fryske Gea</strong> het landgoed ecologisch. Martenastate is erkend als één van de beste stinzenflora-locaties van Nederland en staat op de lijst als nationaal monument.",
+    "home.estate.p2": "Sinds 2000 wordt het landgoed op professionele wijze ecologisch beheerd. Martenastate is erkend als één van de beste stinzenflora-locaties van Nederland en staat op de lijst als nationaal monument.",
 
     // === pocket.html (added in i18n sweep) ===
     "pocket.btn.print": "Print / Opslaan als PDF",
@@ -2255,7 +2255,7 @@ const translations = {
     "home.season.spring.range": "April – May",
     "home.season.summer.range": "June – August",
     "home.season.autumn.range": "September – October",
-    "home.estate.p2": "Since 2000 <strong>It Fryske Gea</strong> manages the estate ecologically. Martenastate is recognised as one of the best stinzenflora locations in the Netherlands and is listed as a national monument.",
+    "home.estate.p2": "Since 2000 the estate has been professionally managed in an ecological way. Martenastate is recognised as one of the best stinzenflora locations in the Netherlands and is listed as a national monument.",
 
     // === pocket.html (added in i18n sweep) ===
     "pocket.btn.print": "Print / Save as PDF",
@@ -3432,7 +3432,7 @@ const translations = {
     "home.season.spring.range": "April – Mai",
     "home.season.summer.range": "Juni – August",
     "home.season.autumn.range": "September – Oktober",
-    "home.estate.p2": "Seit 2000 betreut <strong>It Fryske Gea</strong> das Landgut ökologisch. Martenastate gilt als einer der besten Stinzenflora-Orte der Niederlande und steht als nationales Denkmal auf der Liste.",
+    "home.estate.p2": "Seit 2000 wird das Landgut auf professionelle Weise ökologisch betreut. Martenastate gilt als einer der besten Stinzenflora-Orte der Niederlande und steht als nationales Denkmal auf der Liste.",
 
     // === pocket.html (added in i18n sweep) ===
     "pocket.btn.print": "Drucken / als PDF speichern",

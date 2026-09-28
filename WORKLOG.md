@@ -4,6 +4,11 @@ Kort logboek, nieuwste bovenaan. Per turn: datum · taak · wat gedaan · result
 
 ---
 
+## 2026-09-28 - Tekst landgoedbeheer ✅ live (SW v33)
+Op verzoek: "Sinds 2000 beheert It Fryske Gea het landgoed ecologisch" vervangen door "Sinds 2000
+wordt het landgoed op professionele wijze ecologisch beheerd" (`home.estate.p2`, NL/EN/DE +
+fallback in index.html). Andere vermeldingen van It Fryske Gea (excursies) ongewijzigd.
+
 ## 2026-07-13 — Juiste WiFi + interactief wifi-venster ✅ live (SW v31)
 - **Verkeerde wifi vervangen** — was "Martenastate-Gast/MartenastateGast2024"; nu **Ziggo 5795367 /
   stk43MhvzhLhtzjs** voor B&B's + Túnmanswente (camping bewust géén wifi). Aangepast op: index-
